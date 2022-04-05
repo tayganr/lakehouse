@@ -1,4 +1,4 @@
-# lakehouse
+# Data Lakehouse Workshop
 
 1. Lab Environment Setup Part 1 - Control Plane
     
@@ -27,7 +27,7 @@
     * raw\wwi\customers\file001.csv > curated\wwi\customers\file001.parquet (delta)
 
 5. Incremental load Fact table
-    * raw\wwi\oreders\file001.csv > curated\wwi\orders\file001.parquet (delta)
+    * raw\wwi\orders\file001.csv > curated\wwi\orders\file001.parquet (delta)
 
 6. Logical Data Warehouse
     * Create Serverless SQL Database
