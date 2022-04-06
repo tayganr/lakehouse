@@ -105,6 +105,34 @@ sqlPassword!
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
+## 4. Pipeline (Copy SQL to ADLS)
+
+1. Navigate to the **Integrate** hub
+2. Click the **[+]** icon to add a new resource and click **Pipeline**
+3. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
+4. Rename the activity `GetChangeCount`
+5. Switch to the **Settings** tab
+6. Set the **Source dataset** to **AzureSqlTable**
+7. Set the Dataset property **schema** to `cdc`
+8. Set the Dataset property **table** to `dbo_Customers_CT`
+9. Set the **Use query** property to **Query**
+10. Click inside the **Query** text input and click **Add dynamic content** 
+11. Copy and paste the code snippet
+```
+@concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
+SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
+SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
+SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
+SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
+IF (@from_lsn IS NOT NULL AND @to_lsn IS NOT NULL AND @from_lsn < @to_lsn)
+SELECT count(1) changecount FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')
+ELSE SELECT 0 changecount')
+```
+12. Click **OK**
+
+
+<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+
 ## :tada: Summary
 
 ABC.
