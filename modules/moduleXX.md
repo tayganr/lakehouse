@@ -1,4 +1,4 @@
-# Module XX - Post Deployment Setup
+# Module 00 - Post Deployment Script
 
  [< Previous Module](../modules/module00.md) - **[Home](../README.md)** - [Next Module >](../modules/module01.md)
 
