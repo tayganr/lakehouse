@@ -1,6 +1,6 @@
 # Data Lakehouse Workshop
 
-The data lakehouse is a data architecture pattern that combines functional aspects of data warehouses and data lakes on one platform. This workshop will walk through an example of how the data lakehouse pattern can be facilitated in Azure with Azure Synapse Analytics.
+The data lakehouse is a data architecture pattern that combines functional aspects of the data warehouse, with the data lake, on one platform. This workshop will walk through an example of how the data lakehouse pattern can be facilitated in Azure with Azure Synapse Analytics.
 
 ![Data Lakehouse with Azure Synapse Analytics](./images/readme/001.png)
 
