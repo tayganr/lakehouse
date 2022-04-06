@@ -105,10 +105,15 @@ sqlPassword!
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 4. Pipeline (Copy SQL to ADLS)
+## 4. Pipeline (Lookup)
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
+3. Rename the pipeline to `pipelineIncrementalCopyCDC`
+4. Under **Parameters** click **New**
+5. Set the Name to `triggerStartTime`
+6. Click **New**
+7. Set the Name to `triggerEndTime`
 3. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 4. Rename the activity `GetChangeCount`
 5. Switch to the **Settings** tab
@@ -129,6 +134,32 @@ SELECT count(1) changecount FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_
 ELSE SELECT 0 changecount')
 ```
 12. Click **OK**
+13. Click **Preview data**
+14. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
+15. Provide a value for triggerEndTiem that is a data in the future (e.g. `2022-12-31`)
+16. Click **OK**
+17. You should see a changecount of 3, close the Preview data window
+18. Click **Publish all**
+19. Click **Publish**
+
+## 5. Pipeline (If Condition)
+
+1. Within Activities, search for `If`, and drag the **If Condition activity** onto the canvas
+2. Click and drag on the green button from the **Lookup** to the **If Condition** to establish a connection
+3. Rename the **If Condition** activity to `HasChangedRows`
+4. Switch to the **Activities** tab
+5. Click inside the **Expression** text input and click **Add dynamic content**
+6. Copy and paste the code snippet
+```
+@greater(int(activity('GetChangeCount').output.firstRow.changecount),0)
+```
+7. Click **OK**
+8. Within the **True** case, click the **pencil** icon
+9. Within Activities, search for `Copy`, and drag the **Copy data** activity onto the canvas
+10. Rename the **Copy** activity to `copyIncrementalData`
+11. Switch to the **Source** tab
+12. 
+
 
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
