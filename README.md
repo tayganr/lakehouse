@@ -9,6 +9,7 @@ The data lakehouse is an open data architecture that combines the best of data w
 
 ## :test_tube: Lab Environment Setup
 * [Lab Environment](./modules/module00.md)
+* [Post Deployment](./modules/moduleXX.md)
 
 ## :books: Learning Modules
 
@@ -22,24 +23,7 @@ The data lakehouse is an open data architecture that combines the best of data w
 
 [aka.ms/lakehouselab](https://aka.ms/lakehouselab)
 
-1. Lab Environment Setup Part 1 - Control Plane
-    
-    * Resource Group
-    * Azure Synapse Analytics Workspace
-    * Azure Data Lake Gen2 Storage Account
-    * Azure SQL Database (serverless)
-    * Event Grid Resource Provider
 
-2. Lab Environment Setup Part 2 - Data Plane
-
-    Azure SQL Database
-    1. Create Tables (dbo.Customers, dbo.Orders), Trigger, Stored Procedure
-    2. Enable CDC
-    3. Populate initial records  
-
-    Azure Data Lake Storage Gen2 Account
-    1. Create Containers (01-raw, 02-enriched, 03-curated)
-    2. Add yourself to the RBAC role Owner against the account
     
 3. Incremental copy from an Azure SQL Database to Azure Data Lake Storage Gen2
     * dbo.Customers > raw\wwi\customers\file001.csv (via CDC)
