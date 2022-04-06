@@ -1,6 +1,6 @@
 # Module 00 - Lab Environment Setup
 
-**[Home](../README.md)** - [Next Module >](../modules/module01.md)
+**[Home](../README.md)** - [Next Module >](../modules/moduleXX.md)
 
 ## :thinking: Prerequisites
 
@@ -33,4 +33,4 @@ In order to follow along with the lab exercises, we need to provision a set of r
 
 By successfully deploying the lab template, you have the Azure resources needed to follow along with the learning exercises.
 
-[Continue >](../modules/module01.md)
+[Continue >](../modules/moduleXX.md)
