@@ -1,6 +1,6 @@
 # Data Lakehouse Workshop
 
-The data lakehouse is an open data architecture that combines the best of data warehouses and data lakes on one platform. This is made possible due to innovations with key technologies such as Delta Lake, so that capabilities previously isolated to the Data Warehouse can now be replicated within the Data Lake.
+The data lakehouse is a data architecture pattern that combines functional aspects of data warehouses and data lakes on one platform. This workshop will walk through an example of how the data lakehouse pattern can be facilitated in Azure with Azure Synapse Analytics.
 
 ![Data Lakehouse with Azure Synapse Analytics](./images/readme/001.png)
 
