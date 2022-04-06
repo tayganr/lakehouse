@@ -1,6 +1,6 @@
 # Module 00 - Post Deployment Script
 
- [< Previous Module](../modules/module00.md) - **[Home](../README.md)** - [Next Module >](../modules/module01.md)
+ [< Previous Module](../modules/module00.md) - **[Home](../README.md)** - [Next Module >](../modules/module01a.md)
 
 ## :thinking: Prerequisites
 
@@ -128,4 +128,4 @@ This role assignment is required to ensure that your account has sufficient perm
 
 You have successfully executed the post deployment script.
 
-[Continue >](../modules/module01.md)
+[Continue >](../modules/module01a.md)
