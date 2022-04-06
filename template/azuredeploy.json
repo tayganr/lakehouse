@@ -5,16 +5,11 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.1318.3566",
-      "templateHash": "6108755127795489787"
-    }
-  },
-  "parameters": {
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
+      "templateHash": "18269534019847222432"
     }
   },
   "variables": {
+    "location": "[resourceGroup().location]",
     "randomString": "[substring(guid(resourceGroup().id), 0, 6)]",
     "fileSystem": "00-fs",
     "roleDefinitionprefix": "[format('/subscriptions/{0}/providers/Microsoft.Authorization/roleDefinitions', subscription().subscriptionId)]",
@@ -113,7 +108,7 @@
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-08-01",
       "name": "[format('{0}adls', variables('randomString'))]",
-      "location": "[parameters('location')]",
+      "location": "[variables('location')]",
       "kind": "StorageV2",
       "sku": {
         "name": "Standard_LRS"
@@ -135,7 +130,7 @@
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2021-08-01-preview",
       "name": "[format('{0}-sqlsvr', variables('randomString'))]",
-      "location": "[parameters('location')]",
+      "location": "[variables('location')]",
       "properties": {
         "administratorLogin": "sqladmin",
         "administratorLoginPassword": "sqlPassword!"
@@ -145,7 +140,7 @@
       "type": "Microsoft.Sql/servers/databases",
       "apiVersion": "2021-08-01-preview",
       "name": "[format('{0}/{1}', format('{0}-sqlsvr', variables('randomString')), format('{0}-sqldb', variables('randomString')))]",
-      "location": "[parameters('location')]",
+      "location": "[variables('location')]",
       "sku": {
         "name": "GP_S_Gen5",
         "tier": "GeneralPurpose",
@@ -166,7 +161,7 @@
       "type": "Microsoft.Synapse/workspaces",
       "apiVersion": "2021-06-01",
       "name": "[format('{0}-synapse', variables('randomString'))]",
-      "location": "[parameters('location')]",
+      "location": "[variables('location')]",
       "properties": {
         "defaultDataLakeStorage": {
           "accountUrl": "[reference(format('{0}adls', variables('randomString'))).primaryEndpoints.dfs]",

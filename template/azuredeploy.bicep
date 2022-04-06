@@ -1,4 +1,4 @@
-param location string = resourceGroup().location
+var location = resourceGroup().location
 var randomString = substring(guid(resourceGroup().id), 0, 6)
 var fileSystem = '00-fs'
 

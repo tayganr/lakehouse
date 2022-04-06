@@ -10,6 +10,18 @@ The data lakehouse is an open data architecture that combines the best of data w
 ## :test_tube: Lab Environment Setup
 * [Lab Environment](./modules/module00.md)
 
+## :books: Learning Modules
+
+1. [TitleA](./modules/module01.md)
+2. [TitleB](./modules/module02.md)
+3. [TitleC](./modules/module03.md)
+
+<div align="right"><a href="#data-lakehouse-workshop">↥ back to top</a></div>
+
+## :link: Workshop URL
+
+[aka.ms/lakehouselab](https://aka.ms/lakehouselab)
+
 1. Lab Environment Setup Part 1 - Control Plane
     
     * Resource Group
