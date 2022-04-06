@@ -74,6 +74,37 @@ sqlPassword!
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
+## 3. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
+
+1. Navigate to the **Data** hub
+2. Switch to the **Linked** tab
+3. Click the **[+]** icon to add a new resource and click **Integration dataset**
+4. Search `Data Lake`, select **Azure Data Lake Storage Gen2**, and click **Continue** 
+5. Select **DelimitedText** and click **Continue**
+6. Rename the integration dataset to `AdlsRawDelimitedText`
+7. Select the Azure Synapse Analytics workspace default storage **Linked service**
+8. Click the **browse** icon
+9. Select `01-raw`
+10. Click **OK**
+11. Select **First row as header**
+12. Click **OK**
+13. Switch to the **Parameters** tab
+14. Click **New**
+15. Set the Name to `folderPath`
+16. Click **New**
+17. Set the Name to `fileName`
+18. Switch to the **Connection** tab
+19. Click inside the `Directory` text input and click **Add dynamic content**
+20. Under **Parameters**, click `folderPath`
+21. Click **OK**
+22. Click inside the `File` text input and click **Add dynamic content**
+23. Under **Parameters**, click `fileName`
+24. Click **OK**
+25. Click **Publish all**
+26. Click **Publish**
+
+<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+
 ## :tada: Summary
 
 ABC.
