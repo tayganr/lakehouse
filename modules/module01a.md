@@ -4,23 +4,47 @@
 
 ## :thinking: Prerequisites
 
-* ABC
-* ABC
+* Lab environment deployed
+* Post deployment scripts executed
+* Access to the Azure Synapse Analytics workspace
 
 ## :loudspeaker: Introduction
 
-ABC.
+In this module, we will setup a Synapse Pipeline to incrementally copy data from an OLTP source (Azure SQL Database), leveraging Change Data Capture technology to isolate changes. The data will be copied to the raw layer of our Azure Data Lake Storage Gen2 account.
 
 ## :dart: Objectives
 
-* ABC.
-* ABC.
+* Synapse Pipeline
+* Tumbling Window Trigger
 
-## 1. Heading 1
+## Artifacts
 
-1. ABC
-2. ABC
-3. ABC
+* Linked Service - Azure SQL Database
+* Integration Dataset - Azure SQL Database
+* Integration Dataset - Azure Data Lake Storage Gen2 
+* Pipeline
+    * Lookup
+    * If Condition (Copy)
+
+## 1. Linked Service
+
+1. Open Azure Synapse Analytics workspace
+2. Navigate to the **Manage** hub
+3. Click **Linked services**
+4. Click **New**
+5. Search SQL, select Azure SQL Database, and click **Continue**
+6. Select the Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
+7. Set the **Authentication** type to `SQL authentication`
+8. Copy and paste the **User name**
+```
+sqladmin
+```
+9. Copy and paste the **Password**
+```
+sqlPassword!
+```
+10. Click **Test connection**
+11. Click **Create**
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
