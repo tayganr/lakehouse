@@ -1,0 +1,199 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.4.1318.3566",
+      "templateHash": "6108755127795489787"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "randomString": "[substring(guid(resourceGroup().id), 0, 6)]",
+    "fileSystem": "00-fs",
+    "roleDefinitionprefix": "[format('/subscriptions/{0}/providers/Microsoft.Authorization/roleDefinitions', subscription().subscriptionId)]",
+    "role": {
+      "Owner": "[format('{0}/8e3af657-a8ff-443c-a75c-2fe8c4bcb635', variables('roleDefinitionprefix'))]",
+      "Contributor": "[format('{0}/b24988ac-6180-42a0-ab88-20f7382dd24c', variables('roleDefinitionprefix'))]",
+      "Reader": "[format('{0}/acdd72a7-3385-48ef-bd42-f606fba81ae7', variables('roleDefinitionprefix'))]",
+      "UserAccessAdministrator": "[format('{0}/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9', variables('roleDefinitionprefix'))]",
+      "StorageBlobDataOwner": "[format('{0}/b7e6dc6d-f1e8-4753-8033-0f276bb0955b', variables('roleDefinitionprefix'))]",
+      "StorageBlobDataContributor": "[format('{0}/ba92f5b4-2d11-453d-a403-e96b0029c9fe', variables('roleDefinitionprefix'))]",
+      "StorageBlobDataReader": "[format('{0}/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1', variables('roleDefinitionprefix'))]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-08-01",
+      "name": "[format('{0}/{1}/{2}', format('{0}adls', variables('randomString')), 'default', variables('fileSystem'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]",
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', format('{0}adls', variables('randomString')), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-08-01",
+      "name": "[format('{0}/{1}/{2}', format('{0}adls', variables('randomString')), 'default', '01-raw')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]",
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', format('{0}adls', variables('randomString')), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-08-01",
+      "name": "[format('{0}/{1}/{2}', format('{0}adls', variables('randomString')), 'default', '02-enriched')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]",
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', format('{0}adls', variables('randomString')), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-08-01",
+      "name": "[format('{0}/{1}/{2}', format('{0}adls', variables('randomString')), 'default', '03-curated')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]",
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', format('{0}adls', variables('randomString')), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2021-08-01",
+      "name": "[format('{0}/{1}', format('{0}adls', variables('randomString')), 'default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[format('{0}/{1}', format('{0}-sqlsvr', variables('randomString')), 'allowAzure')]",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "0.0.0.0"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('{0}-sqlsvr', variables('randomString')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[format('{0}/{1}', format('{0}-sqlsvr', variables('randomString')), 'allowAll')]",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "255.255.255.255"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('{0}-sqlsvr', variables('randomString')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Synapse/workspaces/firewallRules",
+      "apiVersion": "2021-06-01",
+      "name": "[format('{0}/{1}', format('{0}-synapse', variables('randomString')), 'allowAll')]",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "255.255.255.255"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Synapse/workspaces', format('{0}-synapse', variables('randomString')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-08-01",
+      "name": "[format('{0}adls', variables('randomString'))]",
+      "location": "[parameters('location')]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "properties": {
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "virtualNetworkRules": [],
+          "ipRules": [],
+          "defaultAction": "Allow"
+        },
+        "isHnsEnabled": true,
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": false,
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[format('{0}-sqlsvr', variables('randomString'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administratorLogin": "sqladmin",
+        "administratorLoginPassword": "sqlPassword!"
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[format('{0}/{1}', format('{0}-sqlsvr', variables('randomString')), format('{0}-sqldb', variables('randomString')))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "GP_S_Gen5",
+        "tier": "GeneralPurpose",
+        "family": "Gen5",
+        "capacity": 1
+      },
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
+        "autoPauseDelay": 60,
+        "requestedBackupStorageRedundancy": "Local"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('{0}-sqlsvr', variables('randomString')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Synapse/workspaces",
+      "apiVersion": "2021-06-01",
+      "name": "[format('{0}-synapse', variables('randomString'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "defaultDataLakeStorage": {
+          "accountUrl": "[reference(format('{0}adls', variables('randomString'))).primaryEndpoints.dfs]",
+          "filesystem": "[variables('fileSystem')]"
+        }
+      },
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2020-08-01-preview",
+      "scope": "[format('Microsoft.Storage/storageAccounts/{0}', format('{0}adls', variables('randomString')))]",
+      "name": "[guid(resourceGroup().id)]",
+      "properties": {
+        "principalId": "[reference(format('{0}-synapse', variables('randomString')), '2021-06-01', 'full').identity.principalId]",
+        "roleDefinitionId": "[variables('role').StorageBlobDataContributor]",
+        "principalType": "ServicePrincipal"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('{0}adls', variables('randomString')))]",
+        "[resourceId('Microsoft.Synapse/workspaces', format('{0}-synapse', variables('randomString')))]"
+      ]
+    }
+  ]
+}

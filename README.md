@@ -1,5 +1,15 @@
 # Data Lakehouse Workshop
 
+The data lakehouse is an open data architecture that combines the best of data warehouses and data lakes on one platform. This is made possible due to innovations with key technologies such as Delta Lake, so that capabilities previously isolated to the Data Warehouse can now be replicated within the Data Lake.
+
+## :thinking: Prerequisites
+
+* An [Azure account](https://azure.microsoft.com/en-us/free/) with an active subscription. Note: If you don't have access to an Azure subscription, you may be able to start with a [free account](https://www.azure.com/free).
+* You must have the necessary privileges within your Azure subscription to create resources, perform role assignments, register resource providers (if required), etc.
+
+## :test_tube: Lab Environment Setup
+* [Lab Environment](./modules/module00.md)
+
 1. Lab Environment Setup Part 1 - Control Plane
     
     * Resource Group
