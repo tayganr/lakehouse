@@ -6,6 +6,7 @@
 
 * Lab environment deployed
 * Post deployment scripts executed
+* Module 1A (Linked Service, Integration Dataset)
 * Access to the Azure Synapse Analytics workspace
 
 ## :loudspeaker: Introduction
@@ -68,15 +69,15 @@ AS
     WHERE [TableName] = @TableName;
 ```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
-## 2. Heading 2
+## 2. Pipeline (Lookup - getOldWatermark)
 
-1. ABC
-2. ABC
-3. ABC
+1. Navigate to the **Integrate** hub
+2. Click the **[+]** icon to add a new resource and click **Pipeline**
+3. Rename the pipeline to `pipelineIncrementalCopyWatermark`
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
 ## :tada: Summary
 

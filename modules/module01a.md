@@ -68,7 +68,7 @@ sqlPassword!
 10. Click **Test connection**
 11. Click **Create**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 3. Integration Dataset (Azure SQL Database - Table)
 
@@ -94,7 +94,7 @@ sqlPassword!
 20. Click **Publish all**
 21. Click **Publish**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 4. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
 
@@ -125,7 +125,7 @@ sqlPassword!
 25. Click **Publish all**
 26. Click **Publish**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 5. Pipeline (Lookup)
 
@@ -136,15 +136,15 @@ sqlPassword!
 5. Set the Name to `triggerStartTime`
 6. Click **New**
 7. Set the Name to `triggerEndTime`
-3. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
-4. Rename the activity `GetChangeCount`
-5. Switch to the **Settings** tab
-6. Set the **Source dataset** to **AzureSqlTable**
-7. Set the Dataset property **schema** to `cdc`
-8. Set the Dataset property **table** to `dbo_Customers_CT`
-9. Set the **Use query** property to **Query**
-10. Click inside the **Query** text input and click **Add dynamic content** 
-11. Copy and paste the code snippet
+8. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
+9. Rename the activity `GetChangeCount`
+10. Switch to the **Settings** tab
+11. Set the **Source dataset** to **AzureSqlTable**
+12. Set the Dataset property **schema** to `cdc`
+13. Set the Dataset property **table** to `dbo_Customers_CT`
+14. Set the **Use query** property to **Query**
+15. Click inside the **Query** text input and click **Add dynamic content** 
+16. Copy and paste the code snippet
 ```
 @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
 SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
@@ -155,14 +155,14 @@ IF (@from_lsn IS NOT NULL AND @to_lsn IS NOT NULL AND @from_lsn < @to_lsn)
 SELECT count(1) changecount FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')
 ELSE SELECT 0 changecount')
 ```
-12. Click **OK**
-13. Click **Preview data**
-14. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
-15. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
-16. Click **OK**
-17. You should see a changecount of 3, close the Preview data window
-18. Click **Publish all**
-19. Click **Publish**
+17. Click **OK**
+18. Click **Preview data**
+19. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
+20. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
+21. Click **OK**
+22. You should see a changecount of 3, close the Preview data window
+23. Click **Publish all**
+24. Click **Publish**
 
 ## 6. Pipeline (If Condition, Copy data)
 
@@ -212,7 +212,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 29. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the CSV file and select **New SQL Script > Select TOP 100 rows**
 30. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 7. Trigger (Tumbling Window)
 
@@ -236,7 +236,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 12. Click **Publish all**
 13. Click **Publish**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 8. Load Additional Data into dbo.Customers
 
@@ -254,7 +254,7 @@ SELECT * FROM [dbo].[Customers];
 ```
 5. Make note of the current time
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 9. Monitor Pipeline
 
@@ -265,7 +265,7 @@ SELECT * FROM [dbo].[Customers];
 5. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
 6. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## :tada: Summary
 
