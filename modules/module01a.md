@@ -211,6 +211,24 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
 ```
 11. Click **OK**
+12. Click **Publish all**
+13. Click **Publish**
+
+<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+
+## 7. Load Additional Data into dbo.Customers
+
+1. Navigate to the **SQL database**
+2. Click **Query editor**
+3. Click **Continue us <your_alias>@microsoft.com**
+4. Copy and paste the code snippets below and click **Run**
+```sql
+UPDATE dbo.Customers SET CustomerAddress = 'Guyzance Cottage, Guyzance NE65 9AF' WHERE CustomerID = 3;
+INSERT INTO dbo.Customers (CustomerAddress)
+VALUES
+    ('322 Fernhill, Mountain Ash, CF45 3EN'),
+    ('381 Southborough Lane, Bromley, BR2 8BQ');
+```
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
