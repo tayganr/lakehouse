@@ -111,7 +111,7 @@ The following SQL scripts will setup our source tables, enable change data captu
     SELECT * FROM dbo.Orders
     ```
 
-## 3. RBAC Role Assignment
+## 3. RBAC Role Assignment (Contributor)
 
 This role assignment is required to ensure that your account has sufficient permissions (Owner or Contributor) to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
 
@@ -119,6 +119,19 @@ This role assignment is required to ensure that your account has sufficient perm
 2. Select **Access Control (IAM)**
 3. Click **Add role assignment**
 4. Select `Contributor` and click **Next**
+5. Click **Select members**
+6. Search for your account, select your account, click **Select** 
+7. Click **Review + assign**
+8. Click **Review + assign**
+
+## 4. RBAC Role Assignment (Storage Blob Data Reader)
+
+This role assignment is required to read files from the data lake using Azure Synapse Analytics built-in serverless SQL technology.
+
+1. Navigate to the **Storage account**
+2. Select **Access Control (IAM)**
+3. Click **Add role assignment**
+4. Select `Storage Blob Data Reader` and click **Next**
 5. Click **Select members**
 6. Search for your account, select your account, click **Select** 
 7. Click **Review + assign**
