@@ -82,16 +82,6 @@ The following SQL scripts will setup our source tables, enable change data captu
         (1,52);
     ```
 
-5. Validate that dbo.Customers and dbo.Orders contain data by copying and pasting the code below.
-
-    ```sql
-    SELECT * FROM dbo.Customers
-    ```
-
-    ```sql
-    SELECT * FROM dbo.Orders
-    ```
-
 ## 3. RBAC Role Assignment (Contributor)
 
 This role assignment is required to ensure that your account has sufficient permissions (Owner or Contributor) to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
