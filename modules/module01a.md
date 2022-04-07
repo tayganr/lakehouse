@@ -19,7 +19,7 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 * Trigger Pipeline based on a Tumbling Window
 * Copy data changes to the data lake
 
-## 1. Source Environment (Azure SQL Database)
+## 1. Source Environment (dbo.Customers)
 1. Navigate to the **SQL database**
 2. Click **Query editor**
 3. Click **Continue us <your_alias>@<your_domain>.com**
