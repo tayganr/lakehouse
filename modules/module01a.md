@@ -17,16 +17,36 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 * Synapse Pipeline
 * Tumbling Window Trigger
 
-## Artifacts
+## 1. Source Environment (Azure SQL Database)
+1. Navigate to the **SQL database**
+2. Click **Query editor**
+3. Click **Continue us <your_alias>@microsoft.com**
+4. To create the source table, copy and paste the code snippet below and click **Run**
+```sql
+CREATE TABLE Customers (
+    CustomerID int IDENTITY(1,1) PRIMARY KEY,
+    CustomerAddress varchar(255) NOT NULL
+);
+```
+5. To enable change data capture on the source table, copy and paste the code snippet below and click **Run**
+```sql
+EXEC sys.sp_cdc_enable_db;
+EXEC sys.sp_cdc_enable_table  
+    @source_schema = N'dbo',  
+    @source_name   = N'Customers',  
+    @role_name     = NULL,
+    @supports_net_changes = 1;
+```
+6. To load the source table with data, copy and paste the code snippet below and click **Run**
+```sql
+INSERT INTO dbo.Customers (CustomerAddress)
+VALUES
+    ('82 Margate Drive, Sheffield S4 8FQ'),
+    ('135 High Barns, Ely, CB7 4RH'),
+    ('39 Queen Annes Drive, Bedale, DL8 2EL');
+```
 
-* Linked Service - Azure SQL Database
-* Integration Dataset - Azure SQL Database
-* Integration Dataset - Azure Data Lake Storage Gen2 
-* Pipeline
-    * Lookup
-    * If Condition (Copy)
-
-## 1. Linked Service (Azure SQL Database)
+## 2. Linked Service (Azure SQL Database)
 
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Manage** hub
@@ -48,7 +68,7 @@ sqlPassword!
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 2. Integration Dataset (Azure SQL Database - Table)
+## 3. Integration Dataset (Azure SQL Database - Table)
 
 1. Navigate to the **Data** hub
 2. Switch to the **Linked** tab
@@ -74,7 +94,7 @@ sqlPassword!
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 3. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
+## 4. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
 
 1. Navigate to the **Data** hub
 2. Switch to the **Linked** tab
@@ -105,7 +125,7 @@ sqlPassword!
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 4. Pipeline (Lookup)
+## 5. Pipeline (Lookup)
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
@@ -142,7 +162,7 @@ ELSE SELECT 0 changecount')
 18. Click **Publish all**
 19. Click **Publish**
 
-## 5. Pipeline (If Condition, Copy data)
+## 6. Pipeline (If Condition, Copy data)
 
 1. Within Activities, search for `If`, and drag the **If Condition activity** onto the canvas
 2. Click and drag on the green button from the **Lookup** to the **If Condition** to establish a connection
@@ -192,7 +212,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 6. Trigger (Tumbling Window)
+## 7. Trigger (Tumbling Window)
 
 1. Navigate back to the pipeline and click **Add trigger**
 2. Click **New/Edit**
@@ -216,7 +236,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 7. Load Additional Data into dbo.Customers
+## 8. Load Additional Data into dbo.Customers
 
 1. Navigate to the **SQL database**
 2. Click **Query editor**
@@ -234,7 +254,7 @@ SELECT * FROM [dbo].[Customers];
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
-## 8. Monitor Pipeline
+## 9. Monitor Pipeline
 
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Monitor** hub

@@ -32,10 +32,6 @@ The following SQL scripts will setup our source tables, enable change data captu
     Snippet 1 of 4
     ```sql
     -- Tables
-    CREATE TABLE Customers (
-        CustomerID int IDENTITY(1,1) PRIMARY KEY,
-        CustomerAddress varchar(255) NOT NULL
-    );
     CREATE TABLE Orders (
         OrderID int IDENTITY(1,1) PRIMARY KEY,
         CustomerID int FOREIGN KEY REFERENCES Customers(CustomerID),
@@ -50,21 +46,6 @@ The following SQL scripts will setup our source tables, enable change data captu
     INSERT INTO dbo.Watermark
     VALUES
     ('dbo.Orders', '1/1/2022 12:00:00 AM');
-
-    -- CDC
-    EXEC sys.sp_cdc_enable_db;
-    EXEC sys.sp_cdc_enable_table  
-        @source_schema = N'dbo',  
-        @source_name   = N'Customers',  
-        @role_name     = NULL,
-        @supports_net_changes = 1;
-
-    -- Load Data
-    INSERT INTO dbo.Customers (CustomerAddress)
-    VALUES
-        ('82 Margate Drive, Sheffield S4 8FQ'),
-        ('135 High Barns, Ely, CB7 4RH'),
-        ('39 Queen Annes Drive, Bedale, DL8 2EL');
     ```
 
     Snippet 2 of 4
