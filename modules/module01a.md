@@ -158,8 +158,20 @@ ELSE SELECT 0 changecount')
 9. Within Activities, search for `Copy`, and drag the **Copy data** activity onto the canvas
 10. Rename the **Copy** activity to `copyIncrementalData`
 11. Switch to the **Source** tab
-12. 
-
+12. Set **Source dataset** to **AzureSqlTable**
+13. Under **Dataset properties**, set the **schema** to `cdc`
+14. Under **Dataset properties**, set the **table** to `dbo_Customers_CT`
+15. Set **Use query** to **Query**
+16. Click inside the **Query** text input and click **Add dynamic content** 
+17. Copy and paste the code snippet
+```
+@concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
+SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
+SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
+SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
+SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
+SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')')
+```
 
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
