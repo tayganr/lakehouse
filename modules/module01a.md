@@ -142,7 +142,7 @@ ELSE SELECT 0 changecount')
 18. Click **Publish all**
 19. Click **Publish**
 
-## 5. Pipeline (If Condition)
+## 5. Pipeline (If Condition, Copy data)
 
 1. Within Activities, search for `If`, and drag the **If Condition activity** onto the canvas
 2. Click and drag on the green button from the **Lookup** to the **If Condition** to establish a connection
@@ -186,9 +186,31 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 25. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
 26. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
 27. Click **OK**
-28. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows were written to the data lake.
+28. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows have been written to the data lake.
+29. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the CSV file and select **New SQL Script > Select TOP 100 rows**
+30. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
+<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
+## 6. Trigger (Tumbling Window)
+
+1. Navigate back to the pipeline and click **Add trigger**
+2. Click **New/Edit**
+3. Click **Choose trigger...**
+4. Click **New**
+5. Rename the trigger to `triggerTumblingWindow5m`
+6. Set the **Type** to **Tumbling window**
+7. Set the **Recurrence** to **5 minutes**
+8. Click **OK**
+9. Copy and paste the snippet below for **triggerStartTime**
+```
+@formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
+```
+10. Copy and paste the snippet below for **triggerEndTime**
+```
+@formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
+```
+11. Click **OK**
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
