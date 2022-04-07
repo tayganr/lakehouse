@@ -20,7 +20,7 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 ## 1. Source Environment (Azure SQL Database)
 1. Navigate to the **SQL database**
 2. Click **Query editor**
-3. Click **Continue us <your_alias>@microsoft.com**
+3. Click **Continue us <your_alias>@<your_domain>.com**
 4. To create the source table, copy and paste the code snippet below and click **Run**
 ```sql
 CREATE TABLE Customers (
@@ -240,7 +240,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 
 1. Navigate to the **SQL database**
 2. Click **Query editor**
-3. Click **Continue us <your_alias>@microsoft.com**
+3. Click **Continue us <your_alias>@<your_domain>.com**
 4. Copy and paste the code snippets below and click **Run**
 ```sql
 UPDATE dbo.Customers SET CustomerAddress = 'Guyzance Cottage, Guyzance NE65 9AF' WHERE CustomerID = 3;
