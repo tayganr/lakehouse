@@ -228,7 +228,20 @@ INSERT INTO dbo.Customers (CustomerAddress)
 VALUES
     ('322 Fernhill, Mountain Ash, CF45 3EN'),
     ('381 Southborough Lane, Bromley, BR2 8BQ');
+SELECT * FROM [dbo].[Customers];
 ```
+5. Make note of the current time
+
+<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+
+## 8. Monitor Pipeline
+
+1. Open Azure Synapse Analytics workspace
+2. Navigate to the **Monitor** hub
+3. Under **Integration**, click **Pipeline runs**
+4. Monitor the triggered pipeline runs until an instance runs AFTER the additional data was loaded
+5. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
+6. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
 
