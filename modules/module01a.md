@@ -136,7 +136,7 @@ ELSE SELECT 0 changecount')
 12. Click **OK**
 13. Click **Preview data**
 14. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
-15. Provide a value for triggerEndTiem that is a data in the future (e.g. `2022-12-31`)
+15. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
 16. Click **OK**
 17. You should see a changecount of 3, close the Preview data window
 18. Click **Publish all**
@@ -172,6 +172,22 @@ SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @
 SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
 SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')')
 ```
+18. Switch to the **Sink** tab
+19. Set **Sink dataset** to **AdlsRawDelimitedText**
+20. Under **Dataset properties**, set the **folderPath** to `wwi/customers`
+21. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
+22. Copy and paste the code snippet
+```
+@concat(formatDateTime(pipeline().parameters.triggerStartTime,'yyyyMMddHHmmssfff'),'.csv')
+```
+22. Navigate back up to the pipeline and click **Publish all**
+23. Click **Publish**
+24. Click **Debug**
+25. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
+26. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
+27. Click **OK**
+28. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows were written to the data lake.
+
 
 
 <div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
