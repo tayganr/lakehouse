@@ -14,8 +14,10 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## :dart: Objectives
 
-* Synapse Pipeline
-* Tumbling Window Trigger
+* Enable Change Data Capture
+* Create a Pipeline
+* Trigger Pipeline based on a Tumbling Window
+* Copy data changes to the data lake
 
 ## 1. Source Environment (Azure SQL Database)
 1. Navigate to the **SQL database**
