@@ -20,69 +20,7 @@ The following steps will elevate your account as an Azure AD administrator of th
 4. Search for your account, select your account, click **Select** 
 5. Click **Save**
 
-## 2. SQL Scripts
-
-The following SQL scripts will setup our source tables, enable change data capture, and prepare objects needed to facilitate watermark based ETL.
-
-1. Navigate to the **SQL database**
-2. Click **Query editor**
-3. Click **Continue us <your_alias>@microsoft.com**
-4. Copy and paste the code snippets below and click **Run**
-
-    Snippet 1 of 4
-    ```sql
-    -- Tables
-    CREATE TABLE Orders (
-        OrderID int IDENTITY(1,1) PRIMARY KEY,
-        CustomerID int FOREIGN KEY REFERENCES Customers(CustomerID),
-        Quantity int NOT NULL,
-        OrderDateTime DATETIME default CURRENT_TIMESTAMP,
-        LastModifiedDateTime DATETIME default CURRENT_TIMESTAMP
-    );
-    CREATE TABLE Watermark (
-        TableName varchar(255),
-        Watermark DATETIME
-    );
-    INSERT INTO dbo.Watermark
-    VALUES
-    ('dbo.Orders', '1/1/2022 12:00:00 AM');
-    ```
-
-    Snippet 2 of 4
-    ```sql
-    -- Trigger will fire whenever an UPDATE occurs on dbo.Orders to update LastModifiedDateTime
-    CREATE TRIGGER trg_orders_update_modified
-    ON dbo.Orders
-    AFTER UPDATE 
-    AS
-        UPDATE dbo.Orders
-        SET LastModifiedDateTime = CURRENT_TIMESTAMP
-        FROM Inserted i
-        WHERE dbo.Orders.OrderID = i.OrderID;
-    ```
-
-    Snippet 3 of 4
-    ```sql
-    -- Stored Procedure will be used by ETL to track high watermark
-    CREATE PROCEDURE sp_update_watermark @LastModifiedtime datetime, @TableName varchar(50)
-    AS
-        UPDATE watermarktable
-        SET [Watermark] = @LastModifiedtime
-        WHERE [TableName] = @TableName;
-    ```
-
-    Snippet 4 of 4
-    ```sql
-    -- Load dbo.Orders now that LastModifiedDateTime trigger is available
-    INSERT INTO dbo.Orders (CustomerID, Quantity)
-    VALUES
-        (1,38),
-        (2,27),
-        (3,16),
-        (1,52);
-    ```
-
-## 3. RBAC Role Assignment (Contributor)
+## 2. RBAC Role Assignment (Contributor)
 
 This role assignment is required to ensure that your account has sufficient permissions (Owner or Contributor) to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
 
@@ -95,7 +33,7 @@ This role assignment is required to ensure that your account has sufficient perm
 7. Click **Review + assign**
 8. Click **Review + assign**
 
-## 4. RBAC Role Assignment (Storage Blob Data Reader)
+## 3. RBAC Role Assignment (Storage Blob Data Reader)
 
 This role assignment is required to read files from the data lake using Azure Synapse Analytics built-in serverless SQL technology.
 
