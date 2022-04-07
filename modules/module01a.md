@@ -269,6 +269,6 @@ SELECT * FROM [dbo].[Customers];
 
 ## :tada: Summary
 
-ABC.
+You have successfully setup a recurring pipeline that will periodically check for changes in the source system and copy those changes to the raw layer within your data lake.
 
 [Continue >](../modules/module01b.md)
