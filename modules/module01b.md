@@ -49,7 +49,7 @@ AS
     FROM Inserted i
     WHERE dbo.Orders.OrderID = i.OrderID;
 ```
-6. To prepare the watermark table, copy and paste the code snippet below and click **Run**
+6. To initialise the watermark table, copy and paste the code snippet below and click **Run**
 ```sql
 CREATE TABLE Watermark (
     TableName varchar(255),
