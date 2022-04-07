@@ -6,7 +6,7 @@
 
 * Lab environment deployed
 * Post deployment scripts executed
-* Module 1A (Linked Service, Integration Dataset)
+* Module 1A (Linked Service, Integration Datasets)
 * Access to the Azure Synapse Analytics workspace
 
 ## :loudspeaker: Introduction
@@ -76,6 +76,17 @@ AS
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
 3. Rename the pipeline to `pipelineIncrementalCopyWatermark`
+4. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
+5. Rename the activity `getOldWatermark`
+6. Switch to the **Settings** tab
+7. Set the **Source dataset** to **AzureSqlTable**
+8. Set the Dataset property **schema** to `dbo`
+9. Set the Dataset property **table** to `watermark`
+10. Set the **Use query** property to **Query**
+11. Click inside the **Query** text and copy and paste the code snippet
+```sql
+SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
+```
 
 <div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
