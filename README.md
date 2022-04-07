@@ -15,9 +15,7 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ## :books: Learning Modules
 
-1. Incremental copy from source  
-    a) [dbo.Customers (via CDC)](./modules/module01a.md)  
-    b) [dbo.Orders (via Watermark)](./modules/module01b.md)
+1. Incremental copy from source [1A. Change Data Capture](./modules/module01a.md) | [1B. High Watermark](./modules/module01b.md)
 2. [Incremental load Dimension (SCD Type 2)](./modules/module02.md)
 3. [Incremental load Fact](./modules/module03.md)
 4. [Logical Data Warehouse](./modules/module04.md)
