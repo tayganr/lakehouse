@@ -4,10 +4,9 @@
 
 ## :thinking: Prerequisites
 
-* Lab environment deployed
-* Post deployment scripts executed
-* Module 1A (Linked Service, Integration Datasets)
-* Access to the Azure Synapse Analytics workspace
+[x] Lab environment deployed
+[x] Post deployment scripts executed
+[x] Module 1A (Linked Service, Integration Datasets)
 
 ## :loudspeaker: Introduction
 
