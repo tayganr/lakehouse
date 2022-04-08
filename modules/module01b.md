@@ -108,34 +108,67 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 
 <div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
-## 4. Pipeline (Copy data)
+
+## 4. Pipeline (Lookup - getChangeCount)
+
+1. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
+2. Rename the activity `getChangeCount`
+3. Click and drag on the green button from each **Lookup** activity (`getOldWatermark` and `getNewWatermark`) to establish a connection to the new **Lookup** activity (`getChangeCount`)
+4. Switch to the **Settings** tab
+5. Set the **Source dataset** to **AzureSqlTable**
+6. Set the Dataset property **schema** to `dbo`
+7. Set the Dataset property **table** to `Orders`
+8. Set the **Use query** property to **Query**
+9. Click inside the **Query** text and copy and paste the code snippet
+```sql
+SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
+```
+10. Click **Preview data** to confirm the query is valid
+
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+
+## 5. Pipeline (If Condition)
+
+1. Within Activities, search for `If`, and drag the **If condition activity** onto the canvas
+2. Rename the activity `hasChangedRows`
+3. Click and drag on the green button on the previous **Lookup** activity (`getChangeCount`) to establish a connection to the **If Condition** activity
+3. Switch to the **Activities** tab
+4. Click inside the **Expression** text input and click **Add dynamic content**
+5. Copy and paste the code snippet
+```
+@greater(int(activity('getChangeCount').output.firstRow.changecount),0)
+```
+6. Within the **True** case, click the **pencil** icon
+
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+
+## 6. Pipeline (Copy data)
 
 1. Within Activities, search for `Copy`, and drag the **Copy data activity** onto the canvas
 2. Rename the activity `incrementalCopy`
-3. Click and drag on the green button from each **Lookup** activity to establish a connection to the **Copy data** activity
-4. Switch to the **Source** tab
-5. Set the **Source dataset** to **AzureSqlTable**
-6. Under **Dataset properties**, set the **schema** to `dbo`
-7. Under **Dataset properties**, set the **table** to `Orders`
-8. Set **Use query** to **Query**
-9. Click inside the **Query** text input and click **Add dynamic content**
-10. Copy and paste the code snippet
+3. Switch to the **Source** tab
+4. Set the **Source dataset** to **AzureSqlTable**
+5. Under **Dataset properties**, set the **schema** to `dbo`
+6. Under **Dataset properties**, set the **table** to `Orders`
+7. Set **Use query** to **Query**
+8. Click inside the **Query** text input and click **Add dynamic content**
+9. Copy and paste the code snippet
 ```
 SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
 ```
-11. Click **OK**
-12. Switch to the **Sink** tab
-13. Set the **Source dataset** to **AdlsRawDelimitedText**
-14. Under **Dataset properties**, set the **folderPath** to `wwi/orders`
-15. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
-16. Copy and paste the code snippet
+10. Click **OK**
+11. Switch to the **Sink** tab
+12. Set the **Source dataset** to **AdlsRawDelimitedText**
+13. Under **Dataset properties**, set the **folderPath** to `wwi/orders`
+14. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
+15. Copy and paste the code snippet
 ```
 @concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
 ```
 
 <div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
-## 5. Pipeline (Stored procedure)
+## 7. Pipeline (Stored procedure)
 
 1. Within Activities, search for `Stored`, and drag the **Stored procedure activity** onto the canvas
 2. Rename the activity `updateWatermark`
@@ -157,11 +190,13 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 12. Click **Publish all**
 13. Click **Publish**
 14. Click **Debug**
+15. If the output is successful, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/orders`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
+16. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
 <div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
 ## :tada: Summary
 
-ABC.
+You have successfully setup a pipeline that can check for changes in the source system by referencing the last high waterman, and copy those changes to the raw layer within your data lake.
 
 [Continue >](../modules/module02.md)
