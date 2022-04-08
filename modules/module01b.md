@@ -4,9 +4,9 @@
 
 ## :thinking: Prerequisites
 
-[x] Lab environment deployed
-[x] Post deployment scripts executed
-[x] Module 1A (Linked Service, Integration Datasets)
+- [x] Lab environment deployed
+- [x] Post deployment scripts executed
+- [x] Module 1A (Linked Service, Integration Datasets)
 
 ## :loudspeaker: Introduction
 
