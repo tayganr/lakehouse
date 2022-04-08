@@ -4,9 +4,8 @@
 
 ## :thinking: Prerequisites
 
-* Lab environment deployed
-* Post deployment scripts executed
-* Access to the Azure Synapse Analytics workspace
+- [x] Lab environment deployed
+- [x] Post deployment scripts executed
 
 ## :loudspeaker: Introduction
 
