@@ -62,10 +62,10 @@ VALUES
 ```
 7. To enable the ability to programmatically update the watermark value via a stored procedure, copy and paste the code snippet below and click **Run**
 ```sql
-CREATE PROCEDURE sp_update_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE sp_update_watermark @LastModifiedDateTime datetime, @TableName varchar(50)
 AS
     UPDATE Watermark
-    SET [Watermark] = @LastModifiedtime
+    SET [Watermark] = @LastModifiedDateTime
     WHERE [TableName] = @TableName;
 ```
 
@@ -144,7 +144,7 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 5. Set the **Linked service** to **AzureSqlDatabase**
 6. Set the Stored procedure name to `sp_update_watermark`
 7. Under **Stored procedure parameters**, click **Import**
-8. Click inside the **LastModifiedTime** value text input and click **Add dynamic content**
+8. Click inside the **LastModifiedDateTime** value text input and click **Add dynamic content**
 9. Copy and paste the code snippet
 ```
 @{activity('getNewWatermark').output.firstRow.NewWatermarkValue}
