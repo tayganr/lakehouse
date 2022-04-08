@@ -87,6 +87,76 @@ AS
 ```sql
 SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 ```
+12. Click **Preview data** to confirm the query is valid
+
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+
+## 3. Pipeline (Lookup - getNewWatermark)
+
+1. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
+2. Rename the activity `getNewWatermark`
+3. Switch to the **Settings** tab
+4. Set the **Source dataset** to **AzureSqlTable**
+5. Set the Dataset property **schema** to `dbo`
+6. Set the Dataset property **table** to `Orders`
+7. Set the **Use query** property to **Query**
+8. Click inside the **Query** text and copy and paste the code snippet
+```sql
+SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
+```
+12. Click **Preview data** to confirm the query is valid
+
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+
+## 4. Pipeline (Copy data)
+
+1. Within Activities, search for `Copy`, and drag the **Copy data activity** onto the canvas
+2. Rename the activity `incrementalCopy`
+3. Click and drag on the green button from each **Lookup** activity to establish a connection to the **Copy data** activity
+4. Switch to the **Source** tab
+5. Set the **Source dataset** to **AzureSqlTable**
+6. Under **Dataset properties**, set the **schema** to `dbo`
+7. Under **Dataset properties**, set the **table** to `Orders`
+8. Set **Use query** to **Query**
+9. Click inside the **Query** text input and click **Add dynamic content**
+10. Copy and paste the code snippet
+```
+SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
+```
+11. Click **OK**
+12. Switch to the **Sink** tab
+13. Set the **Source dataset** to **AdlsRawDelimitedText**
+14. Under **Dataset properties**, set the **folderPath** to `wwi/orders`
+15. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
+16. Copy and paste the code snippet
+```
+@concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
+```
+
+<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+
+## 5. Pipeline (Stored procedure)
+
+1. Within Activities, search for `Stored`, and drag the **Stored procedure activity** onto the canvas
+2. Rename the activity `updateWatermark`
+3. Click and drag on the green button from the **Copy data** activity to establish a connection to the **Stored procedure** activity
+4. Switch to the **Settings** tab
+5. Set the **Linked service** to **AzureSqlDatabase**
+6. Set the Stored procedure name to `sp_update_watermark`
+7. Under **Stored procedure parameters**, click **Import**
+8. Click inside the **LastModifiedTime** value text input and click **Add dynamic content**
+9. Copy and paste the code snippet
+```
+@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}
+```
+10. Click inside the **TableName** value text input and click **Add dynamic content**
+11. Copy and paste the code snippet
+```
+@{activity('getOldWatermark').output.firstRow.TableName}
+```
+12. Click **Publish all**
+13. Click **Publish**
+14. Click **Debug**
 
 <div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
 
