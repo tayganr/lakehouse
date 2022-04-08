@@ -124,6 +124,19 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Click **OK**
 6. Click **Publish all**
 7. Click **Publish**
+8. Click **Debug**
+9. Click **OK**
+
+<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+
+## 7. Query Delta Lake
+
+1. Navigate to the **Data** hub
+2. Browse the data lake folder structure to `03-curated > customers`
+3. Right-click one of the **parquet** files, select **New SQL Script > Select TOP 100 rows**
+4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
+5. Change the **FORMAT** to **DELTA**
+6. Click **Run**
 
 <div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
 
