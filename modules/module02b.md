@@ -137,6 +137,44 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
 
+## 10. Data flow (Exists - changedRecords)
+
+1. Click the **[+]** icon to the right of `addHash`, under **Multiple inputs/outputs** select **Exists**
+2. Rename the **Output stream name** to `changedRecords`
+3. Set the **Right stream** to `addHashDim`
+4. Set the **Exist type** to **Doesn't exist**
+5. Under **Exists conditions**, set the **Left** and **Right** to `Hash`
+6. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+
+## 11. Data flow (Union - unionNewActive)
+
+1. Click the **[+]** icon to the right of `changedRecords`, under **Multiple inputs/outputs** select **Union**
+2. Rename the **Output stream name** to `unionNewActive`
+3. Under **Union with**, set the **Streams** to `newRecords`
+4. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+
+## 12. Data flow (Alter row - markAsInsert)
+
+1. Click the **[+]** icon to the right of `unionNewActive`, under **Row modifier** select **Alter Row**
+2. Rename the **Output stream name** to `markAsInsert`
+3. Under **Alter row conditions**, set the condition to **Insert If** and the expression as `true()`
+4. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+
+## 13. Data flow (Surrogate key - addTempKey)
+
+1. Click the **[+]** icon to the right of `markAsInsert`, under **Schema modifier** select **Surrogate Key**
+2. Rename the **Output stream name** to `addTempKey`
+3. Set the **Key column** to `TempKey`
+4. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+
 ## :tada: Summary
 
 TBC.
