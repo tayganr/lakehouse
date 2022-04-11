@@ -19,7 +19,7 @@ The data lakehouse is a data architecture pattern that combines functional aspec
     * [1A. Change Data Capture](./modules/module01a.md)
     * [1B. High Watermark](./modules/module01b.md)
 2. Load Dimension
-    * [2A. Initial Load](./modules/module02.md)
+    * [2A. Initial Load](./modules/module02a.md)
     * [2B. Incremental load (SCD Type 2)](./modules/module02b.md)
 3. [Incremental load Fact](./modules/module03.md)
 4. [Logical Data Warehouse](./modules/module04.md)
