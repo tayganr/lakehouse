@@ -1,6 +1,6 @@
-# Module 02 - Incremental Load Dimension (SCD Type 2)
+# Module 02B - Incremental Load Dimension (SCD Type 2)
 
-[< Previous Module](../modules/module01b.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
+[< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
 
 ## :thinking: Prerequisites
 
@@ -142,6 +142,6 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## :tada: Summary
 
-ABC.
+You have successfully setup a pipeline to initialise the dimension table (Customer) in the Delta Lake format.
 
 [Continue >](../modules/module03.md)
