@@ -316,6 +316,8 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## 25. Monitor Pipeline
 
+*** Purge existing files, re-enable tumbling window, runQuery WHERE IsActive = 1 **
+
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Monitor** hub
 3. Under **Integration**, click **Pipeline runs**
