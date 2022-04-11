@@ -10,12 +10,11 @@
 
 ## :loudspeaker: Introduction
 
-In this module, we will setup a Synapse Pipeline to incrementally load data from our raw layer (CSV), into our curated layer (Delta Lake) as a SCD Type 2 dimension table.
+In this module, we will setup a Synapse Pipeline to load data from our raw layer (CSV), into our curated layer (Delta Lake).
 
 ## :dart: Objectives
 
 * Create a pipeline that will perform the initial load.
-* Create a pipeline that will incrementally load data as new files arrive.
 
 ## 1. Pipeline (initialLoad)
 
@@ -32,7 +31,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 11. Rename the activity `initialLoad`
 12. Click **New**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 2. Data flow (Source - rawCustomer)
 
@@ -60,7 +59,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 22. Click **Save**
 23. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 2. Data flow (Surrogate Key)
 
@@ -69,7 +68,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Set the **Key column** to `SurrogateKey`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 3. Data flow (Derived Column)
 
@@ -84,7 +83,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 9. Set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
 10. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 4. Data flow (Select)
 
@@ -94,7 +93,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 4. Under **Input columns**, click and drag the **SurrogateKey** column to be in the first position
 5. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 5. Data flow (Sink)
 
@@ -110,7 +109,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 10. Set the **Table action** to **Truncate**
 11. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 6. Pipeline (initialLoad)
 
@@ -127,7 +126,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 8. Click **Debug**
 9. Click **OK**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## 7. Query Delta Lake
 
@@ -138,7 +137,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Change the **FORMAT** to **DELTA**
 6. Click **Run**
 
-<div align="right"><a href="#module-02---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
 ## :tada: Summary
 
