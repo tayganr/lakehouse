@@ -1,6 +1,6 @@
 # Module 01B - Incremental Copy to Raw (via Watermark)
 
-[< Previous Module](../modules/module01a.md) - **[Home](../README.md)** - [Next Module >](../modules/module02.md)
+[< Previous Module](../modules/module01a.md) - **[Home](../README.md)** - [Next Module >](../modules/module02a.md)
 
 ## :thinking: Prerequisites
 
