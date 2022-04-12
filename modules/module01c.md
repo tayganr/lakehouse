@@ -331,4 +331,4 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 TBC.
 
-[Continue >](../modules/module03.md)
+[Continue >](../modules/module02a.md)

@@ -198,4 +198,4 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 
 You have successfully setup a pipeline that can check for changes in the source system by referencing the last high waterman, and copy those changes to the raw layer within your data lake.
 
-[Continue >](../modules/module02.md)
+[Continue >](../modules/module02b.md)

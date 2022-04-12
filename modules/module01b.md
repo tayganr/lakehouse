@@ -147,4 +147,4 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 You have successfully setup a pipeline to initialise the dimension table (Customer) in the Delta Lake format.
 
-[Continue >](../modules/module02b.md)
+[Continue >](../modules/module01c.md)
