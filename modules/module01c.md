@@ -20,7 +20,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 ## 1. Pipeline (pipelineDimIncrementalLoad)
 
 1. Navigate to the **Integrate** hub
-2. Click the **[+]** icon to add a new resource and click **Pipeline**
+2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the Customers folder and select **New pipeline**
 3. Rename the pipeline to `C3 - pipelineDimIncrementalLoad`
 4. Under **Parameters**, click **New**
 5. Set the name of the parameter to `fileName`
