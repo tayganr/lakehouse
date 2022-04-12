@@ -76,23 +76,24 @@ sqlPassword!
 2. Switch to the **Linked** tab
 3. Click the **[+]** icon to add a new resource and click **Integration dataset**
 4. Search `SQL`, select **Azure SQL Database**, and click **Continue** 
-5. Select the Linked service `AzureSqlDatabase`
-6. Click **OK**
-7. Switch the the **Parameters** tab
-8. Click **New**
-9. Set the Name to `schema`
-10. Click **New**
-11. Set the Name to `table`
-12. Switch to the **Connection** tab
-13. Click **Edit**
-14. Click inside the first text input for **Table** and click **Add dynamic content**
-15. Under **Parameters**, click `schema`
-16. Click **OK**
-17. Click inside the second text input for **Table** and click **Add dynamic content**
-18. Under **Parameters**, click `table`
-19. Click **OK**
-20. Click **Publish all**
-21. Click **Publish**
+5. Rename the Integration Dataset to `AzureSqlTable`
+6. Select the Linked service `AzureSqlDatabase`
+7. Click **OK**
+8. Switch the the **Parameters** tab
+9. Click **New**
+10. Set the Name to `schema`
+11. Click **New**
+12. Set the Name to `table`
+13. Switch to the **Connection** tab
+14. Click **Edit**
+15. Click inside the first text input for **Table** and click **Add dynamic content**
+16. Under **Parameters**, click `schema`
+17. Click **OK**
+18. Click inside the second text input for **Table** and click **Add dynamic content**
+19. Under **Parameters**, click `table`
+20. Click **OK**
+21. Click **Publish all**
+22. Click **Publish**
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
