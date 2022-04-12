@@ -53,7 +53,10 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 18. Switch to the **Projection** tab
 19. Click **Import schema**
 20. Click **Import**
-21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` (e.g. `20220101000000000.csv`). Note: The string must be wrapped in single quotes.
+21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers`.
+    * Tip #1: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
+    * Tip #2: To see the effect of new data during development, select the second CSV file (with the latest timestamp).
+    * Note: The string must be wrapped in single quotes.
 22. Click **Save**
 23. Switch to the **Data preview** tab and click **Refresh**
 
