@@ -15,7 +15,6 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 * Enable Change Data Capture
 * Create a Pipeline
-* Trigger Pipeline based on a Tumbling Window
 * Copy data changes to the data lake
 
 ## 1. Source Environment (dbo.Customers)
@@ -269,7 +268,7 @@ CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 2
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
-## 9. Rerun Pipeline to Copy Additional Data
+## 8. Rerun Pipeline to Copy Additional Data
 
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Integration** hub
