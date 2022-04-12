@@ -257,23 +257,33 @@ VALUES
     ('381 Southborough Lane, Bromley, BR2 8BQ');
 SELECT * FROM [dbo].[Customers];
 ```
-5. Make note of the current time
+5. Copy and paste the code snippet below and click **Run**
+```sql
+DECLARE @max_lsn binary(10);
+SET @max_lsn = sys.fn_cdc_get_max_lsn();  
+SELECT
+CONVERT(varchar(16), DATEADD(minute, -1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 20) as start_time,
+CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 20) as end_time
+```
+6. Copy and paste the `start_time` and `end_time` values into a text editor (e.g. Notepad). This will be used as input for the pipeline rerun to isolate the second batch of changes made to the dbo.Customers table.
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
-## 9. Monitor Pipeline
+## 9. Rerun Pipeline to Copy Additional Data
 
 1. Open Azure Synapse Analytics workspace
-2. Navigate to the **Monitor** hub
-3. Under **Integration**, click **Pipeline runs**
-4. Monitor the triggered pipeline runs until an instance runs AFTER the additional data was loaded
-5. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
-6. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
+2. Navigate to the **Integration** hub
+3. Open pipeline `C1 - pipelineIncrementalCopyCDC`
+4. Click **Debug**
+5. Copy and paste the `start_time` and `end_time` values into the `triggerStartTime` and `triggerEndTime` parameters and click **OK**
+6. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows have been written to the data lake.
+7. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the second CSV file and select **New SQL Script > Select TOP 100 rows**
+8. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## :tada: Summary
 
-You have successfully setup a recurring pipeline that will periodically check for changes in the source system and copy those changes to the raw layer within your data lake.
+You have successfully setup a pipeline that can check for changes in the source system and copy those changes to the raw layer within your data lake.
 
 [Continue >](../modules/module01b.md)
