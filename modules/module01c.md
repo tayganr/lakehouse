@@ -1,6 +1,6 @@
 # Module 01C - Incremental Load Dimension (SCD Type 2)
 
-[< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
+[< Previous Module](../modules/module01b.md) - **[Home](../README.md)** - [Next Module >](../modules/module02a.md)
 
 ## :thinking: Prerequisites
 

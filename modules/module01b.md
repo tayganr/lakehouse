@@ -1,6 +1,6 @@
 # Module 01B - Initial Load Dimension
 
-[< Previous Module](../modules/module01b.md) - **[Home](../README.md)** - [Next Module >](../modules/module02b.md)
+[< Previous Module](../modules/module01a.md) - **[Home](../README.md)** - [Next Module >](../modules/module01c.md)
 
 ## :thinking: Prerequisites
 

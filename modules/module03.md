@@ -1,6 +1,6 @@
 # Module 03 - Logical Data Warehouse
 
-[< Previous Module](../modules/module03.md) - **[Home](../README.md)** - [Next Module >](../modules/module05.md)
+[< Previous Module](../modules/module02b.md) - **[Home](../README.md)** - [Next Module >](../modules/module04.md)
 
 ## :thinking: Prerequisites
 

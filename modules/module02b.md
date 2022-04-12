@@ -1,6 +1,6 @@
 # Module 02B - Incremental Load Fact
 
-[< Previous Module](../modules/module02.md) - **[Home](../README.md)** - [Next Module >](../modules/module04.md)
+[< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
 
 ## :thinking: Prerequisites
 

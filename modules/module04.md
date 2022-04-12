@@ -1,6 +1,6 @@
 # Module 04 - Data Visualisation with Power BI
 
-[< Previous Module](../modules/module04.md) - **[Home](../README.md)**
+[< Previous Module](../modules/module03.md) - **[Home](../README.md)**
 
 ## :thinking: Prerequisites
 
