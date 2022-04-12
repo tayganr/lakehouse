@@ -257,7 +257,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## 21. Data flow (Union - unionResults)
 
-1. Click the **[+]** icon to the right of `changedRecords`, under **Multiple inputs/outputs** select **Union**
+1. Click the **[+]** icon to the right of `dropTempColumns`, under **Multiple inputs/outputs** select **Union**
 2. Rename the **Output stream name** to `unionResults`
 3. Under **Union with**, set the **Streams** to `dropTempColumns2`
 4. Switch to the **Data preview** tab and click **Refresh**
