@@ -53,8 +53,8 @@ VALUES
 2. Navigate to the **Manage** hub
 3. Click **Linked services**
 4. Click **New**
-5. Rename the Linked Service to `AzureSqlDatabase`
-6. Search `SQL`, select **Azure SQL Database**, and click **Continue**
+5. Search `SQL`, select **Azure SQL Database**, and click **Continue**
+6. Rename the Linked Service to `AzureSqlDatabase`
 7. Select the target Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
 8. Set the **Authentication** type to `SQL authentication`
 9. Copy and paste the **User name**
