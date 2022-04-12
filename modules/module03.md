@@ -1,6 +1,6 @@
-# Module 04 - Data Visualisation with Power BI
+# Module 03 - Logical Data Warehouse
 
-[< Previous Module](../modules/module04.md) - **[Home](../README.md)**
+[< Previous Module](../modules/module03.md) - **[Home](../README.md)** - [Next Module >](../modules/module05.md)
 
 ## :thinking: Prerequisites
 
@@ -35,3 +35,5 @@ ABC.
 ## :tada: Summary
 
 ABC.
+
+[Continue >](../modules/module05.md)
