@@ -296,7 +296,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
 
-## 24. Trigger (Storage event)
+<!-- ## 24. Trigger (Storage event)
 
 1. Navigate back to the pipeline and click **Add trigger**
 2. Click **New/Edit**
@@ -316,23 +316,24 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 16. Click **Publish all**
 17. Click **Publish**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div> -->
 
-## 25. Monitor Pipeline
+## 24. Debug Pipeline
 
-*** Purge existing files, re-enable tumbling window, runQuery WHERE IsActive = 1 **
-
-1. Open Azure Synapse Analytics workspace
-2. Navigate to the **Monitor** hub
+1. Click **Debug**
+2. Set the **fileName** parameter value to the name of the second CSV file (with the latest timestamp)
+3. Click **OK**
 3. Under **Integration**, click **Pipeline runs**
-4. Monitor the triggered pipeline runs until an instance runs AFTER the additional data was loaded
-5. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
-6. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
+4. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/customers`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
+5. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
+6. Change the **FORMAT** to **DELTA**
+7. Click **Run**
+    Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## :tada: Summary
 
-TBC.
+You have successfully setup a pipeline to incrementally load the dimension table (Customer) following the SCD Type 2 pattern using the Delta Lake format.
 
 [Continue >](../modules/module02a.md)
