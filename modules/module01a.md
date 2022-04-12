@@ -162,8 +162,12 @@ ELSE SELECT 0 changecount')
 20. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
 21. Click **OK**
 22. You should see a changecount of 3, close the Preview data window
-23. Click **Publish all**
-24. Click **Publish**
+23. On the **Integrate** pane, click the ellipses button next to **Pipelines**, and select **New folder**
+24. Rename the folder to **Customers** and click **Create**
+25. Click on the ellipses button next to `C1 - pipelineIncrementalCopyCDC` and select **Move item**
+26. Select the **Customers** folder and click **Move**
+27. Click **Publish all**
+28. Click **Publish**
 
 ## 6. Pipeline (If Condition, Copy data)
 
