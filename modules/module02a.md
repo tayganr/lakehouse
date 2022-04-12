@@ -55,9 +55,11 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 16. Click **Save and finish**
 17. Enable **First row as header**
 18. Switch to the **Projection** tab
-19. Click **Import schema**
+19. Click **Import schema**. Note: You may need to wait for the Data flow debug session to be ready before the button will become clickable.
 20. Click **Import**
-21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` (e.g. `20220101000000000.csv`). Note: The string must be wrapped in single quotes.
+21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers`.
+    * Note: The string must be wrapped in single quotes.
+    * Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing filename.
 22. Click **Save**
 23. Switch to the **Data preview** tab and click **Refresh**
 
