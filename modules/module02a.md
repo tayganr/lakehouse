@@ -82,7 +82,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 4. Click **Add** and select **Add column**
 5. Set the second **Column** to `ValidFrom` and the **Expression** to `currentTimestamp()`
 6. Click **Add** and select **Add column**
-7. Set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
+7. Set the third **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
 8. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
