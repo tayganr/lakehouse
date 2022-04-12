@@ -1,4 +1,4 @@
-# Module 02B - Incremental Load Dimension (SCD Type 2)
+# Module 01C - Incremental Load Dimension (SCD Type 2)
 
 [< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
 

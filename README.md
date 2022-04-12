@@ -15,15 +15,15 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ## :books: Learning Modules
 
-1. Incremental copy from source
-    * [1A. Change Data Capture](./modules/module01a.md)
-    * [1B. High Watermark](./modules/module01b.md)
-2. Load Dimension
-    * [2A. Initial Load](./modules/module02a.md)
-    * [2B. Incremental load (SCD Type 2)](./modules/module02b.md)
-3. [Incremental load Fact](./modules/module03.md)
-4. [Logical Data Warehouse](./modules/module04.md)
-5. [Data Visualisation](./modules/module05.md)
+1. Customers
+    * [1A. Incremental Copy to Raw (using Change Data Capture)](./modules/module01a.md)
+    * [1B. Dimension Table - Initial Load](./modules/module01b.md)
+    * [1C. Dimension Table - Incremental Load (SCD Type 2)](./modules/module01c.md)
+2. Orders
+    * [2A. Incremental Copy to Raw (using High Watermark)](./modules/module02a.md)
+    * [2B. Fact Table - Incremental Load](./modules/module02b.md)
+3. [Logical Data Warehouse](./modules/module03.md)
+4. [Data Visualisation](./modules/module04.md)
 
 <div align="right"><a href="#data-lakehouse-workshop">↥ back to top</a></div>
 

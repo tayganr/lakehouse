@@ -1,4 +1,4 @@
-# Module 03 - Incremental Load Fact
+# Module 02B - Incremental Load Fact
 
 [< Previous Module](../modules/module02.md) - **[Home](../README.md)** - [Next Module >](../modules/module04.md)
 

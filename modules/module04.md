@@ -1,4 +1,4 @@
-# Module 04 - Logical Data Warehouse
+# Module 03 - Logical Data Warehouse
 
 [< Previous Module](../modules/module03.md) - **[Home](../README.md)** - [Next Module >](../modules/module05.md)
 

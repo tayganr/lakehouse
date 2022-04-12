@@ -1,4 +1,4 @@
-# Module 05 - Data Visualisation with Power BI
+# Module 04 - Data Visualisation with Power BI
 
 [< Previous Module](../modules/module04.md) - **[Home](../README.md)**
 
