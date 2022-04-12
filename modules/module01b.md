@@ -74,7 +74,7 @@ AS
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
-3. Rename the pipeline to `pipelineIncrementalCopyWatermark`
+3. Rename the pipeline to `O1 - pipelineIncrementalCopyWatermark`
 4. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 5. Rename the activity `getOldWatermark`
 6. Switch to the **Settings** tab

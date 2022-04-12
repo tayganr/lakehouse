@@ -20,7 +20,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
-3. Rename the pipeline to `pipelineDimInitialLoad`
+3. Rename the pipeline to `C2 - pipelineDimInitialLoad`
 4. Within Activities, search for `Get Metadata`, and drag the **Get Metadata activity** onto the canvas
 5. Rename the activity `getFiles`
 6. Switch to the **Settings** tab

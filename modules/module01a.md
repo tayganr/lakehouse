@@ -132,7 +132,7 @@ sqlPassword!
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
-3. Rename the pipeline to `pipelineIncrementalCopyCDC`
+3. Rename the pipeline to `C1 - pipelineIncrementalCopyCDC`
 4. Under **Parameters** click **New**
 5. Set the Name to `triggerStartTime`
 6. Click **New**

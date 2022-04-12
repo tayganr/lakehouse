@@ -21,7 +21,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
-3. Rename the pipeline to `pipelineDimIncrementalLoad`
+3. Rename the pipeline to `C3 - pipelineDimIncrementalLoad`
 4. Under **Parameters**, click **New**
 5. Set the name of the parameter to `fileName`
 6. Within Activities, search for `Data flow`, and drag the **Data flow activity** onto the canvas
@@ -279,7 +279,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## 23. Pipeline (pipelineDimIncrementalLoad)
 
-1. Navigate back to the pipeline `pipelineDimIncrementalLoad`
+1. Navigate back to the pipeline `C3 - pipelineDimIncrementalLoad`
 2. Click to focus on the **Data flow** activity and switch to the **Parameters** tab
 3. Under **Data flow parameters**, click inside the fileName **Value** and select **Pipeline expression**
 4. Copy and paste the code snippet
