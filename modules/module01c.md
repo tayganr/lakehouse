@@ -273,7 +273,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Set the **Linked Service** to the Synapse Workspace Default Storage.
 6. Switch to the **Settings** tab
 7. Click the **Browse** icon
-8. Navigate to `03-curated > customers` and click **OK**
+8. Navigate to `03-curated > wwi > customers` and click **OK**
 9. Set the **Compression type** to `snappy`
 10. Set the **Update method** to **Allow insert** and **Allow upsert**
 11. Set the **Key columns** to `SurrogateKey`
