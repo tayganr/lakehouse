@@ -34,7 +34,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 ## 2. Data flow (Source - rawCustomer)
 
 1. Enable **Data flow debug**
-2. Rename the data flow `incrementalLoad`
+2. Rename the data flow `dataFlowDimIncrementalLoad`
 3. Under **Parameters**, click **New**
 4. Rename **parameter1** to `fileName`
 5. Click **Add Source**
