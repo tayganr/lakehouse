@@ -71,11 +71,12 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Set the **Linked Service** to the Synapse Workspace Default Storage.
 6. Switch to the **Source options** tab
 7. Click the **Browse** icon
-8. Navigate to `03-curated > customers` and click **OK**
-9. Switch to the **Projection** tab
-10. Click **Import schema**
-11. Click **Import**
-12. Switch to the **Data preview** tab and click **Refresh**
+8. Navigate to `03-curated > wwi > customers` and click **OK**
+9. Set the **Compression type** to **snappy**
+10. Switch to the **Projection** tab
+11. Click **Import schema**
+12. Click **Import**
+13. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
 
