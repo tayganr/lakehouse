@@ -7,7 +7,7 @@
 - [x] Lab environment deployed
 - [x] Post deployment scripts executed
 - [x] Module 1A complete
-- [x] Module 2A complete
+- [x] Module 1B complete
 
 ## :loudspeaker: Introduction
 
