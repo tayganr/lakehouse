@@ -27,11 +27,13 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 7. Set the **Source dataset** to **AdlsRawDelimitedText**
 8. Set the Dataset property **folderPath** to `wwi/customers`
 9. Set the Dataset property **fileName** to `/`
-10. Within Activities, search for `Data flow`, and drag the **Data flow activity** onto the canvas
-11. Click and drag on the green button on the previous **Get Metadata** activity (`getFiles`) to establish a connection to the **Data flow** activity
-11. Rename the activity `initialLoad`
-12. Switch to the **Settings** tab
-12. Next to the **Data flow** drop-down menu, click **New**
+10. Next to the **Field list** property, click **New**
+11. Open the **Argument** drop-down menu and select **Child items**
+12. Within Activities, search for `Data flow`, and drag the **Data flow activity** onto the canvas
+13. Click and drag on the green button on the previous **Get Metadata** activity (`getFiles`) to establish a connection to the **Data flow** activity
+14. Rename the activity `initialLoad`
+15. Switch to the **Settings** tab
+16. Next to the **Data flow** drop-down menu, click **New**
 
 <div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
