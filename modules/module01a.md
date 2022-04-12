@@ -53,19 +53,20 @@ VALUES
 2. Navigate to the **Manage** hub
 3. Click **Linked services**
 4. Click **New**
-5. Search `SQL`, select **Azure SQL Database**, and click **Continue**
-6. Select the target Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
-7. Set the **Authentication** type to `SQL authentication`
-8. Copy and paste the **User name**
+5. Rename the Linked Service to `AzureSqlDatabase`
+6. Search `SQL`, select **Azure SQL Database**, and click **Continue**
+7. Select the target Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
+8. Set the **Authentication** type to `SQL authentication`
+9. Copy and paste the **User name**
 ```
 sqladmin
 ```
-9. Copy and paste the **Password**
+10. Copy and paste the **Password**
 ```
 sqlPassword!
 ```
-10. Click **Test connection**
-11. Click **Create**
+11. Click **Test connection**
+12. Click **Create**
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
