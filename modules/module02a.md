@@ -78,14 +78,12 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Derived Column**
 2. Rename the **Output stream name** to `derivedColumnsSCD`
-3. Set the **Key column** to `SurrogateKey`
-4. Switch to the **Data preview** tab and click **Refresh**
-5. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `1`
+3. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `1`
+4. Click **Add** and select **Add column**
+5. Set the second **Column** to `ValidFrom` and the **Expression** to `currentTimestamp()`
 6. Click **Add** and select **Add column**
-7. Set the second **Column** to `ValidFrom` and the **Expression** to `currentTimestamp()`
-8. Click **Add** and select **Add column**
-9. Set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
-10. Switch to the **Data preview** tab and click **Refresh**
+7. Set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
+8. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
