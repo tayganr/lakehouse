@@ -219,7 +219,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
-## 7. Trigger (Tumbling Window)
+<!-- ## 7. Trigger (Tumbling Window)
 
 1. Navigate back to the pipeline and click **Add trigger**
 2. Click **New/Edit**
@@ -241,9 +241,9 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 12. Click **Publish all**
 13. Click **Publish**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div> -->
 
-## 8. Load Additional Data into dbo.Customers
+## 7. Load Additional Data into dbo.Customers
 
 1. Navigate to the **SQL database**
 2. Click **Query editor**
