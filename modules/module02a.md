@@ -91,9 +91,8 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `reorderColumns`
-3. Set the **Key column** to `SurrogateKey`
-4. Under **Input columns**, click and drag the **SurrogateKey** column to be in the first position
-5. Switch to the **Data preview** tab and click **Refresh**
+3. Under **Input columns**, click and drag the **SurrogateKey** column to be in the first position
+4. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
