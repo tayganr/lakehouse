@@ -106,9 +106,10 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 6. Switch to the **Settings** tab
 7. Click the **Browse** icon
 8. Navigate to `03-curated` and click **OK**
-9. Click inside the **Folder path** text input and set the value to `customers`
-10. Set the **Table action** to **Truncate**
-11. Switch to the **Data preview** tab and click **Refresh**
+9. Click inside the **Folder path** text input and set the value to `wwi/customers`
+10. Set the **Compression type** to **snappy**
+11. Set the **Table action** to **Truncate**
+12. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
 
