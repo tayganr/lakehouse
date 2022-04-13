@@ -95,6 +95,22 @@ SELECT * FROM [dbo].[Customers];
 
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Monitor** hub
+3. Under **Integration**, click **Pipeline runs**
+4. Set the **Pipeline name** filter to `C1 - pipelineIncrementalCopyCDC`
+5. Periodically click **Refresh** until the next instance of the pipeline is triggered to run from the Tumbling Window trigger
+6. Once successful, change the **Pipeline name** filter to `C3 - pipelineDimIncrementalLoad`
+7. Periodically click **Refresh** until you observe a successful instance
+
+<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+
+## 8. Query Delta Lake
+
+1. Navigate to the **Data** hub
+2. Browse the data lake folder structure to `03-curated > wwi > customers`
+3. Right-click one of the **parquet** files, select **New SQL Script > Select TOP 100 rows**
+4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
+5. Change the **FORMAT** to **DELTA**
+6. Click **Run**
 
 <div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
 
