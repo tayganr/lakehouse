@@ -74,6 +74,30 @@ In this module, we will automate ingestion and loading of Customer data using tr
 
 <div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
 
+## 3. Load Additional Data into dbo.Customers
+
+1. Navigate to the **SQL database**
+2. Click **Query editor**
+3. Click **Continue us <your_alias>@<your_domain>.com**
+4. Copy and paste the code snippets below and click **Run**
+```sql
+UPDATE dbo.Customers SET CustomerAddress = '34 Park Road, East London, E9 7RW' WHERE CustomerID = 5;
+INSERT INTO dbo.Customers (CustomerAddress)
+VALUES
+    ('169 Manchester Road, Preston, PR35 8AQ'),
+    ('52 Broadway, Plymouth, PL39 3PY');
+SELECT * FROM [dbo].[Customers];
+```
+
+<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+
+## 4. Monitor
+
+1. Open Azure Synapse Analytics workspace
+2. Navigate to the **Monitor** hub
+
+<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+
 ## :tada: Summary
 
 You have automated the execution of the Customer pipelines using triggers.
