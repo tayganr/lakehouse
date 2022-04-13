@@ -11,7 +11,6 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ## :test_tube: Lab Environment Setup
 * [Lab Environment](./modules/module00.md)
-* [Post Deployment](./modules/moduleXX.md)
 
 ## :books: Learning Modules
 

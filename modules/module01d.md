@@ -5,7 +5,6 @@
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
-- [x] Post deployment steps complete
 - [x] Module 1A complete
 - [x] Module 1B complete
 - [x] Module 1C complete
