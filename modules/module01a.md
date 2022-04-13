@@ -1,6 +1,6 @@
 # Module 01A - Incremental Copy to Raw (via CDC)
 
-[< Previous Module](../modules/moduleXX.md) - **[Home](../README.md)** - [Next Module >](../modules/module01b.md)
+[< Previous Module](../modules/module00.md) - **[Home](../README.md)** - [Next Module >](../modules/module01b.md)
 
 ## :thinking: Prerequisites
 
@@ -44,6 +44,8 @@ VALUES
     ('135 High Barns, Ely, CB7 4RH'),
     ('39 Queen Annes Drive, Bedale, DL8 2EL');
 ```
+
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
 ## 2. Linked Service (Azure SQL Database)
 

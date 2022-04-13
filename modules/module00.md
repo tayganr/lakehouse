@@ -29,6 +29,8 @@ In order to follow along with the lab exercises, we need to provision a set of r
 
 4. The deployment should take approximately 5 minutes to complete. Once you see the message **Your deployment is complete**, click **Go to resource group**.
 
+<div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
+
 ## 2. Set Azure AD admin
 
 The following steps will elevate your account as an Azure AD administrator of the logical SQL Server hosting the Azure SQL Database.
@@ -38,6 +40,8 @@ The following steps will elevate your account as an Azure AD administrator of th
 3. Click **Set admin**
 4. Search for your account, select your account, click **Select** 
 5. Click **Save**
+
+<div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
 ## 3. RBAC Role Assignment (Storage Account > Contributor)
 
@@ -52,6 +56,8 @@ This role assignment is required to ensure that your account has sufficient perm
 7. Click **Review + assign**
 8. Click **Review + assign**
 
+<div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
+
 ## 4. RBAC Role Assignment (Storage Account > Storage Blob Data Reader)
 
 This role assignment is required to read files from the data lake using Azure Synapse Analytics built-in serverless SQL technology.
@@ -64,6 +70,8 @@ This role assignment is required to read files from the data lake using Azure Sy
 6. Search for your account, select your account, click **Select** 
 7. Click **Review + assign**
 8. Click **Review + assign**
+
+<div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
 ## :tada: Summary
 
