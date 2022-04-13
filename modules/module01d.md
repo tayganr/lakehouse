@@ -116,6 +116,6 @@ SELECT * FROM [dbo].[Customers];
 
 ## :tada: Summary
 
-You have automated the execution of the Customer pipelines using triggers.
+You have successfully automated the execution of the Customer pipelines using triggers.
 
 [Continue >](../modules/module02a.md)
