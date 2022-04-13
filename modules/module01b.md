@@ -5,7 +5,7 @@
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
-- [x] Post deployment scripts executed
+- [x] Post deployment steps complete
 - [x] Module 1A complete
 
 ## :loudspeaker: Introduction
