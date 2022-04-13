@@ -72,21 +72,24 @@ AS
 
 ## 2. Pipeline (Lookup - getOldWatermark)
 
-1. Navigate to the **Integrate** hub
-2. Click the **[+]** icon to add a new resource and click **Pipeline**
-3. Rename the pipeline to `O1 - pipelineIncrementalCopyWatermark`
-4. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
-5. Rename the activity `getOldWatermark`
-6. Switch to the **Settings** tab
-7. Set the **Source dataset** to **AzureSqlTable**
-8. Set the Dataset property **schema** to `dbo`
-9. Set the Dataset property **table** to `watermark`
-10. Set the **Use query** property to **Query**
-11. Click inside the **Query** text and copy and paste the code snippet
+1. Open Azure Synapse Analytics workspace
+2. Navigate to the **Integrate** hub
+3. On the right hand side of **Pipelines**, click the **[...]** ellipsis icon and select **New folder**
+4. Name the folder `Orders` and click **Create**
+5. On the right hand side of the **Orders** folder, click the **[...]** ellipsis icon and select **New pipeline**
+6. Rename the pipeline to `O1 - pipelineIncrementalCopyWatermark`
+7. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
+8. Rename the activity `getOldWatermark`
+9. Switch to the **Settings** tab
+10. Set the **Source dataset** to **AzureSqlTable**
+11. Set the Dataset property **schema** to `dbo`
+12. Set the Dataset property **table** to `watermark`
+13. Set the **Use query** property to **Query**
+14. Click inside the **Query** text and copy and paste the code snippet
 ```sql
 SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 ```
-12. Click **Preview data** to confirm the query is valid
+15. Click **Preview data** to confirm the query is valid
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
