@@ -1,4 +1,4 @@
-# Module 01A - Incremental Copy to Raw (via CDC)
+# Module 01A - Incremental Copy to Raw (using Change Data Capture)
 
 [< Previous Module](../modules/module00.md) - **[Home](../README.md)** - [Next Module >](../modules/module01b.md)
 

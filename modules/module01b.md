@@ -1,4 +1,4 @@
-# Module 01B - Initial Load Dimension
+# Module 01B - Dimension Table (Initial Load)
 
 [< Previous Module](../modules/module01a.md) - **[Home](../README.md)** - [Next Module >](../modules/module01c.md)
 

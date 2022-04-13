@@ -1,4 +1,4 @@
-# Module 02A - Incremental Copy to Raw (via Watermark)
+# Module 02A - Incremental Copy to Raw (using High Watermark)
 
 [< Previous Module](../modules/module01d.md) - **[Home](../README.md)** - [Next Module >](../modules/module02b.md)
 
