@@ -68,7 +68,7 @@ AS
     WHERE [TableName] = @TableName;
 ```
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 2. Pipeline (Lookup - getOldWatermark)
 
@@ -88,7 +88,7 @@ SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 ```
 12. Click **Preview data** to confirm the query is valid
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 3. Pipeline (Lookup - getNewWatermark)
 
@@ -105,7 +105,7 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 ```
 12. Click **Preview data** to confirm the query is valid
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 
 ## 4. Pipeline (Lookup - getChangeCount)
@@ -124,7 +124,7 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 ```
 10. Click **Preview data** to confirm the query is valid
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 5. Pipeline (If Condition)
 
@@ -139,7 +139,7 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 ```
 6. Within the **True** case, click the **pencil** icon
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 6. Pipeline (Copy data)
 
@@ -165,7 +165,7 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 @concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
 ```
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 7. Pipeline (Stored procedure)
 
@@ -192,7 +192,7 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 15. If the output is successful, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/orders`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
 16. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
-<div align="right"><a href="#module-01b---incremental-copy-to-raw-via-watermark">↥ back to top</a></div>
+<div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## :tada: Summary
 

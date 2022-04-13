@@ -45,7 +45,7 @@ VALUES
     ('39 Queen Annes Drive, Bedale, DL8 2EL');
 ```
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 2. Linked Service (Azure SQL Database)
 
@@ -68,7 +68,7 @@ sqlPassword!
 11. Click **Test connection**
 12. Click **Create**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 3. Integration Dataset (Azure SQL Database - Table)
 
@@ -95,7 +95,7 @@ sqlPassword!
 21. Click **Publish all**
 22. Click **Publish**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 4. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
 
@@ -126,7 +126,7 @@ sqlPassword!
 25. Click **Publish all**
 26. Click **Publish**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 5. Pipeline (Lookup)
 
@@ -168,6 +168,8 @@ ELSE SELECT 0 changecount')
 26. Select the **Customers** folder and click **Move**
 27. Click **Publish all**
 28. Click **Publish**
+
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 6. Pipeline (If Condition, Copy data)
 
@@ -217,7 +219,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 29. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the CSV file and select **New SQL Script > Select TOP 100 rows**
 30. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 7. Load Additional Data into dbo.Customers
 
@@ -243,7 +245,7 @@ CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 2
 ```
 6. Copy and paste the `start_time` and `end_time` values into a text editor (e.g. Notepad). This will be used as input for the pipeline rerun to isolate the second batch of changes made to the dbo.Customers table.
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 8. Rerun Pipeline to Copy Additional Data
 
@@ -256,7 +258,7 @@ CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 2
 7. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the second CSV file and select **New SQL Script > Select TOP 100 rows**
 8. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## :tada: Summary
 

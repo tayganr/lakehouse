@@ -28,7 +28,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 8. Switch to the **Settings** tab
 9. Next to the **Data flow** property, click **New**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 2. Data flow (Source - rawCustomer)
 
@@ -59,7 +59,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 22. Click **Save**
 23. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 3. Data flow (Source - dimCustomer)
 
@@ -77,7 +77,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 12. Click **Import**
 13. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 4. Data flow (Filter - activeCustomers)
 
@@ -86,7 +86,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Set the **Filter on** property to `IsActive == 1`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 5. Data flow (Derived column - addHashDim)
 
@@ -95,7 +95,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(CustomerID,CustomerAddress)`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 6. Data flow (Aggregate - maxSurrogateKey)
 
@@ -106,7 +106,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Set the **Column** to `MaxCustomerKey` and the **Expression** to `max(SurrogateKey)`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 7. Data flow (Exists - existingRecords)
 
@@ -117,7 +117,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 8. Data flow (Exists - newRecords)
 
@@ -129,7 +129,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 9. Data flow (Derived column - addHash)
 
@@ -138,7 +138,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(columns())`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 10. Data flow (Exists - changedRecords)
 
@@ -149,7 +149,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Under **Exists conditions**, set the **Left** and **Right** to `Hash`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 11. Data flow (Union - unionNewActive)
 
@@ -158,7 +158,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under **Union with**, set the **Streams** to `newRecords`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 12. Data flow (Alter row - markAsInsert)
 
@@ -167,7 +167,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under **Alter row conditions**, set the condition to **Insert If** and the expression as `true()`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 13. Data flow (Surrogate key - addTempKey)
 
@@ -176,7 +176,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Set the **Key column** to `TempKey`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 14. Data flow (Join - joinMaxSurrogateKey)
 
@@ -187,7 +187,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Set the **Condition** to `true()`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 15. Data flow (Derived column - scdColumns)
 
@@ -202,7 +202,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 9. Under **Columns**, set the fourth **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
 10. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 16. Data flow (Select - dropTempColumns)
 
@@ -212,7 +212,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 4. On the left hand side of the `SurrogateKey`, click and drag the column to the first position
 5. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 17. Data flow (Exists - obsoleteRecords)
 
@@ -223,7 +223,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 18. Data flow (Alter row - markAsUpdate)
 
@@ -232,7 +232,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under **Alter row conditions**, set the condition to **Update If** and the expression as `true()`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 19. Data flow (Derived column - scdColumnsObsolete)
 
@@ -243,7 +243,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 5. Under **Columns**, set the second **Column** to `ValidTo` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
 6. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 20. Data flow (Select - dropTempColumns2)
 
@@ -252,7 +252,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under the Input columns, delete the `Hash` column
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 21. Data flow (Union - unionResults)
 
@@ -261,7 +261,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 3. Under **Union with**, set the **Streams** to `dropTempColumns2`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 22. Data flow (Sink - sinkCustomer)
 
@@ -278,7 +278,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 11. Set the **Key columns** to `SurrogateKey`
 12. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 23. Pipeline (pipelineDimIncrementalLoad)
 
@@ -293,7 +293,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 6. Click **Publish all**
 7. Click **Publish**
 
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 24. Debug Pipeline
 
@@ -307,7 +307,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 7. Click **Run**
     Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
 
-<div align="right"><a href="#module-01c---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## :tada: Summary
 

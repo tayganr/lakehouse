@@ -66,7 +66,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 <div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
-## 2. Data flow (Surrogate Key)
+## 3. Data flow (Surrogate Key)
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Surrogate Key**
 2. Rename the **Output stream name** to `surrogateKey`
@@ -75,7 +75,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 <div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
-## 3. Data flow (Derived Column)
+## 4. Data flow (Derived Column)
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Derived Column**
 2. Rename the **Output stream name** to `derivedColumnsSCD`
@@ -88,7 +88,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 <div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
-## 4. Data flow (Select)
+## 5. Data flow (Select)
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `reorderColumns`
@@ -97,7 +97,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 <div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
-## 5. Data flow (Sink)
+## 6. Data flow (Sink)
 
 1. Click the **[+]** icon to add a new step, under **Destination** select **Sink**
 2. Rename the **Output stream name** to `curatedCustomer`
@@ -114,7 +114,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 <div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
-## 6. Pipeline (initialLoad)
+## 7. Pipeline (initialLoad)
 
 1. Navigate back to the **pipeline**, click to focus on the **Data flow** step
 2. Switch to the **Parameters** tab
@@ -131,7 +131,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 <div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
-## 7. Query Delta Lake
+## 8. Query Delta Lake
 
 1. Navigate to the **Data** hub
 2. Browse the data lake folder structure to `03-curated > wwi > customers`
