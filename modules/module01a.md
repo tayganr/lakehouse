@@ -219,30 +219,6 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
 
-<!-- ## 7. Trigger (Tumbling Window)
-
-1. Navigate back to the pipeline and click **Add trigger**
-2. Click **New/Edit**
-3. Click **Choose trigger...**
-4. Click **New**
-5. Rename the trigger to `triggerTumblingWindow5m`
-6. Set the **Type** to **Tumbling window**
-7. Set the **Recurrence** to **5 minutes**
-8. Click **OK**
-9. Copy and paste the snippet below for **triggerStartTime**
-```
-@formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
-```
-10. Copy and paste the snippet below for **triggerEndTime**
-```
-@formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
-```
-11. Click **OK**
-12. Click **Publish all**
-13. Click **Publish**
-
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div> -->
-
 ## 7. Load Additional Data into dbo.Customers
 
 1. Navigate to the **SQL database**
