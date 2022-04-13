@@ -1,6 +1,6 @@
 # Module 01C - Incremental Load Dimension (SCD Type 2)
 
-[< Previous Module](../modules/module01b.md) - **[Home](../README.md)** - [Next Module >](../modules/module02a.md)
+[< Previous Module](../modules/module01b.md) - **[Home](../README.md)** - [Next Module >](../modules/module01d.md)
 
 ## :thinking: Prerequisites
 
@@ -296,28 +296,6 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
 
-<!-- ## 24. Trigger (Storage event)
-
-1. Navigate back to the pipeline and click **Add trigger**
-2. Click **New/Edit**
-3. Click **Choose trigger...**
-4. Click **New**
-5. Rename the trigger to `triggerStorageEvent`
-6. Set the **Azure subscription** to the Azure subscription that contains your Azure Data Lake Storage Gen2 account
-7. Set the **Storage account name** to the Azure Data Lake Storage Gen2 account name
-8. Set the **Container name** via the drop-down menu to `01-raw`
-9. Set the **Blob path begins** with to `wwi/customers`
-10. Set the **Blob path ends with** to `.csv`
-11. Set the **Event** to `Blob created`
-12. Click **Continue**
-13. Click **Continue**
-14. Set the **Trigger Run Parameter** (fileName) to `@trigger().outputs.body.fileName`
-15. Click OK
-16. Click **Publish all**
-17. Click **Publish**
-
-<div align="right"><a href="#module-02b---incremental-load-dimension-scd-type-2">↥ back to top</a></div> -->
-
 ## 24. Debug Pipeline
 
 1. Click **Debug**
@@ -336,4 +314,4 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 You have successfully setup a pipeline to incrementally load the dimension table (Customer) following the SCD Type 2 pattern using the Delta Lake format.
 
-[Continue >](../modules/module02a.md)
+[Continue >](../modules/module01d.md)
