@@ -103,7 +103,7 @@ SELECT * FROM [dbo].[Customers];
 
 <div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
 
-## 8. Query Delta Lake
+## 5. Query Delta Lake
 
 1. Navigate to the **Data** hub
 2. Browse the data lake folder structure to `03-curated > wwi > customers`
