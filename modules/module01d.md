@@ -43,7 +43,7 @@ In this module, we will automate ingestion and loading of Customer data using tr
 20. Click **Publish all**
 21. Click **Publish**
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
 
 ## :tada: Summary
 

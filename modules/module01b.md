@@ -35,7 +35,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 15. Switch to the **Settings** tab
 16. Next to the **Data flow** drop-down menu, click **New**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 2. Data flow (Source - rawCustomer)
 
@@ -65,7 +65,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 22. Click **Save**
 23. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 2. Data flow (Surrogate Key)
 
@@ -74,7 +74,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 3. Set the **Key column** to `SurrogateKey`
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 3. Data flow (Derived Column)
 
@@ -87,7 +87,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 7. Set the third **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
 8. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 4. Data flow (Select)
 
@@ -96,7 +96,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 3. Under **Input columns**, click and drag the **SurrogateKey** column to be in the first position
 4. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 5. Data flow (Sink)
 
@@ -113,7 +113,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 11. Set the **Table action** to **Truncate**
 12. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 6. Pipeline (initialLoad)
 
@@ -130,7 +130,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 8. Click **Debug**
 9. Click **OK**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## 7. Query Delta Lake
 
@@ -141,7 +141,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 5. Change the **FORMAT** to **DELTA**
 6. Click **Run**
 
-<div align="right"><a href="#module-02a---initial-load-dimension">↥ back to top</a></div>
+<div align="right"><a href="#module-01b---initial-load-dimension">↥ back to top</a></div>
 
 ## :tada: Summary
 

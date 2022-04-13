@@ -308,7 +308,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 7. Click **Run**
     Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
 
-<div align="right"><a href="#module-01a---incremental-copy-to-raw-via-cdc">↥ back to top</a></div>
+<div align="right"><a href="#module-01c---incremental-load-dimension-scd-type-2">↥ back to top</a></div>
 
 ## :tada: Summary
 
