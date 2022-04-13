@@ -22,7 +22,7 @@ In this module, we will automate ingestion and loading of Customer data using tr
 
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Integrate** hub
-3. Open the pipeline `C1 - pipelineIncrementalCopyCDC`
+3. Open the pipeline `C3 - pipelineDimIncrementalLoad`
 4. Click **Add trigger**
 5. Click **New/Edit**
 6. Click **Choose trigger...**
@@ -37,7 +37,10 @@ In this module, we will automate ingestion and loading of Customer data using tr
 15. Set the **Event** to `Blob created`
 16. Click **Continue**
 17. Click **Continue**
-18. Set the **Trigger Run Parameter** (fileName) to `@trigger().outputs.body.fileName`
+18. Copy and paste the code snippet to set the **Trigger Run Parameter** (fileName)
+```
+@trigger().outputs.body.fileName
+```
 19. Click OK
 20. Click **Publish all**
 21. Click **Publish**
