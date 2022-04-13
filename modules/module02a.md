@@ -83,7 +83,7 @@ AS
 9. Switch to the **Settings** tab
 10. Set the **Source dataset** to **AzureSqlTable**
 11. Set the Dataset property **schema** to `dbo`
-12. Set the Dataset property **table** to `watermark`
+12. Set the Dataset property **table** to `Watermark`
 13. Set the **Use query** property to **Query**
 14. Click inside the **Query** text and copy and paste the code snippet
 ```sql
@@ -106,7 +106,7 @@ SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 ```sql
 SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 ```
-12. Click **Preview data** to confirm the query is valid
+9. Click **Preview data** to confirm the query is valid
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
@@ -125,7 +125,8 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 ```sql
 SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
 ```
-10. Click **Preview data** to confirm the query is valid
+10. Click **Debug**
+11. Once the pipeline has finished running, under **Output**, hover your mouse over the `getChangeCount` activity and click the **Output** icon. You should see a `changecount` property with a value of `4`.
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
