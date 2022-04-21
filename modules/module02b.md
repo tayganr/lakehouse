@@ -79,6 +79,15 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
+## 4. Data flow (Filter - activeCustomers)
+
+1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
+2. Rename the **Output stream name** to `activeCustomers`
+3. Set the **Filter on** property to `IsActive == 1`
+4. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
 ## :tada: Summary
 
 ABC.
