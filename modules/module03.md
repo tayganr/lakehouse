@@ -83,7 +83,7 @@ FROM
     OPENROWSET(
         BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/customers',
         FORMAT = 'DELTA'
-    );
+    ) AS [result];
 ```
 2. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 ```sql
@@ -93,7 +93,7 @@ FROM
     OPENROWSET(
         BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/orders',
         FORMAT = 'DELTA'
-    );
+    ) AS [result];
 ```
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
