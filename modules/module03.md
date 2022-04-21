@@ -108,11 +108,11 @@ FROM
 6. Click **Run**
 7. Replace the existing SQL by copying and pasting the below code snippet, and click **Run**
 ```sql
- SELECT
+SELECT
     orders.CustomerKey,
     customers.CustomerAddress,
     SUM(orders.Quantity) AS Quantity
- FROM
+FROM
     wwi.orders AS orders,
     wwi.customers AS customers
 WHERE
