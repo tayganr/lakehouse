@@ -122,8 +122,63 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
+## 8. Data flow (Alter row - markAsUpsert)
+
+1. Click the **[+]** icon to the right of `checkForEarlyFacts`, under **Row modifier** select **Alter Row**
+2. Rename the **Output stream name** to `markAsUpsert`
+3. Under **Alter row conditions**, set the condition to **Upsert If** and the expression as `true()`
+4. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
+## 9. Data flow (Sink - sinkOrders)
+
+1. Click the **[+]** icon to the right of `markAsUpsert`, under **Destination** select **Sink**
+2. Rename the **Output stream name** to `sinkOrders`
+3. Set the **Sink type** to **Inline**
+4. Set the **Inline dataset type** to **Delta**
+5. Set the **Linked Service** to the Synapse Workspace Default Storage.
+6. Switch to the **Settings** tab
+7. Click the **Browse** icon
+8. Navigate to `03-curated > wwi > orders` and click **OK**
+9. Set the **Compression type** to `snappy`
+10. Set the **Update method** to **Allow insert** and **Allow upsert**
+11. Set the **Key columns** to `OrderID`
+12. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
+## 10. Pipeline (pipelineFactIncrementalLoad)
+
+1. Navigate back to the pipeline `O2 - pipelineFactIncrementalLoad`
+2. Click to focus on the **Data flow** activity and switch to the **Parameters** tab
+3. Under **Data flow parameters**, click inside the fileName **Value** and select **Pipeline expression**
+4. Copy and paste the code snippet
+```
+@pipeline().parameters.fileName
+```
+5. Click **OK**
+6. Click **Publish all**
+7. Click **Publish**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
+## 24. Debug Pipeline
+
+1. Click **Debug**
+2. Set the **fileName** parameter value to the name of an existing CSV file
+3. Click **OK**
+3. Under **Integration**, click **Pipeline runs**
+4. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/orders`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
+5. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
+6. Change the **FORMAT** to **DELTA**
+7. Click **Run**
+    Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
 ## :tada: Summary
 
-ABC.
+You have successfully setup a pipeline to incrementally load the fact table (Orders) following using the Delta Lake format.
 
 [Continue >](../modules/module03.md)
