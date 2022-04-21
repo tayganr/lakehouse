@@ -88,6 +88,40 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
+## 5. Data flow (Lookup - addHashDim)
+
+1. Click the **[+]** icon to the right of `rawOrders`, under **Multiple inputs/outputs** select **Lookup**
+2. Rename the **Output stream name** to `lookupDimCustomer`
+3. Set the **Lookup stream** to `activeCustomers`
+4. Set the **Lookup conditions** to `CustomerID` on both the Left and Right
+5. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
+## 6. Data flow (Select - selectFactColumns)
+
+1. Click the **[+]** icon to the right of `lookupDimCustomer`, under **Schema modifier** select **Select**
+2. Rename the **Output stream name** to `selectFactColumns`
+3. Under the Input columns, delete all columns except `OrderID`, `SurrogateKey`, and `Quantity`
+4. On the left hand side of the `SurrogateKey`, click and drag the column to the second position
+5. Rename `SurrogateKey` to `CustomerKey`
+6. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
+## 7. Data flow (Derived column - checkForEarlyFacts)
+
+1. Click the **[+]** icon to the right of `selectFactColumns`, under **Schema modifier** select **Derived Column**
+2. Rename the **Output stream name** to `checkForEarlyFacts`
+3. Under **Columns**, click the **Column** drop-down menu and select `CustomerKey`
+4. Copy and paste the code snippet into the **Expression**
+```
+iif(isNull(CustomerKey),toLong(0),CustomerKey)
+```
+5. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
 ## :tada: Summary
 
 ABC.
