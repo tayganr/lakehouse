@@ -18,15 +18,18 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 * Create a schema.
 * Create views on top of Delta Lake tables.
 
-## 1. Create a Dataabase
+## 1. Create a Database
 
-1. Navigate to the **SQL database**
-2. Click **Query editor**
-3. Click **Continue us <your_alias>@<your_domain>.com**
+1. Open Azure Synapse Analytics workspace
+2. Navigate to the **Develop** hub
+3. Click the **[+]** icon to add a new resource and select **SQL script**
 4. Copy and paste the code snippets below and click **Run**
 ```sql
 CREATE DATABASE ldw COLLATE Latin1_General_100_BIN2_UTF8;
 ```
+5. To the right of the **Use database** drop-down menu, click the **Refresh** icon
+6. Set the **Use database** property to `ldw`
+
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 2. Create a Master Key
