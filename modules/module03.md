@@ -20,60 +20,89 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 
 ## 1. Create a Dataabase
 
-1. ABC
-2. ABC
-3. ABC
-
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+1. Navigate to the **SQL database**
+2. Click **Query editor**
+3. Click **Continue us <your_alias>@<your_domain>.com**
+4. Copy and paste the code snippets below and click **Run**
+```sql
+CREATE DATABASE ldw COLLATE Latin1_General_100_BIN2_UTF8;
+```
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 2. Create a Master Key
 
-1. ABC
-2. ABC
-3. ABC
+1. Copy and paste the code snippets below and click **Run**
+```sql
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
+```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 
 ## 3. Create a Database Scoped Credential
 
-1. ABC
-2. ABC
-3. ABC
+1. Copy and paste the code snippets below and click **Run**
+```sql
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
+WITH IDENTITY = 'Managed Identity';
+```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 4. Create an External Data Source
 
-1. ABC
-2. ABC
-3. ABC
+1. Copy and paste the code snippets below and click **Run**
+```sql
+CREATE EXTERNAL DATA SOURCE wwi WITH (
+    LOCATION = 'https://YOUR_DATA_LAKE_ACCOUNT.blob.core.windows.net/03-curated/wwi/',
+    CREDENTIAL = WorkspaceIdentity
+);
+```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 5. Create a Schema
 
-1. ABC
-2. ABC
-3. ABC
+1. Copy and paste the code snippets below and click **Run**
+```sql
+create schema wwi;
+```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 6. Create Views
 
-1. ABC
-2. ABC
-3. ABC
+1. Copy and paste the code snippets below and click **Run**
+```sql
+CREATE VIEW wwi.customers
+AS SELECT *
+FROM
+    OPENROWSET(
+        BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/customers',
+        FORMAT = 'DELTA'
+    );
+```
+2. Copy and paste the code snippets below and click **Run**
+```sql
+CREATE VIEW wwi.orders
+AS SELECT *
+FROM
+    OPENROWSET(
+        BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/orders',
+        FORMAT = 'DELTA'
+    );
+```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 7. Explore your data
 
-1. ABC
-2. ABC
-3. ABC
+1. Copy and paste the code snippets below and click **Run**
+```sql
+SELECT * FROM ...
+```
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## :tada: Summary
 
