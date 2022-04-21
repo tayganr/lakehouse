@@ -100,9 +100,28 @@ FROM
 
 ## 7. Explore your data
 
-1. Copy and paste the code snippet below and click **Run**
+1. Navigate to the **Data** hub
+2. Click the web browser **Refresh** button to refresh the entire page
+3. Under the **Workspace** tab, you should see a new **SQL database** called `ldw`
+4. Expand the `ldw` database, navigate to **Views**
+5. Right-click on `wwwi.customers` and select **New SQL script > Select TOP 100 rows**
+6. Click **Run**
+7. Replace the existing SQL by copying and pasting the below code snippet, and click **Run**
 ```sql
-SELECT * FROM ...
+ SELECT
+    orders.CustomerKey,
+    customers.CustomerAddress,
+    SUM(orders.Quantity) AS Quantity
+ FROM
+    wwi.orders AS orders,
+    wwi.customers AS customers
+WHERE
+    orders.CustomerKey = customers.SurrogateKey
+GROUP BY
+    orders.CustomerKey,
+    customers.CustomerAddress
+ORDER BY
+    orders.CustomerKey ASC
 ```
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
