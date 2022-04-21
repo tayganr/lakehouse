@@ -1,4 +1,4 @@
-# Module 04 - Data Visualisation with Power BI
+# Module 04 - Data Visualization with Power BI
 
 [< Previous Module](../modules/module03.md) - **[Home](../README.md)**
 
@@ -41,7 +41,7 @@ In this module, we will develop and publish a Power BI report based on data from
 5. Within the **Visualizations** pane, switch to the **Format visual** sub-pane, click the **General** tab, and enable **Title**
 6. Set the **Title** to `Orders`
 
-<div align="right"><a href="#module-04---data-visualisation-with-power-bi">↥ back to top</a></div>
+<div align="right"><a href="#module-04---data-visualization-with-power-bi">↥ back to top</a></div>
 
 ## 3. Data Visualization #2: Chart
 
@@ -52,7 +52,7 @@ In this module, we will develop and publish a Power BI report based on data from
 5. Set **Data labels** to `ON`
 6. Expand the **X-axis**, turn the **Title** `Off`, then turn the **X-axis** `Off`
 
-<div align="right"><a href="#module-04---data-visualisation-with-power-bi">↥ back to top</a></div>
+<div align="right"><a href="#module-04---data-visualization-with-power-bi">↥ back to top</a></div>
 
 ## 4. Save and Publish
 
@@ -62,7 +62,7 @@ In this module, we will develop and publish a Power BI report based on data from
 4. Select `My workspace` and click **Select**
 5. Once published, click the hyperlink to open the report in Power BI
 
-<div align="right"><a href="#module-04---data-visualisation-with-power-bi">↥ back to top</a></div>
+<div align="right"><a href="#module-04---data-visualization-with-power-bi">↥ back to top</a></div>
 
 ## :tada: Summary
 
