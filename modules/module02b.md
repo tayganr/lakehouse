@@ -1,6 +1,6 @@
 # Module 02B - Incremental Load Fact
 
-[< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
+[< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module02c.md)
 
 ## :thinking: Prerequisites
 
@@ -182,4 +182,4 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 
 You have successfully setup a pipeline to incrementally load the fact table (Orders) using the Delta Lake format.
 
-[Continue >](../modules/module03.md)
+[Continue >](../modules/module02c.md)
