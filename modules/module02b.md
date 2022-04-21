@@ -20,7 +20,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 ## 1. Pipeline (pipelineFactIncrementalLoad)
 
 1. Navigate to the **Integrate** hub
-2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the Customers folder and select **New pipeline**
+2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the `Orders` folder and select **New pipeline**
 3. Rename the pipeline to `O2 - pipelineFactIncrementalLoad`
 4. Under **Parameters**, click **New**
 5. Set the name of the parameter to `fileName`
@@ -29,15 +29,37 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 8. Switch to the **Settings** tab
 9. Next to the **Data flow** property, click **New**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
-## 2. Heading 2
+## 2. Data flow (Source - rawOrders)
 
-1. ABC
-2. ABC
-3. ABC
+1. Enable **Data flow debug**
+2. Rename the data flow `dataFlowFactIncrementalLoad`
+3. Under **Parameters**, click **New**
+4. Rename **parameter1** to `fileName`
+5. Click **Add Source**
+6. Rename the **Output stream name** to `rawOrders`
+7. Set the **Source type** to **Inline**
+8. Set the **Inline dataset type** to **DelimitedText**
+9. Set the **Linked Service** to the Synapse Workspace Default Storage.
+10. Switch to the **Source options** tab
+11. Click the **Browse** icon
+12. Navigate to `01-raw > wwi > orders` and click **OK**
+13. Click inside the **File name** text input and click **Add dynamic content**
+14. Under **Expression elements** click **Parameters**
+15. Click **fileName**
+16. Click **Save and finish**
+17. Enable **First row as header**
+18. Switch to the **Projection** tab
+19. Click **Import schema**
+20. Click **Import**
+21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > orders`.
+    * Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
+    * Note: The string must be wrapped in single quotes.
+22. Click **Save**
+23. Switch to the **Data preview** tab and click **Refresh**
 
-<div align="right"><a href="#module-01---tbd">↥ back to top</a></div>
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## :tada: Summary
 
