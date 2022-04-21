@@ -68,7 +68,7 @@ CREATE EXTERNAL DATA SOURCE wwi WITH (
 
 1. Copy and paste the code snippet below and click **Run**
 ```sql
-create schema wwi;
+CREATE SCHEMA wwi;
 ```
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
