@@ -22,6 +22,7 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 2. Orders
     * [2A. Incremental Copy to Raw (using High Watermark)](./modules/module02a.md)
     * [2B. Fact Table - Incremental Load](./modules/module02b.md)
+    * [2C. Automation using Triggers](./modules/module02c.md)
 3. [Logical Data Warehouse](./modules/module03.md)
 4. [Data Visualisation](./modules/module04.md)
 
