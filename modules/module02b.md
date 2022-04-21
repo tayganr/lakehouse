@@ -61,6 +61,24 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
+## 3. Data flow (Source - dimCustomer)
+
+1. Click **Add Source**
+2. Rename the **Output stream name** to `dimCustomer`
+3. Set the **Source type** to **Inline**
+4. Set the **Inline dataset type** to **Delta**
+5. Set the **Linked Service** to the Synapse Workspace Default Storage.
+6. Switch to the **Source options** tab
+7. Click the **Browse** icon
+8. Navigate to `03-curated > wwi > customers` and click **OK**
+9. Set the **Compression type** to **snappy**
+10. Switch to the **Projection** tab
+11. Click **Import schema**
+12. Click **Import**
+13. Switch to the **Data preview** tab and click **Refresh**
+
+<div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
+
 ## :tada: Summary
 
 ABC.
