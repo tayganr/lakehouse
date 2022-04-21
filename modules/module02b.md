@@ -180,6 +180,6 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 
 ## :tada: Summary
 
-You have successfully setup a pipeline to incrementally load the fact table (Orders) following using the Delta Lake format.
+You have successfully setup a pipeline to incrementally load the fact table (Orders) using the Delta Lake format.
 
 [Continue >](../modules/module03.md)
