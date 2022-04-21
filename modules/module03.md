@@ -23,7 +23,7 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Develop** hub
 3. Click the **[+]** icon to add a new resource and select **SQL script**
-4. Copy and paste the code snippets below and click **Run**
+4. Copy and paste the code snippet below and click **Run**
 ```sql
 CREATE DATABASE ldw COLLATE Latin1_General_100_BIN2_UTF8;
 ```
@@ -34,7 +34,7 @@ CREATE DATABASE ldw COLLATE Latin1_General_100_BIN2_UTF8;
 
 ## 2. Create a Master Key
 
-1. Copy and paste the code snippets below and click **Run**
+1. Copy and paste the code snippet below and click **Run**
 ```sql
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
 ```
@@ -44,7 +44,7 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
 
 ## 3. Create a Database Scoped Credential
 
-1. Copy and paste the code snippets below and click **Run**
+1. Copy and paste the code snippet below and click **Run**
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
 WITH IDENTITY = 'Managed Identity';
@@ -54,7 +54,7 @@ WITH IDENTITY = 'Managed Identity';
 
 ## 4. Create an External Data Source
 
-1. Copy and paste the code snippets below and click **Run**
+1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 ```sql
 CREATE EXTERNAL DATA SOURCE wwi WITH (
     LOCATION = 'https://YOUR_DATA_LAKE_ACCOUNT.blob.core.windows.net/03-curated/wwi/',
@@ -66,7 +66,7 @@ CREATE EXTERNAL DATA SOURCE wwi WITH (
 
 ## 5. Create a Schema
 
-1. Copy and paste the code snippets below and click **Run**
+1. Copy and paste the code snippet below and click **Run**
 ```sql
 create schema wwi;
 ```
@@ -75,7 +75,7 @@ create schema wwi;
 
 ## 6. Create Views
 
-1. Copy and paste the code snippets below and click **Run**
+1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 ```sql
 CREATE VIEW wwi.customers
 AS SELECT *
@@ -85,7 +85,7 @@ FROM
         FORMAT = 'DELTA'
     );
 ```
-2. Copy and paste the code snippets below and click **Run**
+2. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 ```sql
 CREATE VIEW wwi.orders
 AS SELECT *
@@ -100,7 +100,7 @@ FROM
 
 ## 7. Explore your data
 
-1. Copy and paste the code snippets below and click **Run**
+1. Copy and paste the code snippet below and click **Run**
 ```sql
 SELECT * FROM ...
 ```
