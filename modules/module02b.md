@@ -140,11 +140,12 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 5. Set the **Linked Service** to the Synapse Workspace Default Storage.
 6. Switch to the **Settings** tab
 7. Click the **Browse** icon
-8. Navigate to `03-curated > wwi > orders` and click **OK**
-9. Set the **Compression type** to `snappy`
-10. Set the **Update method** to **Allow insert** and **Allow upsert**
-11. Set the **Key columns** to `OrderID`
-12. Switch to the **Data preview** tab and click **Refresh**
+8. Navigate to `03-curated > wwi` and click **OK**
+9. Within the **Folder path** property, replace `wwi` with `wwi/orders`
+10. Set the **Compression type** to `snappy`
+11. Set the **Update method** to **Allow insert** and **Allow upsert**
+12. Set the **Key columns** to `OrderID`
+13. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
