@@ -35,7 +35,7 @@ In this module, we will automate ingestion and loading of Order data using trigg
 9. Click **Publish all**
 10. Click **Publish**
 
-<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+<div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 2. Trigger (Storage Event)
 
@@ -64,7 +64,7 @@ In this module, we will automate ingestion and loading of Order data using trigg
 20. Click **Publish all**
 21. Click **Publish**
 
-<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+<div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 3. Load Additional Data into dbo.Orders
 
@@ -82,7 +82,7 @@ VALUES
 SELECT * FROM [dbo].[Orders];
 ```
 
-<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+<div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 4. Monitor
 
@@ -94,7 +94,7 @@ SELECT * FROM [dbo].[Orders];
 6. Once successful, change the **Pipeline name** filter to `O2 - pipelineFactIncrementalLoad`
 7. Periodically click **Refresh** until you observe a successful instance
 
-<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+<div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 5. Query Delta Lake
 
@@ -105,7 +105,7 @@ SELECT * FROM [dbo].[Orders];
 5. Change the **FORMAT** to **DELTA**
 6. Click **Run**
 
-<div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
+<div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## :tada: Summary
 
