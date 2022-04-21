@@ -164,7 +164,7 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
-## 24. Debug Pipeline
+## 11. Debug Pipeline
 
 1. Click **Debug**
 2. Set the **fileName** parameter value to the name of an existing CSV file
