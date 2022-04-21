@@ -5,7 +5,6 @@
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
-- [x] Post deployment steps complete
 - [x] Module 1A (Linked Service, Integration Datasets)
 - [x] Module 2A complete
 - [x] Module 2B complete
