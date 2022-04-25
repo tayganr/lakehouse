@@ -72,6 +72,8 @@ Data flows provide a way to transform data at scale without any coding required.
 
 ## 3. Data flow (Surrogate Key)
 
+The Surrogate Key transformation is used to add an incrementing key value to each row of data. This is useful when designing dimension tables in a star schema analytical data model. In a star schema, each member in your dimension tables requires a unique key (e.g. CustomerSurrogateKey) that is a non-business key (e.g. CustomerID). In this example, the business key (CustomerID) may repeat in our dimension table due to updates being made to a customer oer time. The surrogate key enables us to uniquely identify records within our dimension table while persisting changes.
+
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Surrogate Key**
 2. Rename the **Output stream name** to `surrogateKey`
 3. Set the **Key column** to `SurrogateKey`
