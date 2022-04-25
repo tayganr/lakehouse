@@ -122,7 +122,7 @@ The Aggregate transformation defines aggregations of columns in your data stream
 
 ## 7. Data flow (Exists - existingRecords)
 
-The Exists transformation is a row filtering transformation that checks whether your data exists in another source or stream. The output includes all rows in the left stream that exist or don't exist in the right stream. In this step, we are going to return all rows from the left stream (rawCustomer) where the `CustomerID` exists in the right stream (activeCustomers). Note: At this stage, we know returned values exist, but will need to perform a subsequent step to check if any of the attributes have actually changed.
+The Exists transformation is a row filtering transformation that checks whether your data exists in another source or stream. The output includes all rows in the left stream that exist or don't exist in the right stream. In this step, we are going to return all rows from the left stream (rawCustomer) where the `CustomerID` exists in the right stream (activeCustomers).
 
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **Exists**
 2. Rename the **Output stream name** to `existingRecords`
