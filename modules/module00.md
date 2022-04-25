@@ -19,6 +19,8 @@ In order to follow along with the lab exercises, we need to provision a set of r
 
 ## 1. Deploy Template
 
+The following steps will deploy Azure resources that will be used as part of the workshop (e.g. Synapse workspace, ADLS Gen2 Storage Account, SQL database).
+
 1. Right-click or `Ctrl + click` the button below to open the Azure Portal in a new window.
 
     [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftayganr%2Flakehouse%2Fmain%2Ftemplate%2Fazuredeploy.json)
