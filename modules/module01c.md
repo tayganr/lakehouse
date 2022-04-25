@@ -98,6 +98,8 @@ The Filter transformation allows row filtering based upon a condition. In this s
 
 ## 5. Data flow (Derived column - addHashDim)
 
+The Derived Column transformation allows us to generate new columns and/or modify existing columns. In this step, we are adding a new column called `Hash`. This column is calculated by calling the `md5` function against the columns that equally exist in the source stream (i.e. excludes dimension columns such as `CustomerSK`, `IsActive`, `ValidFrom`, and `ValidTo`). The `md5` function returns a 32-character hex string which can be used to calculate a fingerprint for a row. This will later be used to compare against a similarly calculated hash in the new data stream.
+
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Schema modifier** select **Derived Column**
 2. Rename the **Output stream name** to `addHashDim`
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(CustomerID,CustomerAddress)`
