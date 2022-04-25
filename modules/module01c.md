@@ -109,7 +109,7 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 ## 6. Data flow (Aggregate - maxSurrogateKey)
 
-The Aggregate transformation defines aggregations of columns in your data streams. In this step, we are going to use the Aggregate transformation to calculate the max `CustomerSK`
+The Aggregate transformation defines aggregations of columns in your data streams. In this step, we are going to use the Aggregate transformation to calculate the max `CustomerSK` value. This will be referenced by our data flow for INSERT operations so that the Customer surrogate key can resume incrementing from the last max value.
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Multiple inputs/outputs** select **New branch**
 2. Click the **[+]** icon to the right of `activeCustomers` (new branch), under **Schema modifier** select **Aggregate**
