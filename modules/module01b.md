@@ -83,6 +83,8 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 ## 4. Data flow (Derived Column)
 
+The Derived Column transformation allows us to generate new columns and/or modify existing columns. In this example, we are going to add three new columns (`IsActive`, `ValidFrom`, and `ValidTo`) in addition to the columns that are arriving from the previous transformation (`CustomerSK`, `CustomerID`, and `CustomerAddress`). This additional columns will be used in future incremental loads that will adhere to the slowly changing dimension type 2 pattern where we are able to persist historical changes and quickly isolate the subset of rows which represent the currently active (i.e. IsActive == 1).
+
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Derived Column**
 2. Rename the **Output stream name** to `derivedColumnsSCD`
 3. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `1`
@@ -96,6 +98,8 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 ## 5. Data flow (Select)
 
+The Select transformation can be used to rename, drop, or reorder columns. In this example, we are going to reorder our columns so that the newly introduced `CustomerSK` is in the first position.
+
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `reorderColumns`
 3. Under **Input columns**, click and drag the **CustomerSK** column to be in the first position
@@ -104,6 +108,8 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 <div align="right"><a href="#module-01b---dimension-table-initial-load">↥ back to top</a></div>
 
 ## 6. Data flow (Sink)
+
+The final step in a data flow is to write the net effect of the transformations into a destination store by using the Sink transformation. In this example, we are going to write the net result of our data transformations to the curated layer within the data lake using the Delta Lake file format. Delta Lake is an open-source file format that enables building a lakehouse architecture by bringing features such as ACID (atomicity, consistency, isolation, and durability) compliant transactions.
 
 1. Click the **[+]** icon to add a new step, under **Destination** select **Sink**
 2. Rename the **Output stream name** to `curatedCustomer`
@@ -122,6 +128,8 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 ## 7. Pipeline (initialLoad)
 
+To finalize our pipeline, we must update the parameters of the data flow activity so that is is able to retrieve a file name from the previous step in the pipeline.
+
 1. Navigate back to the **pipeline**, click to focus on the **Data flow** step
 2. Switch to the **Parameters** tab
 3. Under **Data flow parameters**, click the **value** field for the **fileName** parameter, and select **Pipeline expression**
@@ -139,6 +147,8 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 ## 8. Query Delta Lake
 
+The serverless SQL pool in Azure Synapse Analytics is an example compute engine that has the ability to read data stored in the Delta Lake format. Further into the workshop, we will leverage this capability to serve curated data to reporting tools such as Power BI.
+
 1. Navigate to the **Data** hub
 2. Browse the data lake folder structure to `03-curated > wwi > customers`
 3. Right-click one of the **parquet** files, select **New SQL Script > Select TOP 100 rows**
@@ -150,6 +160,6 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 ## :tada: Summary
 
-You have successfully setup a pipeline to initialise the dimension table (Customer) in the Delta Lake format.
+You have successfully setup a pipeline to initialize the dimension table (Customers) in the Delta Lake format.
 
 [Continue >](../modules/module01c.md)
