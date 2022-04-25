@@ -18,6 +18,8 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## 1. Pipeline (pipelineDimIncrementalLoad)
 
+In this module, we will be creating a pipeline to incrementally load the Customers dimension table. The transformation logic will be encapsulated within a data flow and will follow an SCD Type 2 pattern, this is where a new record is added to the dimension table to cater for data changes.
+
 1. Navigate to the **Integrate** hub
 2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the `Customers` folder and select **New pipeline**
 3. Rename the pipeline to `C3 - pipelineDimIncrementalLoad`
@@ -32,11 +34,13 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## 2. Data flow (Source - rawCustomer)
 
+In this step, we start with a source transformation that will reference a delimited text file (CSV) in the raw layer of our data lake. The data flow will include a file name parameter, this will allow the pipeline to dynamically pass a file name at runtime.
+
 1. Enable **Data flow debug**
 2. Rename the data flow `dataFlowDimIncrementalLoad`
 3. Under **Parameters**, click **New**
 4. Rename **parameter1** to `fileName`
-5. Click **Add Source**
+5. Within the data flow canvas, click **Add Source** and select **Add source**
 6. Rename the **Output stream name** to `rawCustomer`
 7. Set the **Source type** to **Inline**
 8. Set the **Inline dataset type** to **DelimitedText**
