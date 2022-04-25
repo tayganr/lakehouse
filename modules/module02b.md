@@ -101,9 +101,9 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 1. Click the **[+]** icon to the right of `lookupDimCustomer`, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `selectFactColumns`
-3. Under the Input columns, delete all columns except `OrderID`, `SurrogateKey`, and `Quantity`
-4. On the left hand side of the `SurrogateKey`, click and drag the column to the second position
-5. Rename `SurrogateKey` to `CustomerKey`
+3. Under the Input columns, delete all columns except `OrderID`, `CustomerSK`, and `Quantity`
+4. On the left hand side of the `CustomerSK`, click and drag the column to the second position
+5. Rename `CustomerSK` to `CustomerKey`
 6. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>

@@ -103,7 +103,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 2. Click the **[+]** icon to the right of `activeCustomers` (new branch), under **Schema modifier** select **Aggregate**
 3. Rename the **Output stream name** to `maxSurrogateKey`
 4. Switch to **Aggregates**
-5. Set the **Column** to `MaxCustomerKey` and the **Expression** to `max(SurrogateKey)`
+5. Set the **Column** to `MaxCustomerKey` and the **Expression** to `max(CustomerSK)`
 6. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
@@ -193,7 +193,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 1. Click the **[+]** icon to the right of `joinMaxSurrogateKey`, under **Schema modifier** select **Derived Column**
 2. Rename the **Output stream name** to `scdColumns`
-3. Under **Columns**, set the first **Column** to `SurrogateKey` and the **Expression** to `TempKey + MaxCustomerKey`
+3. Under **Columns**, set the first **Column** to `CustomerSK` and the **Expression** to `TempKey + MaxCustomerKey`
 4. Click **Add** then select **Add column**
 5. Under **Columns**, set the second **Column** to `IsActive` and the **Expression** to `1`
 6. Click **Add** then select **Add column**
@@ -209,7 +209,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 1. Click the **[+]** icon to the right of `scdColumns`, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `dropTempColumns`
 3. Under the Input columns, delete the `Hash`, `TempKey`, and `MaxCustomerKey` columns
-4. On the left hand side of the `SurrogateKey`, click and drag the column to the first position
+4. On the left hand side of the `CustomerSK`, click and drag the column to the first position
 5. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
@@ -275,7 +275,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 8. Navigate to `03-curated > wwi > customers` and click **OK**
 9. Set the **Compression type** to `snappy`
 10. Set the **Update method** to **Allow insert** and **Allow upsert**
-11. Set the **Key columns** to `SurrogateKey`
+11. Set the **Key columns** to `CustomerSK`
 12. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>

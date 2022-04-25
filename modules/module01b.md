@@ -76,7 +76,7 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Surrogate Key**
 2. Rename the **Output stream name** to `surrogateKey`
-3. Set the **Key column** to `SurrogateKey`
+3. Set the **Key column** to `CustomerSK`
 4. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01b---dimension-table-initial-load">↥ back to top</a></div>
@@ -98,7 +98,7 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `reorderColumns`
-3. Under **Input columns**, click and drag the **SurrogateKey** column to be in the first position
+3. Under **Input columns**, click and drag the **CustomerSK** column to be in the first position
 4. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01b---dimension-table-initial-load">↥ back to top</a></div>

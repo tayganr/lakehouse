@@ -116,7 +116,7 @@ FROM
     wwi.orders AS orders,
     wwi.customers AS customers
 WHERE
-    orders.CustomerKey = customers.SurrogateKey
+    orders.CustomerKey = customers.CustomerSK
 GROUP BY
     orders.CustomerKey,
     customers.CustomerAddress

@@ -29,7 +29,7 @@ In this module, we will develop and publish a Power BI report based on data from
 4. Open the [Azure Portal](https://portal.azure.com), navigate to the **Synapse Workspace** resource, and copy the **Serverless SQL endpoint**
 5. Return to Power BI Desktop, paste the Serverless SQL endpoint within the **Server** property, set **Data connectivity mode** to **Import**, and click **OK**
 6. Expand the `ldw` database, select `wwi.customers` and `wwi.orders`, and click **Load**
-7. Switch to the **Model** view and create a relationship between the `SurrogateKey` in `wwi.Customers` and the `CustomerKey` in `wwi.Orders`
+7. Switch to the **Model** view and create a relationship between the `CustomerSK` in `wwi.Customers` and the `CustomerKey` in `wwi.Orders`
 8. Revert back to the **Report** view
 
 ## 2. Data Visualization #1: Table
