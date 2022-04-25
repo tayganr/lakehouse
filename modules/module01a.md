@@ -183,7 +183,7 @@ ELSE SELECT 0 changecount')
 
 ## 6. Pipeline (If Condition, Copy data)
 
-The next activity we will be adding to our pipeline is an If Condition. The If Condition activity provides comparable functionality to an if statement found in programming languages. It can execute a set of activities if a condition evaluates to `true`, and another set of activities if the condition evaluates to `false`. In this example, we are going to only proceed with the Copy activity if the number of changes detected is greater than zero.
+In this step, we will be adding an If Condition activity to our pipeline. The If Condition activity provides comparable functionality to an if statement found in programming languages. It can execute a set of activities if a condition evaluates to `true`, and another set of activities if the condition evaluates to `false`. In this example, we are going to only proceed with the Copy activity if the number of changes detected is greater than zero.
 
 1. Within Activities, search for `If`, and drag the **If Condition activity** onto the canvas
 2. Click and drag on the green button from the **Lookup** to the **If Condition** to establish a connection
