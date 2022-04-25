@@ -40,6 +40,8 @@ In this example, we will be creating a pipeline that will reference one of the d
 
 ## 2. Data flow (Source - rawCustomer)
 
+Data flows provide a way to transform data at scale without any coding required. You can design a data transformation job in the data flow designer by constructing a series of transformations. In this step, we are going to start with a source that will reference a delimited text file (CSV) in the raw layer of our data lake.
+
 1. Enable **Data flow debug**
 2. Rename the data flow `dataFlowDimInitialLoad` and click **OK**
 3. Under **Parameters**, click **New**
