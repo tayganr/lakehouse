@@ -16,6 +16,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 * Create a Pipeline to copy data changes to the data lake
 
 ## 1. Source Environment (dbo.Customers)
+Initialize the source environment by creating a table, enabling CDC on the table, and populating the table with data.
+
 1. Navigate to the **SQL database**
 2. Click **Query editor**
 3. Click **Continue us <your_alias>@<your_domain>.com**
