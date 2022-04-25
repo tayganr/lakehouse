@@ -105,7 +105,7 @@ An integration dataset is simply a named reference to data that can be used in a
 
 ## 4. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
 
-In this example, we are creating a reference to files within our Azure Data Lake Gen2 Storage Account and leveraging parameters to be able to dynamically specify the folder path and file name at runtime.
+In this example, we are creating a reference to delimited text files (i.e. CSV) within our Azure Data Lake Gen2 Storage Account and leveraging parameters to be able to dynamically specify the folder path and file name at runtime.
 
 1. Navigate to the **Data** hub
 2. Switch to the **Linked** tab
@@ -137,6 +137,8 @@ In this example, we are creating a reference to files within our Azure Data Lake
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 5. Pipeline (Lookup)
+
+A pipeline is a data-driven workflow, logically grouping activities to perform a task (e.g. ingest and load). Once our pipeline is created, we will add our first activity - Lookup. The Lookup activity can retrieve a dataset from any of the data sources supported by Synapse pipelines. In this example, we will be executing SQL against our Azure SQL Database to determine the number of changes that have occurred to the target table for a given time period.
 
 1. Navigate to the **Integrate** hub
 2. Click the **[+]** icon to add a new resource and click **Pipeline**
