@@ -16,6 +16,7 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 * Create a Pipeline to copy data changes to the data lake
 
 ## 1. Source Environment (dbo.Customers)
+
 Initialize the source environment by creating a table, enabling CDC on the table, and populating the table with data.
 
 1. Navigate to the **SQL database**
@@ -50,6 +51,8 @@ VALUES
 
 ## 2. Linked Service (Azure SQL Database)
 
+Creating a linked service provides Azure Synapse Analytics the necessary information to establish connectivity to an external resource, in this case, an Azure SQL Database.
+
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Manage** hub
 3. Click **Linked services**
@@ -72,6 +75,8 @@ sqlPassword!
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 3. Integration Dataset (Azure SQL Database - Table)
+
+An integration dataset is simply a named reference to data that can be used in an activity as an input or output. In this example, we are creating a reference to tables within our Azure SQL Database and leveraging parameters to be able to dynamically specify the schema and table name at runtime.
 
 1. Navigate to the **Data** hub
 2. Switch to the **Linked** tab
@@ -99,6 +104,8 @@ sqlPassword!
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 4. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)
+
+In this example, we are creating a reference to files within our Azure Data Lake Gen2 Storage Account and leveraging parameters to be able to dynamically specify the folder path and file name at runtime.
 
 1. Navigate to the **Data** hub
 2. Switch to the **Linked** tab
