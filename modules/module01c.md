@@ -67,7 +67,9 @@ In this step, we start with a source transformation that will reference a delimi
 
 ## 3. Data flow (Source - dimCustomer)
 
-1. Click **Add Source**
+In this step, we will add a second source transformation that will reference the existing Customer dimesnion table (Delta Lake) in the curated layer of our data lake.
+
+1. Within the data flow canvas, click **Add Source** and select **Add source**
 2. Rename the **Output stream name** to `dimCustomer`
 3. Set the **Source type** to **Inline**
 4. Set the **Inline dataset type** to **Delta**
