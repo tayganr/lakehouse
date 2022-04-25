@@ -235,6 +235,8 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 
 ## 7. Load Additional Data into dbo.Customers
 
+Before we can test that we our pipeline is able to successfully isolate and copy changes from a particular time period, we must perform some changes to our source table (e.g. UPDATE existing rows, INSERT new rows).
+
 1. Navigate to the **SQL database**
 2. Click **Query editor**
 3. Click **Continue us <your_alias>@<your_domain>.com**
