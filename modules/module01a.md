@@ -249,7 +249,7 @@ VALUES
     ('381 Southborough Lane, Bromley, BR2 8BQ');
 SELECT * FROM [dbo].[Customers];
 ```
-5. Copy and paste the code snippet below and click **Run**
+5. Copy and paste the code snippet below and click **Run**. Note: There may be some latency between the changes being executed and the changes being recorded in the related CDC table. You may need to wait a minute or two between steps to get the correct `start_time` and `end_time` values.
 ```sql
 DECLARE @max_lsn binary(10);
 SET @max_lsn = sys.fn_cdc_get_max_lsn();  
@@ -262,6 +262,8 @@ CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 2
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
 ## 8. Rerun Pipeline to Copy Additional Data
+
+Using the `start_time` and `end_time` values from the previous step, we will rerun our pipeline and confirm that the changes have been copied to the Azure Data Lake Gen2 Storage Account.
 
 1. Open Azure Synapse Analytics workspace
 2. Navigate to the **Integration** hub
