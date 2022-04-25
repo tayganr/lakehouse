@@ -43,10 +43,10 @@ In this example, we will be creating a pipeline that will reference one of the d
 Data flows provide a way to transform data at scale without any coding required. You can design a data transformation job in the data flow designer by constructing a series of transformations. In this step, we are going to start with a source that will reference a delimited text file (CSV) in the raw layer of our data lake.
 
 1. Enable **Data flow debug**
-2. Rename the data flow `dataFlowDimInitialLoad` and click **OK**
+2. Rename the data flow `dataFlowDimInitialLoad`
 3. Under **Parameters**, click **New**
 4. Rename **parameter1** to `fileName`
-5. Click **Add Source**
+5. Within the data flow canvas, click **Add Source** and select **Add source**
 6. Rename the **Output stream name** to `rawCustomer`
 7. Set the **Source type** to **Inline**
 8. Set the **Inline dataset type** to **DelimitedText**
