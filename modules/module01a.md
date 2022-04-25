@@ -12,9 +12,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## :dart: Objectives
 
-* Enable Change Data Capture
-* Create a Pipeline
-* Copy data changes to the data lake
+* Enable Change Data Capture on source table(s)
+* Create a Pipeline to copy data changes to the data lake
 
 ## 1. Source Environment (dbo.Customers)
 1. Navigate to the **SQL database**
