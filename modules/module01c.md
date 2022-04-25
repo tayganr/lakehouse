@@ -109,11 +109,13 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 ## 6. Data flow (Aggregate - maxSurrogateKey)
 
+The Aggregate transformation defines aggregations of columns in your data streams. In this step, we are going to use the Aggregate transformation to calculate the max `CustomerSK`
+
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Multiple inputs/outputs** select **New branch**
 2. Click the **[+]** icon to the right of `activeCustomers` (new branch), under **Schema modifier** select **Aggregate**
 3. Rename the **Output stream name** to `maxSurrogateKey`
 4. Switch to **Aggregates**
-5. Set the **Column** to `MaxCustomerKey` and the **Expression** to `max(CustomerSK)`
+5. Set the **Column** to `MaxCustomerSK` and the **Expression** to `max(CustomerSK)`
 6. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
@@ -203,7 +205,7 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 1. Click the **[+]** icon to the right of `joinMaxSurrogateKey`, under **Schema modifier** select **Derived Column**
 2. Rename the **Output stream name** to `scdColumns`
-3. Under **Columns**, set the first **Column** to `CustomerSK` and the **Expression** to `TempKey + MaxCustomerKey`
+3. Under **Columns**, set the first **Column** to `CustomerSK` and the **Expression** to `TempKey + MaxCustomerSK`
 4. Click **Add** then select **Add column**
 5. Under **Columns**, set the second **Column** to `IsActive` and the **Expression** to `1`
 6. Click **Add** then select **Add column**
@@ -218,7 +220,7 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 1. Click the **[+]** icon to the right of `scdColumns`, under **Schema modifier** select **Select**
 2. Rename the **Output stream name** to `dropTempColumns`
-3. Under the Input columns, delete the `Hash`, `TempKey`, and `MaxCustomerKey` columns
+3. Under the Input columns, delete the `Hash`, `TempKey`, and `MaxCustomerSK` columns
 4. On the left hand side of the `CustomerSK`, click and drag the column to the first position
 5. Switch to the **Data preview** tab and click **Refresh**
 
