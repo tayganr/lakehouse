@@ -17,6 +17,8 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 ## 1. Pipeline (initialLoad)
 
+In this example, we will be creating a pipeline that will reference one of the data files in the raw layer to initialize the dimension table. This process will involve populating the dimension table with some data as well as the creation of additional columns needed to facilitate future incremental loads. The pipeline will leverage the Get Metadata activity which can be used to retrieve metadata, in this case, file names within a folder path. This metadata will be used to pass a file name to the subsequent Data flow step where our transformation will occur.
+
 1. Navigate to the **Integrate** hub
 2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the **Customers** folder and select **New pipeline**
 3. Rename the pipeline to `C2 - pipelineDimInitialLoad`
