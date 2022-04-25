@@ -13,7 +13,7 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 ## :dart: Objectives
 
-* Create a pipeline that will perform the initial load.
+* Create a pipeline that will initialize a dimension table in the curated layer of our data lake using the Delta Lake file format
 
 ## 1. Pipeline (initialLoad)
 
