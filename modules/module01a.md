@@ -91,7 +91,7 @@ An integration dataset is simply a named reference to data that can be used in a
 11. Click **New**
 12. Set the Name to `table`
 13. Switch to the **Connection** tab
-14. Click **Edit**
+14. Beneath the **Table** dropdown menu, select the **Edit** checkbox
 15. Click inside the first text input for **Table** and click **Add dynamic content**
 16. Under **Parameters**, click `schema`
 17. Click **OK**
