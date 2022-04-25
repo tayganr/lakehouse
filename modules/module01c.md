@@ -87,6 +87,8 @@ In this step, we will add a second source transformation that will reference the
 
 ## 4. Data flow (Filter - activeCustomers)
 
+The Filter transformation allows row filtering based upon a condition. In this step, we will filter the Customers dimension table to only include rows that are active.
+
 1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
 2. Rename the **Output stream name** to `activeCustomers`
 3. Set the **Filter on** property to `IsActive == 1`
