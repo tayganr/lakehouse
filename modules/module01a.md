@@ -73,24 +73,25 @@ VALUES
 
 Creating a linked service provides Azure Synapse Analytics the necessary information to establish connectivity to an external resource, in this case, an Azure SQL Database.
 
-1. Open Azure Synapse Analytics workspace
-2. Navigate to the **Manage** hub
-3. Click **Linked services**
-4. Click **New**
-5. Search `SQL`, select **Azure SQL Database**, and click **Continue**
-6. Rename the Linked Service to `AzureSqlDatabase`
-7. Select the target Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
-8. Set the **Authentication** type to `SQL authentication`
-9. Copy and paste the **User name**
+1. Navigate to the **Synapse workspace**
+2. Open **Synapse Studio**
+3. Navigate to the **Manage** hub
+4. Click **Linked services**
+5. Click **New**
+6. Search `SQL`, select **Azure SQL Database**, and click **Continue**
+7. Rename the Linked Service to `AzureSqlDatabase`
+8. Select the target Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
+9. Set the **Authentication** type to `SQL authentication`
+10. Copy and paste the **User name**
 ```
 sqladmin
 ```
-10. Copy and paste the **Password**
+11. Copy and paste the **Password**
 ```
 sqlPassword!
 ```
-11. Click **Test connection**
-12. Click **Create**
+12. Click **Test connection**
+13. Click **Create**
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
