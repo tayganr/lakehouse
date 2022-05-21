@@ -7,11 +7,11 @@
 * An [Azure account](https://azure.microsoft.com/en-us/free/) with an active subscription.
 * Owner permissions within a Resource Group to create resources and manage role assignments.
 * The subscription must have the following resource providers registered.
-    * Microsoft.Authorization
-    * Microsoft.EventGrid
-    * Microsoft.Sql
-    * Microsoft.Storage
-    * Microsoft.Synapse
+  * Microsoft.Authorization
+  * Microsoft.EventGrid
+  * Microsoft.Sql
+  * Microsoft.Storage
+  * Microsoft.Synapse
 
 ## :loudspeaker: Introduction
 
@@ -30,6 +30,12 @@ The following steps will deploy Azure resources that will be used as part of the
 3. Once the validation has passed, click **Create**.
 
 4. The deployment should take approximately 5 minutes to complete. Once you see the message **Your deployment is complete**, click **Go to resource group**.
+
+    Without border.
+    ![Go to resource group](../images/module00/001.png)
+
+    With border.
+    <kbd><img src="../images/module00/001.png"></kbd>
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
