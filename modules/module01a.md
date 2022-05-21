@@ -20,16 +20,30 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 Initialize the source environment by creating a table, enabling CDC on the table, and populating the table with data.
 
 1. Navigate to the **SQL database**
+
+    ![ALT](../images/module01a/001.png)
+
 2. Click **Query editor**
+
+    ![ALT](../images/module01a/002.png)
+
 3. Click **Continue us <your_alias>@<your_domain>.com**
+
+    ![ALT](../images/module01a/003.png)
+
 4. To create the source table, copy and paste the code snippet below and click **Run**
+
 ```sql
 CREATE TABLE Customers (
     CustomerID int IDENTITY(1,1) PRIMARY KEY,
     CustomerAddress varchar(255) NOT NULL
 );
 ```
+
+![ALT](../images/module01a/004.png)
+
 5. To enable change data capture on the source table, copy and paste the code snippet below and click **Run**
+
 ```sql
 EXEC sys.sp_cdc_enable_db;
 EXEC sys.sp_cdc_enable_table  
@@ -38,7 +52,11 @@ EXEC sys.sp_cdc_enable_table
     @role_name     = NULL,
     @supports_net_changes = 1;
 ```
+
+![ALT](../images/module01a/005.png)
+
 6. To load the source table with data, copy and paste the code snippet below and click **Run**
+
 ```sql
 INSERT INTO dbo.Customers (CustomerAddress)
 VALUES
@@ -46,6 +64,8 @@ VALUES
     ('135 High Barns, Ely, CB7 4RH'),
     ('39 Queen Annes Drive, Bedale, DL8 2EL');
 ```
+
+![ALT](../images/module01a/006.png)
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
