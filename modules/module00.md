@@ -19,7 +19,7 @@ In order to follow along with the lab exercises, we need to provision a set of r
 
 ## 1. Deploy Template
 
-The following steps will deploy Azure resources that will be used as part of the workshop. This will include a Synapse workspace, ADLS Gen2 Storage Account, and an Azure SQL Database.
+The following steps will deploy Azure resources that will be used as part of the workshop. This will include a Synapse workspace, ADLS Gen2 Storage Account, and an Azure SQL Database. This will allow you to run the necessary SQL queries against the database.
 
 1. `Right-click` or `Ctrl + click` the button below to open the Azure Portal in a new window.
 
@@ -51,7 +51,7 @@ The following steps will elevate your account as an Azure AD administrator of th
 
     ![ALT](../images/module00/004.png)
 
-4. Search for your account, select your account, click **Select** 
+4. Search for your account, select your account, and click **Select**
 
     ![ALT](../images/module00/005.png)
 
@@ -63,7 +63,7 @@ The following steps will elevate your account as an Azure AD administrator of th
 
 ## 3. RBAC Role Assignment (Storage Account > Contributor)
 
-This role assignment is required to ensure that your account has sufficient permissions (Owner or Contributor) to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
+The **Contributor** role assignment is required to ensure that your account has sufficient permissions (Owner or Contributor) to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
 
 1. Navigate to the **Storage account**
 
@@ -85,7 +85,7 @@ This role assignment is required to ensure that your account has sufficient perm
 
     ![ALT](../images/module00/018.png)
 
-6. Search for your account, select your account, click **Select** 
+6. Search for your account, select your account, and click **Select**
 
     ![ALT](../images/module00/011.png)
 
@@ -101,7 +101,7 @@ This role assignment is required to ensure that your account has sufficient perm
 
 ## 4. RBAC Role Assignment (Storage Account > Storage Blob Data Reader)
 
-This role assignment is required to read files from the data lake using Azure Synapse Analytics built-in serverless SQL technology.
+The **Storage Blob Data Reader** role assignment is required to read files from the data lake using Azure Synapse Analytics built-in serverless SQL technology.
 
 1. Navigate to the **Storage account**
 
@@ -139,6 +139,6 @@ This role assignment is required to read files from the data lake using Azure Sy
 
 ## :tada: Summary
 
-By successfully deploying the lab template, you have the Azure resources needed to follow along with the learning exercises.
+By successfully deploying the lab template and executing the post deployment steps, you are ready to begin the workshop!
 
 [Continue >](../modules/module01a.md)
