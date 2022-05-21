@@ -31,7 +31,7 @@ The following steps will deploy Azure resources that will be used as part of the
 
 4. The deployment should take approximately 5 minutes to complete. Once you see the message **Your deployment is complete**, click **Go to resource group**.
 
-    <kbd><img src="../images/module00/001.png" alt="Go to resource group"></kbd>
+    <kbd><img src="../images/module00/001.png" alt="Go to resource group" width="50%"></kbd>
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
@@ -41,23 +41,23 @@ The following steps will elevate your account as an Azure AD administrator of th
 
 1. Navigate to the **SQL server**
 
-    <kbd><img src="../images/module00/002.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/002.png" alt="ALT" width="50%"></kbd>
 
 2. Select **Azure Active Directory**
 
-    <kbd><img src="../images/module00/003.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/003.png" alt="ALT" width="50%"></kbd>
 
 3. Click **Set admin**
 
-    <kbd><img src="../images/module00/004.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/004.png" alt="ALT" width="50%"></kbd>
 
 4. Search for your account, select your account, click **Select** 
 
-    <kbd><img src="../images/module00/005.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/005.png" alt="ALT" width="50%"></kbd>
 
 5. Click **Save**
 
-    <kbd><img src="../images/module00/006.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/006.png" alt="ALT" width="50%"></kbd>
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
@@ -67,35 +67,35 @@ This role assignment is required to ensure that your account has sufficient perm
 
 1. Navigate to the **Storage account**
 
-    <kbd><img src="../images/module00/007.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/007.png" alt="ALT" width="50%"></kbd>
 
 2. Select **Access Control (IAM)**
 
-    <kbd><img src="../images/module00/008.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/008.png" alt="ALT" width="50%"></kbd>
 
 3. Click **Add role assignment**
 
-    <kbd><img src="../images/module00/009.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/009.png" alt="ALT" width="50%"></kbd>
 
 4. Select `Contributor` and click **Next**
 
-    <kbd><img src="../images/module00/010.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/010.png" alt="ALT" width="50%"></kbd>
 
 5. Click **Select members**
 
-    <kbd><img src="../images/module00/015.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/015.png" alt="ALT" width="50%"></kbd>
 
 6. Search for your account, select your account, click **Select** 
 
-    <kbd><img src="../images/module00/011.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/011.png" alt="ALT" width="50%"></kbd>
 
 7. Click **Review + assign**
 
-    <kbd><img src="../images/module00/012.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/012.png" alt="ALT" width="50%"></kbd>
 
 8. Click **Review + assign**
 
-    <kbd><img src="../images/module00/013.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/013.png" alt="ALT" width="50%"></kbd>
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
@@ -105,35 +105,35 @@ This role assignment is required to read files from the data lake using Azure Sy
 
 1. Navigate to the **Storage account**
 
-    <kbd><img src="../images/module00/007.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/007.png" alt="ALT" width="50%"></kbd>
 
 2. Select **Access Control (IAM)**
 
-    <kbd><img src="../images/module00/008.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/008.png" alt="ALT" width="50%"></kbd>
 
 3. Click **Add role assignment**
 
-    <kbd><img src="../images/module00/009.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/009.png" alt="ALT" width="50%"></kbd>
 
 4. Select `Storage Blob Data Reader` and click **Next**
 
-    <kbd><img src="../images/module00/014.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/014.png" alt="ALT" width="50%"></kbd>
 
 5. Click **Select members**
 
-    <kbd><img src="../images/module00/015.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/015.png" alt="ALT" width="50%"></kbd>
 
 6. Search for your account, select your account, click **Select** 
 
-    <kbd><img src="../images/module00/011.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/011.png" alt="ALT" width="50%"></kbd>
 
 7. Click **Review + assign**
 
-    <kbd><img src="../images/module00/012.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/012.png" alt="ALT" width="50%"></kbd>
 
 8. Click **Review + assign**
 
-    <kbd><img src="../images/module00/013.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/013.png" alt="ALT" width="50%"></kbd>
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
