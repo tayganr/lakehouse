@@ -137,19 +137,19 @@ In this example, we are creating a reference to delimited text files (i.e. CSV) 
 7. Select the Azure Synapse Analytics workspace default storage **Linked service**
 8. Click the **browse** icon
 9. Select `01-raw` and click **OK**
-9. Select **First row as header** and click **OK**
-10. Switch to the **Parameters** tab
-11. Click **New**
-12. Set the Name to `folderPath`
-13. Click **New**
-14. Set the Name to `fileName`
-15. Switch to the **Connection** tab
-16. Click inside the `Directory` text input and click **Add dynamic content**
-17. Under **Parameters**, select `folderPath` and click **OK**
-18. Click inside the `File` text input and click **Add dynamic content**
-19. Under **Parameters**, select `fileName` and click **OK**
-20. Click **Publish all**
-21. Click **Publish**
+10. Select **First row as header** and click **OK**
+11. Switch to the **Parameters** tab
+12. Click **New**
+13. Set the Name to `folderPath`
+14. Click **New**
+15. Set the Name to `fileName`
+16. Switch to the **Connection** tab
+17. Click inside the `Directory` text input and click **Add dynamic content**
+18. Under **Parameters**, select `folderPath` and click **OK**
+19. Click inside the `File` text input and click **Add dynamic content**
+20. Under **Parameters**, select `fileName` and click **OK**
+21. Click **Publish all**
+22. Click **Publish**
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
