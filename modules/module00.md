@@ -83,17 +83,19 @@ This role assignment is required to ensure that your account has sufficient perm
 
 5. Click **Select members**
 
-    <kbd><img src="../images/module00/011.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/015.png" alt="ALT"></kbd>
 
 6. Search for your account, select your account, click **Select** 
 
-    <kbd><img src="../images/module00/012.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/011.png" alt="ALT"></kbd>
 
 7. Click **Review + assign**
 
-    <kbd><img src="../images/module00/013.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/012.png" alt="ALT"></kbd>
 
 8. Click **Review + assign**
+
+    <kbd><img src="../images/module00/013.png" alt="ALT"></kbd>
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
@@ -119,7 +121,7 @@ This role assignment is required to read files from the data lake using Azure Sy
 
 5. Click **Select members**
 
-    <kbd><img src="../images/module00/011.png" alt="ALT"></kbd>
+    <kbd><img src="../images/module00/015.png" alt="ALT"></kbd>
 
 6. Search for your account, select your account, click **Select** 
 
