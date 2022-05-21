@@ -83,7 +83,7 @@ This role assignment is required to ensure that your account has sufficient perm
 
 5. Click **Select members**
 
-    ![ALT](../images/module00/015.png)
+    ![ALT](../images/module00/018.png)
 
 6. Search for your account, select your account, click **Select** 
 
@@ -129,11 +129,11 @@ This role assignment is required to read files from the data lake using Azure Sy
 
 7. Click **Review + assign**
 
-    ![ALT](../images/module00/012.png)
+    ![ALT](../images/module00/016.png)
 
 8. Click **Review + assign**
 
-    ![ALT](../images/module00/013.png)
+    ![ALT](../images/module00/017.png)
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
