@@ -136,10 +136,8 @@ In this example, we are creating a reference to delimited text files (i.e. CSV) 
 6. Rename the integration dataset to `AdlsRawDelimitedText`
 7. Select the Azure Synapse Analytics workspace default storage **Linked service**
 8. Click the **browse** icon
-9. Select `01-raw`
-10. Click **OK**
-11. Select **First row as header**
-12. Click **OK**
+9. Select `01-raw` and click **OK**
+11. Select **First row as header** and click **OK**
 13. Switch to the **Parameters** tab
 14. Click **New**
 15. Set the Name to `folderPath`
@@ -147,11 +145,9 @@ In this example, we are creating a reference to delimited text files (i.e. CSV) 
 17. Set the Name to `fileName`
 18. Switch to the **Connection** tab
 19. Click inside the `Directory` text input and click **Add dynamic content**
-20. Under **Parameters**, click `folderPath`
-21. Click **OK**
+20. Under **Parameters**, select `folderPath` and click **OK**
 22. Click inside the `File` text input and click **Add dynamic content**
-23. Under **Parameters**, click `fileName`
-24. Click **OK**
+23. Under **Parameters**, select `fileName` and click **OK**
 25. Click **Publish all**
 26. Click **Publish**
 
