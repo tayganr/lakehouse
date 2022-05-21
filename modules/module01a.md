@@ -172,7 +172,7 @@ A pipeline is a data-driven workflow, logically grouping activities to perform a
 13. Set the Dataset property **table** to `dbo_Customers_CT`
 14. Set the **Use query** property to **Query**
 15. Click inside the **Query** text input and click **Add dynamic content** 
-16. Copy and paste the code snippet
+16. Copy and paste the code snippet and click **OK**
 ```
 @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
 SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
@@ -183,14 +183,13 @@ IF (@from_lsn IS NOT NULL AND @to_lsn IS NOT NULL AND @from_lsn < @to_lsn)
 SELECT count(1) changecount FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')
 ELSE SELECT 0 changecount')
 ```
-17. Click **OK**
 18. Click **Preview data**
 19. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
-20. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
+20. Provide a value for **triggerEndTime** that is a data in the future (e.g. `9999-12-31`)
 21. Click **OK**
 22. You should see a changecount of 3, close the Preview data window
 23. On the **Integrate** pane, click the ellipses button next to **Pipelines**, and select **New folder**
-24. Rename the folder to **Customers** and click **Create**
+24. Rename the folder to `Customers` and click **Create**
 25. Click on the ellipses button next to `C1 - pipelineIncrementalCopyCDC` and select **Move item**
 26. Select the **Customers** folder and click **Move**
 27. Click **Publish all**
