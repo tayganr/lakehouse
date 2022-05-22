@@ -206,11 +206,10 @@ In this step, we will be adding an If Condition activity to our pipeline. The If
 3. Rename the **If Condition** activity to `HasChangedRows`
 4. Switch to the **Activities** tab
 5. Click inside the **Expression** text input and click **Add dynamic content**
-6. Copy and paste the code snippet
+6. Copy and paste the code snippet and click **OK**
 ```
 @greater(int(activity('GetChangeCount').output.firstRow.changecount),0)
 ```
-7. Click **OK**
 8. Within the **True** case, click the **pencil** icon
 9. Within Activities, search for `Copy`, and drag the **Copy data** activity onto the canvas
 10. Rename the **Copy** activity to `copyIncrementalData`
@@ -220,7 +219,7 @@ In this step, we will be adding an If Condition activity to our pipeline. The If
 14. Under **Dataset properties**, set the **table** to `dbo_Customers_CT`
 15. Set **Use query** to **Query**
 16. Click inside the **Query** text input and click **Add dynamic content** 
-17. Copy and paste the code snippet
+17. Copy and paste the code snippet and click **OK**
 ```
 @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
 SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
@@ -233,7 +232,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 19. Set **Sink dataset** to **AdlsRawDelimitedText**
 20. Under **Dataset properties**, set the **folderPath** to `wwi/customers`
 21. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
-22. Copy and paste the code snippet
+22. Copy and paste the code snippet and click **OK**
 ```
 @concat(formatDateTime(pipeline().parameters.triggerStartTime,'yyyyMMddHHmmssfff'),'.csv')
 ```
@@ -241,7 +240,7 @@ SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers
 23. Click **Publish**
 24. Click **Debug**
 25. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
-26. Provide a value for **triggerEndTime** that is a data in the future (e.g. `2022-12-31`)
+26. Provide a value for **triggerEndTime** that is a data in the future (e.g. `9999-12-31`)
 27. Click **OK**
 28. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows have been written to the data lake.
 29. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the CSV file and select **New SQL Script > Select TOP 100 rows**
@@ -281,7 +280,8 @@ CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 2
 
 Using the `start_time` and `end_time` values from the previous step, we will rerun our pipeline and confirm that the changes have been copied to the Azure Data Lake Gen2 Storage Account.
 
-1. Open Azure Synapse Analytics workspace
+1. Navigate to the **Synapse workspace**
+2. Open **Synapse Studio**
 2. Navigate to the **Integration** hub
 3. Open pipeline `C1 - pipelineIncrementalCopyCDC`
 4. Click **Debug**
