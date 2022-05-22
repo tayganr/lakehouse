@@ -55,17 +55,14 @@ Data flows provide a way to transform data at scale without any coding required.
 11. Click the **Browse** icon
 12. Navigate to `01-raw > wwi > customers` and click **OK**
 13. Click inside the **File name** text input and click **Add dynamic content**
-14. Under **Expression elements** click **Parameters**
-15. Click **fileName**
-16. Click **Save and finish**
+14. Under **Expression elements** click **Parameters**, select **fileName** and click **Save and finish**
 17. Enable **First row as header**
 18. Switch to the **Projection** tab
 19. Click **Import schema**. Note: You may need to wait for the Data flow debug session to be ready before the button will become clickable.
 20. Click **Import**
-21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers`.
+21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` and click **Save**.
     * Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
     * Note: The string must be wrapped in single quotes.
-22. Click **Save**
 23. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01b---dimension-table-initial-load">↥ back to top</a></div>
@@ -116,8 +113,7 @@ The final step in a data flow is to write the net effect of the transformations 
 3. Set the **Sink type** to **Inline**
 4. Set the **Inline dataset type** to **Delta**
 5. Set the **Linked Service** to the Synapse Workspace Default Storage.
-6. Switch to the **Settings** tab
-7. Click the **Browse** icon
+6. Switch to the **Settings** tab and click the **Browse** icon
 8. Navigate to `03-curated` and click **OK**
 9. Click inside the **Folder path** text input and set the value to `wwi/customers`
 10. Set the **Compression type** to **snappy**
@@ -133,15 +129,14 @@ To finalize our pipeline, we must update the parameters of the data flow activit
 1. Navigate back to the **pipeline**, click to focus on the **Data flow** step
 2. Switch to the **Parameters** tab
 3. Under **Data flow parameters**, click the **value** field for the **fileName** parameter, and select **Pipeline expression**
-4. Copy and paste the code snippet
-```
+4. Copy and paste the code snippet and click **OK**
+```javascript
 @activity('getFiles').output.childItems[0].name
 ```
-5. Click **OK**
 6. Click **Publish all**
 7. Click **Publish**
 8. Click **Debug**
-9. Click **OK**
+9. Wait until all the activities in the pipeline have a status of **Succeeded**
 
 <div align="right"><a href="#module-01b---dimension-table-initial-load">↥ back to top</a></div>
 
@@ -152,9 +147,7 @@ The serverless SQL pool in Azure Synapse Analytics is an example compute engine 
 1. Navigate to the **Data** hub
 2. Browse the data lake folder structure to `03-curated > wwi > customers`
 3. Right-click one of the **parquet** files, select **New SQL Script > Select TOP 100 rows**
-4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
-5. Change the **FORMAT** to **DELTA**
-6. Click **Run**
+4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
 
 <div align="right"><a href="#module-01b---dimension-table-initial-load">↥ back to top</a></div>
 
