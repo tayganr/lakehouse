@@ -44,24 +44,20 @@ In this step, we start with a source transformation that will reference a delimi
 6. Rename the **Output stream name** to `rawCustomer`
 7. Set the **Source type** to **Inline**
 8. Set the **Inline dataset type** to **DelimitedText**
-9. Set the **Linked Service** to the Synapse Workspace Default Storage.
+9. Set the **Linked Service** to the **Synapse Workspace Default Storage**.
 10. Switch to the **Source options** tab
 11. Click the **Browse** icon
 12. Navigate to `01-raw > wwi > customers` and click **OK**
 13. Click inside the **File name** text input and click **Add dynamic content**
-14. Under **Expression elements** click **Parameters**
-15. Click **fileName**
-16. Click **Save and finish**
-17. Enable **First row as header**
-18. Switch to the **Projection** tab
-19. Click **Import schema**
-20. Click **Import**
-21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers`.
-    * Tip #1: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
-    * Tip #2: To see the effect of new data during development, select the second CSV file (with the latest timestamp).
-    * Note: The string must be wrapped in single quotes.
-22. Click **Save**
-23. Switch to the **Data preview** tab and click **Refresh**
+14. Under **Expression elements** click **Parameters**, select **Filename**, and click **Save and finish**
+15. Enable **First row as header**
+16. Switch to the **Projection** tab and click **Import schema**
+17. Click **Import**
+18. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` and click **Save**.
+    - Tip #1: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
+    - Tip #2: To see the effect of new data during development, select the **second CSV file** (with the latest timestamp).
+    - Note: The string must be wrapped in single quotes.
+19. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -73,15 +69,13 @@ In this step, we will add a second source transformation that will reference the
 2. Rename the **Output stream name** to `dimCustomer`
 3. Set the **Source type** to **Inline**
 4. Set the **Inline dataset type** to **Delta**
-5. Set the **Linked Service** to the Synapse Workspace Default Storage.
-6. Switch to the **Source options** tab
-7. Click the **Browse** icon
-8. Navigate to `03-curated > wwi > customers` and click **OK**
-9. Set the **Compression type** to **snappy**
-10. Switch to the **Projection** tab
-11. Click **Import schema**
-12. Click **Import**
-13. Switch to the **Data preview** tab and click **Refresh**
+5. Set the **Linked Service** to the **Synapse Workspace Default Storage**.
+6. Switch to the **Source options** tab and click the **Browse** icon
+7. Navigate to `03-curated > wwi > customers` and click **OK**
+8. Set the **Compression type** to **snappy**
+9. Switch to the **Projection** tab and click **Import schema**
+10. Click **Import**
+12. Switch to the **Data preview** tab and click **Refresh**
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
