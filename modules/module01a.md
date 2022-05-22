@@ -74,24 +74,64 @@ VALUES
 Creating a linked service provides Azure Synapse Analytics the necessary information to establish connectivity to an external resource, in this case, an Azure SQL Database.
 
 1. Navigate to the **Synapse workspace**
+
+    ![ALT](../images/module01a/007.png)
+
 2. Open **Synapse Studio**
+
+    ![ALT](../images/module01a/008.png)
+
 3. Navigate to the **Manage** hub
+
+    ![ALT](../images/module01a/009.png)
+
 4. Click **Linked services**
+
+    ![ALT](../images/module01a/010.png)
+
 5. Click **New**
+
+    ![ALT](../images/module01a/011.png)
+
 6. Search `SQL`, select **Azure SQL Database**, and click **Continue**
+
+    ![ALT](../images/module01a/012.png)
+
 7. Rename the Linked Service to `AzureSqlDatabase`
+
+    ![ALT](../images/module01a/013.png)
+
 8. Select the target Azure SQL Database by selecting the **Azure subscription**, **Server name** and **Database name**
+
+    ![ALT](../images/module01a/014.png)
+
 9. Set the **Authentication** type to `SQL authentication`
+
+    ![ALT](../images/module01a/015.png)
+
 10. Copy and paste the **User name**
-```
+
+```text
 sqladmin
 ```
+
+![ALT](../images/module01a/016.png)
+
 11. Copy and paste the **Password**
-```
+
+```text
 sqlPassword!
 ```
+
+![ALT](../images/module01a/017.png)
+
 12. Click **Test connection**
+
+    ![ALT](../images/module01a/018.png)
+
 13. Click **Create**
+
+    ![ALT](../images/module01a/019.png)
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
@@ -100,27 +140,92 @@ sqlPassword!
 An integration dataset is simply a named reference to data that can be used in an activity as an input or output. In this example, we are creating a reference to tables within our Azure SQL Database and leveraging parameters to be able to dynamically specify the schema and table name at runtime.
 
 1. Navigate to the **Data** hub
+
+    ![ALT](../images/module01a/020.png)
+
 2. Switch to the **Linked** tab
+
+    ![ALT](../images/module01a/021.png)
+
 3. Click the **[+]** icon to add a new resource and click **Integration dataset**
+
+    ![ALT](../images/module01a/022.png)
+
 4. Search `SQL`, select **Azure SQL Database**, and click **Continue** 
+
+    ![ALT](../images/module01a/023.png)
+
 5. Rename the Integration Dataset to `AzureSqlTable`
+
+    ![ALT](../images/module01a/024.png)
+
 6. Select the Linked service `AzureSqlDatabase`
+
+    ![ALT](../images/module01a/025.png)
+
 7. Click **OK**
+
+    ![ALT](../images/module01a/026.png)
+
 8. Switch the the **Parameters** tab
+
+    ![ALT](../images/module01a/027.png)
+
 9. Click **New**
+
+    ![ALT](../images/module01a/028.png)
+
 10. Set the Name to `schema`
+
+    ![ALT](../images/module01a/029.png)
+
 11. Click **New**
+
+    ![ALT](../images/module01a/030.png)
+
 12. Set the Name to `table`
+
+    ![ALT](../images/module01a/031.png)
+
 13. Switch to the **Connection** tab
+
+    ![ALT](../images/module01a/032.png)
+
 14. Beneath the **Table** dropdown menu, select the **Edit** checkbox
+
+    ![ALT](../images/module01a/033.png)
+
 15. Click inside the first text input for **Table** and click **Add dynamic content**
+
+    ![ALT](../images/module01a/034.png)
+
 16. Under **Parameters**, click `schema`
+
+    ![ALT](../images/module01a/035.png)
+
 17. Click **OK**
+
+    ![ALT](../images/module01a/036.png)
+
 18. Click inside the second text input for **Table** and click **Add dynamic content**
+
+    ![ALT](../images/module01a/037.png)
+
 19. Under **Parameters**, click `table`
+
+    ![ALT](../images/module01a/038.png)
+
 20. Click **OK**
+
+    ![ALT](../images/module01a/039.png)
+
 21. Click **Publish all**
+
+    ![ALT](../images/module01a/040.png)
+
 22. Click **Publish**
+
+    ![ALT](../images/module01a/041.png)
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
@@ -129,27 +234,92 @@ An integration dataset is simply a named reference to data that can be used in a
 In this example, we are creating a reference to delimited text files (i.e. CSV) within our Azure Data Lake Gen2 Storage Account and leveraging parameters to be able to dynamically specify the folder path and file name at runtime.
 
 1. Navigate to the **Data** hub
+
+    ![ALT](../images/module01a/020.png)
+
 2. Switch to the **Linked** tab
+
+    ![ALT](../images/module01a/021.png)
+
 3. Click the **[+]** icon to add a new resource and click **Integration dataset**
+
+    ![ALT](../images/module01a/022.png)
+
 4. Search `Data Lake`, select **Azure Data Lake Storage Gen2**, and click **Continue** 
+
+    ![ALT](../images/module01a/042.png)
+
 5. Select **DelimitedText** and click **Continue**
+
+    ![ALT](../images/module01a/043.png)
+
 6. Rename the integration dataset to `AdlsRawDelimitedText`
+
+    ![ALT](../images/module01a/044.png)
+
 7. Select the Azure Synapse Analytics workspace default storage **Linked service**
+
+    ![ALT](../images/module01a/045.png)
+
 8. Click the **browse** icon
+
+    ![ALT](../images/module01a/046.png)
+
 9. Select `01-raw` and click **OK**
+
+    ![ALT](../images/module01a/047.png)
+
 10. Select **First row as header** and click **OK**
+
+    ![ALT](../images/module01a/048.png)
+
 11. Switch to the **Parameters** tab
+
+    ![ALT](../images/module01a/049.png)
+
 12. Click **New**
+
+    ![ALT](../images/module01a/050.png)
+
 13. Set the Name to `folderPath`
+
+    ![ALT](../images/module01a/051.png)
+
 14. Click **New**
+
+    ![ALT](../images/module01a/052.png)
+
 15. Set the Name to `fileName`
+
+    ![ALT](../images/module01a/053.png)
+
 16. Switch to the **Connection** tab
+
+    ![ALT](../images/module01a/054.png)
+
 17. Click inside the `Directory` text input and click **Add dynamic content**
+
+    ![ALT](../images/module01a/055.png)
+
 18. Under **Parameters**, select `folderPath` and click **OK**
+
+    ![ALT](../images/module01a/056.png)
+
 19. Click inside the `File` text input and click **Add dynamic content**
+
+    ![ALT](../images/module01a/057.png)
+
 20. Under **Parameters**, select `fileName` and click **OK**
+
+    ![ALT](../images/module01a/058.png)
+
 21. Click **Publish all**
+
+    ![ALT](../images/module01a/059.png)
+
 22. Click **Publish**
+
+    ![ALT](../images/module01a/060.png)
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
