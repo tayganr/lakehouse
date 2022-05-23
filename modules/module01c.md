@@ -717,7 +717,7 @@ The Exists transformation is a row filtering transformation that checks whether 
 @pipeline().parameters.fileName
 ```
 
-    ![ALT](../images/module01c/148.png)
+![ALT](../images/module01c/148.png)
 
 5. Click **Publish all**
 
