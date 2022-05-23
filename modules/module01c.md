@@ -22,39 +22,39 @@ In this module, we will be creating a pipeline to incrementally load the Custome
 
 1. Navigate to the **Integrate** hub
 
-    ![ALT](../images/module01b/001.png)
+    ![ALT](../images/module01c/001.png)
 
 2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the `Customers` folder and select **New pipeline**
 
-    ![ALT](../images/module01b/002.png)
+    ![ALT](../images/module01c/002.png)
 
 3. Rename the pipeline to `C3 - pipelineDimIncrementalLoad`
 
-    ![ALT](../images/module01b/003.png)
+    ![ALT](../images/module01c/003.png)
 
 4. Under **Parameters**, click **New**
 
-    ![ALT](../images/module01b/004.png)
+    ![ALT](../images/module01c/004.png)
 
 5. Set the name of the parameter to `fileName`
 
-    ![ALT](../images/module01b/005.png)
+    ![ALT](../images/module01c/005.png)
 
 6. Within Activities, search for `Data flow`, and drag the **Data flow activity** onto the canvas
 
-    ![ALT](../images/module01b/006.png)
+    ![ALT](../images/module01c/006.png)
 
 7. Rename the activity `incrementalLoad`
 
-    ![ALT](../images/module01b/007.png)
+    ![ALT](../images/module01c/007.png)
 
 8. Switch to the **Settings** tab
 
-    ![ALT](../images/module01b/008.png)
+    ![ALT](../images/module01c/008.png)
 
 9. Next to the **Data flow** property, click **New**
 
-    ![ALT](../images/module01b/009.png)
+    ![ALT](../images/module01c/009.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -64,82 +64,82 @@ In this step, we start with a source transformation that will reference a delimi
 
 1. Enable **Data flow debug**
 
-    ![ALT](../images/module01b/010.png)
+    ![ALT](../images/module01c/010.png)
 
 2. Rename the data flow `dataFlowDimIncrementalLoad`
 
-    ![ALT](../images/module01b/011.png)
+    ![ALT](../images/module01c/011.png)
 
 3. Under **Parameters**, click **New**
 
-    ![ALT](../images/module01b/012.png)
+    ![ALT](../images/module01c/012.png)
 
 4. Rename **parameter1** to `fileName`
 
-    ![ALT](../images/module01b/013.png)
+    ![ALT](../images/module01c/013.png)
 
 5. Within the data flow canvas, click **Add Source** and select **Add source**
 
-    ![ALT](../images/module01b/014.png)
+    ![ALT](../images/module01c/014.png)
 
 6. Rename the **Output stream name** to `rawCustomer`
 
-    ![ALT](../images/module01b/015.png)
+    ![ALT](../images/module01c/015.png)
 
 7. Set the **Source type** to **Inline**
 
-    ![ALT](../images/module01b/016.png)
+    ![ALT](../images/module01c/016.png)
 
 8. Set the **Inline dataset type** to **DelimitedText**
 
-    ![ALT](../images/module01b/017.png)
+    ![ALT](../images/module01c/017.png)
 
 9. Set the **Linked Service** to the **Synapse Workspace Default Storage**.
 
-    ![ALT](../images/module01b/018.png)
+    ![ALT](../images/module01c/018.png)
 
 10. Switch to the **Source options** tab
 
-    ![ALT](../images/module01b/019.png)
+    ![ALT](../images/module01c/019.png)
 
 11. Click the **Browse** icon
 
-    ![ALT](../images/module01b/020.png)
+    ![ALT](../images/module01c/020.png)
 
 12. Navigate to `01-raw > wwi > customers` and click **OK**
 
-    ![ALT](../images/module01b/021.png)
+    ![ALT](../images/module01c/021.png)
 
 13. Click inside the **File name** text input and click **Add dynamic content**
 
-    ![ALT](../images/module01b/022.png)
+    ![ALT](../images/module01c/022.png)
 
 14. Under **Expression elements** click **Parameters**, select **Filename**, and click **Save and finish**
 
-    ![ALT](../images/module01b/023.png)
+    ![ALT](../images/module01c/023.png)
 
 15. Enable **First row as header**
 
-    ![ALT](../images/module01b/024.png)
+    ![ALT](../images/module01c/024.png)
 
 16. Switch to the **Projection** tab and click **Import schema**
 
-    ![ALT](../images/module01b/025.png)
+    ![ALT](../images/module01c/025.png)
 
 17. Click **Import**
 
-    ![ALT](../images/module01b/026.png)
+    ![ALT](../images/module01c/026.png)
 
 18. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` and click **Save**.
     - Tip #1: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
     - Tip #2: To see the effect of new data during development, select the **second CSV file** (with the latest timestamp).
     - Note: The string must be wrapped in single quotes.
 
-    ![ALT](../images/module01b/027.png)
+    ![ALT](../images/module01c/027.png)
 
 19. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/028.png)
+    ![ALT](../images/module01c/028.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -149,47 +149,47 @@ In this step, we will add a second source transformation that will reference the
 
 1. Within the data flow canvas, click **Add Source** and select **Add source**
 
-    ![ALT](../images/module01b/029.png)
+    ![ALT](../images/module01c/029.png)
 
 2. Rename the **Output stream name** to `dimCustomer`
 
-    ![ALT](../images/module01b/030.png)
+    ![ALT](../images/module01c/030.png)
 
 3. Set the **Source type** to **Inline**
 
-    ![ALT](../images/module01b/031.png)
+    ![ALT](../images/module01c/031.png)
 
 4. Set the **Inline dataset type** to **Delta**
 
-    ![ALT](../images/module01b/032.png)
+    ![ALT](../images/module01c/032.png)
 
 5. Set the **Linked Service** to the **Synapse Workspace Default Storage**.
 
-    ![ALT](../images/module01b/033.png)
+    ![ALT](../images/module01c/033.png)
 
 6. Switch to the **Source options** tab and click the **Browse** icon
 
-    ![ALT](../images/module01b/034.png)
+    ![ALT](../images/module01c/034.png)
 
 7. Navigate to `03-curated > wwi > customers` and click **OK**
 
-    ![ALT](../images/module01b/035.png)
+    ![ALT](../images/module01c/035.png)
 
 8. Set the **Compression type** to **snappy**
 
-    ![ALT](../images/module01b/036.png)
+    ![ALT](../images/module01c/036.png)
 
 9. Switch to the **Projection** tab and click **Import schema**
 
-    ![ALT](../images/module01b/037.png)
+    ![ALT](../images/module01c/037.png)
 
 10. Click **Import**
 
-    ![ALT](../images/module01b/038.png)
+    ![ALT](../images/module01c/038.png)
 
 12. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/039.png)
+    ![ALT](../images/module01c/039.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -199,19 +199,19 @@ The Filter transformation allows row filtering based upon a condition. In this s
 
 1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
 
-    ![ALT](../images/module01b/040.png)
+    ![ALT](../images/module01c/040.png)
 
 2. Rename the **Output stream name** to `activeCustomers`
 
-    ![ALT](../images/module01b/041.png)
+    ![ALT](../images/module01c/041.png)
 
 3. Set the **Filter on** property to `IsActive == 1`
 
-    ![ALT](../images/module01b/042.png)
+    ![ALT](../images/module01c/042.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/043.png)
+    ![ALT](../images/module01c/043.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -221,19 +221,19 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Schema modifier** select **Derived Column**
 
-    ![ALT](../images/module01b/044.png)
+    ![ALT](../images/module01c/044.png)
 
 2. Rename the **Output stream name** to `addHashDim`
 
-    ![ALT](../images/module01b/045.png)
+    ![ALT](../images/module01c/045.png)
 
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(CustomerID,CustomerAddress)`
-    ![ALT](../images/module01b/046.png)
+    ![ALT](../images/module01c/046.png)
 
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/047.png)
+    ![ALT](../images/module01c/047.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -243,27 +243,27 @@ The Aggregate transformation defines aggregations of columns in your data stream
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Multiple inputs/outputs** select **New branch**
 
-    ![ALT](../images/module01b/048.png)
+    ![ALT](../images/module01c/048.png)
 
 2. Click the **[+]** icon to the right of `activeCustomers` (new branch), under **Schema modifier** select **Aggregate**
 
-    ![ALT](../images/module01b/049.png)
+    ![ALT](../images/module01c/049.png)
 
 3. Rename the **Output stream name** to `maxSurrogateKey`
 
-    ![ALT](../images/module01b/050.png)
+    ![ALT](../images/module01c/050.png)
 
 4. Switch to **Aggregates**
 
-    ![ALT](../images/module01b/051.png)
+    ![ALT](../images/module01c/051.png)
 
 5. Set the **Column** to `MaxCustomerSK` and the **Expression** to `max(CustomerSK)`
 
-    ![ALT](../images/module01b/052.png)
+    ![ALT](../images/module01c/052.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/053.png)
+    ![ALT](../images/module01c/053.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -273,27 +273,27 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **Exists**
 
-    ![ALT](../images/module01b/054.png)
+    ![ALT](../images/module01c/054.png)
 
 2. Rename the **Output stream name** to `existingRecords`
 
-    ![ALT](../images/module01b/055.png)
+    ![ALT](../images/module01c/055.png)
 
 3. Set the **Right stream** to `activeCustomers`
 
-    ![ALT](../images/module01b/056.png)
+    ![ALT](../images/module01c/056.png)
 
 4. Set the **Exist type** to **Exists**
 
-    ![ALT](../images/module01b/057.png)
+    ![ALT](../images/module01c/057.png)
 
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 
-    ![ALT](../images/module01b/058.png)
+    ![ALT](../images/module01c/058.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/059.png)
+    ![ALT](../images/module01c/059.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -301,31 +301,31 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **New branch**
 
-    ![ALT](../images/module01b/060.png)
+    ![ALT](../images/module01c/060.png)
 
 2. Click the **[+]** icon to the right of `rawCustomer` (new branch), under **Multiple inputs/outputs** select **Exists**
 
-    ![ALT](../images/module01b/061.png)
+    ![ALT](../images/module01c/061.png)
 
 3. Rename the **Output stream name** to `newRecords`
 
-    ![ALT](../images/module01b/062.png)
+    ![ALT](../images/module01c/062.png)
 
 4. Set the **Right stream** to `activeCustomers`
 
-    ![ALT](../images/module01b/063.png)
+    ![ALT](../images/module01c/063.png)
 
 5. Set the **Exist type** to **Doesn't exist**
 
-    ![ALT](../images/module01b/064.png)
+    ![ALT](../images/module01c/064.png)
 
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 
-    ![ALT](../images/module01b/065.png)
+    ![ALT](../images/module01c/065.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/066.png)
+    ![ALT](../images/module01c/066.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -333,19 +333,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `existingRecords`, under **Schema modifier** select **Derived Column**
 
-    ![ALT](../images/module01b/067.png)
+    ![ALT](../images/module01c/067.png)
 
 2. Rename the **Output stream name** to `addHash`
 
-    ![ALT](../images/module01b/068.png)
+    ![ALT](../images/module01c/068.png)
 
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(columns())`
 
-    ![ALT](../images/module01b/069.png)
+    ![ALT](../images/module01c/069.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/070.png)
+    ![ALT](../images/module01c/070.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -353,27 +353,27 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `addHash`, under **Multiple inputs/outputs** select **Exists**
 
-    ![ALT](../images/module01b/071.png)
+    ![ALT](../images/module01c/071.png)
 
 2. Rename the **Output stream name** to `changedRecords`
 
-    ![ALT](../images/module01b/072.png)
+    ![ALT](../images/module01c/072.png)
 
 3. Set the **Right stream** to `addHashDim`
 
-    ![ALT](../images/module01b/073.png)
+    ![ALT](../images/module01c/073.png)
 
 4. Set the **Exist type** to **Doesn't exist**
 
-    ![ALT](../images/module01b/074.png)
+    ![ALT](../images/module01c/074.png)
 
 5. Under **Exists conditions**, set the **Left** and **Right** to `Hash`
 
-    ![ALT](../images/module01b/075.png)
+    ![ALT](../images/module01c/075.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/076.png)
+    ![ALT](../images/module01c/076.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -381,19 +381,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `changedRecords`, under **Multiple inputs/outputs** select **Union**
 
-    ![ALT](../images/module01b/077.png)
+    ![ALT](../images/module01c/077.png)
 
 2. Rename the **Output stream name** to `unionNewActive`
 
-    ![ALT](../images/module01b/078.png)
+    ![ALT](../images/module01c/078.png)
 
 3. Under **Union with**, set the **Streams** to `newRecords`
 
-    ![ALT](../images/module01b/079.png)
+    ![ALT](../images/module01c/079.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/080.png)
+    ![ALT](../images/module01c/080.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -401,19 +401,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `unionNewActive`, under **Row modifier** select **Alter Row**
 
-    ![ALT](../images/module01b/081.png)
+    ![ALT](../images/module01c/081.png)
 
 2. Rename the **Output stream name** to `markAsInsert`
 
-    ![ALT](../images/module01b/082.png)
+    ![ALT](../images/module01c/082.png)
 
 3. Under **Alter row conditions**, set the condition to **Insert If** and the expression as `true()`
 
-    ![ALT](../images/module01b/083.png)
+    ![ALT](../images/module01c/083.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/084.png)
+    ![ALT](../images/module01c/084.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -421,19 +421,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `markAsInsert`, under **Schema modifier** select **Surrogate Key**
 
-    ![ALT](../images/module01b/085.png)
+    ![ALT](../images/module01c/085.png)
 
 2. Rename the **Output stream name** to `addTempKey`
 
-    ![ALT](../images/module01b/086.png)
+    ![ALT](../images/module01c/086.png)
 
 3. Set the **Key column** to `TempKey`
 
-    ![ALT](../images/module01b/087.png)
+    ![ALT](../images/module01c/087.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/088.png)
+    ![ALT](../images/module01c/088.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -441,27 +441,27 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `addTempKey`, under **Multiple inputs/outputs** select **Join**
 
-    ![ALT](../images/module01b/089.png)
+    ![ALT](../images/module01c/089.png)
 
 2. Rename the **Output stream name** to `joinMaxSurrogateKey`
 
-    ![ALT](../images/module01b/090.png)
+    ![ALT](../images/module01c/090.png)
 
 3. Set the **Right stream** to `maxSurrogateKey`
 
-    ![ALT](../images/module01b/091.png)
+    ![ALT](../images/module01c/091.png)
 
 4. Set the **Join type** to `Custom (cross)`
 
-    ![ALT](../images/module01b/092.png)
+    ![ALT](../images/module01c/092.png)
 
 5. Set the **Condition** to `true()`
 
-    ![ALT](../images/module01b/093.png)
+    ![ALT](../images/module01c/093.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/094.png)
+    ![ALT](../images/module01c/094.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -469,43 +469,43 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `joinMaxSurrogateKey`, under **Schema modifier** select **Derived Column**
 
-    ![ALT](../images/module01b/095.png)
+    ![ALT](../images/module01c/095.png)
 
 2. Rename the **Output stream name** to `scdColumns`
 
-    ![ALT](../images/module01b/096.png)
+    ![ALT](../images/module01c/096.png)
 
 3. Under **Columns**, set the first **Column** to `CustomerSK` and the **Expression** to `TempKey + MaxCustomerSK`
 
-    ![ALT](../images/module01b/097.png)
+    ![ALT](../images/module01c/097.png)
 
 4. Click **Add** then select **Add column**
 
-    ![ALT](../images/module01b/098.png)
+    ![ALT](../images/module01c/098.png)
 
 5. Under **Columns**, set the second **Column** to `IsActive` and the **Expression** to `1`
 
-    ![ALT](../images/module01b/099.png)
+    ![ALT](../images/module01c/099.png)
 
 6. Click **Add** then select **Add column**
 
-    ![ALT](../images/module01b/100.png)
+    ![ALT](../images/module01c/100.png)
 
 7. Under **Columns**, set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
 
-    ![ALT](../images/module01b/101.png)
+    ![ALT](../images/module01c/101.png)
 
 8. Click **Add** then select **Add column**
 
-    ![ALT](../images/module01b/102.png)
+    ![ALT](../images/module01c/102.png)
 
 9. Under **Columns**, set the fourth **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
 
-    ![ALT](../images/module01b/103.png)
+    ![ALT](../images/module01c/103.png)
 
 10. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/104.png)
+    ![ALT](../images/module01c/104.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -513,23 +513,23 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `scdColumns`, under **Schema modifier** select **Select**
 
-    ![ALT](../images/module01b/105.png)
+    ![ALT](../images/module01c/105.png)
 
 2. Rename the **Output stream name** to `dropTempColumns`
 
-    ![ALT](../images/module01b/106.png)
+    ![ALT](../images/module01c/106.png)
 
 3. Under the Input columns, delete the `Hash`, `TempKey`, and `MaxCustomerSK` columns
 
-    ![ALT](../images/module01b/107.png)
+    ![ALT](../images/module01c/107.png)
 
 4. On the left hand side of the `CustomerSK`, click and drag the column to the first position
 
-    ![ALT](../images/module01b/108.png)
+    ![ALT](../images/module01c/108.png)
 
 5. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/109.png)
+    ![ALT](../images/module01c/109.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -537,27 +537,27 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `addHashDim`, under **Multiple inputs/outputs** select **Exists**
 
-    ![ALT](../images/module01b/110.png)
+    ![ALT](../images/module01c/110.png)
 
 2. Rename the **Output stream name** to `obsoleteRecords`
 
-    ![ALT](../images/module01b/111.png)
+    ![ALT](../images/module01c/111.png)
 
 3. Set the **Right stream** to `changedRecords`
 
-    ![ALT](../images/module01b/112.png)
+    ![ALT](../images/module01c/112.png)
 
 4. Set the **Exist type** to **Exists**
 
-    ![ALT](../images/module01b/113.png)
+    ![ALT](../images/module01c/113.png)
 
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 
-    ![ALT](../images/module01b/114.png)
+    ![ALT](../images/module01c/114.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/115.png)
+    ![ALT](../images/module01c/115.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -565,19 +565,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `obsoleteRecords`, under **Row modifier** select **Alter Row**
 
-    ![ALT](../images/module01b/116.png)
+    ![ALT](../images/module01c/116.png)
 
 2. Rename the **Output stream name** to `markAsUpdate`
 
-    ![ALT](../images/module01b/117.png)
+    ![ALT](../images/module01c/117.png)
 
 3. Under **Alter row conditions**, set the condition to **Update If** and the expression as `true()`
 
-    ![ALT](../images/module01b/118.png)
+    ![ALT](../images/module01c/118.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/119.png)
+    ![ALT](../images/module01c/119.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -585,27 +585,27 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `markAsUpdate`, under **Schema modifier** select **Derived Column**
 
-    ![ALT](../images/module01b/120.png)
+    ![ALT](../images/module01c/120.png)
 
 2. Rename the **Output stream name** to `scdColumnsObsolete`
 
-    ![ALT](../images/module01b/121.png)
+    ![ALT](../images/module01c/121.png)
 
 3. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `0`
 
-    ![ALT](../images/module01b/122.png)
+    ![ALT](../images/module01c/122.png)
 
 4. Click **Add** then select **Add column**
 
-    ![ALT](../images/module01b/123.png)
+    ![ALT](../images/module01c/123.png)
 
 5. Under **Columns**, set the second **Column** to `ValidTo` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
 
-    ![ALT](../images/module01b/124.png)
+    ![ALT](../images/module01c/124.png)
 
 6. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/125.png)
+    ![ALT](../images/module01c/125.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -613,19 +613,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `scdColumnsObsolete`, under **Schema modifier** select **Select**
 
-    ![ALT](../images/module01b/126.png)
+    ![ALT](../images/module01c/126.png)
 
 2. Rename the **Output stream name** to `dropTempColumns2`
 
-    ![ALT](../images/module01b/127.png)
+    ![ALT](../images/module01c/127.png)
 
 3. Under the Input columns, delete the `Hash` column
 
-    ![ALT](../images/module01b/128.png)
+    ![ALT](../images/module01c/128.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/129.png)
+    ![ALT](../images/module01c/129.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -633,19 +633,19 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `dropTempColumns`, under **Multiple inputs/outputs** select **Union**
 
-    ![ALT](../images/module01b/130.png)
+    ![ALT](../images/module01c/130.png)
 
 2. Rename the **Output stream name** to `unionResults`
 
-    ![ALT](../images/module01b/131.png)
+    ![ALT](../images/module01c/131.png)
 
 3. Under **Union with**, set the **Streams** to `dropTempColumns2`
 
-    ![ALT](../images/module01b/132.png)
+    ![ALT](../images/module01c/132.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/133.png)
+    ![ALT](../images/module01c/133.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -653,47 +653,47 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click the **[+]** icon to the right of `unionResults`, under **Destination** select **Sink**
 
-    ![ALT](../images/module01b/134.png)
+    ![ALT](../images/module01c/134.png)
 
 2. Rename the **Output stream name** to `sinkCustomer`
 
-    ![ALT](../images/module01b/135.png)
+    ![ALT](../images/module01c/135.png)
 
 3. Set the **Sink type** to **Inline**
 
-    ![ALT](../images/module01b/136.png)
+    ![ALT](../images/module01c/136.png)
 
 4. Set the **Inline dataset type** to **Delta**
 
-    ![ALT](../images/module01b/137.png)
+    ![ALT](../images/module01c/137.png)
 
 5. Set the **Linked Service** to the **Synapse Workspace Default Storage**
 
-    ![ALT](../images/module01b/138.png)
+    ![ALT](../images/module01c/138.png)
 
 6. Switch to the **Settings** tab and click the **Browse** icon
 
-    ![ALT](../images/module01b/139.png)
+    ![ALT](../images/module01c/139.png)
 
 8. Navigate to `03-curated > wwi > customers` and click **OK**
 
-    ![ALT](../images/module01b/140.png)
+    ![ALT](../images/module01c/140.png)
 
 9. Set the **Compression type** to `snappy`
 
-    ![ALT](../images/module01b/141.png)
+    ![ALT](../images/module01c/141.png)
 
 10. Set the **Update method** to **Allow insert** and **Allow upsert**
 
-    ![ALT](../images/module01b/142.png)
+    ![ALT](../images/module01c/142.png)
 
 11. Set the **Key columns** to `CustomerSK`
 
-    ![ALT](../images/module01b/143.png)
+    ![ALT](../images/module01c/143.png)
 
 12. Switch to the **Data preview** tab and click **Refresh**
 
-    ![ALT](../images/module01b/144.png)
+    ![ALT](../images/module01c/144.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -701,15 +701,15 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Navigate back to the pipeline `C3 - pipelineDimIncrementalLoad`
 
-    ![ALT](../images/module01b/145.png)
+    ![ALT](../images/module01c/145.png)
 
 2. Click to focus on the **Data flow** activity and switch to the **Parameters** tab
 
-    ![ALT](../images/module01b/146.png)
+    ![ALT](../images/module01c/146.png)
 
 3. Under **Data flow parameters**, click inside the fileName **Value** and select **Pipeline expression**
 
-    ![ALT](../images/module01b/147.png)
+    ![ALT](../images/module01c/147.png)
 
 4. Copy and paste the code snippet and click **OK**
 
@@ -717,15 +717,15 @@ The Exists transformation is a row filtering transformation that checks whether 
 @pipeline().parameters.fileName
 ```
 
-    ![ALT](../images/module01b/148.png)
+    ![ALT](../images/module01c/148.png)
 
 5. Click **Publish all**
 
-    ![ALT](../images/module01b/149.png)
+    ![ALT](../images/module01c/149.png)
 
 6. Click **Publish**
 
-    ![ALT](../images/module01b/150.png)
+    ![ALT](../images/module01c/150.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -733,20 +733,20 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 1. Click **Debug**
 
-    ![ALT](../images/module01b/151.png)
+    ![ALT](../images/module01c/151.png)
 
 2. Set the **fileName** parameter value to the name of the second CSV file (with the latest timestamp) and click **OK**
 
-    ![ALT](../images/module01b/152.png)
+    ![ALT](../images/module01c/152.png)
 
 3. Once successful, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/customers`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
 
-    ![ALT](../images/module01b/153.png)
+    ![ALT](../images/module01c/153.png)
 
 4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
     Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
 
-    ![ALT](../images/module01b/154.png)
+    ![ALT](../images/module01c/154.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
