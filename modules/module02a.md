@@ -231,7 +231,7 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 
 8. Click **Debug**
 
-![ALT](../images/module02a/036.png)
+    ![ALT](../images/module02a/036.png)
 
 9. Once the pipeline has finished running, under **Output**, hover your mouse over the `getChangeCount` activity and click the **Output** icon. You should see a `changecount` property with a value of `4`.
 
