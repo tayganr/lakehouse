@@ -205,7 +205,7 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 12. Click **Publish all**
 13. Click **Publish**
 14. Navigate back to the pipeline and click **Debug**
-15. Periodically click **Refresh** until all the activities within the pipeline have succeeded.
+15. Periodically click **Refresh** until all the activities within the pipeline have succeeded
 16. Navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/orders`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
 17. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
