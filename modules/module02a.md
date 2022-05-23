@@ -144,9 +144,8 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 1. Within Activities, search for `If`, and drag the **If condition activity** onto the canvas
 2. Rename the activity `hasChangedRows`
 3. Click and drag on the green button on the previous **Lookup** activity (`getChangeCount`) to establish a connection to the **If Condition** activity
-3. Switch to the **Activities** tab
-4. Click inside the **Expression** text input and click **Add dynamic content**
-5. Copy and paste the code snippet
+3. Switch to the **Activities** tab, click inside the **Expression** text input, and click **Add dynamic content**
+5. Copy and paste the code snippet and click **OK**
 
 ```
 @greater(int(activity('getChangeCount').output.firstRow.changecount),0)
@@ -160,28 +159,24 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 
 1. Within Activities, search for `Copy`, and drag the **Copy data activity** onto the canvas
 2. Rename the activity `incrementalCopy`
-3. Switch to the **Source** tab
-4. Set the **Source dataset** to **AzureSqlTable**
+3. Switch to the **Source** tab and set the **Source dataset** to **AzureSqlTable**
 5. Under **Dataset properties**, set the **schema** to `dbo`
 6. Under **Dataset properties**, set the **table** to `Orders`
-7. Set **Use query** to **Query**
-8. Click inside the **Query** text input and click **Add dynamic content**
+7. Set **Use query** to **Query**, click inside the **Query** text input, and click **Add dynamic content**
 9. Copy and paste the code snippet
 
 ```sql
 SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
 ```
 10. Click **OK**
-11. Switch to the **Sink** tab
-12. Set the **Source dataset** to **AdlsRawDelimitedText**
+11. Switch to the **Sink** tab and set the **Source dataset** to **AdlsRawDelimitedText**
 13. Under **Dataset properties**, set the **folderPath** to `wwi/orders`
 14. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
-15. Copy and paste the code snippet
-```
+15. Copy and paste the code snippet and click **OK**
+
+```javascript
 @concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
 ```
-
-16. Click **OK**
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
