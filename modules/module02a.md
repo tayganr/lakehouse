@@ -89,8 +89,7 @@ AS
 6. Rename the pipeline to `O1 - pipelineIncrementalCopyWatermark`
 7. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 8. Rename the activity `getOldWatermark`
-9. Switch to the **Settings** tab
-10. Set the **Source dataset** to **AzureSqlTable**
+9. Switch to the **Settings** tab and set the **Source dataset** to **AzureSqlTable**
 11. Set the Dataset property **schema** to `dbo`
 12. Set the Dataset property **table** to `Watermark`
 13. Set the **Use query** property to **Query**
