@@ -13,15 +13,17 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## :dart: Objectives
 
-* Prepare source system to store and update a watermark value
-* Create a Pipeline
-* Copy data changes to the data lake
+- Prepare source system to store and update a watermark value
+- Create a Pipeline
+- Copy data changes to the data lake
 
 ## 1. Source Environment (dbo.Orders)
+
 1. Navigate to the **SQL database**
 2. Click **Query editor**
 3. Click **Continue us <your_alias>@<your_domain>.com**
 4. To create the source table, copy and paste the code snippet below and click **Run**
+
 ```sql
 CREATE TABLE Orders (
     OrderID int IDENTITY(1,1) PRIMARY KEY,
@@ -37,7 +39,9 @@ VALUES
     (3,16),
     (1,52);
 ```
+
 5. To create a SQL trigger that will automatically update the LastModifiedDateTime colum on UPDATE, copy and paste the code snippet below and click **Run** 
+
 ```sql
 CREATE TRIGGER trg_orders_update_modified
 ON dbo.Orders
@@ -48,7 +52,9 @@ AS
     FROM Inserted i
     WHERE dbo.Orders.OrderID = i.OrderID;
 ```
+
 6. To initialise the watermark table, copy and paste the code snippet below and click **Run**
+
 ```sql
 CREATE TABLE Watermark (
     TableName varchar(255),
@@ -58,7 +64,9 @@ INSERT INTO dbo.Watermark
 VALUES
 ('dbo.Orders', '1/1/2022 12:00:00 AM');
 ```
+
 7. To enable the ability to programmatically update the watermark value via a stored procedure, copy and paste the code snippet below and click **Run**
+
 ```sql
 CREATE PROCEDURE sp_update_watermark @LastModifiedDateTime datetime, @TableName varchar(50)
 AS
@@ -71,7 +79,9 @@ AS
 
 ## 2. Pipeline (Lookup - getOldWatermark)
 
-1. Open Azure Synapse Analytics workspace
+
+1. Navigate to the **Synapse workspace**
+2. Open **Synapse Studio**
 2. Navigate to the **Integrate** hub
 3. On the right hand side of **Pipelines**, click the **[...]** ellipsis icon and select **New folder**
 4. Name the folder `Orders` and click **Create**
@@ -85,9 +95,11 @@ AS
 12. Set the Dataset property **table** to `Watermark`
 13. Set the **Use query** property to **Query**
 14. Click inside the **Query** text and copy and paste the code snippet
+
 ```sql
 SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 ```
+
 15. Click **Preview data** to confirm the query is valid
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
@@ -102,9 +114,11 @@ SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 6. Set the Dataset property **table** to `Orders`
 7. Set the **Use query** property to **Query**
 8. Click inside the **Query** text and copy and paste the code snippet
+
 ```sql
 SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 ```
+
 9. Click **Preview data** to confirm the query is valid
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
@@ -121,9 +135,11 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 7. Set the Dataset property **table** to `Orders`
 8. Set the **Use query** property to **Query**
 9. Click inside the **Query** text and copy and paste the code snippet
+
 ```sql
 SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
 ```
+
 10. Click **Debug**
 11. Once the pipeline has finished running, under **Output**, hover your mouse over the `getChangeCount` activity and click the **Output** icon. You should see a `changecount` property with a value of `4`.
 
@@ -137,9 +153,11 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 3. Switch to the **Activities** tab
 4. Click inside the **Expression** text input and click **Add dynamic content**
 5. Copy and paste the code snippet
+
 ```
 @greater(int(activity('getChangeCount').output.firstRow.changecount),0)
 ```
+
 6. Within the **True** case, click the **pencil** icon
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
@@ -155,7 +173,8 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 7. Set **Use query** to **Query**
 8. Click inside the **Query** text input and click **Add dynamic content**
 9. Copy and paste the code snippet
-```
+
+```sql
 SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
 ```
 10. Click **OK**
@@ -167,6 +186,7 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 ```
 @concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
 ```
+
 16. Click **OK**
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
@@ -182,14 +202,18 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 7. Under **Stored procedure parameters**, click **Import**
 8. Click inside the **LastModifiedDateTime** value text input and click **Add dynamic content**
 9. Copy and paste the code snippet
-```
+
+```javascript
 @{activity('getNewWatermark').output.firstRow.NewWatermarkValue}
 ```
+
 10. Click inside the **TableName** value text input and click **Add dynamic content**
 11. Copy and paste the code snippet
-```
+
+```javascript
 @{activity('getOldWatermark').output.firstRow.TableName}
 ```
+
 12. Click **Publish all**
 13. Click **Publish**
 14. Navigate back to the pipeline and click **Debug**
