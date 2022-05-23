@@ -189,14 +189,14 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 6. Set the Stored procedure name to `[dbo].[sp_update_watermark]`
 7. Under **Stored procedure parameters**, click **Import**
 8. Click inside the **LastModifiedDateTime** value text input and click **Add dynamic content**
-9. Copy and paste the code snippet
+9. Copy and paste the code snippet and click **OK**
 
 ```javascript
 @{activity('getNewWatermark').output.firstRow.NewWatermarkValue}
 ```
 
 10. Click inside the **TableName** value text input and click **Add dynamic content**
-11. Copy and paste the code snippet
+11. Copy and paste the code snippet and click **OK**
 
 ```javascript
 @{activity('getOldWatermark').output.firstRow.TableName}
@@ -205,8 +205,9 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 12. Click **Publish all**
 13. Click **Publish**
 14. Navigate back to the pipeline and click **Debug**
-15. If the output is successful, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/orders`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
-16. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
+15. Periodically click **Refresh** until all the activities within the pipeline have succeeded.
+16. Navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/orders`, right-click the newest CSV file and select **New SQL Script > Select TOP 100 rows**
+17. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
