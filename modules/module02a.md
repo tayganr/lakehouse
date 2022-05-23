@@ -92,7 +92,7 @@ AS
 9. Switch to the **Settings** tab and set the **Source dataset** to **AzureSqlTable**
 11. Set the Dataset property **schema** to `dbo`
 12. Set the Dataset property **table** to `Watermark`
-13. Set the **Use query** property to **Query**, click inside the **Query** text and copy and paste the code snippet
+13. Set the **Use query** property to **Query**, click inside the **Query** text, and copy and paste the code snippet
 
 ```sql
 SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
@@ -106,12 +106,10 @@ SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 
 1. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 2. Rename the activity `getNewWatermark`
-3. Switch to the **Settings** tab
-4. Set the **Source dataset** to **AzureSqlTable**
+3. Switch to the **Settings** tab and set the **Source dataset** to **AzureSqlTable**
 5. Set the Dataset property **schema** to `dbo`
 6. Set the Dataset property **table** to `Orders`
-7. Set the **Use query** property to **Query**
-8. Click inside the **Query** text and copy and paste the code snippet
+7. Set the **Use query** property to **Query**, click inside the **Query** text, and copy and paste the code snippet
 
 ```sql
 SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
