@@ -92,8 +92,7 @@ AS
 9. Switch to the **Settings** tab and set the **Source dataset** to **AzureSqlTable**
 11. Set the Dataset property **schema** to `dbo`
 12. Set the Dataset property **table** to `Watermark`
-13. Set the **Use query** property to **Query**
-14. Click inside the **Query** text and copy and paste the code snippet
+13. Set the **Use query** property to **Query**, click inside the **Query** text and copy and paste the code snippet
 
 ```sql
 SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
