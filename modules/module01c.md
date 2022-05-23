@@ -21,14 +21,40 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 In this module, we will be creating a pipeline to incrementally load the Customers dimension table. The transformation logic will be encapsulated within a data flow and will follow an SCD Type 2 pattern, this is where a new record is added to the dimension table to cater for data changes.
 
 1. Navigate to the **Integrate** hub
+
+    ![ALT](../images/module01b/001.png)
+
 2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the `Customers` folder and select **New pipeline**
+
+    ![ALT](../images/module01b/002.png)
+
 3. Rename the pipeline to `C3 - pipelineDimIncrementalLoad`
+
+    ![ALT](../images/module01b/003.png)
+
 4. Under **Parameters**, click **New**
+
+    ![ALT](../images/module01b/004.png)
+
 5. Set the name of the parameter to `fileName`
+
+    ![ALT](../images/module01b/005.png)
+
 6. Within Activities, search for `Data flow`, and drag the **Data flow activity** onto the canvas
+
+    ![ALT](../images/module01b/006.png)
+
 7. Rename the activity `incrementalLoad`
+
+    ![ALT](../images/module01b/007.png)
+
 8. Switch to the **Settings** tab
+
+    ![ALT](../images/module01b/008.png)
+
 9. Next to the **Data flow** property, click **New**
+
+    ![ALT](../images/module01b/009.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -37,27 +63,83 @@ In this module, we will be creating a pipeline to incrementally load the Custome
 In this step, we start with a source transformation that will reference a delimited text file (CSV) in the raw layer of our data lake. The data flow will include a file name parameter, this will allow the pipeline to dynamically pass a file name at runtime.
 
 1. Enable **Data flow debug**
+
+    ![ALT](../images/module01b/010.png)
+
 2. Rename the data flow `dataFlowDimIncrementalLoad`
+
+    ![ALT](../images/module01b/011.png)
+
 3. Under **Parameters**, click **New**
+
+    ![ALT](../images/module01b/012.png)
+
 4. Rename **parameter1** to `fileName`
+
+    ![ALT](../images/module01b/013.png)
+
 5. Within the data flow canvas, click **Add Source** and select **Add source**
+
+    ![ALT](../images/module01b/014.png)
+
 6. Rename the **Output stream name** to `rawCustomer`
+
+    ![ALT](../images/module01b/015.png)
+
 7. Set the **Source type** to **Inline**
+
+    ![ALT](../images/module01b/016.png)
+
 8. Set the **Inline dataset type** to **DelimitedText**
+
+    ![ALT](../images/module01b/017.png)
+
 9. Set the **Linked Service** to the **Synapse Workspace Default Storage**.
+
+    ![ALT](../images/module01b/018.png)
+
 10. Switch to the **Source options** tab
+
+    ![ALT](../images/module01b/019.png)
+
 11. Click the **Browse** icon
+
+    ![ALT](../images/module01b/020.png)
+
 12. Navigate to `01-raw > wwi > customers` and click **OK**
+
+    ![ALT](../images/module01b/021.png)
+
 13. Click inside the **File name** text input and click **Add dynamic content**
+
+    ![ALT](../images/module01b/022.png)
+
 14. Under **Expression elements** click **Parameters**, select **Filename**, and click **Save and finish**
+
+    ![ALT](../images/module01b/023.png)
+
 15. Enable **First row as header**
+
+    ![ALT](../images/module01b/024.png)
+
 16. Switch to the **Projection** tab and click **Import schema**
+
+    ![ALT](../images/module01b/025.png)
+
 17. Click **Import**
+
+    ![ALT](../images/module01b/026.png)
+
 18. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` and click **Save**.
     - Tip #1: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
     - Tip #2: To see the effect of new data during development, select the **second CSV file** (with the latest timestamp).
     - Note: The string must be wrapped in single quotes.
+
+    ![ALT](../images/module01b/027.png)
+
 19. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/028.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -66,16 +148,48 @@ In this step, we start with a source transformation that will reference a delimi
 In this step, we will add a second source transformation that will reference the existing Customer dimesnion table (Delta Lake) in the curated layer of our data lake.
 
 1. Within the data flow canvas, click **Add Source** and select **Add source**
+
+    ![ALT](../images/module01b/029.png)
+
 2. Rename the **Output stream name** to `dimCustomer`
+
+    ![ALT](../images/module01b/030.png)
+
 3. Set the **Source type** to **Inline**
+
+    ![ALT](../images/module01b/031.png)
+
 4. Set the **Inline dataset type** to **Delta**
+
+    ![ALT](../images/module01b/032.png)
+
 5. Set the **Linked Service** to the **Synapse Workspace Default Storage**.
+
+    ![ALT](../images/module01b/033.png)
+
 6. Switch to the **Source options** tab and click the **Browse** icon
+
+    ![ALT](../images/module01b/034.png)
+
 7. Navigate to `03-curated > wwi > customers` and click **OK**
+
+    ![ALT](../images/module01b/035.png)
+
 8. Set the **Compression type** to **snappy**
+
+    ![ALT](../images/module01b/036.png)
+
 9. Switch to the **Projection** tab and click **Import schema**
+
+    ![ALT](../images/module01b/037.png)
+
 10. Click **Import**
+
+    ![ALT](../images/module01b/038.png)
+
 12. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/039.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -84,9 +198,20 @@ In this step, we will add a second source transformation that will reference the
 The Filter transformation allows row filtering based upon a condition. In this step, we will filter the Customers dimension table to only include rows that are active. This is a necessary step as we will eventually compare the new incoming data with the existing active data.
 
 1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
+
+    ![ALT](../images/module01b/040.png)
+
 2. Rename the **Output stream name** to `activeCustomers`
+
+    ![ALT](../images/module01b/041.png)
+
 3. Set the **Filter on** property to `IsActive == 1`
+
+    ![ALT](../images/module01b/042.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/043.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -95,9 +220,20 @@ The Filter transformation allows row filtering based upon a condition. In this s
 The Derived Column transformation allows us to generate new columns and/or modify existing columns. In this step, we are adding a new column called `Hash`. This column is calculated by calling the `md5` function against the same columns that exist in the source stream (i.e. excludes dimension columns such as `CustomerSK`, `IsActive`, `ValidFrom`, and `ValidTo`). The `md5` function returns a 32-character hex string which can be used to calculate a fingerprint for a row. This will be used later in the module to compare against a hash from the new data stream.
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Schema modifier** select **Derived Column**
+
+    ![ALT](../images/module01b/044.png)
+
 2. Rename the **Output stream name** to `addHashDim`
+
+    ![ALT](../images/module01b/045.png)
+
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(CustomerID,CustomerAddress)`
+    ![ALT](../images/module01b/046.png)
+
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/047.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -106,11 +242,28 @@ The Derived Column transformation allows us to generate new columns and/or modif
 The Aggregate transformation defines aggregations of columns in your data streams. In this step, we are going to use the Aggregate transformation to calculate the max `CustomerSK` value. This will be referenced by our data flow for INSERT operations so that the Customer surrogate key can resume incrementing from the last max value.
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Multiple inputs/outputs** select **New branch**
+
+    ![ALT](../images/module01b/048.png)
+
 2. Click the **[+]** icon to the right of `activeCustomers` (new branch), under **Schema modifier** select **Aggregate**
+
+    ![ALT](../images/module01b/049.png)
+
 3. Rename the **Output stream name** to `maxSurrogateKey`
+
+    ![ALT](../images/module01b/050.png)
+
 4. Switch to **Aggregates**
+
+    ![ALT](../images/module01b/051.png)
+
 5. Set the **Column** to `MaxCustomerSK` and the **Expression** to `max(CustomerSK)`
+
+    ![ALT](../images/module01b/052.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/053.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
@@ -119,197 +272,481 @@ The Aggregate transformation defines aggregations of columns in your data stream
 The Exists transformation is a row filtering transformation that checks whether your data exists in another source or stream. The output includes all rows in the left stream that exist or don't exist in the right stream. In this step, we are going to return all rows from the left stream (rawCustomer) where the `CustomerID` exists in the right stream (activeCustomers).
 
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **Exists**
+
+    ![ALT](../images/module01b/054.png)
+
 2. Rename the **Output stream name** to `existingRecords`
+
+    ![ALT](../images/module01b/055.png)
+
 3. Set the **Right stream** to `activeCustomers`
+
+    ![ALT](../images/module01b/056.png)
+
 4. Set the **Exist type** to **Exists**
+
+    ![ALT](../images/module01b/057.png)
+
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
+
+    ![ALT](../images/module01b/058.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/059.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 8. Data flow (Exists - newRecords)
 
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **New branch**
+
+    ![ALT](../images/module01b/060.png)
+
 2. Click the **[+]** icon to the right of `rawCustomer` (new branch), under **Multiple inputs/outputs** select **Exists**
+
+    ![ALT](../images/module01b/061.png)
+
 3. Rename the **Output stream name** to `newRecords`
+
+    ![ALT](../images/module01b/062.png)
+
 4. Set the **Right stream** to `activeCustomers`
+
+    ![ALT](../images/module01b/063.png)
+
 5. Set the **Exist type** to **Doesn't exist**
+
+    ![ALT](../images/module01b/064.png)
+
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
+
+    ![ALT](../images/module01b/065.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/066.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 9. Data flow (Derived column - addHash)
 
 1. Click the **[+]** icon to the right of `existingRecords`, under **Schema modifier** select **Derived Column**
+
+    ![ALT](../images/module01b/067.png)
+
 2. Rename the **Output stream name** to `addHash`
+
+    ![ALT](../images/module01b/068.png)
+
 3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(columns())`
+
+    ![ALT](../images/module01b/069.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/070.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 10. Data flow (Exists - changedRecords)
 
 1. Click the **[+]** icon to the right of `addHash`, under **Multiple inputs/outputs** select **Exists**
+
+    ![ALT](../images/module01b/071.png)
+
 2. Rename the **Output stream name** to `changedRecords`
+
+    ![ALT](../images/module01b/072.png)
+
 3. Set the **Right stream** to `addHashDim`
+
+    ![ALT](../images/module01b/073.png)
+
 4. Set the **Exist type** to **Doesn't exist**
+
+    ![ALT](../images/module01b/074.png)
+
 5. Under **Exists conditions**, set the **Left** and **Right** to `Hash`
+
+    ![ALT](../images/module01b/075.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/076.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 11. Data flow (Union - unionNewActive)
 
 1. Click the **[+]** icon to the right of `changedRecords`, under **Multiple inputs/outputs** select **Union**
+
+    ![ALT](../images/module01b/077.png)
+
 2. Rename the **Output stream name** to `unionNewActive`
+
+    ![ALT](../images/module01b/078.png)
+
 3. Under **Union with**, set the **Streams** to `newRecords`
+
+    ![ALT](../images/module01b/079.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/080.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 12. Data flow (Alter row - markAsInsert)
 
 1. Click the **[+]** icon to the right of `unionNewActive`, under **Row modifier** select **Alter Row**
+
+    ![ALT](../images/module01b/081.png)
+
 2. Rename the **Output stream name** to `markAsInsert`
+
+    ![ALT](../images/module01b/082.png)
+
 3. Under **Alter row conditions**, set the condition to **Insert If** and the expression as `true()`
+
+    ![ALT](../images/module01b/083.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/084.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 13. Data flow (Surrogate key - addTempKey)
 
 1. Click the **[+]** icon to the right of `markAsInsert`, under **Schema modifier** select **Surrogate Key**
+
+    ![ALT](../images/module01b/085.png)
+
 2. Rename the **Output stream name** to `addTempKey`
+
+    ![ALT](../images/module01b/086.png)
+
 3. Set the **Key column** to `TempKey`
+
+    ![ALT](../images/module01b/087.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/088.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 14. Data flow (Join - joinMaxSurrogateKey)
 
 1. Click the **[+]** icon to the right of `addTempKey`, under **Multiple inputs/outputs** select **Join**
+
+    ![ALT](../images/module01b/089.png)
+
 2. Rename the **Output stream name** to `joinMaxSurrogateKey`
+
+    ![ALT](../images/module01b/090.png)
+
 3. Set the **Right stream** to `maxSurrogateKey`
+
+    ![ALT](../images/module01b/091.png)
+
 4. Set the **Join type** to `Custom (cross)`
+
+    ![ALT](../images/module01b/092.png)
+
 5. Set the **Condition** to `true()`
+
+    ![ALT](../images/module01b/093.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/094.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 15. Data flow (Derived column - scdColumns)
 
 1. Click the **[+]** icon to the right of `joinMaxSurrogateKey`, under **Schema modifier** select **Derived Column**
+
+    ![ALT](../images/module01b/095.png)
+
 2. Rename the **Output stream name** to `scdColumns`
+
+    ![ALT](../images/module01b/096.png)
+
 3. Under **Columns**, set the first **Column** to `CustomerSK` and the **Expression** to `TempKey + MaxCustomerSK`
+
+    ![ALT](../images/module01b/097.png)
+
 4. Click **Add** then select **Add column**
+
+    ![ALT](../images/module01b/098.png)
+
 5. Under **Columns**, set the second **Column** to `IsActive` and the **Expression** to `1`
+
+    ![ALT](../images/module01b/099.png)
+
 6. Click **Add** then select **Add column**
+
+    ![ALT](../images/module01b/100.png)
+
 7. Under **Columns**, set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
+
+    ![ALT](../images/module01b/101.png)
+
 8. Click **Add** then select **Add column**
+
+    ![ALT](../images/module01b/102.png)
+
 9. Under **Columns**, set the fourth **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
+
+    ![ALT](../images/module01b/103.png)
+
 10. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/104.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 16. Data flow (Select - dropTempColumns)
 
 1. Click the **[+]** icon to the right of `scdColumns`, under **Schema modifier** select **Select**
+
+    ![ALT](../images/module01b/105.png)
+
 2. Rename the **Output stream name** to `dropTempColumns`
+
+    ![ALT](../images/module01b/106.png)
+
 3. Under the Input columns, delete the `Hash`, `TempKey`, and `MaxCustomerSK` columns
+
+    ![ALT](../images/module01b/107.png)
+
 4. On the left hand side of the `CustomerSK`, click and drag the column to the first position
+
+    ![ALT](../images/module01b/108.png)
+
 5. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/109.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 17. Data flow (Exists - obsoleteRecords)
 
 1. Click the **[+]** icon to the right of `addHashDim`, under **Multiple inputs/outputs** select **Exists**
+
+    ![ALT](../images/module01b/110.png)
+
 2. Rename the **Output stream name** to `obsoleteRecords`
+
+    ![ALT](../images/module01b/111.png)
+
 3. Set the **Right stream** to `changedRecords`
+
+    ![ALT](../images/module01b/112.png)
+
 4. Set the **Exist type** to **Exists**
+
+    ![ALT](../images/module01b/113.png)
+
 5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
+
+    ![ALT](../images/module01b/114.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/115.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 18. Data flow (Alter row - markAsUpdate)
 
 1. Click the **[+]** icon to the right of `obsoleteRecords`, under **Row modifier** select **Alter Row**
+
+    ![ALT](../images/module01b/116.png)
+
 2. Rename the **Output stream name** to `markAsUpdate`
+
+    ![ALT](../images/module01b/117.png)
+
 3. Under **Alter row conditions**, set the condition to **Update If** and the expression as `true()`
+
+    ![ALT](../images/module01b/118.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/119.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 19. Data flow (Derived column - scdColumnsObsolete)
 
 1. Click the **[+]** icon to the right of `markAsUpdate`, under **Schema modifier** select **Derived Column**
+
+    ![ALT](../images/module01b/120.png)
+
 2. Rename the **Output stream name** to `scdColumnsObsolete`
+
+    ![ALT](../images/module01b/121.png)
+
 3. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `0`
+
+    ![ALT](../images/module01b/122.png)
+
 4. Click **Add** then select **Add column**
+
+    ![ALT](../images/module01b/123.png)
+
 5. Under **Columns**, set the second **Column** to `ValidTo` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
+
+    ![ALT](../images/module01b/124.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/125.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 20. Data flow (Select - dropTempColumns2)
 
 1. Click the **[+]** icon to the right of `scdColumnsObsolete`, under **Schema modifier** select **Select**
+
+    ![ALT](../images/module01b/126.png)
+
 2. Rename the **Output stream name** to `dropTempColumns2`
+
+    ![ALT](../images/module01b/127.png)
+
 3. Under the Input columns, delete the `Hash` column
+
+    ![ALT](../images/module01b/128.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/129.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 21. Data flow (Union - unionResults)
 
 1. Click the **[+]** icon to the right of `dropTempColumns`, under **Multiple inputs/outputs** select **Union**
+
+    ![ALT](../images/module01b/130.png)
+
 2. Rename the **Output stream name** to `unionResults`
+
+    ![ALT](../images/module01b/131.png)
+
 3. Under **Union with**, set the **Streams** to `dropTempColumns2`
+
+    ![ALT](../images/module01b/132.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/133.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 22. Data flow (Sink - sinkCustomer)
 
 1. Click the **[+]** icon to the right of `unionResults`, under **Destination** select **Sink**
+
+    ![ALT](../images/module01b/134.png)
+
 2. Rename the **Output stream name** to `sinkCustomer`
+
+    ![ALT](../images/module01b/135.png)
+
 3. Set the **Sink type** to **Inline**
+
+    ![ALT](../images/module01b/136.png)
+
 4. Set the **Inline dataset type** to **Delta**
+
+    ![ALT](../images/module01b/137.png)
+
 5. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+
+    ![ALT](../images/module01b/138.png)
+
 6. Switch to the **Settings** tab and click the **Browse** icon
+
+    ![ALT](../images/module01b/139.png)
+
 8. Navigate to `03-curated > wwi > customers` and click **OK**
+
+    ![ALT](../images/module01b/140.png)
+
 9. Set the **Compression type** to `snappy`
+
+    ![ALT](../images/module01b/141.png)
+
 10. Set the **Update method** to **Allow insert** and **Allow upsert**
+
+    ![ALT](../images/module01b/142.png)
+
 11. Set the **Key columns** to `CustomerSK`
+
+    ![ALT](../images/module01b/143.png)
+
 12. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module01b/144.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 23. Pipeline (pipelineDimIncrementalLoad)
 
 1. Navigate back to the pipeline `C3 - pipelineDimIncrementalLoad`
+
+    ![ALT](../images/module01b/145.png)
+
 2. Click to focus on the **Data flow** activity and switch to the **Parameters** tab
+
+    ![ALT](../images/module01b/146.png)
+
 3. Under **Data flow parameters**, click inside the fileName **Value** and select **Pipeline expression**
+
+    ![ALT](../images/module01b/147.png)
+
 4. Copy and paste the code snippet and click **OK**
-```
+
+```javascript
 @pipeline().parameters.fileName
 ```
+
+    ![ALT](../images/module01b/148.png)
+
 5. Click **Publish all**
+
+    ![ALT](../images/module01b/149.png)
+
 6. Click **Publish**
+
+    ![ALT](../images/module01b/150.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 24. Debug Pipeline
 
 1. Click **Debug**
+
+    ![ALT](../images/module01b/151.png)
+
 2. Set the **fileName** parameter value to the name of the second CSV file (with the latest timestamp) and click **OK**
+
+    ![ALT](../images/module01b/152.png)
+
 3. Once successful, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/customers`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
-4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
-5. Change the **FORMAT** to **DELTA**
-6. Click **Run**
+
+    ![ALT](../images/module01b/153.png)
+
+4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
     Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
+
+    ![ALT](../images/module01b/154.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
