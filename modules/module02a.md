@@ -163,12 +163,12 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 5. Under **Dataset properties**, set the **schema** to `dbo`
 6. Under **Dataset properties**, set the **table** to `Orders`
 7. Set **Use query** to **Query**, click inside the **Query** text input, and click **Add dynamic content**
-9. Copy and paste the code snippet
+9. Copy and paste the code snippet and click **OK**
 
 ```sql
 SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
 ```
-10. Click **OK**
+
 11. Switch to the **Sink** tab and set the **Source dataset** to **AdlsRawDelimitedText**
 13. Under **Dataset properties**, set the **folderPath** to `wwi/orders`
 14. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
@@ -185,8 +185,7 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 1. Within Activities, search for `Stored`, and drag the **Stored procedure activity** onto the canvas
 2. Rename the activity `updateWatermark`
 3. Click and drag on the green button from the **Copy data** activity to establish a connection to the **Stored procedure** activity
-4. Switch to the **Settings** tab
-5. Set the **Linked service** to **AzureSqlDatabase**
+4. Switch to the **Settings** tab and set the **Linked service** to **AzureSqlDatabase**
 6. Set the Stored procedure name to `[dbo].[sp_update_watermark]`
 7. Under **Stored procedure parameters**, click **Import**
 8. Click inside the **LastModifiedDateTime** value text input and click **Add dynamic content**
