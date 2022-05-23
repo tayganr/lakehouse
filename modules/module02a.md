@@ -125,12 +125,10 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 1. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 2. Rename the activity `getChangeCount`
 3. Click and drag on the green button from each **Lookup** activity (`getOldWatermark` and `getNewWatermark`) to establish a connection to the new **Lookup** activity (`getChangeCount`)
-4. Switch to the **Settings** tab
-5. Set the **Source dataset** to **AzureSqlTable**
+4. Switch to the **Settings** tab and set the **Source dataset** to **AzureSqlTable**
 6. Set the Dataset property **schema** to `dbo`
 7. Set the Dataset property **table** to `Orders`
-8. Set the **Use query** property to **Query**
-9. Click inside the **Query** text and copy and paste the code snippet
+8. Set the **Use query** property to **Query**, click inside the **Query** text, and copy and paste the code snippet
 
 ```sql
 SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
