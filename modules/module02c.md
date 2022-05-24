@@ -28,35 +28,35 @@ In this module, we will automate ingestion and loading of Order data using trigg
 6. Set the **Type** to **Tumbling window**
 7. Set the **Recurrence** to **5 minutes**
 8. Click **OK**
-9. Click **Publish all**
-10. Click **Publish**
+9. Click **OK**
+10. Click **Publish all**
+11. Click **Publish**
 
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 2. Trigger (Storage Event)
 
-1. Navigate to the **Integrate** hub
-2. Open the pipeline `O2 - pipelineFactIncrementalLoad`
-3. Click **Add trigger** and select **New/Edit**
-4. Open the **Choose trigger...** drop-down menu and click **New**
-5. Rename the trigger to `triggerStorageEventOrders`
-6. Set the **Type** to **Storage events**
-7. Provide the **Azure storage account** details
+1. Open the pipeline `O2 - pipelineFactIncrementalLoad`
+2. Click **Add trigger** and select **New/Edit**
+3. Open the **Choose trigger...** drop-down menu and click **New**
+4. Rename the trigger to `triggerStorageEventOrders`
+5. Set the **Type** to **Storage events**
+6. Provide the **Azure storage account** details
     - **Azure subscription** to the Azure subscription that contains your Azure Data Lake Storage Gen2 account
     - **Storage account name** to the Azure Data Lake Storage Gen2 account name
     - **Container name** via the drop-down menu to `01-raw`
-8. Set the **Blob path begins** with to `wwi/orders`
-9. Set the **Blob path ends with** to `.csv`
-10. Set the **Event** to `Blob created`
+7. Set the **Blob path begins** with to `wwi/orders`
+8. Set the **Blob path ends with** to `.csv`
+9. Set the **Event** to `Blob created`
+10. Click **Continue**
 11. Click **Continue**
-12. Click **Continue**
-13. Copy and paste the code snippet to set the **Trigger Run Parameter** (fileName) and click **OK**
+12. Copy and paste the code snippet to set the **Trigger Run Parameter** (fileName) and click **OK**
 
 ```javascript
 @trigger().outputs.body.fileName
 ```
-14. Click **Publish all**
-15. Click **Publish**
+13. Click **Publish all**
+14. Click **Publish**
 
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
