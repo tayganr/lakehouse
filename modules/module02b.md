@@ -14,7 +14,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## :dart: Objectives
 
-* Create a pipeline that will incrementally load data as new files arrive.
+- Create a pipeline that will incrementally load data as new files arrive.
 
 ## 1. Pipeline (pipelineFactIncrementalLoad)
 
@@ -36,21 +36,17 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 2. Rename the data flow `dataFlowFactIncrementalLoad`
 3. Under **Parameters**, click **New**
 4. Rename **parameter1** to `fileName`
-5. Click **Add Source**
+5. Within the data flow canvas, click **Add Source** and select **Add source**
 6. Rename the **Output stream name** to `rawOrders`
 7. Set the **Source type** to **Inline**
 8. Set the **Inline dataset type** to **DelimitedText**
-9. Set the **Linked Service** to the Synapse Workspace Default Storage.
-10. Switch to the **Source options** tab
-11. Click the **Browse** icon
+9. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+10. Switch to the **Source options** tab and click the **Browse** icon
 12. Navigate to `01-raw > wwi > orders` and click **OK**
 13. Click inside the **File name** text input and click **Add dynamic content**
-14. Under **Expression elements** click **Parameters**
-15. Click **fileName**
-16. Click **Save and finish**
+14. Under **Expression elements** click **Parameters**, select **fileName**, and click **Save and finish**
 17. Enable **First row as header**
-18. Switch to the **Projection** tab
-19. Click **Import schema**
+18. Switch to the **Projection** tab and click **Import schema**
 20. Click **Import**
 21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > orders`.
     * Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
@@ -62,17 +58,15 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## 3. Data flow (Source - dimCustomer)
 
-1. Click **Add Source**
+1. Within the data flow canvas, click **Add Source** and select **Add source**
 2. Rename the **Output stream name** to `dimCustomer`
 3. Set the **Source type** to **Inline**
 4. Set the **Inline dataset type** to **Delta**
-5. Set the **Linked Service** to the Synapse Workspace Default Storage.
-6. Switch to the **Source options** tab
-7. Click the **Browse** icon
+5. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+6. Switch to the **Source options** tab and click the **Browse** icon
 8. Navigate to `03-curated > wwi > customers` and click **OK**
 9. Set the **Compression type** to **snappy**
-10. Switch to the **Projection** tab
-11. Click **Import schema**
+10. Switch to the **Projection** tab amd click **Import schema**
 12. Click **Import**
 13. Switch to the **Data preview** tab and click **Refresh**
 
@@ -87,7 +81,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
-## 5. Data flow (Lookup - addHashDim)
+## 5. Data flow (Lookup - lookupDimCustomer)
 
 1. Click the **[+]** icon to the right of `rawOrders`, under **Multiple inputs/outputs** select **Lookup**
 2. Rename the **Output stream name** to `lookupDimCustomer`
@@ -136,9 +130,8 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 2. Rename the **Output stream name** to `sinkOrders`
 3. Set the **Sink type** to **Inline**
 4. Set the **Inline dataset type** to **Delta**
-5. Set the **Linked Service** to the Synapse Workspace Default Storage.
-6. Switch to the **Settings** tab
-7. Click the **Browse** icon
+5. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+6. Switch to the **Settings** tab and click the **Browse** icon
 8. Navigate to `03-curated > wwi` and click **OK**
 9. Within the **Folder path** property, replace `wwi` with `wwi/orders`
 10. Set the **Compression type** to `snappy`
@@ -153,11 +146,10 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 1. Navigate back to the pipeline `O2 - pipelineFactIncrementalLoad`
 2. Click to focus on the **Data flow** activity and switch to the **Parameters** tab
 3. Under **Data flow parameters**, click inside the fileName **Value** and select **Pipeline expression**
-4. Copy and paste the code snippet
+4. Copy and paste the code snippet and click **OK**
 ```
 @pipeline().parameters.fileName
 ```
-5. Click **OK**
 6. Click **Publish all**
 7. Click **Publish**
 
@@ -166,14 +158,10 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 ## 11. Debug Pipeline
 
 1. Click **Debug**
-2. Set the **fileName** parameter value to the name of an existing CSV file
-3. Click **OK**
-3. Under **Integration**, click **Pipeline runs**
-4. Once a successful instance has been observed, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/orders`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
-5. Modify the **OPENROWSET** function to remove the file name from the **BULK** path
-6. Change the **FORMAT** to **DELTA**
-7. Click **Run**
-    Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
+2. Set the **fileName** parameter value to the name of an existing CSV file and click **OK**
+3. Periodically click **Refresh** until the pipeline has succeeded
+4. Navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/orders`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
+5. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
