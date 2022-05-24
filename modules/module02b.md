@@ -19,149 +19,398 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 ## 1. Pipeline (pipelineFactIncrementalLoad)
 
 1. Navigate to the **Integrate** hub
+
+    ![ALT](../images/module02b/00.png)
+
 2. Under **Pipelines**, click on the ellipsis **[...]** icon to the right of the `Orders` folder and select **New pipeline**
+
+    ![ALT](../images/module02b/00.png)
+
 3. Rename the pipeline to `O2 - pipelineFactIncrementalLoad`
+
+    ![ALT](../images/module02b/00.png)
+
 4. Under **Parameters**, click **New**
+
+    ![ALT](../images/module02b/00.png)
+
 5. Set the name of the parameter to `fileName`
+
+    ![ALT](../images/module02b/00.png)
+
 6. Within Activities, search for `Data flow`, and drag the **Data flow activity** onto the canvas
+
+    ![ALT](../images/module02b/00.png)
+
 7. Rename the activity `incrementalLoadFact`
+
+    ![ALT](../images/module02b/00.png)
+
 8. Switch to the **Settings** tab
+
+    ![ALT](../images/module02b/00.png)
+
 9. Next to the **Data flow** property, click **New**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 2. Data flow (Source - rawOrders)
 
 1. Enable **Data flow debug**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the data flow `dataFlowFactIncrementalLoad`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Under **Parameters**, click **New**
+
+    ![ALT](../images/module02b/00.png)
+
 4. Rename **parameter1** to `fileName`
+
+    ![ALT](../images/module02b/00.png)
+
 5. Within the data flow canvas, click **Add Source** and select **Add source**
+
+    ![ALT](../images/module02b/00.png)
+
 6. Rename the **Output stream name** to `rawOrders`
+
+    ![ALT](../images/module02b/00.png)
+
 7. Set the **Source type** to **Inline**
+
+    ![ALT](../images/module02b/00.png)
+
 8. Set the **Inline dataset type** to **DelimitedText**
+
+    ![ALT](../images/module02b/00.png)
+
 9. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+
+    ![ALT](../images/module02b/00.png)
+
 10. Switch to the **Source options** tab and click the **Browse** icon
-12. Navigate to `01-raw > wwi > orders` and click **OK**
-13. Click inside the **File name** text input and click **Add dynamic content**
-14. Under **Expression elements** click **Parameters**, select **fileName**, and click **Save and finish**
-17. Enable **First row as header**
-18. Switch to the **Projection** tab and click **Import schema**
-20. Click **Import**
-21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > orders`.
-    * Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
-    * Note: The string must be wrapped in single quotes.
-22. Click **Save**
-23. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
+
+11. Navigate to `01-raw > wwi > orders` and click **OK**
+
+    ![ALT](../images/module02b/00.png)
+
+12. Click inside the **File name** text input and click **Add dynamic content**
+
+    ![ALT](../images/module02b/00.png)
+
+13. Under **Expression elements** click **Parameters**, select **fileName**, and click **Save and finish**
+
+    ![ALT](../images/module02b/00.png)
+
+14. Enable **First row as header**
+
+    ![ALT](../images/module02b/00.png)
+
+15. Switch to the **Projection** tab and click **Import schema**
+
+    ![ALT](../images/module02b/00.png)
+
+16. Click **Import**
+
+    ![ALT](../images/module02b/00.png)
+
+17. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > orders`.
+    - Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
+    - Note: The string must be wrapped in single quotes.
+
+    ![ALT](../images/module02b/00.png)
+
+18. Click **Save**
+
+    ![ALT](../images/module02b/00.png)
+
+19. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 3. Data flow (Source - dimCustomer)
 
 1. Within the data flow canvas, click **Add Source** and select **Add source**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `dimCustomer`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Set the **Source type** to **Inline**
+
+    ![ALT](../images/module02b/00.png)
+
 4. Set the **Inline dataset type** to **Delta**
+
+    ![ALT](../images/module02b/00.png)
+
 5. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+
+    ![ALT](../images/module02b/00.png)
+
 6. Switch to the **Source options** tab and click the **Browse** icon
-8. Navigate to `03-curated > wwi > customers` and click **OK**
-9. Set the **Compression type** to **snappy**
-10. Switch to the **Projection** tab amd click **Import schema**
-12. Click **Import**
-13. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
+
+7. Navigate to `03-curated > wwi > customers` and click **OK**
+
+    ![ALT](../images/module02b/00.png)
+
+8. Set the **Compression type** to **snappy**
+
+    ![ALT](../images/module02b/00.png)
+
+9. Switch to the **Projection** tab amd click **Import schema**
+
+    ![ALT](../images/module02b/00.png)
+
+10. Click **Import**
+
+    ![ALT](../images/module02b/00.png)
+
+11. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 4. Data flow (Filter - activeCustomers)
 
 1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `activeCustomers`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Set the **Filter on** property to `IsActive == 1`
+
+    ![ALT](../images/module02b/00.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 5. Data flow (Lookup - lookupDimCustomer)
 
 1. Click the **[+]** icon to the right of `rawOrders`, under **Multiple inputs/outputs** select **Lookup**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `lookupDimCustomer`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Set the **Lookup stream** to `activeCustomers`
+
+    ![ALT](../images/module02b/00.png)
+
 4. Set the **Lookup conditions** to `CustomerID` on both the Left and Right
+
+    ![ALT](../images/module02b/00.png)
+
 5. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 6. Data flow (Select - selectFactColumns)
 
 1. Click the **[+]** icon to the right of `lookupDimCustomer`, under **Schema modifier** select **Select**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `selectFactColumns`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Under the Input columns, delete all columns except `OrderID`, `CustomerSK`, and `Quantity`
+
+    ![ALT](../images/module02b/00.png)
+
 4. On the left hand side of the `CustomerSK`, click and drag the column to the second position
+
+    ![ALT](../images/module02b/00.png)
+
 5. Rename `CustomerSK` to `CustomerKey`
+
+    ![ALT](../images/module02b/00.png)
+
 6. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 7. Data flow (Derived column - checkForEarlyFacts)
 
 1. Click the **[+]** icon to the right of `selectFactColumns`, under **Schema modifier** select **Derived Column**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `checkForEarlyFacts`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Under **Columns**, click the **Column** drop-down menu and select `CustomerKey`
+
+    ![ALT](../images/module02b/00.png)
+
 4. Copy and paste the code snippet into the **Expression**
-```
+
+```javascript
 iif(isNull(CustomerKey),toLong(0),CustomerKey)
 ```
+
+    ![ALT](../images/module02b/00.png)
+
 5. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 8. Data flow (Alter row - markAsUpsert)
 
 1. Click the **[+]** icon to the right of `checkForEarlyFacts`, under **Row modifier** select **Alter Row**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `markAsUpsert`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Under **Alter row conditions**, set the condition to **Upsert If** and the expression as `true()`
+
+    ![ALT](../images/module02b/00.png)
+
 4. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 9. Data flow (Sink - sinkOrders)
 
 1. Click the **[+]** icon to the right of `markAsUpsert`, under **Destination** select **Sink**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Rename the **Output stream name** to `sinkOrders`
+
+    ![ALT](../images/module02b/00.png)
+
 3. Set the **Sink type** to **Inline**
+
+    ![ALT](../images/module02b/00.png)
+
 4. Set the **Inline dataset type** to **Delta**
+
+    ![ALT](../images/module02b/00.png)
+
 5. Set the **Linked Service** to the **Synapse Workspace Default Storage**
+
+    ![ALT](../images/module02b/00.png)
+
 6. Switch to the **Settings** tab and click the **Browse** icon
-8. Navigate to `03-curated > wwi` and click **OK**
-9. Within the **Folder path** property, replace `wwi` with `wwi/orders`
-10. Set the **Compression type** to `snappy`
-11. Set the **Update method** to **Allow insert** and **Allow upsert**
-12. Set the **Key columns** to `OrderID`
-13. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
+
+7. Navigate to `03-curated > wwi` and click **OK**
+
+    ![ALT](../images/module02b/00.png)
+
+8. Within the **Folder path** property, replace `wwi` with `wwi/orders`
+
+    ![ALT](../images/module02b/00.png)
+
+9. Set the **Compression type** to `snappy`
+
+    ![ALT](../images/module02b/00.png)
+
+10. Set the **Update method** to **Allow insert** and **Allow upsert**
+
+    ![ALT](../images/module02b/00.png)
+
+11. Set the **Key columns** to `OrderID`
+
+    ![ALT](../images/module02b/00.png)
+
+12. Switch to the **Data preview** tab and click **Refresh**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 10. Pipeline (pipelineFactIncrementalLoad)
 
 1. Navigate back to the pipeline `O2 - pipelineFactIncrementalLoad`
+
+    ![ALT](../images/module02b/00.png)
+
 2. Click to focus on the **Data flow** activity and switch to the **Parameters** tab
+
+    ![ALT](../images/module02b/00.png)
+
 3. Under **Data flow parameters**, click inside the fileName **Value** and select **Pipeline expression**
+
+    ![ALT](../images/module02b/00.png)
+
 4. Copy and paste the code snippet and click **OK**
-```
+
+```javascript
 @pipeline().parameters.fileName
 ```
-6. Click **Publish all**
-7. Click **Publish**
+
+    ![ALT](../images/module02b/00.png)
+
+5. Click **Publish all**
+
+    ![ALT](../images/module02b/00.png)
+
+6. Click **Publish**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 11. Debug Pipeline
 
 1. Click **Debug**
+
+    ![ALT](../images/module02b/00.png)
+
 2. Set the **fileName** parameter value to the name of an existing CSV file and click **OK**
+
+    ![ALT](../images/module02b/00.png)
+
 3. Periodically click **Refresh** until the pipeline has succeeded
+
+    ![ALT](../images/module02b/00.png)
+
 4. Navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/orders`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
+
+    ![ALT](../images/module02b/00.png)
+
 5. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
+
+    ![ALT](../images/module02b/00.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
