@@ -274,7 +274,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 iif(isNull(CustomerKey),toLong(0),CustomerKey)
 ```
 
-    ![ALT](../images/module02b/057.png)
+![ALT](../images/module02b/057.png)
 
 5. Switch to the **Data preview** tab and click **Refresh**
 
@@ -374,7 +374,7 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 @pipeline().parameters.fileName
 ```
 
-    ![ALT](../images/module02b/078.png)
+![ALT](../images/module02b/078.png)
 
 5. Click **Publish all**
 
