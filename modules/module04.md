@@ -66,6 +66,8 @@ In this module, we will develop and publish a Power BI report based on data from
 
     ![ALT](../images/module04/009.png)
 
+<div align="right"><a href="#module-04---data-visualization-with-power-bi">↥ back to top</a></div>
+
 ## 2. Data Visualization #1: Table
 
 1. From the **Visualizations** pane, click the **Table** icon
