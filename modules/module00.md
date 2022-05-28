@@ -20,9 +20,9 @@ In order to follow along with the lab exercises, we need to provision a set of r
 ## Table of Contents
 
 1. [Deploy Template](#1-deploy-template)
-1. [Set Azure AD admin](#2-set-azure-ad-admin)
-1. [RBAC Role Assignment (Storage Account > Contributor)](#3-rbac-role-assignment-storage-account--contributor)
-1. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#4-rbac-role-assignment-storage-account--storage-blob-data-reader)
+2. [Set Azure AD admin](#2-set-azure-ad-admin)
+3. [RBAC Role Assignment (Storage Account > Contributor)](#3-rbac-role-assignment-storage-account--contributor)
+4. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#4-rbac-role-assignment-storage-account--storage-blob-data-reader)
 
 ## 1. Deploy Template
 

@@ -17,13 +17,13 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## Table of Contents
 
-- [1. Source Environment (dbo.Customers)](#1-Source-Environment-dboCustomers)
-- [2. Linked Service (Azure SQL Database)](#2-Linked-Service-Azure-SQL-Database)
-- [3. Integration Dataset (Azure SQL Database - Table)](#3-Integration-Dataset-Azure-SQL-Database---Table)
-- [4. Integration Dataset (Azure Data Lake Storage Gen2 - Raw)](#4-Integration-Dataset-Azure-Data-Lake-Storage-Gen2---Raw)
-- [5. Pipeline (Lookup)](#5-Pipeline-Lookup)
-- [6. Pipeline (If Condition, Copy data)](#6-Pipeline-If-Condition-Copy-data)
-- [7. Load Additional Data into dbo.Customers](#7-Load-Additional-Data-into-dboCustomers)
+1. [Source Environment (dbo.Customers)](#1-Source-Environment-dboCustomers)
+2. [Linked Service (Azure SQL Database)](#2-Linked-Service-Azure-SQL-Database)
+3. [Integration Dataset (Azure SQL Database - Table)](#3-Integration-Dataset-Azure-SQL-Database---Table)
+4. [Integration Dataset (Azure Data Lake Storage Gen2 - Raw)]-In4tegration-Dataset-Azure-Data-Lake-Storage-Gen2---Raw)
+5. [Pipeline (Lookup)](#5-Pipeline-Lookup)
+6. [Pipeline (If Condition, Copy data)](#6-Pipeline-If-Condition-Copy-data)
+7. [Load Additional Data into dbo.Customers](#7-Load-Additional-Data-into-dboCustomers)
 
 ## 1. Source Environment (dbo.Customers)
 

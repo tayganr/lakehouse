@@ -19,13 +19,13 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## Table of Contents
 
-- [1. Source Environment (dbo.Orders)](#1-Source-Environment-dboOrders)
-- [2. Pipeline (Lookup - getOldWatermark)](#2-Pipeline-Lookup---getOldWatermark)
-- [3. Pipeline (Lookup - getNewWatermark)](#3-Pipeline-Lookup---getNewWatermark)
-- [4. Pipeline (Lookup - getChangeCount)](#4-Pipeline-Lookup---getChangeCount)
-- [5. Pipeline (If Condition)](#5-Pipeline-If-Condition)
-- [6. Pipeline (Copy data)](#6-Pipeline-Copy-data)
-- [7. Pipeline (Stored procedure)](#7-Pipeline-Stored-procedure)
+1. [Source Environment (dbo.Orders)](#1-Source-Environment-dboOrders)
+2. [Pipeline (Lookup - getOldWatermark)](#2-Pipeline-Lookup---getOldWatermark)
+3. [Pipeline (Lookup - getNewWatermark)](#3-Pipeline-Lookup---getNewWatermark)
+4. [Pipeline (Lookup - getChangeCount)](#4-Pipeline-Lookup---getChangeCount)
+5. [Pipeline (If Condition)](#5-Pipeline-If-Condition)
+6. [Pipeline (Copy data)](#6-Pipeline-Copy-data)
+7. [Pipeline (Stored procedure)](#7-Pipeline-Stored-procedure)
 
 ## 1. Source Environment (dbo.Orders)
 
@@ -203,7 +203,6 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
     ![ALT](../images/module02a/028.png)
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
-
 
 ## 4. Pipeline (Lookup - getChangeCount)
 

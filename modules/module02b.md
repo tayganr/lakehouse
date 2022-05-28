@@ -18,17 +18,17 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## Table of Contents
 
-- [1. Pipeline (pipelineFactIncrementalLoad)](#1-Pipeline-pipelineFactIncrementalLoad)
-- [2. Data flow (Source - rawOrders)](#2-Data-flow-Source---rawOrders)
-- [3. Data flow (Source - dimCustomer)](#3-Data-flow-Source---dimCustomer)
-- [4. Data flow (Filter - activeCustomers)](#4-Data-flow-Filter---activeCustomers)
-- [5. Data flow (Lookup - lookupDimCustomer)](#5-Data-flow-Lookup---lookupDimCustomer)
-- [6. Data flow (Select - selectFactColumns)](#6-Data-flow-Select---selectFactColumns)
-- [7. Data flow (Derived column - checkForEarlyFacts)](#7-Data-flow-Derived-column---checkForEarlyFacts)
-- [8. Data flow (Alter row - markAsUpsert)](#8-Data-flow-Alter-row---markAsUpsert)
-- [9. Data flow (Sink - sinkOrders)](#9-Data-flow-Sink---sinkOrders)
-- [10. Pipeline (pipelineFactIncrementalLoad)](#10-Pipeline-pipelineFactIncrementalLoad)
-- [11. Debug Pipeline](#11-Debug-Pipeline)
+1. [Pipeline (pipelineFactIncrementalLoad)](#1-Pipeline-pipelineFactIncrementalLoad)
+2. [Data flow (Source - rawOrders)](#2-Data-flow-Source---rawOrders)
+3. [Data flow (Source - dimCustomer)](#3-Data-flow-Source---dimCustomer)
+4. [Data flow (Filter - activeCustomers)](#4-Data-flow-Filter---activeCustomers)
+5. [Data flow (Lookup - lookupDimCustomer)](#5-Data-flow-Lookup---lookupDimCustomer)
+6. [Data flow (Select - selectFactColumns)](#6-Data-flow-Select---selectFactColumns)
+7. [Data flow (Derived column - checkForEarlyFacts)](#7-Data-flow-Derived-column---checkForEarlyFacts)
+8. [Data flow (Alter row - markAsUpsert)](#8-Data-flow-Alter-row---markAsUpsert)
+9. [Data flow (Sink - sinkOrders)](#9-Data-flow-Sink---sinkOrders)
+10. [Pipeline (pipelineFactIncrementalLoad)](#10-Pipeline-pipelineFactIncrementalLoad)
+11. [Debug Pipeline](#11-Debug-Pipeline)
 
 ## 1. Pipeline (pipelineFactIncrementalLoad)
 

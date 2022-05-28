@@ -20,13 +20,13 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 
 ## Table of Contents
 
-- [1. Create a Database](#1-Create-a-Database)
-- [2. Create a Master Key](#2-Create-a-Master-Key)
-- [3. Create a Database Scoped Credential](#3-Create-a-Database-Scoped-Credential)
-- [4. Create an External Data Source](#4-Create-an-External-Data-Source)
-- [5. Create a Schema](#5-Create-a-Schema)
-- [6. Create Views](#6-Create-Views)
-- [7. Explore your data](#7-Explore-your-data)
+1. [Create a Database](#1-Create-a-Database)
+2. [Create a Master Key](#2-Create-a-Master-Key)
+3. [Create a Database Scoped Credential](#3-Create-a-Database-Scoped-Credential)
+4. [Create an External Data Source](#4-Create-an-External-Data-Source)
+5. [Create a Schema](#5-Create-a-Schema)
+6. [Create Views](#6-Create-Views)
+7. [Explore your data](#7-Explore-your-data)
 
 ## 1. Create a Database
 
@@ -67,7 +67,6 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
 ![ALT](../images/module03/006.png)
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
-
 
 ## 3. Create a Database Scoped Credential
 
