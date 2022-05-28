@@ -13,7 +13,18 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 ## :dart: Objectives
 
-* Create a pipeline that will initialize a dimension table in the curated layer of our data lake using the Delta Lake file format
+- Create a pipeline that will initialize a dimension table in the curated layer of our data lake using the Delta Lake file format
+
+## Table of Contents
+
+1. Pipeline (initialLoad)
+2. Data flow (Source - rawCustomer)
+3. Data flow (Surrogate Key)
+4. Data flow (Derived Column)
+5. Data flow (Select)
+6. Data flow (Sink)
+7. Pipeline (initialLoad)
+8. Query Delta Lake
 
 ## 1. Pipeline (initialLoad)
 

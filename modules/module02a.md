@@ -17,6 +17,16 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 - Create a Pipeline
 - Copy data changes to the data lake
 
+## Table of Contents
+
+1. Source Environment (dbo.Orders)
+2. Pipeline (Lookup - getOldWatermark)
+3. Pipeline (Lookup - getNewWatermark)
+4. Pipeline (Lookup - getChangeCount)
+5. Pipeline (If Condition)
+6. Pipeline (Copy data)
+7. Pipeline (Stored procedure)
+
 ## 1. Source Environment (dbo.Orders)
 
 1. Navigate to the **SQL database**

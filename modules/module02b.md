@@ -16,6 +16,20 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 - Create a pipeline that will incrementally load data as new files arrive.
 
+## Table of Contents
+
+1. Pipeline (pipelineFactIncrementalLoad)
+2. Data flow (Source - rawOrders)
+3. Data flow (Source - dimCustomer)
+4. Data flow (Filter - activeCustomers)
+5. Data flow (Lookup - lookupDimCustomer)
+6. Data flow (Select - selectFactColumns)
+7. Data flow (Derived column - checkForEarlyFacts)
+8. Data flow (Alter row - markAsUpsert)
+9. Data flow (Sink - sinkOrders)
+10. Pipeline (pipelineFactIncrementalLoad)
+11. Debug Pipeline
+
 ## 1. Pipeline (pipelineFactIncrementalLoad)
 
 1. Navigate to the **Integrate** hub

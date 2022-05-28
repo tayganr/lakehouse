@@ -14,7 +14,34 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 ## :dart: Objectives
 
-* Create a pipeline that will incrementally load data as new files arrive.
+- Create a pipeline that will incrementally load data as new files arrive.
+
+## Table of Contents
+
+1. Pipeline (pipelineDimIncrementalLoad)
+2. Data flow (Source - rawCustomer)
+3. Data flow (Source - dimCustomer)
+4. Data flow (Filter - activeCustomers)
+5. Data flow (Derived column - addHashDim)
+6. Data flow (Aggregate - maxSurrogateKey)
+7. Data flow (Exists - existingRecords)
+8. Data flow (Exists - newRecords)
+9. Data flow (Derived column - addHash)
+10. Data flow (Exists - changedRecords)
+11. Data flow (Union - unionNewActive)
+12. Data flow (Alter row - markAsInsert)
+13. Data flow (Surrogate key - addTempKey)
+14. Data flow (Join - joinMaxSurrogateKey)
+15. Data flow (Derived column - scdColumns)
+16. Data flow (Select - dropTempColumns)
+17. Data flow (Exists - obsoleteRecords)
+18. Data flow (Alter row - markAsUpdate)
+19. Data flow (Derived column - scdColumnsObsolete)
+20. Data flow (Select - dropTempColumns2)
+21. Data flow (Union - unionResults)
+22. Data flow (Sink - sinkCustomer)
+23. Pipeline (pipelineDimIncrementalLoad)
+24. Debug Pipeline
 
 ## 1. Pipeline (pipelineDimIncrementalLoad)
 

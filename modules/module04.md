@@ -21,6 +21,13 @@ In this module, we will develop and publish a Power BI report based on data from
 - Consume data from the logical data warehouse
 - Publish the Power BI report
 
+## Table of Contents
+
+1. Connect Power BI to Azure Synapse Analytics
+2. Data Visualization #1: Table
+3. Data Visualization #2: Chart
+4. Save and Publish
+
 ## 1. Connect Power BI to Azure Synapse Analytics
 
 1. Open Power BI Desktop

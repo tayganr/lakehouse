@@ -18,6 +18,14 @@ In this module, we will automate ingestion and loading of Customer data using tr
 - Periodically copy changes from source using a Tumbling Window trigger.
 - On the arrival of new files in the data lake, incrementally load the dimension table using a Storage Event trigger.
 
+## Table of Contents
+
+1. Trigger (Tumbling Window)
+2. Trigger (Storage Event)
+3. Load Additional Data into dbo.Customers
+4. Monitor
+5. Query Delta Lake
+
 ## 1. Trigger (Tumbling Window)
 
 1. Navigate to the **Integrate** hub
