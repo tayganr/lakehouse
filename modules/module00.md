@@ -17,6 +17,13 @@
 
 In order to follow along with the lab exercises, we need to provision a set of resources.
 
+## Table of Contents
+
+1. [Deploy Template](#1-deploy-template)
+1. [Set Azure AD admin](#2-set-azure-ad-admin)
+1. [RBAC Role Assignment (Storage Account > Contributor)](#3-rbac-role-assignment-storage-account--contributor)
+1. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#4-rbac-role-assignment-storage-account--storage-blob-data-reader)
+
 ## 1. Deploy Template
 
 The following steps will deploy Azure resources that will be used as part of the workshop. This will include a Synapse workspace, ADLS Gen2 Storage Account, and an Azure SQL Database. This will allow you to run the necessary SQL queries against the database.
