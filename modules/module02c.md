@@ -20,11 +20,11 @@ In this module, we will automate ingestion and loading of Order data using trigg
 
 ## Table of Contents
 
-1. Trigger (Tumbling Window)
-2. Trigger (Storage Event)
-3. Load Additional Data into dbo.Orders
-4. Monitor
-5. Query Delta Lake
+- [1. Trigger (Tumbling Window)](#1-Trigger-Tumbling-Window)
+- [2. Trigger (Storage Event)](#2-Trigger-Storage-Event)
+- [3. Load Additional Data into dbo.Orders](#3-Load-Additional-Data-into-dboOrders)
+- [4. Monitor](#4-Monitor)
+- [5. Query Delta Lake](#5-Query-Delta-Lake)
 
 ## 1. Trigger (Tumbling Window)
 

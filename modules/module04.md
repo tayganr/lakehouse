@@ -23,10 +23,10 @@ In this module, we will develop and publish a Power BI report based on data from
 
 ## Table of Contents
 
-1. Connect Power BI to Azure Synapse Analytics
-2. Data Visualization #1: Table
-3. Data Visualization #2: Chart
-4. Save and Publish
+ 1. [Connect Power BI to Azure Synapse Analytics](#1-Connect-Power-BI-to-Azure-Synapse-Analytics)
+ 2. [Data Visualization #1: Table](#2-Data-Visualization-1-Table)
+ 3. [Data Visualization #2: Chart](#3-Data-Visualization-2-Chart)
+ 4. [Save and Publish](#4-Save-and-Publish)
 
 ## 1. Connect Power BI to Azure Synapse Analytics
 

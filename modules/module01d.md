@@ -20,11 +20,11 @@ In this module, we will automate ingestion and loading of Customer data using tr
 
 ## Table of Contents
 
-1. Trigger (Tumbling Window)
-2. Trigger (Storage Event)
-3. Load Additional Data into dbo.Customers
-4. Monitor
-5. Query Delta Lake
+- [1. Trigger (Tumbling Window)](#1-Trigger-Tumbling-Window)
+- [2. Trigger (Storage Event)](#2-Trigger-Storage-Event)
+- [3. Load Additional Data into dbo.Customers](#3-Load-Additional-Data-into-dboCustomers)
+- [4. Monitor](#4-Monitor)
+- [5. Query Delta Lake](#5-Query-Delta-Lake)
 
 ## 1. Trigger (Tumbling Window)
 

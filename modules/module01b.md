@@ -17,14 +17,14 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 ## Table of Contents
 
-1. Pipeline (initialLoad)
-2. Data flow (Source - rawCustomer)
-3. Data flow (Surrogate Key)
-4. Data flow (Derived Column)
-5. Data flow (Select)
-6. Data flow (Sink)
-7. Pipeline (initialLoad)
-8. Query Delta Lake
+- [1. Pipeline (initialLoad)](#1-Pipeline-initialLoad)
+- [2. Data flow (Source - rawCustomer)](#2-Data-flow-Source---rawCustomer)
+- [3. Data flow (Surrogate Key)](#3-Data-flow-Surrogate-Key)
+- [4. Data flow (Derived Column)](#4-Data-flow-Derived-Column)
+- [5. Data flow (Select)](#5-Data-flow-Select)
+- [6. Data flow (Sink)](#6-Data-flow-Sink)
+- [7. Pipeline (initialLoad)](#7-Pipeline-initialLoad)
+- [8. Query Delta Lake](#8-Query-Delta-Lake)
 
 ## 1. Pipeline (initialLoad)
 
