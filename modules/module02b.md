@@ -182,7 +182,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
     ![ALT](../images/module02b/035.png)
 
-9. Switch to the **Projection** tab amd click **Import schema**
+9. Switch to the **Projection** tab and click **Import schema**
 
     ![ALT](../images/module02b/036.png)
 
