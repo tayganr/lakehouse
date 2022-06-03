@@ -436,9 +436,12 @@ ELSE SELECT 0 changecount')
 
     ![ALT](../images/module01a/082.png)
 
-24. Rename the folder to `Customers`<span style="color:blue">some *blue* text</span>.<i style="color:white">;</i>and click **Create**
+24. Copy and paste the folder name from the snippet below and click **Create**
 
-    ![ALT](../images/module01a/083.png)
+```
+Customers
+```
+![ALT](../images/module01a/083.png)
 
 25. Click on the ellipses button next to `C1 - pipelineIncrementalCopyCDC` and select **Move item**
 
