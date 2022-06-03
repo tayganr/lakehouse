@@ -185,7 +185,7 @@ An integration dataset is simply a named reference to data that can be used in a
 
     ![ALT](../images/module01a/028.png)
 
-10. Set the Name to `schema`
+10. Set the **Name** to `schema`
 
     ![ALT](../images/module01a/029.png)
 
@@ -193,7 +193,7 @@ An integration dataset is simply a named reference to data that can be used in a
 
     ![ALT](../images/module01a/030.png)
 
-12. Set the Name to `table`
+12. Set the **Name** to `table`
 
     ![ALT](../images/module01a/031.png)
 
@@ -291,7 +291,7 @@ In this example, we are creating a reference to delimited text files (i.e. CSV) 
 
     ![ALT](../images/module01a/050.png)
 
-13. Set the Name to `folderPath`
+13. Set the **Name** to `folderPath`
 
     ![ALT](../images/module01a/051.png)
 
@@ -299,7 +299,7 @@ In this example, we are creating a reference to delimited text files (i.e. CSV) 
 
     ![ALT](../images/module01a/052.png)
 
-15. Set the Name to `fileName`
+15. Set the **Name** to `fileName`
 
     ![ALT](../images/module01a/053.png)
 
@@ -353,7 +353,7 @@ A pipeline is a data-driven workflow, logically grouping activities to perform a
 
     ![ALT](../images/module01a/064.png)
 
-5. Set the Name to `triggerStartTime`
+5. Set the **Name** to `triggerStartTime`
 
     ![ALT](../images/module01a/065.png)
 
@@ -361,7 +361,7 @@ A pipeline is a data-driven workflow, logically grouping activities to perform a
 
     ![ALT](../images/module01a/066.png)
 
-7. Set the Name to `triggerEndTime`
+7. Set the **Name** to `triggerEndTime`
 
     ![ALT](../images/module01a/067.png)
 
@@ -436,7 +436,7 @@ ELSE SELECT 0 changecount')
 
     ![ALT](../images/module01a/082.png)
 
-24. Rename the folder to `Customers` and click **Create**
+24. Rename the folder to `Customers`&nbsp; and click **Create**
 
     ![ALT](../images/module01a/083.png)
 
