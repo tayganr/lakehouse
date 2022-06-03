@@ -218,9 +218,13 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
     ![ALT](../images/module01b/042.png)
 
-3. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `1`
+3. Copy and paste the **Column** values from the snippets below
 
-    ![ALT](../images/module01b/043.png)
+| Column | Expression |
+| --- | --- |
+| `IsActive` | `1` |
+
+![ALT](../images/module01b/043.png)
 
 4. Click **Add** and select **Add column**
 
