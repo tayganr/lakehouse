@@ -436,7 +436,7 @@ ELSE SELECT 0 changecount')
 
     ![ALT](../images/module01a/082.png)
 
-24. Rename the folder to `Customers`<i style="color:white">;</i>and click **Create**
+24. Rename the folder to `Customers`<span style="color:blue">some *blue* text</span>.<i style="color:white">;</i>and click **Create**
 
     ![ALT](../images/module01a/083.png)
 
