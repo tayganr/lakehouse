@@ -436,7 +436,7 @@ ELSE SELECT 0 changecount')
 
     ![ALT](../images/module01a/082.png)
 
-24. Copy and paste the folder name from the snippet below and click **Create**
+24. Copy and paste the **Folder** name from the snippet below and click **Create**
 
 ```
 Customers
