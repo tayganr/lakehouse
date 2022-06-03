@@ -254,9 +254,13 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
     ![ALT](../images/module01c/045.png)
 
-3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(CustomerID,CustomerAddress)`
-    ![ALT](../images/module01c/046.png)
+3. Copy and paste the **Column** values from the table below
 
+    | Column | Expression |
+    | --- | --- |
+    | `Hash` | `md5(CustomerID,CustomerAddress)` |
+
+    ![ALT](../images/module01c/046.png)
 
 4. Switch to the **Data preview** tab and click **Refresh**
 
@@ -284,7 +288,11 @@ The Aggregate transformation defines aggregations of columns in your data stream
 
     ![ALT](../images/module01c/051.png)
 
-5. Set the **Column** to `MaxCustomerSK` and the **Expression** to `max(CustomerSK)`
+5. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `MaxCustomerSK` | `max(CustomerSK)` |
 
     ![ALT](../images/module01c/052.png)
 
@@ -366,7 +374,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/068.png)
 
-3. Under the **Columns**, set the **Column** to `Hash` and the **Expression** to `md5(columns())`
+3. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `Hash` | `md5(columns())` |
 
     ![ALT](../images/module01c/069.png)
 
@@ -502,7 +514,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/096.png)
 
-3. Under **Columns**, set the first **Column** to `CustomerSK` and the **Expression** to `TempKey + MaxCustomerSK`
+3. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `CustomerSK` | `TempKey + MaxCustomerSK` |
 
     ![ALT](../images/module01c/097.png)
 
@@ -510,7 +526,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/098.png)
 
-5. Under **Columns**, set the second **Column** to `IsActive` and the **Expression** to `1`
+5. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `IsActive` | `1` |
 
     ![ALT](../images/module01c/099.png)
 
@@ -518,7 +538,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/100.png)
 
-7. Under **Columns**, set the third **Column** to `ValidFrom` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
+7. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `ValidFrom` | `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')` |
 
     ![ALT](../images/module01c/101.png)
 
@@ -526,7 +550,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/102.png)
 
-9. Under **Columns**, set the fourth **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
+9. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `ValidTo` | `toTimestamp('9999-12-31 00:00:00')` |
 
     ![ALT](../images/module01c/103.png)
 
@@ -618,7 +646,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/121.png)
 
-3. Under **Columns**, set the first **Column** to `IsActive` and the **Expression** to `0`
+3. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `IsActive` | `0` |
 
     ![ALT](../images/module01c/122.png)
 
@@ -626,7 +658,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 
     ![ALT](../images/module01c/123.png)
 
-5. Under **Columns**, set the second **Column** to `ValidTo` and the **Expression** to `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')`
+5. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `ValidTo` | `toTimestamp(split($fileName,'.')[1], 'yyyyMMddHHmmssSSS')` |
 
     ![ALT](../images/module01c/124.png)
 

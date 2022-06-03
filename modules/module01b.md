@@ -218,7 +218,7 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
     ![ALT](../images/module01b/042.png)
 
-3. Copy and paste the **Column** values from the snippets below
+3. Copy and paste the **Column** values from the table below
 
     | Column | Expression |
     | --- | --- |
@@ -230,7 +230,11 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
     ![ALT](../images/module01b/044.png)
 
-5. Set the second **Column** to `ValidFrom` and the **Expression** to `currentTimestamp()`
+5. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `ValidFrom` | `currentTimestamp()` |
 
     ![ALT](../images/module01b/045.png)
 
@@ -238,7 +242,11 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
     ![ALT](../images/module01b/046.png)
 
-7. Set the third **Column** to `ValidTo` and the **Expression** to `toTimestamp('9999-12-31 00:00:00')`
+7. Copy and paste the **Column** values from the table below
+
+    | Column | Expression |
+    | --- | --- |
+    | `ValidTo` | `toTimestamp('9999-12-31 00:00:00')` |
 
     ![ALT](../images/module01b/047.png)
 
