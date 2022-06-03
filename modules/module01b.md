@@ -220,11 +220,11 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 3. Copy and paste the **Column** values from the snippets below
 
-| Column | Expression |
-| --- | --- |
-| `IsActive` | `1` |
+    | Column | Expression |
+    | --- | --- |
+    | `IsActive` | `1` |
 
-![ALT](../images/module01b/043.png)
+    ![ALT](../images/module01b/043.png)
 
 4. Click **Add** and select **Add column**
 
