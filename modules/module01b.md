@@ -24,7 +24,8 @@ flowchart LR
     DerivedColumn-->Select
     Select-->Sink
     end
-    Source-.->id1
+    id1-.->GetMetadata
+    id1-.->Source
     Sink-.->id2
     click GetMetadata "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#1-Pipeline-initialLoad"
     click Source "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#2-Data-flow-Source---rawCustomer"
