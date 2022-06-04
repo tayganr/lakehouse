@@ -13,20 +13,27 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 ```mermaid
 flowchart LR
-    id1[(Data Lake\nraw)]
-    id2[(Data Lake\ncurated)]
+    ds1[(Data Lake\nraw)]
+    ds2[(Data Lake\ncurated)]
+    ds1-.->Source
+    Sink-.->ds2
+
+    Dataflow-.->Source
+
+
+
     subgraph Pipeline
     GetMetadata-->Dataflow
     end
-    subgraph Dataflow
+
+    subgraph Dataflows
     Source-->SurrogateKey
     SurrogateKey-->DerivedColumn
     DerivedColumn-->Select
     Select-->Sink
     end
-    id1-.->GetMetadata
-    id1-.->Source
-    Sink-.->id2
+
+
     click GetMetadata "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#1-Pipeline-initialLoad"
     click Source "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#2-Data-flow-Source---rawCustomer"
 ```
