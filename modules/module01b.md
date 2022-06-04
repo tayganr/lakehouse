@@ -11,6 +11,24 @@
 
 In this module, we will setup a Synapse Pipeline to load data from our raw layer (CSV), into our curated layer (Delta Lake).
 
+```mermaid
+flowchart LR
+    id1[(Data Lake\nraw)]
+    id2[(Data Lake\ncurated)]
+    subgraph Pipeline
+    GetMetadata-->Dataflow
+    end
+    subgraph Dataflow
+    Source-->SurrogateKey
+    SurrogateKey-->DerivedColumn
+    DerivedColumn-->Select
+    Select-->Sink
+    end
+    Source-.->id1
+    Sink-.->id2
+    click Source "#1-Source-Environment-dboCustomers"
+```
+
 ## :dart: Objectives
 
 - Create a pipeline that will initialize a dimension table in the curated layer of our data lake using the Delta Lake file format

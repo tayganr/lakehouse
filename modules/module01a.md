@@ -24,6 +24,7 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 5. [Pipeline (Lookup)](#5-Pipeline-Lookup)
 6. [Pipeline (If Condition, Copy data)](#6-Pipeline-If-Condition-Copy-data)
 7. [Load Additional Data into dbo.Customers](#7-Load-Additional-Data-into-dboCustomers)
+8. [Rerun Pipeline to Copy Additional Data](#8-rerun-pipeline-to-copy-additional-data)
 
 ## 1. Source Environment (dbo.Customers)
 
