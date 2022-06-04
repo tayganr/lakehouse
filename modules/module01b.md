@@ -26,8 +26,8 @@ flowchart LR
     end
     Source-.->id1
     Sink-.->id2
-    click GetMetadata href "#1-Pipeline-initialLoad"
-    click Source href "#2-Data-flow-Source---rawCustomer"
+    click GetMetadata "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#1-Pipeline-initialLoad"
+    click Source "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#2-Data-flow-Source---rawCustomer"
 ```
 
 ## :dart: Objectives
