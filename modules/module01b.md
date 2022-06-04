@@ -26,8 +26,8 @@ flowchart LR
     end
     Source-.->id1
     Sink-.->id2
-    click GetMetadata "#1-Pipeline-initialLoad"
-    click Source "#2-Data-flow-Source---rawCustomer"
+    click GetMetadata href "#1-Pipeline-initialLoad"
+    click Source href "#2-Data-flow-Source---rawCustomer"
 ```
 
 ## :dart: Objectives
