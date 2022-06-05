@@ -8,11 +8,11 @@
 
 ## :loudspeaker: Introduction
 
-In this module, we will setup a Synapse Pipeline to incrementally copy data from an OLTP source (Azure SQL Database), leveraging Change Data Capture technology to isolate changes. The data will be copied to the raw layer of our Azure Data Lake Storage Gen2 account.
+In this module, we will setup a Synapse Pipeline to incrementally copy data from an OLTP source (Azure SQL Database), leveraging [Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) technology to isolate changes. The data will be copied to the raw layer of our Azure Data Lake Storage Gen2 account.
 
 ```mermaid
 flowchart LR
-ds1[(Azure SQL DB\n CDC enabled fa:fa-check)]
+ds1[(Azure SQL DB\n CDC enabled)]
 ds2[(Data Lake\nraw)]
 ds1-.changeCount.->a1
 ds1-.source\ncdc.dbo_Customers_CT.->a3
