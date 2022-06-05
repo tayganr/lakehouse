@@ -44,39 +44,39 @@ Initialize the source environment by creating a table, enabling CDC on the table
 
 4. To create the source table, copy and paste the code snippet below and click **Run**
 
-```sql
-CREATE TABLE Customers (
-    CustomerID int IDENTITY(1,1) PRIMARY KEY,
-    CustomerAddress varchar(255) NOT NULL
-);
-```
+    ```sql
+    CREATE TABLE Customers (
+        CustomerID int IDENTITY(1,1) PRIMARY KEY,
+        CustomerAddress varchar(255) NOT NULL
+    );
+    ```
 
-![ALT](../images/module01a/004.png)
+    ![ALT](../images/module01a/004.png)
 
 5. To enable change data capture on the source table, copy and paste the code snippet below and click **Run**
 
-```sql
-EXEC sys.sp_cdc_enable_db;
-EXEC sys.sp_cdc_enable_table  
-    @source_schema = N'dbo',  
-    @source_name   = N'Customers',  
-    @role_name     = NULL,
-    @supports_net_changes = 1;
-```
+    ```sql
+    EXEC sys.sp_cdc_enable_db;
+    EXEC sys.sp_cdc_enable_table  
+        @source_schema = N'dbo',  
+        @source_name   = N'Customers',  
+        @role_name     = NULL,
+        @supports_net_changes = 1;
+    ```
 
-![ALT](../images/module01a/005.png)
+    ![ALT](../images/module01a/005.png)
 
 6. To load the source table with data, copy and paste the code snippet below and click **Run**
 
-```sql
-INSERT INTO dbo.Customers (CustomerAddress)
-VALUES
-    ('82 Margate Drive, Sheffield S4 8FQ'),
-    ('135 High Barns, Ely, CB7 4RH'),
-    ('39 Queen Annes Drive, Bedale, DL8 2EL');
-```
+    ```sql
+    INSERT INTO dbo.Customers (CustomerAddress)
+    VALUES
+        ('82 Margate Drive, Sheffield S4 8FQ'),
+        ('135 High Barns, Ely, CB7 4RH'),
+        ('39 Queen Annes Drive, Bedale, DL8 2EL');
+    ```
 
-![ALT](../images/module01a/006.png)
+    ![ALT](../images/module01a/006.png)
 
 <div align="right"><a href="#module-01a---incremental-copy-to-raw-using-change-data-capture">↥ back to top</a></div>
 
@@ -122,19 +122,19 @@ Creating a linked service provides Azure Synapse Analytics the necessary informa
 
 10. Copy and paste the **User name**
 
-```text
-sqladmin
-```
+    ```text
+    sqladmin
+    ```
 
-![ALT](../images/module01a/016.png)
+    ![ALT](../images/module01a/016.png)
 
 11. Copy and paste the **Password**
 
-```text
-sqlPassword!
-```
+    ```text
+    sqlPassword!
+    ```
 
-![ALT](../images/module01a/017.png)
+    ![ALT](../images/module01a/017.png)
 
 12. Click **Test connection**
 
@@ -162,7 +162,7 @@ An integration dataset is simply a named reference to data that can be used in a
 
     ![ALT](../images/module01a/022.png)
 
-4. Search `SQL`, select **Azure SQL Database**, and click **Continue** 
+4. Search `SQL`, select **Azure SQL Database**, and click **Continue**
 
     ![ALT](../images/module01a/023.png)
 
@@ -256,7 +256,7 @@ In this example, we are creating a reference to delimited text files (i.e. CSV) 
 
     ![ALT](../images/module01a/022.png)
 
-4. Search `Data Lake`, select **Azure Data Lake Storage Gen2**, and click **Continue** 
+4. Search `Data Lake`, select **Azure Data Lake Storage Gen2**, and click **Continue**
 
     ![ALT](../images/module01a/042.png)
 
@@ -394,69 +394,70 @@ A pipeline is a data-driven workflow, logically grouping activities to perform a
 
     ![ALT](../images/module01a/074.png)
 
-15. Click inside the **Query** text input and click **Add dynamic content** 
+15. Click inside the **Query** text input and click **Add dynamic content**
 
     ![ALT](../images/module01a/075.png)
 
 16. Copy and paste the code snippet and click **OK**
 
-```javascript
-@concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
-SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
-SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
-SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
-IF (@from_lsn IS NOT NULL AND @to_lsn IS NOT NULL AND @from_lsn < @to_lsn)
-SELECT count(1) changecount FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')
-ELSE SELECT 0 changecount')
-```
+    ```javascript
+    @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
+    SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
+    SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
+    SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
+    IF (@from_lsn IS NOT NULL AND @to_lsn IS NOT NULL AND @from_lsn < @to_lsn)
+    SELECT count(1) changecount FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')
+    ELSE SELECT 0 changecount')
+    ```
 
-![ALT](../images/module01a/076.png)
+    ![ALT](../images/module01a/076.png)
 
-18. Click **Preview data**
+17. Click **Preview data**
 
     ![ALT](../images/module01a/077.png)
 
-19. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
+18. Provide a value for **triggerStartTime** that is a date before today (e.g. `2022-01-01`)
 
     ![ALT](../images/module01a/078.png)
 
-20. Provide a value for **triggerEndTime** that is a data in the future (e.g. `9999-12-31`)
+19. Provide a value for **triggerEndTime** that is a data in the future (e.g. `9999-12-31`)
 
     ![ALT](../images/module01a/079.png)
 
-21. Click **OK**
+20. Click **OK**
 
     ![ALT](../images/module01a/080.png)
 
-22. You should see a changecount of 3, close the Preview data window
+21. You should see a changecount of 3, close the Preview data window
 
     ![ALT](../images/module01a/081.png)
 
-23. On the **Integrate** pane, click the ellipses button next to **Pipelines**, and select **New folder**
+22. On the **Integrate** pane, click the ellipses button next to **Pipelines**, and select **New folder**
 
     ![ALT](../images/module01a/082.png)
 
-24. Copy and paste the **Folder** name from the snippet below and click **Create**
+23. Copy and paste the **Folder** name from the snippet below and click **Create**
 
-```
-Customers
-```
-![ALT](../images/module01a/083.png)
+    ```text
+    Customers
+    ```
 
-25. Click on the ellipses button next to `C1 - pipelineIncrementalCopyCDC` and select **Move item**
+    ![ALT](../images/module01a/083.png)
+
+24. Click on the ellipses button next to `C1 - pipelineIncrementalCopyCDC` and select **Move item**
 
     ![ALT](../images/module01a/084.png)
 
-26. Select the **Customers** folder and click **Move**
+25. Select the **Customers** folder and click **Move**
 
     ![ALT](../images/module01a/085.png)
 
-27. Click **Publish all**
+26. Click **Publish all**
 
     ![ALT](../images/module01a/086.png)
 
-28. Click **Publish**
+27. Click **Publish**
 
     ![ALT](../images/module01a/087.png)
 
@@ -488,84 +489,84 @@ In this step, we will be adding an If Condition activity to our pipeline. The If
 
 6. Copy and paste the code snippet and click **OK**
 
-```javascript
-@greater(int(activity('GetChangeCount').output.firstRow.changecount),0)
-```
+    ```javascript
+    @greater(int(activity('GetChangeCount').output.firstRow.changecount),0)
+    ```
 
-![ALT](../images/module01a/093.png)
+    ![ALT](../images/module01a/093.png)
 
-8. Within the **True** case, click the **pencil** icon
+7. Within the **True** case, click the **pencil** icon
 
     ![ALT](../images/module01a/094.png)
 
-9. Within Activities, search for `Copy`, and drag the **Copy data** activity onto the canvas
+8. Within Activities, search for `Copy`, and drag the **Copy data** activity onto the canvas
 
     ![ALT](../images/module01a/095.png)
 
-10. Rename the **Copy** activity to `copyIncrementalData`
+9. Rename the **Copy** activity to `copyIncrementalData`
 
     ![ALT](../images/module01a/096.png)
 
-11. Switch to the **Source** tab
+10. Switch to the **Source** tab
 
     ![ALT](../images/module01a/097.png)
 
-12. Set **Source dataset** to **AzureSqlTable**
+11. Set **Source dataset** to **AzureSqlTable**
 
     ![ALT](../images/module01a/098.png)
 
-13. Under **Dataset properties**, set the **schema** to `cdc`
+12. Under **Dataset properties**, set the **schema** to `cdc`
 
     ![ALT](../images/module01a/099.png)
 
-14. Under **Dataset properties**, set the **table** to `dbo_Customers_CT`
+13. Under **Dataset properties**, set the **table** to `dbo_Customers_CT`
 
     ![ALT](../images/module01a/100.png)
 
-15. Set **Use query** to **Query**
+14. Set **Use query** to **Query**
 
     ![ALT](../images/module01a/101.png)
 
-16. Click inside the **Query** text input and click **Add dynamic content** 
+15. Click inside the **Query** text input and click **Add dynamic content**
 
     ![ALT](../images/module01a/102.png)
 
-17. Copy and paste the code snippet and click **OK**
+16. Copy and paste the code snippet and click **OK**
 
-```javascript
-@concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
-SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
-SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
-SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
-SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')')
-```
+    ```javascript
+    @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
+    SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
+    SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
+    SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
+    SELECT CustomerID, CustomerAddress FROM cdc.fn_cdc_get_net_changes_dbo_Customers(@from_lsn, @to_lsn, ''all'')')
+    ```
 
-![ALT](../images/module01a/103.png)
+    ![ALT](../images/module01a/103.png)
 
-18. Switch to the **Sink** tab
+17. Switch to the **Sink** tab
 
     ![ALT](../images/module01a/104.png)
 
-19. Set **Sink dataset** to **AdlsRawDelimitedText**
+18. Set **Sink dataset** to **AdlsRawDelimitedText**
 
     ![ALT](../images/module01a/105.png)
 
-20. Under **Dataset properties**, set the **folderPath** to `wwi/customers`
+19. Under **Dataset properties**, set the **folderPath** to `wwi/customers`
 
     ![ALT](../images/module01a/106.png)
 
-21. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
+20. Under **Dataset properties**, click inside the **fileName** text input and click **Add dynamic content**
 
     ![ALT](../images/module01a/107.png)
 
-22. Copy and paste the code snippet and click **OK**
+21. Copy and paste the code snippet and click **OK**
 
-```javascript
-@concat(formatDateTime(pipeline().parameters.triggerStartTime,'yyyyMMddHHmmssfff'),'.csv')
-```
+    ```javascript
+    @concat(formatDateTime(pipeline().parameters.triggerStartTime,'yyyyMMddHHmmssfff'),'.csv')
+    ```
 
-![ALT](../images/module01a/108.png)
+    ![ALT](../images/module01a/108.png)
 
 22. Navigate back up to the pipeline and click **Publish all**
 
@@ -623,28 +624,28 @@ Before we can test that our pipeline is able to successfully isolate and copy ch
 
 4. Copy and paste the code snippets below and click **Run**
 
-```sql
-UPDATE dbo.Customers SET CustomerAddress = 'Guyzance Cottage, Guyzance NE65 9AF' WHERE CustomerID = 3;
-INSERT INTO dbo.Customers (CustomerAddress)
-VALUES
-    ('322 Fernhill, Mountain Ash, CF45 3EN'),
-    ('381 Southborough Lane, Bromley, BR2 8BQ');
-SELECT * FROM [dbo].[Customers];
-```
+    ```sql
+    UPDATE dbo.Customers SET CustomerAddress = 'Guyzance Cottage, Guyzance NE65 9AF' WHERE CustomerID = 3;
+    INSERT INTO dbo.Customers (CustomerAddress)
+    VALUES
+        ('322 Fernhill, Mountain Ash, CF45 3EN'),
+        ('381 Southborough Lane, Bromley, BR2 8BQ');
+    SELECT * FROM [dbo].[Customers];
+    ```
 
-![ALT](../images/module01a/121.png)
+    ![ALT](../images/module01a/121.png)
 
 5. Copy and paste the code snippet below and click **Run**. Note: There may be some latency between the changes being executed and the changes being recorded in the related CDC table. You may need to wait a minute or two between steps to get the correct `start_time` and `end_time` values.
 
-```sql
-DECLARE @max_lsn binary(10);
-SET @max_lsn = sys.fn_cdc_get_max_lsn();  
-SELECT
-CONVERT(varchar(16), DATEADD(minute, -1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 20) as start_time,
-CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 20) as end_time
-```
+    ```sql
+    DECLARE @max_lsn binary(10);
+    SET @max_lsn = sys.fn_cdc_get_max_lsn();  
+    SELECT
+    CONVERT(varchar(16), DATEADD(minute, -1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 20) as start_time,
+    CONVERT(varchar(16), DATEADD(minute, 1, sys.fn_cdc_map_lsn_to_time(@max_lsn)), 20) as end_time
+    ```
 
-![ALT](../images/module01a/122.png)
+    ![ALT](../images/module01a/122.png)
 
 6. Copy and paste the `start_time` and `end_time` values into a text editor (e.g. Notepad). This will be used as input for the pipeline rerun to isolate the second batch of changes made to the dbo.Customers table.
 
@@ -664,31 +665,31 @@ Using the `start_time` and `end_time` values from the previous step, we will rer
 
     ![ALT](../images/module01a/008.png)
 
-2. Navigate to the **Integration** hub
+3. Navigate to the **Integration** hub
 
     ![ALT](../images/module01a/124.png)
 
-3. Open pipeline `C1 - pipelineIncrementalCopyCDC`
+4. Open pipeline `C1 - pipelineIncrementalCopyCDC`
 
     ![ALT](../images/module01a/125.png)
 
-4. Click **Debug**
+5. Click **Debug**
 
     ![ALT](../images/module01a/126.png)
 
-5. Copy and paste the `start_time` and `end_time` values into the `triggerStartTime` and `triggerEndTime` parameters and click **OK**
+6. Copy and paste the `start_time` and `end_time` values into the `triggerStartTime` and `triggerEndTime` parameters and click **OK**
 
     ![ALT](../images/module01a/127.png)
 
-6. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows have been written to the data lake.
+7. When the pipeline run is complete, under the **Output** tab, click the **Details** icon of the Copy data activity to confirm that three rows have been written to the data lake.
 
     ![ALT](../images/module01a/128.png)
 
-7. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the second CSV file and select **New SQL Script > Select TOP 100 rows**
+8. You can also navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `01-raw/wwi/customers`, right-click the second CSV file and select **New SQL Script > Select TOP 100 rows**
 
     ![ALT](../images/module01a/129.png)
 
-8. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
+9. Modify the SQL statement to include `HEADER_ROW = TRUE` within the OPENROWSET function and click **Run**
 
     ![ALT](../images/module01a/130.png)
 

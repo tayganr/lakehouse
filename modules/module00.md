@@ -4,7 +4,7 @@
 
 ## :thinking: Prerequisites
 
-* An [Azure account](https://azure.microsoft.com/en-us/free/) with an active subscription.
+* An [Azure account](https://azure.microsoft.com/free) with an active subscription.
 * Owner permissions within a Resource Group to create resources and manage role assignments.
 * The subscription must have the following resource providers registered.
   * Microsoft.Authorization
@@ -130,7 +130,7 @@ The **Storage Blob Data Reader** role assignment is required to read files from 
 
     ![ALT](../images/module00/015.png)
 
-6. Search for your account, select your account, click **Select** 
+6. Search for your account, select your account, click **Select**
 
     ![ALT](../images/module00/011.png)
 

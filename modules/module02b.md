@@ -142,7 +142,7 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
     ![ALT](../images/module02b/026.png)
 
-19. Switch to the **Data preview** tab and click **Refresh**
+18. Switch to the **Data preview** tab and click **Refresh**
 
     ![ALT](../images/module02b/027.png)
 
@@ -284,11 +284,11 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 
 4. Copy and paste the code snippet into the **Expression**
 
-```javascript
-iif(isNull(CustomerKey),toLong(0),CustomerKey)
-```
+    ```javascript
+    iif(isNull(CustomerKey),toLong(0),CustomerKey)
+    ```
 
-![ALT](../images/module02b/057.png)
+    ![ALT](../images/module02b/057.png)
 
 5. Switch to the **Data preview** tab and click **Refresh**
 
@@ -384,11 +384,11 @@ iif(isNull(CustomerKey),toLong(0),CustomerKey)
 
 4. Copy and paste the code snippet and click **OK**
 
-```javascript
-@pipeline().parameters.fileName
-```
+    ```javascript
+    @pipeline().parameters.fileName
+    ```
 
-![ALT](../images/module02b/078.png)
+    ![ALT](../images/module02b/078.png)
 
 5. Click **Publish all**
 

@@ -62,19 +62,19 @@ In this module, we will automate ingestion and loading of Customer data using tr
 
 9. Copy and paste the snippet below for **triggerStartTime**
 
-```javascript
-@formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
-```
+    ```javascript
+    @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
+    ```
 
-![ALT](../images/module01d/009.png)
+    ![ALT](../images/module01d/009.png)
 
 10. Copy and paste the snippet below for **triggerEndTime**
 
-```javascript
-@formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
-```
+    ```javascript
+    @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
+    ```
 
-![ALT](../images/module01d/010.png)
+    ![ALT](../images/module01d/010.png)
 
 11. Click **OK**
 
@@ -145,11 +145,11 @@ In this module, we will automate ingestion and loading of Customer data using tr
 
 13. Copy and paste the code snippet to set the **Trigger Run Parameter** (fileName) and click **OK**
 
-```javascript
-@trigger().outputs.body.fileName
-```
+    ```javascript
+    @trigger().outputs.body.fileName
+    ```
 
-![ALT](../images/module01d/026.png)
+    ![ALT](../images/module01d/026.png)
 
 14. Click **Publish all**
 

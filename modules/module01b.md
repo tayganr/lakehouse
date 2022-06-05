@@ -183,29 +183,29 @@ Data flows provide a way to transform data at scale without any coding required.
 
     ![ALT](../images/module01b/030.png)
 
-17. Enable **First row as header**
+15. Enable **First row as header**
 
     ![ALT](../images/module01b/031.png)
 
-18. Switch to the **Projection** tab
+16. Switch to the **Projection** tab
 
     ![ALT](../images/module01b/032.png)
 
-19. Click **Import schema**. Note: You may need to wait for the Data flow debug session to be ready before the button will become clickable.
+17. Click **Import schema**. Note: You may need to wait for the Data flow debug session to be ready before the button will become clickable.
 
     ![ALT](../images/module01b/033.png)
 
-20. Click **Import**
+18. Click **Import**
 
     ![ALT](../images/module01b/034.png)
 
-21. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` and click **Save**.
-    * Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
-    * Note: The string must be wrapped in single quotes.
+19. Under **Data flow parameters**, set the **fileName** property to an existing CSV file that resides within `01-raw > wwi > customers` and click **Save**.
+    - Tip: In a new window, open the Azure Portal, navigate to the storage account, and use the Storage Browser to find an existing file.
+    - Note: The string must be wrapped in single quotes.
 
     ![ALT](../images/module01b/035.png)
 
-23. Switch to the **Data preview** tab and click **Refresh**
+20. Switch to the **Data preview** tab and click **Refresh**
 
     ![ALT](../images/module01b/036.png)
 
@@ -333,23 +333,23 @@ The final step in a data flow is to write the net effect of the transformations 
 
     ![ALT](../images/module01b/058.png)
 
-8. Navigate to `03-curated` and click **OK**
+7. Navigate to `03-curated` and click **OK**
 
     ![ALT](../images/module01b/059.png)
 
-9. Click inside the **Folder path** text input and set the value to `wwi/customers`
+8. Click inside the **Folder path** text input and set the value to `wwi/customers`
 
     ![ALT](../images/module01b/060.png)
 
-10. Set the **Compression type** to **snappy**
+9. Set the **Compression type** to **snappy**
 
     ![ALT](../images/module01b/061.png)
 
-11. Set the **Table action** to **Truncate**
+10. Set the **Table action** to **Truncate**
 
     ![ALT](../images/module01b/062.png)
 
-12. Switch to the **Data preview** tab and click **Refresh**
+11. Switch to the **Data preview** tab and click **Refresh**
 
     ![ALT](../images/module01b/063.png)
 
@@ -373,25 +373,25 @@ To finalize our pipeline, we must update the parameters of the data flow activit
 
 4. Copy and paste the code snippet and click **OK**
 
-```javascript
-@activity('getFiles').output.childItems[0].name
-```
+    ```javascript
+    @activity('getFiles').output.childItems[0].name
+    ```
 
-![ALT](../images/module01b/067.png)
+    ![ALT](../images/module01b/067.png)
 
-6. Click **Publish all**
+5. Click **Publish all**
 
     ![ALT](../images/module01b/068.png)
 
-7. Click **Publish**
+6. Click **Publish**
 
     ![ALT](../images/module01b/069.png)
 
-8. Click **Debug**
+7. Click **Debug**
 
     ![ALT](../images/module01b/070.png)
 
-9. Wait until all the activities in the pipeline have a status of **Succeeded**
+8. Wait until all the activities in the pipeline have a status of **Succeeded**
 
     ![ALT](../images/module01b/071.png)
 

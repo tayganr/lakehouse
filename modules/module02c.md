@@ -125,11 +125,11 @@ In this module, we will automate ingestion and loading of Order data using trigg
 
 12. Copy and paste the code snippet to set the **Trigger Run Parameter** (fileName) and click **OK**
 
-```javascript
-@trigger().outputs.body.fileName
-```
+    ```javascript
+    @trigger().outputs.body.fileName
+    ```
 
-![ALT](../images/module02c/023.png)
+    ![ALT](../images/module02c/023.png)
 
 13. Click **Publish all**
 

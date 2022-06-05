@@ -43,64 +43,64 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 4. To create the source table, copy and paste the code snippet below and click **Run**
 
-```sql
-CREATE TABLE Orders (
-    OrderID int IDENTITY(1,1) PRIMARY KEY,
-    CustomerID int FOREIGN KEY REFERENCES Customers(CustomerID),
-    Quantity int NOT NULL,
-    OrderDateTime DATETIME default CURRENT_TIMESTAMP,
-    LastModifiedDateTime DATETIME default CURRENT_TIMESTAMP
-);
-INSERT INTO dbo.Orders (CustomerID, Quantity)
-VALUES
-    (1,38),
-    (2,27),
-    (3,16),
-    (1,52);
-```
+    ```sql
+    CREATE TABLE Orders (
+        OrderID int IDENTITY(1,1) PRIMARY KEY,
+        CustomerID int FOREIGN KEY REFERENCES Customers(CustomerID),
+        Quantity int NOT NULL,
+        OrderDateTime DATETIME default CURRENT_TIMESTAMP,
+        LastModifiedDateTime DATETIME default CURRENT_TIMESTAMP
+    );
+    INSERT INTO dbo.Orders (CustomerID, Quantity)
+    VALUES
+        (1,38),
+        (2,27),
+        (3,16),
+        (1,52);
+    ```
 
-![ALT](../images/module02a/004.png)
+    ![ALT](../images/module02a/004.png)
 
-5. To create a SQL trigger that will automatically update the LastModifiedDateTime colum on UPDATE, copy and paste the code snippet below and click **Run** 
+5. To create a SQL trigger that will automatically update the LastModifiedDateTime colum on UPDATE, copy and paste the code snippet below and click **Run**
 
-```sql
-CREATE TRIGGER trg_orders_update_modified
-ON dbo.Orders
-AFTER UPDATE 
-AS
-    UPDATE dbo.Orders
-    SET LastModifiedDateTime = CURRENT_TIMESTAMP
-    FROM Inserted i
-    WHERE dbo.Orders.OrderID = i.OrderID;
-```
+    ```sql
+    CREATE TRIGGER trg_orders_update_modified
+    ON dbo.Orders
+    AFTER UPDATE 
+    AS
+        UPDATE dbo.Orders
+        SET LastModifiedDateTime = CURRENT_TIMESTAMP
+        FROM Inserted i
+        WHERE dbo.Orders.OrderID = i.OrderID;
+    ```
 
-![ALT](../images/module02a/005.png)
+    ![ALT](../images/module02a/005.png)
 
-6. To initialise the watermark table, copy and paste the code snippet below and click **Run**
+6. To initialize the watermark table, copy and paste the code snippet below and click **Run**
 
-```sql
-CREATE TABLE Watermark (
-    TableName varchar(255),
-    Watermark DATETIME
-);
-INSERT INTO dbo.Watermark
-VALUES
-('dbo.Orders', '1/1/2022 12:00:00 AM');
-```
+    ```sql
+    CREATE TABLE Watermark (
+        TableName varchar(255),
+        Watermark DATETIME
+    );
+    INSERT INTO dbo.Watermark
+    VALUES
+    ('dbo.Orders', '1/1/2022 12:00:00 AM');
+    ```
 
-![ALT](../images/module02a/006.png)
+    ![ALT](../images/module02a/006.png)
 
 7. To enable the ability to programmatically update the watermark value via a stored procedure, copy and paste the code snippet below and click **Run**
 
-```sql
-CREATE PROCEDURE sp_update_watermark @LastModifiedDateTime datetime, @TableName varchar(50)
-AS
-    UPDATE Watermark
-    SET [Watermark] = @LastModifiedDateTime
-    WHERE [TableName] = @TableName;
-```
+    ```sql
+    CREATE PROCEDURE sp_update_watermark @LastModifiedDateTime datetime, @TableName varchar(50)
+    AS
+        UPDATE Watermark
+        SET [Watermark] = @LastModifiedDateTime
+        WHERE [TableName] = @TableName;
+    ```
 
-![ALT](../images/module02a/007.png)
+    ![ALT](../images/module02a/007.png)
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
@@ -156,11 +156,11 @@ AS
 
 13. Set the **Use query** property to **Query**, click inside the **Query** text, and copy and paste the code snippet
 
-```sql
-SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
-```
+    ```sql
+    SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
+    ```
 
-![ALT](../images/module02a/020.png)
+    ![ALT](../images/module02a/020.png)
 
 14. Click **Preview data** to confirm the query is valid
 
@@ -192,11 +192,11 @@ SELECT * FROM Watermark WHERE TableName = 'dbo.Orders'
 
 6. Set the **Use query** property to **Query**, click inside the **Query** text, and copy and paste the code snippet
 
-```sql
-SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
-```
+    ```sql
+    SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
+    ```
 
-![ALT](../images/module02a/027.png)
+    ![ALT](../images/module02a/027.png)
 
 7. Click **Preview data** to confirm the query is valid
 
@@ -232,11 +232,11 @@ SELECT MAX(LastModifiedDateTime) as NewWatermarkValue FROM dbo.Orders
 
 7. Set the **Use query** property to **Query**, click inside the **Query** text, and copy and paste the code snippet
 
-```sql
-SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
-```
+    ```sql
+    SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
+    ```
 
-![ALT](../images/module02a/035.png)
+    ![ALT](../images/module02a/035.png)
 
 8. Click **Debug**
 
@@ -268,11 +268,11 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 
 5. Copy and paste the code snippet and click **OK**
 
-```javascript
-@greater(int(activity('getChangeCount').output.firstRow.changecount),0)
-```
+    ```javascript
+    @greater(int(activity('getChangeCount').output.firstRow.changecount),0)
+    ```
 
-![ALT](../images/module02a/042.png)
+    ![ALT](../images/module02a/042.png)
 
 6. Within the **True** case, click the **pencil** icon
 
@@ -308,11 +308,11 @@ SELECT COUNT(*) as changecount FROM dbo.Orders WHERE LastModifiedDateTime > '@{a
 
 7. Copy and paste the code snippet and click **OK**
 
-```sql
-SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
-```
+    ```sql
+    SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWatermark').output.firstRow.Watermark}' and LastModifiedDateTime <= '@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}'
+    ```
 
-![ALT](../images/module02a/050.png)
+    ![ALT](../images/module02a/050.png)
 
 8. Switch to the **Sink** tab and set the **Source dataset** to **AdlsRawDelimitedText**
 
@@ -328,11 +328,11 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 
 11. Copy and paste the code snippet and click **OK**
 
-```javascript
-@concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
-```
+    ```javascript
+    @concat(formatDateTime(pipeline().TriggerTime,'yyyyMMddHHmmssfff'),'.csv')
+    ```
 
-![ALT](../images/module02a/054.png)
+    ![ALT](../images/module02a/054.png)
 
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
@@ -368,11 +368,11 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 
 8. Copy and paste the code snippet and click **OK**
 
-```javascript
-@{activity('getNewWatermark').output.firstRow.NewWatermarkValue}
-```
+    ```javascript
+    @{activity('getNewWatermark').output.firstRow.NewWatermarkValue}
+    ```
 
-![ALT](../images/module02a/062.png)
+    ![ALT](../images/module02a/062.png)
 
 9. Click inside the **TableName** value text input and click **Add dynamic content**
 
@@ -380,11 +380,11 @@ SELECT * FROM dbo.Orders WHERE LastModifiedDateTime > '@{activity('getOldWaterma
 
 10. Copy and paste the code snippet and click **OK**
 
-```javascript
-@{activity('getOldWatermark').output.firstRow.TableName}
-```
+    ```javascript
+    @{activity('getOldWatermark').output.firstRow.TableName}
+    ```
 
-![ALT](../images/module02a/064.png)
+    ![ALT](../images/module02a/064.png)
 
 11. Click **Publish all**
 

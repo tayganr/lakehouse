@@ -40,11 +40,11 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 
 3. Copy and paste the code snippet below and click **Run**
 
-```sql
-CREATE DATABASE ldw COLLATE Latin1_General_100_BIN2_UTF8;
-```
+    ```sql
+    CREATE DATABASE ldw COLLATE Latin1_General_100_BIN2_UTF8;
+    ```
 
-![ALT](../images/module03/003.png)
+    ![ALT](../images/module03/003.png)
 
 4. To the right of the **Use database** drop-down menu, click the **Refresh** icon
 
@@ -112,31 +112,31 @@ CREATE SCHEMA wwi;
 
 1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 
-```sql
-CREATE VIEW wwi.customers
-AS SELECT *
-FROM
-    OPENROWSET(
-        BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/customers',
-        FORMAT = 'DELTA'
-    ) AS [result];
-```
+    ```sql
+    CREATE VIEW wwi.customers
+    AS SELECT *
+    FROM
+        OPENROWSET(
+            BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/customers',
+            FORMAT = 'DELTA'
+        ) AS [result];
+    ```
 
-![ALT](../images/module03/010.png)
+    ![ALT](../images/module03/010.png)
 
 2. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 
-```sql
-CREATE VIEW wwi.orders
-AS SELECT *
-FROM
-    OPENROWSET(
-        BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/orders',
-        FORMAT = 'DELTA'
-    ) AS [result];
-```
+    ```sql
+    CREATE VIEW wwi.orders
+    AS SELECT *
+    FROM
+        OPENROWSET(
+            BULK 'https://YOUR_DATA_LAKE_ACCOUNT.dfs.core.windows.net/03-curated/wwi/orders',
+            FORMAT = 'DELTA'
+        ) AS [result];
+    ```
 
-![ALT](../images/module03/011.png)
+    ![ALT](../images/module03/011.png)
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
@@ -158,7 +158,7 @@ FROM
 
     ![ALT](../images/module03/015.png)
 
-5. Right-click on `wwwi.customers` and select **New SQL script > Select TOP 100 rows**
+5. Right-click on `wwi.customers` and select **New SQL script > Select TOP 100 rows**
 
     ![ALT](../images/module03/016.png)
 
