@@ -31,11 +31,10 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 Initialize the source environment by:
 
-- Creating a table `dbo.Orders`
-- Populating the table with some data
-- Creating a SQL trigger that will automatically update the `LastModifiedDateTime` column when an UPDATE occurs
-- Creating a watermark table `dbo.Watermark` to track the high watermark
-- Creating a SQL procedure update the watermark table
+- Creating a table `dbo.Orders` and populating the table with some data
+- Creating a SQL trigger that will automatically update the `LastModifiedDateTime` column on `dbo.Orders` when an UPDATE occurs
+- Creating a watermark table `dbo.Watermark` to track the maximum `LastModifiedDateTime` for the last successful load
+- Creating a SQL procedure to update the watermark table upon the completion of a successful load
 
 1. Navigate to the **SQL database**
 
