@@ -15,6 +15,9 @@ In this module, we will setup a Synapse Pipeline to incrementally load data from
 ```mermaid
 flowchart LR
 
+param((fileName))
+param-.->p
+
 ds1[(Data Lake\nraw)]
 ds2a[(Data Lake\ncurated)]
 ds2b[(Data Lake\ncurated)]
