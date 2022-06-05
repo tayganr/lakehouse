@@ -13,22 +13,29 @@ In this module, we will setup a Synapse Pipeline to load data from our raw layer
 
 ```mermaid
 flowchart LR
+    a1[Get Metadata\ngetFiles]
+    a2[Dataflow\ninitialLoad]
+    df1[Source\nrawCustomer]
+    df2[Surrogate Key\nsurrogateKey]
+    df3[Derived Column\nderivedColumnsSCD]
+    df4[Select\nreorderColumns]
+    df5[Sink\ncuratedCustomer]
     ds1[(Data Lake\nraw)]
     ds2[(Data Lake\ncurated)]
-    ds1-.->Source
-    ds1-.->GetMetadata
-    Sink-.->ds2
-    Dataflow-.->Source
+    ds1-.->df1
+    ds1-.->a1
+    df5-.->ds2
+    a2-.fileName.->Dataflows
 
     subgraph Pipeline
-    GetMetadata-->Dataflow
+    a1-->a2
     end
 
     subgraph Dataflows
-    Source-->SurrogateKey
-    SurrogateKey-->DerivedColumn
-    DerivedColumn-->Select
-    Select-->Sink
+    df1-->df2
+    df2-->df3
+    df3-->df4
+    df4-->df5
     end
 
 
