@@ -28,6 +28,23 @@ In this module, we will automate ingestion and loading of Order data using trigg
 
 ## 1. Trigger (Tumbling Window)
 
+```mermaid
+
+flowchart TB
+
+t1[Trigger\ntriggerTumblingWindow5mOrders]
+p1[Pipeline\nO1 - pipelineIncrementalCopyWatermark]
+ds1[(Azure SQL Database\ndbo.Orders)]
+ds2[(Azure Data Lake\nraw)]
+
+t1-->sg
+
+subgraph sg[Data Movement]
+ds1-.source.->p1-.sink.->ds2
+end
+
+```
+
 1. Navigate to the **Integrate** hub
 
     ![ALT](../images/module02c/001.png)
@@ -75,6 +92,23 @@ In this module, we will automate ingestion and loading of Order data using trigg
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 2. Trigger (Storage Event)
+
+```mermaid
+
+flowchart TB
+
+t2[Trigger\ntriggerStorageEventOrders]
+p2[Pipeline\nO2 - pipelineFactIncrementalLoad]
+ds2[(Azure Data Lake\nraw)]
+ds3[(Azure Data Lake\ncurated)]
+
+t2--"fileName = @trigger().outputs.body.fileName"-->sg
+
+subgraph sg[Data Movement]
+ds2-.source.->p2-.sink.->ds3
+end
+
+```
 
 1. Open the pipeline `O2 - pipelineFactIncrementalLoad`
 
@@ -142,6 +176,13 @@ In this module, we will automate ingestion and loading of Order data using trigg
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 3. Load Additional Data into dbo.Orders
+
+```mermaid
+flowchart LR
+ds1[(Azure SQL Database\ndbo.Orders)]
+sql[/SQL Code/]
+sql-.INSERT.->ds1
+```
 
 1. Navigate to the **SQL database**
 
