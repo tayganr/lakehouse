@@ -12,13 +12,13 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ```mermaid
 flowchart LR
-ds1[(Azure SQL DB\n CDC enabled)]
+ds1[(Azure SQL DB\n CDC enabled fa:fa-check)]
 ds2[(Data Lake\nraw)]
-ds1-.->a1
-ds1-.source.->a3
-a3-.sink.->ds2
+ds1-.changeCount.->a1
+ds1-.source\ncdc.dbo_Customers_CT.->a3
+a3-."sink\n01-raw/wwi/customers/$fileName.csv".->ds2
 
-subgraph Pipeline
+subgraph p["Pipeline (C1 - pipelineIncrementalCopyCDC)"]
 a1[Lookup\nGetChangeCount]
 a1-->a2
     subgraph a2[If Condition\nHasChangedRows]
