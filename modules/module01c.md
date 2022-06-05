@@ -214,7 +214,7 @@ In this step, we will add a second source transformation that will reference the
 
     ![ALT](../images/module01c/038.png)
 
-12. Switch to the **Data preview** tab and click **Refresh**
+11. Switch to the **Data preview** tab and click **Refresh**
 
     ![ALT](../images/module01c/039.png)
 
@@ -356,11 +356,11 @@ In this step, we will add a second exists transformation that will return record
 
     ![ALT](../images/module01c/064.png)
 
-5. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
+6. Under **Exists conditions**, set the **Left** and **Right** to `CustomerID`
 
     ![ALT](../images/module01c/065.png)
 
-6. Switch to the **Data preview** tab and click **Refresh**
+7. Switch to the **Data preview** tab and click **Refresh**
 
     ![ALT](../images/module01c/066.png)
 
@@ -587,7 +587,7 @@ In this step, we are adding columns `CustomerSK`, `IsActive`, `ValidFrom`, and `
 
 ## 16. Data flow (Select - dropTempColumns)
 
-[Select](https://docs.microsoft.com/azure/data-factory/data-flow-select) can be used to rename, drop, and reorder columns. In this step, we will **drop** the temporary columns that no longer need to be propogated downstream - `Hash`, `TempKey`, and `MaxCustomerSK`. In addition, we will **reorder** the columns by moving `CustomerSK` to the first position.
+[Select](https://docs.microsoft.com/azure/data-factory/data-flow-select) can be used to rename, drop, and reorder columns. In this step, we will **drop** the temporary columns that no longer need to be propagated downstream - `Hash`, `TempKey`, and `MaxCustomerSK`. In addition, we will **reorder** the columns by moving `CustomerSK` to the first position.
 
 1. Click the **[+]** icon to the right of `scdColumns`, under **Schema modifier** select **Select**
 
@@ -776,23 +776,23 @@ In this step, we will combine data from the incoming stream `dropTempColumns`, w
 
     ![ALT](../images/module01c/139.png)
 
-8. Navigate to `03-curated > wwi > customers` and click **OK**
+7. Navigate to `03-curated > wwi > customers` and click **OK**
 
     ![ALT](../images/module01c/140.png)
 
-9. Set the **Compression type** to `snappy`
+8. Set the **Compression type** to `snappy`
 
     ![ALT](../images/module01c/141.png)
 
-10. Set the **Update method** to **Allow insert** and **Allow upsert**
+9. Set the **Update method** to **Allow insert** and **Allow upsert**
 
     ![ALT](../images/module01c/142.png)
 
-11. Set the **Key columns** to `CustomerSK`
+10. Set the **Key columns** to `CustomerSK`
 
     ![ALT](../images/module01c/143.png)
 
-12. Switch to the **Data preview** tab and click **Refresh**
+11. Switch to the **Data preview** tab and click **Refresh**
 
     ![ALT](../images/module01c/144.png)
 
@@ -800,7 +800,7 @@ In this step, we will combine data from the incoming stream `dropTempColumns`, w
 
 ## 23. Pipeline (pipelineDimIncrementalLoad)
 
-Update the Data Flow activity within the pipeline to pass the pipeline paramter `@pipeline().parameters.fileName` to the Data Flow parameter `fileName`.
+Update the Data Flow activity within the pipeline to pass the pipeline parameter `@pipeline().parameters.fileName` to the Data Flow parameter `fileName`.
 
 1. Navigate back to the pipeline `C3 - pipelineDimIncrementalLoad`
 
@@ -816,11 +816,11 @@ Update the Data Flow activity within the pipeline to pass the pipeline paramter 
 
 4. Copy and paste the code snippet and click **OK**
 
-```javascript
-@pipeline().parameters.fileName
-```
+    ```javascript
+    @pipeline().parameters.fileName
+    ```
 
-![ALT](../images/module01c/148.png)
+    ![ALT](../images/module01c/148.png)
 
 5. Click **Publish all**
 
