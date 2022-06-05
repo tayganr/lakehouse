@@ -320,6 +320,13 @@ In this step, we will use the Monitor hub to track the automated execution of ou
 
 In this step, we will use the Serverless SQL pool query service to execute familiar T-SQL syntax to query the newly loaded customer data from the Delta Lake table.
 
+```mermaid
+flowchart LR
+ds1[(Azure Data Lake\ncurated)]
+sql[/SQL Code/]
+sql-.SELECT * FROM DELTA.->ds1
+```
+
 1. Navigate to the **Data** hub
 
     ![ALT](../images/module01d/041.png)
