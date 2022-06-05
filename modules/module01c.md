@@ -12,6 +12,59 @@
 
 In this module, we will setup a Synapse Pipeline to incrementally load data from our raw layer (CSV), into our curated layer (Delta Lake) as a SCD Type 2 dimension table.
 
+```mermaid
+flowchart LR
+    a1[Data flow\nincrementalLoad]
+    
+    df01[Source\nrawCustomer]
+    df02[Exists\nnewRecords]
+    df03[Exists\nexistingRecords]
+    df04[TBC]
+    df05[TBC]
+    df06[TBC]
+    df07[TBC]
+    df08[TBC]
+    df09[TBC]
+    df10[TBC]
+    df11[TBC]
+    df12[TBC]
+    df13[TBC]
+    df14[TBC]
+    df15[TBC]
+    df16[TBC]
+    df17[TBC]
+    df18[TBC]
+    df19[TBC]
+    df20[TBC]
+    df21[TBC]
+    df22[TBC]
+
+
+    param((fileName))
+    ds2[(Data Lake\ncurated)]
+
+    param-.->a1
+    df5-."03-curated/wwi/customers\nDelta Lake".->ds2
+
+
+    subgraph p["Pipeline (C3 - pipelineDimIncrementalLoad)"]
+    a1
+    end
+    
+    a1-.->df
+    
+    subgraph df["Dataflow (initialLoad)"]
+    df1-->df2
+    df2-->df3
+    df3-->df4
+    df4-->df5
+    end
+
+
+    click GetMetadata "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#1-Pipeline-initialLoad"
+    click Source "https://github.com/tayganr/lakehouse/blob/main/modules/module01b.md#2-Data-flow-Source---rawCustomer"
+```
+
 ## :dart: Objectives
 
 - Create a pipeline that will incrementally load data as new files arrive.
