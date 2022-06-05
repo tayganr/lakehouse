@@ -18,19 +18,13 @@ ds2[(Data Lake\nraw)]
 ds1-.->a1
 ds1-.->a2
 ds1-.->a3
-
-
 ds1-."source\ndbo.Orders".->a5
 a5-."sink\n01-raw/wwi/orders/$fileName.csv".->ds2
-
 subgraph p["Pipeline (O1 - pipelineIncrementalCopyWatermark)"]
 a1[Lookup\ngetOldWatermark]
 a2[Lookup\ngetNewWatermark]
 a3[Lookup\ngetChangeCount]
 sg[If Condition\nhasChangedRows]
-
-
-
 a1-->a3
 a2-->a3
 a3-->sg
