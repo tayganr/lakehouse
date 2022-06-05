@@ -29,6 +29,14 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## 1. Source Environment (dbo.Orders)
 
+Initialize the source environment by:
+
+- Creating a table `dbo.Orders`
+- Populating the table with some data, c
+- Creating a SQL trigger that will automatically update the `LastModifiedDateTime` column on UPDATE
+- Creating a watermark table `dbo.Watermark` to track the high watermark
+- Creating a SQL procedure update the watermark table
+
 1. Navigate to the **SQL database**
 
     ![ALT](../images/module02a/001.png)
@@ -106,6 +114,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## 2. Pipeline (Lookup - getOldWatermark)
 
+In this step, we will create a pipeline `O1 - pipelineIncrementalCopyWatermark` to incrementally copy order data from Azure SQL Database to Azure Data Lake Gen2. The first activity in our pipeline will be a **Lookup** which will query the `dbo.Watermark` table to retrieve the current watermark value.
+
 1. Navigate to the **Synapse workspace**
 
     ![ALT](../images/module02a/008.png)
@@ -170,6 +180,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## 3. Pipeline (Lookup - getNewWatermark)
 
+In this step, we will add a second **Lookup** activity to calculate a new watermark value based on the MAX `LastModifiedDateTime` from the `dbo.Orders` table.
+
 1. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 
     ![ALT](../images/module02a/022.png)
@@ -205,6 +217,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 4. Pipeline (Lookup - getChangeCount)
+
+In this step, we will add a third **Lookup** activity to calculate the number of new records (**changeCount**) between the watermark values.
 
 1. Within Activities, search for `Lookup`, and drag the **Lookup activity** onto the canvas
 
@@ -250,6 +264,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 
 ## 5. Pipeline (If Condition)
 
+In this step, we will add an **If Condition** that will be satisfied if the change count is greater than zero.
+
 1. Within Activities, search for `If`, and drag the **If condition activity** onto the canvas
 
     ![ALT](../images/module02a/038.png)
@@ -281,6 +297,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 6. Pipeline (Copy data)
+
+In this step, we are going to add a **Copy data** activity within the If Condition that will copy the new order data from the **Azure SQL Database** to the **Azure Data Lake Storage Gen2** account.
 
 1. Within Activities, search for `Copy`, and drag the **Copy data activity** onto the canvas
 
@@ -337,6 +355,8 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 <div align="right"><a href="#module-02a---incremental-copy-to-raw-using-high-watermark">↥ back to top</a></div>
 
 ## 7. Pipeline (Stored procedure)
+
+In this step, we are going to add a **Stored procedure** activity that will update the watermark table with the new watermark value.
 
 1. Within Activities, search for `Stored`, and drag the **Stored procedure activity** onto the canvas
 
