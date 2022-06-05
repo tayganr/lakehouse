@@ -20,7 +20,7 @@ ds2a[(Data Lake\ncurated)]
 ds2b[(Data Lake\ncurated)]
 
 ds1-."01-raw/wwi/orders/$fileName\nCSV".->df1
-ds2b-."03-curated/wwi/orders\nDelta Lake".->df7
+ds2b-."03-curated/wwi/customers\nDelta Lake".->df7
 df6-."03-curated/wwi/orders\nDelta Lake".->ds2a
 
 subgraph p["Pipeline (O2 - pipelineFactIncrementalLoad)"]
