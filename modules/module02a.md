@@ -9,7 +9,38 @@
 
 ## :loudspeaker: Introduction
 
-In this module, we will setup a Synapse Pipeline to incrementally copy data from an OLTP source (Azure SQL Database), leveraging a watermark value to isolate changes. The data will be copied to the raw layer of our Azure Data Lake Storage Gen2 account.
+In this module, we will setup a Synapse Pipeline to incrementally copy data from an OLTP source (Azure SQL Database), referencing a high watermark value to isolate changes. The data will be copied to the raw layer of our Azure Data Lake Storage Gen2 account.
+
+```mermaid
+flowchart LR
+ds1[(Azure SQL DB\nHigh Watermark)]
+ds2[(Data Lake\nraw)]
+ds1-.->a1
+ds1-.->a2
+ds1-.->a3
+
+
+ds1-."source\ndbo.Orders".->a5
+a5-."sink\n01-raw/wwi/orders/$fileName.csv".->ds2
+
+subgraph p["Pipeline (O1 - pipelineIncrementalCopyWatermark)"]
+a1[Lookup\ngetOldWatermark]
+a2[Lookup\ngetNewWatermark]
+a3[Lookup\ngetChangeCount]
+sg[If Condition\nhasChangedRows]
+
+
+
+a1-->a3
+a2-->a3
+a3-->sg
+    subgraph sg[If Condition\nHasChangedRows]
+    a5[Copy data\nincrementalCopy]
+    a6[Stored procedure\nupdateWatermark]
+    a5-->a6
+    end
+end
+```
 
 ## :dart: Objectives
 
