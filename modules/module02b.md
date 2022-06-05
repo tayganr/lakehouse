@@ -12,6 +12,43 @@
 
 In this module, we will setup a Synapse Pipeline to incrementally load data from our raw layer (CSV), into our curated layer (Delta Lake) where our fact table resides.
 
+```mermaid
+flowchart LR
+
+ds1[(Data Lake\nraw)]
+ds2a[(Data Lake\ncurated)]
+ds2b[(Data Lake\ncurated)]
+
+ds1-."01-raw/wwi/orders/$fileName\nCSV".->df1
+ds2b-."03-curated/wwi/orders\nDelta Lake".->df7
+df6-."03-curated/wwi/orders\nDelta Lake".->ds2a
+
+subgraph p["Pipeline (O2 - pipelineFactIncrementalLoad)"]
+a1[Data flow\nincrementalLoadFact]
+end
+
+a1-.->df
+
+subgraph df["Data flow (dataFlowFactIncrementalLoad)"]
+df1[Source\nrawOrders]
+df2[Lookup\nlookupDimCustomer]
+df3[Select\nselectFactColumns]
+df4[Derived column\ncheckForEarlyFacts]
+df5[Alter row\nmarkAsUpsert]
+df6[Sink\nsinkOrders]
+df7[Source\ndimCustomer]
+df8[Filter\nactiveCustomers]
+df1-->df2
+df2-->df3
+df3-->df4
+df4-->df5
+df5-->df6
+df7-->df8
+df8-->df2
+end
+
+```
+
 ## :dart: Objectives
 
 - Create a pipeline that will incrementally load data as new files arrive.
