@@ -214,6 +214,38 @@ SELECT * FROM [dbo].[Orders];
 
 ## 4. Monitor
 
+```mermaid
+
+flowchart TB
+
+t1[Trigger\ntriggerTumblingWindow5mOrders]
+p1[Pipeline\nO1 - pipelineIncrementalCopyWatermark]
+ds1[(Azure SQL Database\ndbo.Orders)]
+ds2[(Azure Data Lake\nraw)]
+
+t1-->sg
+
+subgraph sg[Data Movement]
+ds1-.source.->p1-.sink.->ds2
+end
+
+sg-.->t2
+
+
+t2[Trigger\ntriggerStorageEventOrders]
+p2[Pipeline\nO2 - pipelineFactIncrementalLoad]
+ds2a[(Azure Data Lake\nraw)]
+ds3[(Azure Data Lake\ncurated)]
+
+t2--"fileName = @trigger().outputs.body.fileName"-->sg2
+
+subgraph sg2[Data Movement]
+ds2a-.source.->p2-.sink.->ds3
+end
+
+
+```
+
 1. Navigate to the **Monitor** hub
 
     ![ALT](../images/module02c/030.png)
@@ -241,6 +273,13 @@ SELECT * FROM [dbo].[Orders];
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 5. Query Delta Lake
+
+```mermaid
+flowchart LR
+ds1[(Azure Data Lake\ncurated)]
+sql[/SQL Code/]
+sql-.SELECT * FROM DELTA.->ds1
+```
 
 1. Navigate to the **Data** hub
 
