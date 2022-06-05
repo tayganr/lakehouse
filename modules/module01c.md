@@ -12,6 +12,8 @@
 
 In this module, we will setup a Synapse Pipeline to incrementally load data from our raw layer (CSV), into our curated layer (Delta Lake) as a SCD Type 2 dimension table.
 
+**Pipeline**
+
 ```mermaid
 flowchart LR
     a1[Data flow\nincrementalLoad]
