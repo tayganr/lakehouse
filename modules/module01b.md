@@ -31,7 +31,7 @@ flowchart LR
     a1--"fileName\nchildItems[0].name"-->a2
     end
 
-    subgraph df["Dataflow (initialLoad)"]
+    subgraph df["Dataflow (dataFlowDimInitialLoad)"]
     df1-->df2
     df2-->df3
     df3-->df4
