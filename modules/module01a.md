@@ -13,7 +13,7 @@ In this module, we will setup a Synapse Pipeline to incrementally copy data from
 ```mermaid
 flowchart LR
 ds1[(Azure SQL DB\n CDC enabled)]
-ds2[(Data Lake)]
+ds2[(Data Lake\nraw)]
 ds1-.->a1
 ds1-.source.->a3
 a3-.sink.->ds2
