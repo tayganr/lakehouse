@@ -243,6 +243,11 @@ Within Synapse Studio, the [Monitor](https://docs.microsoft.com/azure/synapse-an
 
 Since our pipelines are being automatically executed based on triggers, the data changes applied in the previous step will result in data automatically flowing from source (Azure SQL Database) to destination (Azure Data Lake Storage Gen2), then subsequently transformed before finally being loaded in the Delta Lake table format.
 
+- The tumbling window trigger will execute `C1 - pipelineIncrementalCopyCDC` every 5 minutes.
+- If changes are detected, data is copied to ADLS Gen 2 (raw).
+- Upon the detection of a new CSV file, the storage event trigger will execute `C3 - pipelineDimIncrementalLoad`.
+- The pipeline will cross-check the raw data (CSV) against the existing curated data (Delta Lake) and UPSERT the new data adhering to the SCD Type 2 pattern.
+
 ```mermaid
 
 flowchart TB
@@ -272,11 +277,6 @@ ds2a-.source.->p2-.sink.->ds3
 end
 
 ```
-
-- The tumbling window trigger will execute `C1 - pipelineIncrementalCopyCDC` every 5 minutes.
-- If changes are detected, data is copied to ADLS Gen 2 (raw).
-- Upon the detection of a new CSV file, the storage event trigger will execute `C3 - pipelineDimIncrementalLoad`.
-- The pipeline will cross-check the raw data (CSV) against the existing curated data (Delta Lake) and UPSERT the new data adhering to the SCD Type 2 pattern.
 
 In this step, we will use the Monitor hub to track the automated execution of our pipelines post the arrival of new data from the source system.
 
