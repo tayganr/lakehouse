@@ -22,16 +22,16 @@ flowchart LR
     df5[Sink\ncuratedCustomer]
     ds1[(Data Lake\nraw)]
     ds2[(Data Lake\ncurated)]
-    ds1-.->df1
-    ds1-.->a1
-    df5-.->ds2
-    a2-.->Dataflows
+    ds1-."01-raw/wwi/customers/$fileName\nCSV".->df1
+    ds1-.childItems.->a1
+    df5-."03-curated/wwi/customers\nDelta Lake".->ds2
+    a2-.->df
 
-    subgraph Pipeline
-    a1--fileName-->a2
+    subgraph p["Pipeline (C2 - pipelineDimInitialLoad)"]
+    a1--"fileName\nchildItems[0].name"-->a2
     end
 
-    subgraph Dataflows
+    subgraph df["Dataflow (initialLoad)"]
     df1-->df2
     df2-->df3
     df3-->df4
