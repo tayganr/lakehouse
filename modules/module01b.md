@@ -16,11 +16,9 @@ flowchart LR
     ds1[(Data Lake\nraw)]
     ds2[(Data Lake\ncurated)]
     ds1-.->Source
+    ds1-.->GetMetadata
     Sink-.->ds2
-
     Dataflow-.->Source
-
-
 
     subgraph Pipeline
     GetMetadata-->Dataflow
