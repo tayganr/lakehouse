@@ -25,10 +25,10 @@ flowchart LR
     ds1-.->df1
     ds1-.->a1
     df5-.->ds2
-    a2-.fileName.->Dataflows
+    a2-.->Dataflows
 
     subgraph Pipeline
-    a1-->a2
+    a1--fileName-->a2
     end
 
     subgraph Dataflows
