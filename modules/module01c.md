@@ -334,6 +334,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 8. Data flow (Exists - newRecords)
 
+In this step, we will add a second exists transformation that will return records from the left stream (`rawCustomer`) that **do not exist** in right stream (`activeCustomers`) based on the `CustomerID` (new records).
+
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **New branch**
 
     ![ALT](../images/module01c/060.png)
@@ -366,6 +368,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 9. Data flow (Derived column - addHash)
 
+In this step, we are adding a new column called `Hash` to the `existingRecords`. This column is calculated by calling the **md5 function** against the columns. The md5 function returns a 32-character hex string which can be used to calculate a fingerprint for a row.
+
 1. Click the **[+]** icon to the right of `existingRecords`, under **Schema modifier** select **Derived Column**
 
     ![ALT](../images/module01c/067.png)
@@ -389,6 +393,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 10. Data flow (Exists - changedRecords)
+
+In this step, we will add a third exists transformation that will return records from the left stream (`addHash`) that **do not exist** in right stream (`addHashDim`) based on the `Hash` field (changed records).
 
 1. Click the **[+]** icon to the right of `addHash`, under **Multiple inputs/outputs** select **Exists**
 
@@ -418,6 +424,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 11. Data flow (Union - unionNewActive)
 
+[Union](https://docs.microsoft.com/azure/data-factory/data-flow-union) will combine rows from multiple data streams into one, with the SQL Union of those streams as the new output from the Union transformation. In this step, we will combine data from the incoming stream `changedRecords`, with stream `newRecords`. This will reflect active records (either those customers who exist in the dimension table but have had changes and/or net new customers).
+
 1. Click the **[+]** icon to the right of `changedRecords`, under **Multiple inputs/outputs** select **Union**
 
     ![ALT](../images/module01c/077.png)
@@ -437,6 +445,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 12. Data flow (Alter row - markAsInsert)
+
+[Alter Row](https://docs.microsoft.com/azure/data-factory/data-flow-alter-row) set the INSERT, DELETE, UPDATE, and UPSERT policies on rows based on conditions. Each row will be marked with the policy corresponding to the first-matching expression. In this step, we will mark all rows from the incoming stream `unionNewActive` with the **INSERT** policy.
 
 1. Click the **[+]** icon to the right of `unionNewActive`, under **Row modifier** select **Alter Row**
 
@@ -458,6 +468,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 13. Data flow (Surrogate key - addTempKey)
 
+[Surrogate Key](https://docs.microsoft.com/azure/data-factory/data-flow-surrogate-key) adds an incrementing key value to each row of data. In this step, we will add a temporary surrogate key `TempKey`, that increments with a starting value of `1`. Note: The eventual key value for each row will be offset in a subsequent transformation step by the MAX surrogate key value found in the existing dimension table.
+
 1. Click the **[+]** icon to the right of `markAsInsert`, under **Schema modifier** select **Surrogate Key**
 
     ![ALT](../images/module01c/085.png)
@@ -477,6 +489,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 14. Data flow (Join - joinMaxSurrogateKey)
+
+[Join](https://docs.microsoft.com/azure/data-factory/data-flow-join) will combine data from two streams, the output will include all columns from both sources based on a join condition. In this step, we will combine all the columns from the left stream `addTempKey`, with all the columns from the right stream `maxSurrogateKey`.
 
 1. Click the **[+]** icon to the right of `addTempKey`, under **Multiple inputs/outputs** select **Join**
 
@@ -505,6 +519,13 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 15. Data flow (Derived column - scdColumns)
+
+In this step, we are adding columns `CustomerSK`, `IsActive`, `ValidFrom`, and `ValidTo` to the incoming stream `joinMaxSurrogateKey`.
+
+- `CustomerSK` is calculated by adding `MaxCustomerSK` to `TempKey`
+- `IsActive` is set to `1`
+- `ValidFrom` is set to the filename timestamp
+- `ValidTo` is set to `9999-12-31 00:00:00`
 
 1. Click the **[+]** icon to the right of `joinMaxSurrogateKey`, under **Schema modifier** select **Derived Column**
 
@@ -566,6 +587,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 16. Data flow (Select - dropTempColumns)
 
+[Select](https://docs.microsoft.com/azure/data-factory/data-flow-select) can be used to rename, drop, and reorder columns. In this step, we will **drop** the temporary columns that no longer need to be propogated downstream - `Hash`, `TempKey`, and `MaxCustomerSK`. In addition, we will **reorder** the columns by moving `CustomerSK` to the first position.
+
 1. Click the **[+]** icon to the right of `scdColumns`, under **Schema modifier** select **Select**
 
     ![ALT](../images/module01c/105.png)
@@ -589,6 +612,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 17. Data flow (Exists - obsoleteRecords)
+
+In this step, we will add a fourth exists transformation that will return records from the left stream (`addHashDim`) that **exist** in right stream (`changedRecords`) based on the `CustomerID` field (obsolete records).
 
 1. Click the **[+]** icon to the right of `addHashDim`, under **Multiple inputs/outputs** select **Exists**
 
@@ -618,6 +643,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 18. Data flow (Alter row - markAsUpdate)
 
+In this step, we will mark all rows from the incoming stream `obsoleteRecords` with the **UPDATE** policy.
+
 1. Click the **[+]** icon to the right of `obsoleteRecords`, under **Row modifier** select **Alter Row**
 
     ![ALT](../images/module01c/116.png)
@@ -637,6 +664,11 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 19. Data flow (Derived column - scdColumnsObsolete)
+
+In this step, we are updating columns `IsActive` and `ValidTo` from the incoming stream `markAsUpdate`.
+
+- `IsActive` is set to `0`
+- `ValidTo` is set to the filename timestamp
 
 1. Click the **[+]** icon to the right of `markAsUpdate`, under **Schema modifier** select **Derived Column**
 
@@ -674,6 +706,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 20. Data flow (Select - dropTempColumns2)
 
+In this step, we will **drop** the temporary column `Hash`.
+
 1. Click the **[+]** icon to the right of `scdColumnsObsolete`, under **Schema modifier** select **Select**
 
     ![ALT](../images/module01c/126.png)
@@ -694,6 +728,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 21. Data flow (Union - unionResults)
 
+In this step, we will combine data from the incoming stream `dropTempColumns`, with stream `dropTempColumns2`. This will reflect all rows that will be written to the sink using an INSERT or UPDATE operation.
+
 1. Click the **[+]** icon to the right of `dropTempColumns`, under **Multiple inputs/outputs** select **Union**
 
     ![ALT](../images/module01c/130.png)
@@ -713,6 +749,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 22. Data flow (Sink - sinkCustomer)
+
+[Sink](https://docs.microsoft.com/azure/data-factory/data-flow-sink) writes the net result of our transformation into a destination data store. In this step, we will write the results from the incoming stream `unionResults` to the destination Delta Lake table.
 
 1. Click the **[+]** icon to the right of `unionResults`, under **Destination** select **Sink**
 
@@ -762,6 +800,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 
 ## 23. Pipeline (pipelineDimIncrementalLoad)
 
+Update the Data Flow activity within the pipeline to pass the pipeline paramter `@pipeline().parameters.fileName` to the Data Flow parameter `fileName`.
+
 1. Navigate back to the pipeline `C3 - pipelineDimIncrementalLoad`
 
     ![ALT](../images/module01c/145.png)
@@ -793,6 +833,8 @@ The Exists transformation is a row filtering transformation that checks whether 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
 ## 24. Debug Pipeline
+
+To test that our pipeline is working correctly, we will trigger a manual run using the [Debug](https://docs.microsoft.com/azure/data-factory/iterative-development-debugging?tabs=data-factory) capability.
 
 1. Click **Debug**
 
