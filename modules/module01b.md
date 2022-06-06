@@ -60,7 +60,7 @@ flowchart LR
 
 ## 1. Pipeline (initialLoad)
 
-In this example, we will be creating a pipeline that will reference one of the data files in the raw layer to initialize the dimension table. This process will involve populating the dimension table with some data as well as the creation of additional columns needed to facilitate future incremental loads. The pipeline will leverage the Get Metadata activity which can be used to retrieve metadata, in this case, file names within a folder path. This metadata will be used to pass a file name to the subsequent Data flow step where our transformation will occur.
+In this example, we will be creating a pipeline that will reference one of the data files in the raw layer to initialize the dimension table. This process will involve populating the dimension table with some data as well as the creation of additional columns needed to facilitate future incremental loads. The pipeline will leverage the **Get Metadata** activity which can be used to retrieve metadata, in this case, file names within a folder path. This metadata will be used to pass a file name to the subsequent **Data flow** step where our transformation will occur.
 
 1. Navigate to the **Integrate** hub
 
@@ -130,9 +130,9 @@ In this example, we will be creating a pipeline that will reference one of the d
 
 ## 2. Data flow (Source - rawCustomer)
 
-Data flows provide a way to transform data at scale without any coding required. You can design a data transformation job in the data flow designer by constructing a series of transformations. In this step, we are going to start with a source that will reference a delimited text file (CSV) in the raw layer of our data lake.
+[Data flows](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) provide a way to transform data at scale without any coding required. You can design a data transformation job in the data flow designer by constructing a series of transformations. In this step, we are going to start with a **source** that will reference a delimited text file (CSV) in the raw layer of our data lake.
 
-1. Enable **Data flow debug**
+1. Enable **Data flow debug** and set the **Debug time to live** to **4 hours**
 
     ![ALT](../images/module01b/017.png)
 
@@ -218,7 +218,7 @@ Data flows provide a way to transform data at scale without any coding required.
 
 ## 3. Data flow (Surrogate Key)
 
-The Surrogate Key transformation is used to add an incrementing key value to each row of data. This is useful when designing dimension tables in a star schema analytical data model. In a star schema, each member in your dimension tables requires a unique key (e.g. CustomerSurrogateKey) that is a non-business key (e.g. CustomerID). In this example, the business key (CustomerID) may repeat in our dimension table due to updates being made to a customer over time. The surrogate key enables us to uniquely identify records within our dimension table while persisting changes.
+The [Surrogate Key](https://docs.microsoft.com/azure/data-factory/data-flow-surrogate-key) transformation is used to add an incrementing key value to each row of data. This is useful when designing dimension tables in a star schema analytical data model. In a star schema, each member in your dimension tables requires a unique key (e.g. CustomerSurrogateKey) that is a non-business key (e.g. CustomerID). In this example, the business key (CustomerID) may repeat in our dimension table due to updates being made to a customer over time. The surrogate key enables us to uniquely identify records within our dimension table while persisting changes.
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Surrogate Key**
 
@@ -240,7 +240,7 @@ The Surrogate Key transformation is used to add an incrementing key value to eac
 
 ## 4. Data flow (Derived Column)
 
-The Derived Column transformation allows us to generate new columns and/or modify existing columns. In this example, we are going to add three new columns (`IsActive`, `ValidFrom`, and `ValidTo`) in addition to the columns that are arriving from the previous transformation (`CustomerSK`, `CustomerID`, and `CustomerAddress`). This additional columns will be used in future incremental loads that will adhere to the slowly changing dimension type 2 pattern where we are able to persist historical changes and quickly isolate the subset of rows which represent the currently active (i.e. IsActive == 1).
+The [Derived Column](https://docs.microsoft.com/azure/data-factory/data-flow-derived-column) transformation allows us to generate new columns and/or modify existing columns. In this example, we are going to add three new columns (`IsActive`, `ValidFrom`, and `ValidTo`) in addition to the columns that are arriving from the previous transformation (`CustomerSK`, `CustomerID`, and `CustomerAddress`). These additional columns will be used in future incremental loads that will adhere to the slowly changing dimension type 2 pattern where we are able to persist historical changes and quickly isolate the subset of rows which represent the currently active (i.e. IsActive == 1).
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Derived Column**
 
@@ -290,7 +290,7 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 ## 5. Data flow (Select)
 
-The Select transformation can be used to rename, drop, or reorder columns. In this example, we are going to reorder our columns so that the newly introduced `CustomerSK` is in the first position.
+The [Select](https://docs.microsoft.com/azure/data-factory/data-flow-select) transformation can be used to rename, drop, or reorder columns. In this example, we are going to reorder our columns so that the newly introduced `CustomerSK` is in the first position.
 
 1. Click the **[+]** icon to add a new step, under **Schema modifier** select **Select**
 
@@ -312,7 +312,7 @@ The Select transformation can be used to rename, drop, or reorder columns. In th
 
 ## 6. Data flow (Sink)
 
-The final step in a data flow is to write the net effect of the transformations into a destination store by using the Sink transformation. In this example, we are going to write the net result of our data transformations to the curated layer within the data lake using the Delta Lake file format. Delta Lake is an open-source file format that enables building a lakehouse architecture by bringing features such as ACID (atomicity, consistency, isolation, and durability) compliant transactions.
+The final step in a data flow is to write the net effect of the transformations into a destination store by using the [Sink](https://docs.microsoft.com/azure/data-factory/data-flow-sink) transformation. In this example, we are going to write the net result of our data transformations to the curated layer within the data lake using the Delta Lake file format. Delta Lake is an open-source file format that enables building a lakehouse architecture by bringing features such as ACID (atomicity, consistency, isolation, and durability) compliant transactions.
 
 1. Click the **[+]** icon to add a new step, under **Destination** select **Sink**
 
@@ -362,7 +362,7 @@ The final step in a data flow is to write the net effect of the transformations 
 
 ## 7. Pipeline (initialLoad)
 
-To finalize our pipeline, we must update the parameters of the data flow activity so that is is able to retrieve a file name from the previous step in the pipeline.
+To finalize our pipeline, we must update the parameters of the data flow activity so that it is able to retrieve a file name from the previous step in the pipeline.
 
 1. Navigate back to the **pipeline**, click to focus on the **Data flow** step
 
@@ -404,21 +404,21 @@ To finalize our pipeline, we must update the parameters of the data flow activit
 
 ## 8. Query Delta Lake
 
-The serverless SQL pool in Azure Synapse Analytics is an example compute engine that has the ability to read data stored in the Delta Lake format. Further into the workshop, we will leverage this capability to serve curated data to reporting tools such as Power BI.
+The serverless SQL pool in Azure Synapse Analytics is an example compute engine that has the ability to [read data](https://docs.microsoft.com/azure/synapse-analytics/sql/query-delta-lake-format) stored in the **Delta Lake** format. Further into the workshop, we will leverage this capability to serve curated data to reporting tools such as Power BI.
 
 1. Navigate to the **Data** hub
 
     ![ALT](../images/module01b/072.png)
 
-2. Browse the data lake folder structure to `03-curated > wwi > customers`
+2. Browse the data lake folder structure to `03-curated > wwi`, right-click the folder `customers `, and select **New SQL Script > Select TOP 100 rows**
 
     ![ALT](../images/module01b/073.png)
 
-3. Right-click one of the **parquet** files, select **New SQL Script > Select TOP 100 rows**
+3. Set the **File type** to **Delta format** and click **Apply**
 
     ![ALT](../images/module01b/074.png)
 
-4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
+4. Click **Run**
 
     ![ALT](../images/module01b/075.png)
 
