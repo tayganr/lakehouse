@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module01b.md) - **[Home](../README.md)** - [Next Module >](../modules/module01d.md)
 
+## :stopwatch: Estimated Duration
+
+45 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -188,7 +192,7 @@ In this module, we will be creating a pipeline to incrementally load the Custome
 
 ## 2. Data flow (Source - rawCustomer)
 
-In this step, we start with a source transformation that will reference a delimited text file (CSV) in the raw layer of our data lake. The data flow will include a file name parameter, this will allow the pipeline to dynamically pass a file name at runtime.
+In this step, we start with a **source** transformation that will reference a delimited text file (CSV) in the raw layer of our data lake. The data flow will include a file name parameter, this will allow the pipeline to dynamically pass a file name at runtime.
 
 1. Enable **Data flow debug**
 
@@ -323,7 +327,7 @@ In this step, we will add a second source transformation that will reference the
 
 ## 4. Data flow (Filter - activeCustomers)
 
-The Filter transformation allows row filtering based upon a condition. In this step, we will filter the Customers dimension table to only include rows that are active. This is a necessary step as we will eventually compare the new incoming data with the existing active data.
+The [Filter](https://docs.microsoft.com/azure/data-factory/data-flow-filter) transformation allows row filtering based upon a condition. In this step, we will filter the Customers dimension table to only include rows that are active. This is a necessary step as we will eventually compare the new incoming data with the existing active data.
 
 1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
 
@@ -345,7 +349,7 @@ The Filter transformation allows row filtering based upon a condition. In this s
 
 ## 5. Data flow (Derived column - addHashDim)
 
-The Derived Column transformation allows us to generate new columns and/or modify existing columns. In this step, we are adding a new column called `Hash`. This column is calculated by calling the `md5` function against the same columns that exist in the source stream (i.e. excludes dimension columns such as `CustomerSK`, `IsActive`, `ValidFrom`, and `ValidTo`). The `md5` function returns a 32-character hex string which can be used to calculate a fingerprint for a row. This will be used later in the module to compare against a hash from the new data stream.
+The [Derived Column](https://docs.microsoft.com/azure/data-factory/data-flow-derived-column) transformation allows us to generate new columns and/or modify existing columns. In this step, we are adding a new column called `Hash`. This column is calculated by calling the `md5` function against the same columns that exist in the source stream (i.e. excludes dimension columns such as `CustomerSK`, `IsActive`, `ValidFrom`, and `ValidTo`). The `md5` function returns a 32-character hex string which can be used to calculate a fingerprint for a row. This will be used later in the module to compare against a hash from the new data stream.
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Schema modifier** select **Derived Column**
 
@@ -371,7 +375,7 @@ The Derived Column transformation allows us to generate new columns and/or modif
 
 ## 6. Data flow (Aggregate - maxSurrogateKey)
 
-The Aggregate transformation defines aggregations of columns in your data streams. In this step, we are going to use the Aggregate transformation to calculate the max `CustomerSK` value. This will be referenced by our data flow for INSERT operations so that the Customer surrogate key can resume incrementing from the last max value.
+The [Aggregate](https://docs.microsoft.com/azure/data-factory/data-flow-aggregate) transformation defines aggregations of columns in your data streams. In this step, we are going to use the Aggregate transformation to calculate the max `CustomerSK` value. This will be referenced by our data flow for INSERT operations so that the Customer surrogate key can resume incrementing from the last max value.
 
 1. Click the **[+]** icon to the right of `activeCustomers`, under **Multiple inputs/outputs** select **New branch**
 
@@ -405,7 +409,7 @@ The Aggregate transformation defines aggregations of columns in your data stream
 
 ## 7. Data flow (Exists - existingRecords)
 
-The Exists transformation is a row filtering transformation that checks whether your data exists in another source or stream. The output includes all rows in the left stream that exist or don't exist in the right stream. In this step, we are going to return all rows from the left stream (rawCustomer) where the `CustomerID` exists in the right stream (activeCustomers).
+The [Exists](https://docs.microsoft.com/azure/data-factory/data-flow-exists) transformation is a row filtering transformation that checks whether your data exists in another source or stream. The output includes all rows in the left stream that exist or don't exist in the right stream. In this step, we are going to return all rows from the left stream (rawCustomer) where the `CustomerID` **exists** in the right stream (activeCustomers).
 
 1. Click the **[+]** icon to the right of `rawCustomer`, under **Multiple inputs/outputs** select **Exists**
 
@@ -495,7 +499,7 @@ In this step, we are adding a new column called `Hash` to the `existingRecords`.
 
 ## 10. Data flow (Exists - changedRecords)
 
-In this step, we will add a third exists transformation that will return records from the left stream (`addHash`) that **do not exist** in right stream (`addHashDim`) based on the `Hash` field (changed records).
+In this step, we will add a third exists transformation that will return records from the left stream (`addHash`) that **do not exist** in right stream (`addHashDim`) based on the `Hash` field (changed records). This will identify existing customers where one or more customer attributes (e.g. CustomerAddress) has changed.
 
 1. Click the **[+]** icon to the right of `addHash`, under **Multiple inputs/outputs** select **Exists**
 
@@ -525,7 +529,7 @@ In this step, we will add a third exists transformation that will return records
 
 ## 11. Data flow (Union - unionNewActive)
 
-[Union](https://docs.microsoft.com/azure/data-factory/data-flow-union) will combine rows from multiple data streams into one, with the SQL Union of those streams as the new output from the Union transformation. In this step, we will combine data from the incoming stream `changedRecords`, with stream `newRecords`. This will reflect active records (either those customers who exist in the dimension table but have had changes and/or net new customers).
+[Union](https://docs.microsoft.com/azure/data-factory/data-flow-union) will combine rows from multiple data streams into one. In this step, we will combine data from the incoming stream `changedRecords`, with stream `newRecords`. This will reflect active records (either those customers who exist in the dimension table but have had changes and/or net new customers).
 
 1. Click the **[+]** icon to the right of `changedRecords`, under **Multiple inputs/outputs** select **Union**
 
@@ -714,7 +718,7 @@ In this step, we are adding columns `CustomerSK`, `IsActive`, `ValidFrom`, and `
 
 ## 17. Data flow (Exists - obsoleteRecords)
 
-In this step, we will add a fourth exists transformation that will return records from the left stream (`addHashDim`) that **exist** in right stream (`changedRecords`) based on the `CustomerID` field (obsolete records).
+In this step, we will add a fourth exists transformation that will return records from the left stream (`addHashDim`) that **exist** in right stream (`changedRecords`) based on the `CustomerID` field. This will identify the customer records that exist in the Delta Lake table but are now obsolete due to new changes, and therefore will need to be expired (e.g. IsActive = 0) which will be set in a subsequent transformation step.
 
 1. Click the **[+]** icon to the right of `addHashDim`, under **Multiple inputs/outputs** select **Exists**
 
@@ -945,14 +949,19 @@ To test that our pipeline is working correctly, we will trigger a manual run usi
 
     ![ALT](../images/module01c/152.png)
 
-3. Once successful, navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/customers`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
+3. Once successful, navigate to the **Data** hub, browse the data lake folder structure to `03-curated > wwi`, right-click the folder `customers`, and select **New SQL Script > Select TOP 100 rows**
 
-    ![ALT](../images/module01c/153.png)
+    <!-- ![ALT](../images/module01c/153.png) -->
 
-4. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
+4. Set the **File type** to **Delta format** and click **Apply**
+
+    <!-- ![ALT](../images/module01c/155.png) -->
+
+5. Click **Run**
+
     Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
 
-    ![ALT](../images/module01c/154.png)
+    <!-- ![ALT](../images/module01c/154.png) -->
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
