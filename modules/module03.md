@@ -96,7 +96,7 @@ WITH IDENTITY = 'Managed Identity';
 
 ## 4. Create an External Data Source
 
-External data sources are used to establish connectivity and support use cases such as data virtualization. In this step, we will create an external data source called `wwi` that will point to our curated data.
+[External data sources](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&tabs=dedicated) are used to establish connectivity and support use cases such as data virtualization. In this step, we will create an external data source called `wwi` that will point to our curated data.
 
 1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 
