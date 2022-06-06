@@ -414,7 +414,7 @@ The serverless SQL pool in Azure Synapse Analytics is an example compute engine 
 
     ![ALT](../images/module01b/072.png)
 
-2. Browse the data lake folder structure to `03-curated > wwi`, right-click the folder `customers `, and select **New SQL Script > Select TOP 100 rows**
+2. Browse the data lake folder structure to `03-curated > wwi`, right-click the folder `customers`, and select **New SQL Script > Select TOP 100 rows**
 
     ![ALT](../images/module01b/073.png)
 
