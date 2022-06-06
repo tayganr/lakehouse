@@ -81,9 +81,7 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
 
 ## 3. Create a Database Scoped Credential
 
-[Database-scoped credentials](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-storage-files-storage-access-control?tabs=managed-identity#database-scoped-credential) are used when any principal calls `OPENROWSET` function with `DATA_SOURCE` or selects data from external table that don't access public files.
-
-In this step, we will create a database-scoped credential using a **Managed Identity**, this will use the Synapse workspace identity to access files that are persisted on Azure storage.
+[Database-scoped credentials](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-storage-files-storage-access-control?tabs=managed-identity#database-scoped-credential) are used when any principal calls the `OPENROWSET` function with `DATA_SOURCE`, or selects data from external table with a non-public location. In this step, we will create a database-scoped credential using a **Managed Identity**, this will use the Synapse workspace identity to access files that are persisted on Azure storage.
 
 1. Copy and paste the code snippet below and click **Run**
 
