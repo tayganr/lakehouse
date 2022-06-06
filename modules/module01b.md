@@ -430,7 +430,7 @@ The serverless SQL pool in Azure Synapse Analytics is an example compute engine 
 
 ## :tada: Summary
 
-You have successfully setup a pipeline to initialize the dimension table (Customers) in the Delta Lake format.
+You have successfully setup a pipeline to initialize the dimension table (Customers) in the Delta Lake table format.
 
 ## :white_check_mark: Results
 
