@@ -28,6 +28,8 @@ In this module, we will automate ingestion and loading of Order data using trigg
 
 ## 1. Trigger (Tumbling Window)
 
+Create a new **tumbling window trigger** that will be associated with the pipeline `O1 - pipelineIncrementalCopyWatermark`. The trigger will be set to run every 5 minutes. Note: Since the pipeline contains an If Condition activity which checks for new or changed records, data will only be be copied if there are new or changed records in the source system since the last load.
+
 ```mermaid
 
 flowchart TB
@@ -92,6 +94,8 @@ end
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 2. Trigger (Storage Event)
+
+Create a new storage event trigger that will be associated with the pipeline `O2 - pipelineFactIncrementalLoad`. The trigger will be set to fire whenever a **Blob created** event occurs within the `01-raw/wwi/orders` directory for blob paths that end in `.csv`. Trigger output `@trigger().outputs.body.fileName` will be passed to the pipeline parameter `fileName`.
 
 ```mermaid
 
@@ -177,6 +181,8 @@ end
 
 ## 3. Load Additional Data into dbo.Orders
 
+Execute SQL code within the **Azure SQL Database** (source system) against the target table dbo.Orders. The code will add new order records (INSERT).
+
 ```mermaid
 flowchart LR
 ds1[(Azure SQL Database\ndbo.Orders)]
@@ -213,6 +219,13 @@ SELECT * FROM [dbo].[Orders];
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 4. Monitor
+
+Since our pipelines are being automatically executed based on triggers, the data changes applied in the previous step will result in data automatically flowing from source (Azure SQL Database) to destination (Azure Data Lake Storage Gen2), then subsequently transformed before finally being loaded in the Delta Lake table format.
+
+- The tumbling window trigger will execute `O1 - pipelineIncrementalCopyWatermark` every 5 minutes.
+- If changes are detected, data is copied to ADLS Gen 2 (raw).
+- Upon the detection of a new CSV file, the storage event trigger will execute `O2 - pipelineFactIncrementalLoad`.
+- The pipeline will reference existing customers (Delta Lake) with the raw order data (CSV) and UPSERT the new data accordingly.
 
 ```mermaid
 
@@ -273,6 +286,8 @@ end
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
 ## 5. Query Delta Lake
+
+Use the Serverless SQL pool query service to execute T-SQL syntax to query the newly loaded order data from the Delta Lake table.
 
 ```mermaid
 flowchart LR
