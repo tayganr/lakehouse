@@ -969,4 +969,16 @@ To test that our pipeline is working correctly, we will trigger a manual run usi
 
 You have successfully setup a pipeline to incrementally load the dimension table (Customer) following the SCD Type 2 pattern using the Delta Lake format.
 
+## :white_check_mark: Results
+
+Azure Synapse Analytics
+
+- [x] 1 x Pipeline (C3 - pipelineDimIncrementalLoad)
+- [x] 1 x Data flow (dataFlowDimIncrementalLoad)
+
+Azure Data Lake Storage Gen2
+
+- [x] 7 x Parquet file (03-curated/wwi/customers)
+- [x] 1 x Delta log file (03-curated/wwi/customers/_delta_log)
+
 [Continue >](../modules/module01d.md)
