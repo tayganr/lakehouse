@@ -429,6 +429,21 @@ A pipeline is a data-driven workflow, logically grouping activities to perform a
     ELSE SELECT 0 changecount')
     ```
 
+    :thinking: **What does the dynamic content do?**
+
+    At runtime, the pipeline will pass parameters `triggerStartTime` and `triggerEndTime` to the `@concat` function which will result in a SQL statement.
+
+    The query performs the following high-level steps:
+
+    - DECLARE variables (`@begin_time`, `@end_time`, `@from_lsn`, and `@to_lsn`)
+    - SET the variable values
+    - Calculates the number of net changes within the given time period
+
+    The query is able to achieve this by leveraging CDC functions such as:
+
+    - [sys.fn_cdc_map_time_to_lsn](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-cdc-map-time-to-lsn-transact-sql?view=sql-server-ver16) which returns a log sequence number (LSN) for a given datetime
+    - [cdc.fn_cdc_get_net_changes_<capture_instance>](https://docs.microsoft.com/sql/relational-databases/system-functions/cdc-fn-cdc-get-net-changes-capture-instance-transact-sql?view=sql-server-ver16) which returns the net changes for a specified LSN range.
+
     ![ALT](../images/module01a/076.png)
 
 17. Click **Preview data**
