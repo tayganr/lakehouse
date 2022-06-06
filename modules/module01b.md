@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module01a.md) - **[Home](../README.md)** - [Next Module >](../modules/module01c.md)
 
+## :stopwatch: Estimated Duration
+
+30 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -427,5 +431,17 @@ The serverless SQL pool in Azure Synapse Analytics is an example compute engine 
 ## :tada: Summary
 
 You have successfully setup a pipeline to initialize the dimension table (Customers) in the Delta Lake format.
+
+## :white_check_mark: Results
+
+Azure Synapse Analytics
+
+- [x] 1 x Pipeline (C2 - pipelineDimInitialLoad)
+- [x] 1 x Data flow (dataFlowDimInitialLoad)
+
+Azure Data Lake Storage Gen2
+
+- [x] 1 x Parquet file (03-curated/wwi/customers)
+- [x] 1 x Delta log file (03-curated/wwi/customers/_delta_log)
 
 [Continue >](../modules/module01c.md)

@@ -732,7 +732,7 @@ Using the `start_time` and `end_time` values from the previous step, we will rer
 
 You have successfully setup a pipeline that can check for changes in the source system and copy those changes to the raw layer within your data lake.
 
-## :white_check_mark: Activity
+## :white_check_mark: Results
 
 Azure SQL Database
 
