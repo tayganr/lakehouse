@@ -30,7 +30,7 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 
 ## 1. Create a Database
 
-A [serverless SQL database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest&tabs=sqlod) is a logical container where users can create utility objects (e.g. data sources, file formats, schemas, etc), simplifying access to files placed in Azure storage (e.g. CSV, Parquet, Delta) through external tables and views.
+A [serverless SQL database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest&tabs=sqlod) is a logical container where users can create utility objects such as data sources, file formats and schemas to simplify access to files placed in Azure storage (e.g. CSV, Parquet, Delta) through external tables and views.
 
 Note: The master database in serverless SQL pool does not support the creation of:
 
