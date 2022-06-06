@@ -12,6 +12,22 @@
 
 In this module, we will setup a Logical Data Warehouse (LDW), a relational layer, on top of the data files residing in Azure Data Lake Storage Gen2.
 
+```mermaid
+flowchart TB
+ds-.->v1
+ds-.->v2
+ds[(Data Lake\ncurated)]
+subgraph db["Serverless SQL Database (ldw)"]
+o1[Master Key\n<br>]
+o2["Database Scoped\nCredential (WorkspaceIdentity)"]
+o3["External Data Source\n(03-curated/wwi)"]
+subgraph schema["Schema (wwi)"]
+v1[View\nwwi.customers]
+v2[View\nwwi.orders]
+end
+end
+```
+
 ## :dart: Objectives
 
 - Create a database.
