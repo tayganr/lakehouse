@@ -64,13 +64,7 @@ Initialize the source environment by creating a table, enabling CDC on the table
 
 3. Click **Continue us <your_alias>@<your_domain>.com**
 
-    :warning: Since the deployed Azure SQL Database is the serverless SKU, you may encounter an intermittent error such as:
-
-    ```diff
-    ! Database 'prefix-sqldb' on server 'prefix-sqlsvr.database.windows.net' is not currently available. Please retry the connection later. 
-    ```
-
-    If this occurs, refresh the browser page and try again.
+    :warning: Since the deployed Azure SQL Database is the serverless SKU, you may encounter an intermittent error such as `Database 'prefix-sqldb' on server 'prefix-sqlsvr.database.windows.net' is not currently available. Please retry the connection later`. If this occurs, refresh the browser page and try again.
 
     ![ALT](../images/module01a/003.png)
 
