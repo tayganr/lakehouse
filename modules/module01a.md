@@ -4,7 +4,7 @@
 
 ## :stopwatch: Estimated Duration
 
-20 minutes
+30 minutes
 
 ## :thinking: Prerequisites
 
