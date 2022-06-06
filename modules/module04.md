@@ -16,6 +16,9 @@ In this module, we will develop and publish a Power BI report based on data from
 
 ```mermaid
 flowchart LR
+ds[(Data Lake\ncurated)]
+ds-.->v1
+ds-.->v2
 subgraph Azure Synapse Analytics
 v1[View\nwwi.customers]
 v2[View\nwwi.orders]
