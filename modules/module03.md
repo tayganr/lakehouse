@@ -30,6 +30,17 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 
 ## 1. Create a Database
 
+A [serverless SQL database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest&tabs=sqlod) is a logical container where users can create utility objects (e.g. data sources, file formats, schemas, etc), simplifying access to files placed in Azure storage (e.g. CSV, Parquet, Delta) through external tables and views.
+
+Note: The master database in serverless SQL pool does not support the creation of:
+
+- External tables
+- External data sources
+- Database scoped credentials
+- External file formats
+
+In this step, we will create a user database with the name `ldw` and collation `Latin1_General_100_BIN2_UTF8`.
+
 1. Navigate to the **Develop** hub
 
     ![ALT](../images/module03/001.png)
@@ -58,6 +69,8 @@ In this module, we will setup a Logical Data Warehouse (LDW), a relational layer
 
 ## 2. Create a Master Key
 
+A [master key](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=azure-sqldw-latest) is used to protect the private keys of certificates and asymmetric keys that are present in the serverless SQL database. You [must](https://docs.microsoft.com/azure/synapse-analytics/sql/resources-self-help-sql-on-demand?tabs=x80070002#configuration) have a master key before you can create credentials.
+
 1. Copy and paste the code snippet below and click **Run**
 
 ```sql
@@ -69,6 +82,10 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 3. Create a Database Scoped Credential
+
+[Database-scoped credentials](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-storage-files-storage-access-control?tabs=managed-identity#database-scoped-credential) are used when any principal calls `OPENROWSET` function with `DATA_SOURCE` or selects data from external table that don't access public files.
+
+In this step, we will create a database-scoped credential using a **Managed Identity**, this will use the Synapse workspace identity to access files that are persisted on Azure storage.
 
 1. Copy and paste the code snippet below and click **Run**
 
@@ -82,6 +99,8 @@ WITH IDENTITY = 'Managed Identity';
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 4. Create an External Data Source
+
+External data sources are used to establish connectivity and support use cases such as data virtualization. In this step, we will create an external data source called `wwi` that will point to our curated data.
 
 1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 
@@ -98,6 +117,8 @@ CREATE EXTERNAL DATA SOURCE wwi WITH (
 
 ## 5. Create a Schema
 
+A [schema](https://docs.microsoft.com/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest) can be used to logically group metadata such as tables and views within a user database. In this step, we will create a schema called `wwi`.
+
 1. Copy and paste the code snippet below and click **Run**
 
 ```sql
@@ -109,6 +130,8 @@ CREATE SCHEMA wwi;
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 6. Create Views
+
+[Views](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest) are virtual tables which encapsulate and enable reuse of serverless SQL pool queries. Once created, views can be consumed by SQL compatible tools such as Power BI. In this step, we will create views on top of our Delta Lake tables, `customers` and `orders`.
 
 1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
 
@@ -141,6 +164,8 @@ CREATE SCHEMA wwi;
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
 ## 7. Explore your data
+
+The serverless SQL query service enables you to [read data](https://docs.microsoft.com/azure/synapse-analytics/sql/query-delta-lake-format) stored in the Delta Lake format using the `OPENROWSET` function and referring to the root folder.
 
 1. Navigate to the **Data** hub
 
