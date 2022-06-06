@@ -951,17 +951,17 @@ To test that our pipeline is working correctly, we will trigger a manual run usi
 
 3. Once successful, navigate to the **Data** hub, browse the data lake folder structure to `03-curated > wwi`, right-click the folder `customers`, and select **New SQL Script > Select TOP 100 rows**
 
-    <!-- ![ALT](../images/module01c/153.png) -->
+    ![ALT](../images/module01c/153.png)
 
 4. Set the **File type** to **Delta format** and click **Apply**
 
-    <!-- ![ALT](../images/module01c/155.png) -->
+    ![ALT](../images/module01c/155.png)
 
 5. Click **Run**
 
     Note: You will notice there are six records in total (five active, one inactive). Try to alter the SQL query so that you only see active records sorted by CustomerID.
 
-    <!-- ![ALT](../images/module01c/154.png) -->
+    ![ALT](../images/module01c/154.png)
 
 <div align="right"><a href="#module-01c---dimension-table-incremental-load-scd-type-2">↥ back to top</a></div>
 
