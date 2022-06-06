@@ -2,6 +2,10 @@
 
 **[Home](../README.md)** - [Next Module >](../modules/module01a.md)
 
+## :stopwatch: Estimated Duration
+
+10 minutes
+
 ## :thinking: Prerequisites
 
 * An [Azure account](https://azure.microsoft.com/free) with an active subscription.
@@ -70,7 +74,7 @@ The following steps will elevate your account as an Azure AD administrator of th
 
 ## 3. RBAC Role Assignment (Storage Account > Contributor)
 
-The **Contributor** role assignment is required to ensure that your account has sufficient permissions (Owner or Contributor) to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
+The **Contributor** role assignment is required to ensure that your account has sufficient permissions to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
 
 1. Navigate to the **Storage account**
 
