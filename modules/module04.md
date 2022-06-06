@@ -46,6 +46,8 @@ sql-.Import Mode.->pbi
 
 ## 1. Connect Power BI to Azure Synapse Analytics
 
+In this step, we will open **Power BI Desktop**, and connect to **Azure Synapse Analytics Serverless SQL Endpoint** using **Import** mode. Once connected, we will select our two views: `wwi.customers` and `wwi.orders`.
+
 1. Open Power BI Desktop
 
     ![ALT](../images/module04/001.png)
@@ -86,6 +88,8 @@ sql-.Import Mode.->pbi
 
 ## 2. Data Visualization #1: Table
 
+In this step, we will create a **table** visualization to show a list of customer orders.
+
 1. From the **Visualizations** pane, click the **Table** icon
 
     ![ALT](../images/module04/010.png)
@@ -110,6 +114,8 @@ sql-.Import Mode.->pbi
 
 ## 3. Data Visualization #2: Chart
 
+In this step, we will create a **bar chart** visualization to show the quantity distribution by customer address.
+
 1. From the **Visualizations** pane, click the **Stacked bar chart** icon
 
     ![ALT](../images/module04/015.png)
@@ -133,6 +139,8 @@ sql-.Import Mode.->pbi
 <div align="right"><a href="#module-04---data-visualization-with-power-bi">↥ back to top</a></div>
 
 ## 4. Save and Publish
+
+In this step, we will save and **publish** our Power BI report to a workspace.
 
 1. Under **Home**, click **Publish**
 
