@@ -161,7 +161,7 @@ CREATE SCHEMA wwi;
 
 ## 7. Explore your data
 
-The serverless SQL query service enables you to [read data](https://docs.microsoft.com/azure/synapse-analytics/sql/query-delta-lake-format) stored in the Delta Lake format using the `OPENROWSET` function and referring to the root folder.
+The serverless SQL query service enables you to [read data](https://docs.microsoft.com/azure/synapse-analytics/sql/query-delta-lake-format) stored in the Delta Lake format using the `OPENROWSET` function. Since we have created virtual tables which wrap our serverless SQL queries utilizing the OPENROWSET function, we can simply refer to the views (e.g. `SELECT * FROM wwi.customers`).
 
 1. Navigate to the **Data** hub
 
