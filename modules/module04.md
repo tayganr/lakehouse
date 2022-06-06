@@ -14,6 +14,19 @@
 
 In this module, we will develop and publish a Power BI report based on data from our logical data warehouse.
 
+```mermaid
+flowchart LR
+subgraph Azure Synapse Analytics
+v1[View\nwwi.customers]
+v2[View\nwwi.orders]
+sql["Serverless SQL Endpoint\n[prefix]-synapse-ondemand.azuresynapse.net"]
+end
+pbi["Power BI Desktop\nPBIX"]
+v1-.->sql
+v2-.->sql
+sql-.Import Mode.->pbi
+```
+
 ## :dart: Objectives
 
 - Create a Power BI report
