@@ -732,4 +732,23 @@ Using the `start_time` and `end_time` values from the previous step, we will rer
 
 You have successfully setup a pipeline that can check for changes in the source system and copy those changes to the raw layer within your data lake.
 
+## :white_check_mark: Activity
+
+Azure SQL Database
+
+- [x] CREATE TABLE Customers
+- [x] EXEC sys.sp_cdc_enable_db
+- [x] EXEC sys.sp_cdc_enable_table  
+- [x] INSERT INTO dbo.Customers
+
+Azure Synapse Analytics
+
+- [x] 1 x Linked service (AzureSqlDatbase)
+- [x] 2 x Integration datasets (AzureSqlTable, AdlsRawDelimitedText)
+- [x] 1 x Pipeline (C1 - pipelineIncrementalCopyCDC)
+
+Azure Data Lake Storage Gen2
+
+- [x] 2 x CSV files (01-raw/wwi/customers)
+
 [Continue >](../modules/module01b.md)
