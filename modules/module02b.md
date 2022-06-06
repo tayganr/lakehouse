@@ -72,6 +72,8 @@ end
 
 ## 1. Pipeline (pipelineFactIncrementalLoad)
 
+In this step, we are going to create a new pipeline `O2 - pipelineFactIncrementalLoad` that will include a **Data flow** activity to incrementally load data from `raw` into our fact table within the `curated` layer.
+
 1. Navigate to the **Integrate** hub
 
     ![ALT](../images/module02b/001.png)
@@ -111,6 +113,8 @@ end
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 2. Data flow (Source - rawOrders)
+
+In this step, we start with a **source** transformation that will reference a delimited text file (CSV) in the raw layer of our data lake. The data flow will include a file name parameter, this will allow the pipeline to dynamically pass a file name at runtime.
 
 1. Enable **Data flow debug**
 
@@ -190,6 +194,8 @@ end
 
 ## 3. Data flow (Source - dimCustomer)
 
+In this step, we will add a second **source** transformation that will reference the existing Customer dimension table (Delta Lake) in the curated layer of our data lake.
+
 1. Within the data flow canvas, click **Add Source** and select **Add source**
 
     ![ALT](../images/module02b/028.png)
@@ -238,6 +244,8 @@ end
 
 ## 4. Data flow (Filter - activeCustomers)
 
+In this step, we will **filter** the Customers dimension table to only include rows that are active. This is a necessary step as we will eventually **lookup** which customers are being referenced in the incoming orders data by their `CustomerID`.
+
 1. Click the **[+]** icon to the right of `dimCustomer`, under **Row modifier** select **Filter**
 
     ![ALT](../images/module02b/039.png)
@@ -257,6 +265,8 @@ end
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 5. Data flow (Lookup - lookupDimCustomer)
+
+The lookup transformation references data from a secondary stream, where there is a match, the step will append columns with the columns from the primary stream. In this step, we will lookup customer records from `activeCustomers` and append matched records with the orders data `rawOrders`.
 
 1. Click the **[+]** icon to the right of `rawOrders`, under **Multiple inputs/outputs** select **Lookup**
 
@@ -281,6 +291,8 @@ end
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 6. Data flow (Select - selectFactColumns)
+
+In this step, we will use a **select** transformation to drop all columns except `OrderId`, `CustomerSK`, and `Quantity`, reorder `CustomerSK` to the second position, and rename `CustomerSK` to `CustomerKey`.
 
 1. Click the **[+]** icon to the right of `lookupDimCustomer`, under **Schema modifier** select **Select**
 
@@ -310,6 +322,8 @@ end
 
 ## 7. Data flow (Derived column - checkForEarlyFacts)
 
+In this step, we are going to update an existing column `CustomerKey` and set it to 0 if the existing value is null.
+
 1. Click the **[+]** icon to the right of `selectFactColumns`, under **Schema modifier** select **Derived Column**
 
     ![ALT](../images/module02b/054.png)
@@ -338,6 +352,8 @@ end
 
 ## 8. Data flow (Alter row - markAsUpsert)
 
+In this step, we are going to mark all rows from the incoming stream with the **UPSERT** policy.
+
 1. Click the **[+]** icon to the right of `checkForEarlyFacts`, under **Row modifier** select **Alter Row**
 
     ![ALT](../images/module02b/059.png)
@@ -357,6 +373,8 @@ end
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 9. Data flow (Sink - sinkOrders)
+
+In this step, we will write the the results from the incoming stream to the destination Delta Lake table.
 
 1. Click the **[+]** icon to the right of `markAsUpsert`, under **Destination** select **Sink**
 
@@ -410,6 +428,8 @@ end
 
 ## 10. Pipeline (pipelineFactIncrementalLoad)
 
+Update the Data Flow activity within the pipeline to pass the pipeline parameter `@pipeline().parameters.fileName` to the Data Flow parameter `fileName`.
+
 1. Navigate back to the pipeline `O2 - pipelineFactIncrementalLoad`
 
     ![ALT](../images/module02b/075.png)
@@ -441,6 +461,8 @@ end
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## 11. Debug Pipeline
+
+To test that our pipeline is working correctly, we will trigger a manual run using the **Debug** capability.
 
 1. Click **Debug**
 
