@@ -64,6 +64,14 @@ Initialize the source environment by creating a table, enabling CDC on the table
 
 3. Click **Continue us <your_alias>@<your_domain>.com**
 
+    :warning: Since the deployed Azure SQL Database is the serverless SKU, you may encounter an intermittent error such as:
+
+    ```diff
+    ! Database 'prefix-sqldb' on server 'prefix-sqlsvr.database.windows.net' is not currently available. Please retry the connection later. 
+    ```
+
+    If this occurs, refresh the browser page and try again.
+
     ![ALT](../images/module01a/003.png)
 
 4. To create the source table, copy and paste the code snippet below and click **Run**
@@ -234,31 +242,23 @@ An integration dataset is simply a named reference to data that can be used in a
 
     ![ALT](../images/module01a/034.png)
 
-16. Under **Parameters**, click `schema`
+16. Under **Parameters**, select `schema` and click **OK**
 
     ![ALT](../images/module01a/035.png)
 
-17. Click **OK**
-
-    ![ALT](../images/module01a/036.png)
-
-18. Click inside the second text input for **Table** and click **Add dynamic content**
+17. Click inside the second text input for **Table** and click **Add dynamic content**
 
     ![ALT](../images/module01a/037.png)
 
-19. Under **Parameters**, click `table`
+18. Under **Parameters**, select `table` and click **OK**
 
     ![ALT](../images/module01a/038.png)
 
-20. Click **OK**
-
-    ![ALT](../images/module01a/039.png)
-
-21. Click **Publish all**
+19. Click **Publish all**
 
     ![ALT](../images/module01a/040.png)
 
-22. Click **Publish**
+20. Click **Publish**
 
     ![ALT](../images/module01a/041.png)
 
