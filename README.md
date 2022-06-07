@@ -6,26 +6,7 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ## :page_with_curl: Agenda
 
-<table>
-  <tr>
-    <th>Start</th>
-    <th>End</th>
-    <th>Topic</th>
-    <th>Room</th>
-  </tr>
-  <tr>
-    <td>09:00</td>
-    <td>09:15</td>
-    <td>Welcome</td>
-    <td>Main</td>
-  </tr>
-  <tr>
-    <td>09:10</td>
-    <td>09:30</td>
-    <td>Welcome</td>
-    <td style="background-color:green; color:white">Main</td>
-  </tr>
-</table>
+![Agenda](./images/readme/agenda.png)
 
 ## :thinking: Prerequisites
 
