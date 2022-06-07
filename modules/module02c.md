@@ -326,8 +326,8 @@ Azure Synapse Analytics
 
 Azure Data Lake Storage Gen2
 
-- [x] 1 x CSV file (01-raw/wwi/customers)
-- [x] 1 x Delta log file (03-curated/wwi/customers/_delta_log)
-- [x] 5 x Parquet files (03-curated/wwi/customers)
+- [x] 1 x CSV file (01-raw/wwi/orders)
+- [x] 1 x Delta log file (03-curated/wwi/orders/_delta_log)
+- [x] 5 x Parquet files (03-curated/wwi/orders)
 
 [Continue >](../modules/module03.md)
