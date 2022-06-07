@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module01d.md) - **[Home](../README.md)** - [Next Module >](../modules/module02b.md)
 
+## :stopwatch: Estimated Duration
+
+20 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -463,5 +467,24 @@ In this step, we are going to add a **Stored procedure** activity that will upda
 ## :tada: Summary
 
 You have successfully setup a pipeline that can check for changes in the source system by referencing the last high waterman, and copy those changes to the raw layer within your data lake.
+
+## :white_check_mark: Results
+
+Azure SQL Database
+
+- [x] CREATE TABLE Orders
+- [x] INSERT INTO dbo.Orders
+- [x] CREATE TRIGGER trg_orders_update_modified
+- [x] CREATE TABLE Watermark
+- [x] INSERT INTO dbo.Watermark
+- [x] CREATE PROCEDURE sp_update_watermark
+
+Azure Synapse Analytics
+
+- [x] 1 x Pipeline (O1 - pipelineIncrementalCopyWatermark)
+
+Azure Data Lake Storage Gen2
+
+- [x] 1 x CSV file (01-raw/wwi/orders)
 
 [Continue >](../modules/module02b.md)
