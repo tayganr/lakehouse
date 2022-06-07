@@ -466,7 +466,7 @@ In this step, we are going to add a **Stored procedure** activity that will upda
 
 ## :tada: Summary
 
-You have successfully setup a pipeline that can check for changes in the source system by referencing the last high waterman, and copy those changes to the raw layer within your data lake.
+You have successfully setup a pipeline that can check for changes in the source system by referencing the last high watermark, and copy those changes to the raw layer within your data lake.
 
 ## :white_check_mark: Results
 

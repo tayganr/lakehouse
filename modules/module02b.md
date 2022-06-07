@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module02a.md) - **[Home](../README.md)** - [Next Module >](../modules/module02c.md)
 
+## :stopwatch: Estimated Duration
+
+20 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -476,18 +480,34 @@ To test that our pipeline is working correctly, we will trigger a manual run usi
 
     ![ALT](../images/module02b/083.png)
 
-4. Navigate to the **Data** hub, browse the data lake folder structure under the **Linked tab** to `03-curated/wwi/orders`, right-click one of the parquet files and select **New SQL Script > Select TOP 100 rows**
+4. Navigate to the **Data** hub, browse the data lake folder structure to `03-curated > wwi`, right-click the folder `orders`, and select **New SQL Script > Select TOP 100 rows**
 
     ![ALT](../images/module02b/084.png)
 
-5. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
+5. Set the **File type** to **Delta format** and click **Apply**
 
     ![ALT](../images/module02b/085.png)
+
+6. Click **Run**
+
+    ![ALT](../images/module02b/086.png)
 
 <div align="right"><a href="#module-02b---incremental-load-fact">↥ back to top</a></div>
 
 ## :tada: Summary
 
 You have successfully setup a pipeline to incrementally load the fact table (Orders) using the Delta Lake format.
+
+## :white_check_mark: Results
+
+Azure Synapse Analytics
+
+- [x] 1 x Pipeline (O2 - pipelineFactIncrementalLoad)
+- [x] 1 x Data flow (dataFlowFactIncrementalLoad)
+
+Azure Data Lake Storage Gen2
+
+- [x] 1 x Delta log file (03-curated/wwi/orders/_delta_log)
+- [x] 2 x Parquet files (03-curated/wwi/orders)
 
 [Continue >](../modules/module02c.md)
