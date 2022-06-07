@@ -304,13 +304,17 @@ sql-.SELECT * FROM DELTA.->ds1
 
     ![ALT](../images/module02c/036.png)
 
-2. Browse the data lake folder structure to `03-curated > wwi > orders`, right-click one of the **parquet** files, and select **New SQL Script > Select TOP 100 rows**
+2. Browse the data lake folder structure to `03-curated > wwi`, right-click the folder `orders`, and select **New SQL Script > Select TOP 100 rows**
 
     ![ALT](../images/module02c/037.png)
 
-3. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA**, and click **Run**
+3. Set the **File type** to **Delta format** and click **Apply**
 
     ![ALT](../images/module02c/038.png)
+
+4. Click **Run**
+
+    ![ALT](../images/module02c/039.png)
 
 <div align="right"><a href="#module-02c---automation-using-triggers">↥ back to top</a></div>
 
