@@ -4,12 +4,36 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ![Data Lakehouse with Azure Synapse Analytics](./images/readme/001.png)
 
+## :page_with_curl: Agenda
+
+<table>
+  <tr>
+    <th>Start</th>
+    <th>End</th>
+    <th>Topic</th>
+    <th>Room</th>
+  </tr>
+  <tr>
+    <td>09:00</td>
+    <td>09:15</td>
+    <td>Welcome</td>
+    <td>Main</td>
+  </tr>
+  <tr>
+    <td>09:10</td>
+    <td>09:30</td>
+    <td>Welcome</td>
+    <td style="background-color:green; color:white">Main</td>
+  </tr>
+</table>
+
 ## :thinking: Prerequisites
 
 * An [Azure account](https://azure.microsoft.com/en-us/free/) with an active subscription. Note: If you don't have access to an Azure subscription, you may be able to start with a [free account](https://www.azure.com/free).
 * You must have the necessary privileges within your Azure subscription to create resources, perform role assignments, register resource providers (if required), etc.
 
 ## :test_tube: Lab Environment Setup
+
 * [Lab Environment](./modules/module00.md)
 
 ## :books: Learning Modules
