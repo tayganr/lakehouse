@@ -9,7 +9,7 @@
 
 ## :loudspeaker: Introduction
 
-In this module, we will setup a Synapse Pipeline to incrementally copy data from an OLTP source (Azure SQL Database), referencing a high watermark value to isolate changes. The data will be copied to the raw layer of our Azure Data Lake Storage Gen2 account.
+In this module, we will setup a Synapse Pipeline to incrementally copy customer orders data from an OLTP source (Azure SQL Database), to the raw layer of a Data Lake (Azure Data Lake Storage Gen2), referencing a high watermark value to isolate changes.
 
 ```mermaid
 flowchart LR
@@ -54,12 +54,12 @@ end
 
 ## 1. Source Environment (dbo.Orders)
 
-Initialize the source environment by:
+Initialize the source environment:
 
-- Creating a table `dbo.Orders` and populating the table with some data
-- Creating a SQL trigger that will automatically update the `LastModifiedDateTime` column on `dbo.Orders` when an UPDATE occurs
-- Creating a watermark table `dbo.Watermark` to track the maximum `LastModifiedDateTime` for the last successful load
-- Creating a SQL procedure to update the watermark table upon the completion of a successful load
+- Create a table `dbo.Orders` and populating the table with some data
+- Create a SQL trigger that will automatically update the `LastModifiedDateTime` column on `dbo.Orders` when an UPDATE occurs
+- Create a watermark table `dbo.Watermark` to track the maximum `LastModifiedDateTime` for the last successful load
+- Create a SQL procedure to update the watermark table upon the completion of a successful load
 
 1. Navigate to the **SQL database**
 
