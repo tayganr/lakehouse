@@ -56,9 +56,9 @@ end
 
 Initialize the source environment:
 
-- Create a table `dbo.Orders` and populating the table with some data
+- Create a table `dbo.Orders` and populate the table with some data
 - Create a SQL trigger that will automatically update the `LastModifiedDateTime` column on `dbo.Orders` when an UPDATE occurs
-- Create a watermark table `dbo.Watermark` to track the maximum `LastModifiedDateTime` for the last successful load
+- Create a watermark table `dbo.Watermark` to track the maximum `LastModifiedDateTime` from the last successful load
 - Create a SQL procedure to update the watermark table upon the completion of a successful load
 
 1. Navigate to the **SQL database**
@@ -156,7 +156,11 @@ In this step, we will create a pipeline `O1 - pipelineIncrementalCopyWatermark` 
 
     ![ALT](../images/module02a/011.png)
 
-5. Name the folder `Orders` and click **Create**
+5. Copy and paste the **Folder** name from the snippet below and click **Create**
+
+    ```text
+    Orders
+    ```
 
     ![ALT](../images/module02a/012.png)
 
