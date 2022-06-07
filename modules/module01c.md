@@ -978,7 +978,7 @@ Azure Synapse Analytics
 
 Azure Data Lake Storage Gen2
 
-- [x] 7 x Parquet file (03-curated/wwi/customers)
 - [x] 1 x Delta log file (03-curated/wwi/customers/_delta_log)
+- [x] 7 x Parquet file (03-curated/wwi/customers)
 
 [Continue >](../modules/module01d.md)

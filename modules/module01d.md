@@ -355,4 +355,16 @@ sql-.SELECT * FROM DELTA.->ds1
 
 You have successfully automated the execution of the Customer pipelines using triggers.
 
+## :white_check_mark: Results
+
+Azure Synapse Analytics
+
+- [x] 2 x Triggers (triggerStorageEvent, triggerTumblingWindow5m)
+
+Azure Data Lake Storage Gen2
+
+- [x] 1 x CSV file (01-raw/wwi/customers)
+- [x] 1 x Delta log file (03-curated/wwi/customers/_delta_log)
+- [x] 5 x Parquet files (03-curated/wwi/customers)
+
 [Continue >](../modules/module02a.md)
