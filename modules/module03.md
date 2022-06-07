@@ -193,5 +193,4 @@ Azure Synapse Analytics
 - [x] 1 x Schema (wwi)
 - [x] 2 x Views (wwi.customers, wwi.orders)
 
-
 [Continue >](../modules/module04.md)

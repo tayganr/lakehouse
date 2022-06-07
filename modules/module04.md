@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module03.md) - **[Home](../README.md)**
 
+## :stopwatch: Estimated Duration
+
+10 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -167,3 +171,9 @@ In this step, we will save and **publish** our Power BI report to a workspace.
 ## :tada: Summary
 
 You have successfully created a Power BI report, consuming data from the data lakehouse using Azure Synapse Analytics.
+
+## :white_check_mark: Results
+
+Power BI
+
+- [x] 1 x Power BI Report
