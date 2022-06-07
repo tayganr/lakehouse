@@ -152,4 +152,22 @@ The **Storage Blob Data Reader** role assignment is required to read files from 
 
 By successfully deploying the lab template and executing the post deployment steps, you are ready to begin the workshop!
 
+## :white_check_mark: Results
+
+Azure Resources
+
+- [x] 1 x Resource Group
+- [x] 1 x SQL Database
+- [x] 1 x SQL Server
+- [x] 1 x Synapse Workspace
+- [x] 1 x Storage Account
+
+Azure SQL Server
+
+- [x] 1 x Azure AD admin
+ 
+Azure Data Lake Storage Gen2
+
+- [x] 2 x RBAC Role Assignments (Contributor, Storage Blob Data Reader)
+
 [Continue >](../modules/module01a.md)
