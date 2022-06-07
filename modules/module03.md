@@ -22,8 +22,6 @@ ds-.->v1
 ds-.->v2
 ds[(Data Lake\ncurated)]
 subgraph db["Serverless SQL Database (ldw)"]
-o1[Master Key\n<br>]
-o2["Database Scoped\nCredential (WorkspaceIdentity)"]
 subgraph schema["Schema (wwi)"]
 v1[View\nwwi.customers]
 v2[View\nwwi.orders]
@@ -40,11 +38,9 @@ end
 ## Table of Contents
 
 1. [Create a Database](#1-Create-a-Database)
-2. [Create a Master Key](#2-Create-a-Master-Key)
-3. [Create a Database Scoped Credential](#3-Create-a-Database-Scoped-Credential)
-4. [Create a Schema](#4-Create-a-Schema)
-5. [Create Views](#5-Create-Views)
-6. [Explore your data](#6-Explore-your-data)
+2. [Create a Schema](#2-Create-a-Schema)
+3. [Create Views](#3-Create-Views)
+4. [Explore your data](#4-Explore-your-data)
 
 ## 1. Create a Database
 
@@ -83,36 +79,7 @@ In this step, we will create a user database with the name `ldw` and collation `
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
-## 2. Create a Master Key
-
-A [master key](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=azure-sqldw-latest) is used to protect the private keys of certificates and asymmetric keys that are present in the serverless SQL database. You [must](https://docs.microsoft.com/azure/synapse-analytics/sql/resources-self-help-sql-on-demand?tabs=x80070002#configuration) have a master key before you can create credentials.
-
-1. Copy and paste the code snippet below and click **Run**
-
-```sql
-CREATE MASTER KEY;
-```
-
-![ALT](../images/module03/006.png)
-
-<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
-
-## 3. Create a Database Scoped Credential
-
-[Database-scoped credentials](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-storage-files-storage-access-control?tabs=managed-identity#database-scoped-credential) are used when any principal calls the `OPENROWSET` function with `DATA_SOURCE`, or selects data from external table with a non-public location. In this step, we will create a database-scoped credential using a **Managed Identity**, this will use the Synapse workspace identity to access files that are persisted on Azure storage.
-
-1. Copy and paste the code snippet below and click **Run**
-
-```sql
-CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
-WITH IDENTITY = 'Managed Identity';
-```
-
-![ALT](../images/module03/007.png)
-
-<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
-
-## 4. Create a Schema
+## 2. Create a Schema
 
 A [schema](https://docs.microsoft.com/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest) can be used to logically group metadata such as tables and views within a user database. In this step, we will create a schema called `wwi`.
 
@@ -126,7 +93,7 @@ CREATE SCHEMA wwi;
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
-## 5. Create Views
+## 3. Create Views
 
 [Views](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest) are virtual tables which encapsulate and enable reuse of serverless SQL pool queries. Once created, views can be consumed by SQL compatible tools such as Power BI. In this step, we will create views on top of our Delta Lake tables, `customers` and `orders`.
 
@@ -160,7 +127,7 @@ CREATE SCHEMA wwi;
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
-## 6. Explore your data
+## 4. Explore your data
 
 The serverless SQL query service enables you to [read data](https://docs.microsoft.com/azure/synapse-analytics/sql/query-delta-lake-format) stored in the Delta Lake format using the `OPENROWSET` function. Since we have created virtual tables which wrap our serverless SQL queries utilizing the OPENROWSET function, we can simply refer to the views (e.g. `SELECT * FROM wwi.customers`).
 
@@ -220,8 +187,6 @@ You have successfully created a relational layer on top of Delta Lake tables res
 Azure Synapse Analytics
 
 - [x] 1 x Database (ldw)
-- [x] 1 x Master key
-- [x] 1 x Database Scoped Credential (WorkspaceIdentity)
 - [x] 1 x Schema (wwi)
 - [x] 2 x Views (wwi.customers, wwi.orders)
 
