@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module02b.md) - **[Home](../README.md)** - [Next Module >](../modules/module03.md)
 
+## :stopwatch: Estimated Duration
+
+15 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -313,5 +317,17 @@ sql-.SELECT * FROM DELTA.->ds1
 ## :tada: Summary
 
 You have successfully automated the execution of the Order pipelines using triggers.
+
+## :white_check_mark: Results
+
+Azure Synapse Analytics
+
+- [x] 2 x Triggers (triggerStorageEventOrders, triggerTumblingWindow5mOrders)
+
+Azure Data Lake Storage Gen2
+
+- [x] 1 x CSV file (01-raw/wwi/customers)
+- [x] 1 x Delta log file (03-curated/wwi/customers/_delta_log)
+- [x] 5 x Parquet files (03-curated/wwi/customers)
 
 [Continue >](../modules/module03.md)
