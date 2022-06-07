@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module02c.md) - **[Home](../README.md)** - [Next Module >](../modules/module04.md)
 
+## :stopwatch: Estimated Duration
+
+10 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -10,7 +14,7 @@
 
 ## :loudspeaker: Introduction
 
-In this module, we will setup a Logical Data Warehouse (LDW), a relational layer, on top of the data files residing in Azure Data Lake Storage Gen2.
+In this module, we will setup a Logical Data Warehouse (LDW), a relational layer, on top of the data files residing in the data lake. This will enable a broad range of business intelligence tools to query data from the Delta Lake tables using the serverless SQL endpoint.
 
 ```mermaid
 flowchart TB
@@ -20,7 +24,6 @@ ds[(Data Lake\ncurated)]
 subgraph db["Serverless SQL Database (ldw)"]
 o1[Master Key\n<br>]
 o2["Database Scoped\nCredential (WorkspaceIdentity)"]
-o3["External Data Source\n(03-curated/wwi)"]
 subgraph schema["Schema (wwi)"]
 v1[View\nwwi.customers]
 v2[View\nwwi.orders]
@@ -39,10 +42,9 @@ end
 1. [Create a Database](#1-Create-a-Database)
 2. [Create a Master Key](#2-Create-a-Master-Key)
 3. [Create a Database Scoped Credential](#3-Create-a-Database-Scoped-Credential)
-4. [Create an External Data Source](#4-Create-an-External-Data-Source)
-5. [Create a Schema](#5-Create-a-Schema)
-6. [Create Views](#6-Create-Views)
-7. [Explore your data](#7-Explore-your-data)
+4. [Create a Schema](#4-Create-a-Schema)
+5. [Create Views](#5-Create-Views)
+6. [Explore your data](#6-Explore-your-data)
 
 ## 1. Create a Database
 
@@ -88,7 +90,7 @@ A [master key](https://docs.microsoft.com/sql/t-sql/statements/create-master-key
 1. Copy and paste the code snippet below and click **Run**
 
 ```sql
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'oL@Rd9lvH&HB';
+CREATE MASTER KEY;
 ```
 
 ![ALT](../images/module03/006.png)
@@ -110,24 +112,7 @@ WITH IDENTITY = 'Managed Identity';
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
-## 4. Create an External Data Source
-
-[External data sources](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&tabs=dedicated) are used to establish connectivity to Azure storage accounts and support use cases such as data virtualization. In this step, we will create an external data source called `wwi` that will point to our curated data.
-
-1. Copy and paste the code snippet below, replace `YOUR_DATA_LAKE_ACCOUNT` with the name of your Azure Data Lake Storage Gen2 account, and click **Run**
-
-```sql
-CREATE EXTERNAL DATA SOURCE wwi WITH (
-    LOCATION = 'https://YOUR_DATA_LAKE_ACCOUNT.blob.core.windows.net/03-curated/wwi/',
-    CREDENTIAL = WorkspaceIdentity
-);
-```
-
-![ALT](../images/module03/008.png)
-
-<div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
-
-## 5. Create a Schema
+## 4. Create a Schema
 
 A [schema](https://docs.microsoft.com/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest) can be used to logically group metadata such as tables and views within a user database. In this step, we will create a schema called `wwi`.
 
@@ -141,7 +126,7 @@ CREATE SCHEMA wwi;
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
-## 6. Create Views
+## 5. Create Views
 
 [Views](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest) are virtual tables which encapsulate and enable reuse of serverless SQL pool queries. Once created, views can be consumed by SQL compatible tools such as Power BI. In this step, we will create views on top of our Delta Lake tables, `customers` and `orders`.
 
@@ -175,7 +160,7 @@ CREATE SCHEMA wwi;
 
 <div align="right"><a href="#module-03---logical-data-warehouse">↥ back to top</a></div>
 
-## 7. Explore your data
+## 6. Explore your data
 
 The serverless SQL query service enables you to [read data](https://docs.microsoft.com/azure/synapse-analytics/sql/query-delta-lake-format) stored in the Delta Lake format using the `OPENROWSET` function. Since we have created virtual tables which wrap our serverless SQL queries utilizing the OPENROWSET function, we can simply refer to the views (e.g. `SELECT * FROM wwi.customers`).
 
@@ -229,5 +214,16 @@ ORDER BY
 ## :tada: Summary
 
 You have successfully created a relational layer on top of Delta Lake tables residing in your Azure Data Lake Storage Gen2 account.
+
+## :white_check_mark: Results
+
+Azure Synapse Analytics
+
+- [x] 1 x Database (ldw)
+- [x] 1 x Master key
+- [x] 1 x Database Scoped Credential (WorkspaceIdentity)
+- [x] 1 x Schema (wwi)
+- [x] 2 x Views (wwi.customers, wwi.orders)
+
 
 [Continue >](../modules/module04.md)
