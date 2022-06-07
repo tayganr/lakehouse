@@ -2,6 +2,10 @@
 
 [< Previous Module](../modules/module01c.md) - **[Home](../README.md)** - [Next Module >](../modules/module02a.md)
 
+## :stopwatch: Estimated Duration
+
+20 minutes
+
 ## :thinking: Prerequisites
 
 - [x] Lab environment deployed
@@ -28,7 +32,7 @@ In this module, we will automate ingestion and loading of Customer data using tr
 
 ## 1. Trigger (Tumbling Window)
 
-[Tumbling window triggers](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger) are a type of [trigger](https://docs.microsoft.com/azure/data-factory/concepts-pipeline-execution-triggers) that fires at a periodic time interval. In this step, we will create a new tumbling window trigger that will be associated with the pipeline `C1 - pipelineIncrementalCopyCDC`. The trigger will be set to run every 5 minutes and pass trigger outputs (`windowStartTime` and `windowEndTime`) to the corresponding pipeline parameters (`triggerStartTime` and `triggerEndTime`).
+[Tumbling window triggers](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger) are a type of [trigger](https://docs.microsoft.com/azure/data-factory/concepts-pipeline-execution-triggers) that fire at a periodic time interval. In this step, we will create a new tumbling window trigger that will be associated with the pipeline `C1 - pipelineIncrementalCopyCDC`. The trigger will be set to run every 5 minutes and pass trigger outputs (`windowStartTime` and `windowEndTime`) to the corresponding pipeline parameters (`triggerStartTime` and `triggerEndTime`).
 
 ```mermaid
 
@@ -331,13 +335,19 @@ sql-.SELECT * FROM DELTA.->ds1
 
     ![ALT](../images/module01d/041.png)
 
-2. Browse the data lake folder structure to `03-curated > wwi > customers`, right-click one of the **parquet** files, and select **New SQL Script > Select TOP 100 rows**
+2. Browse the data lake folder structure to `03-curated > wwi`, right-click the folder `customers`, and select **New SQL Script > Select TOP 100 rows**
 
     ![ALT](../images/module01d/042.png)
 
-3. Modify the **OPENROWSET** function to remove the file name from the **BULK** path, change the **FORMAT** to **DELTA** and click **Run**
+3. Set the **File type** to **Delta format** and click **Apply**
 
     ![ALT](../images/module01d/043.png)
+
+4. Click **Run**
+
+    Note: You will notice there are nine records in total (7 active, two inactive).
+
+    ![ALT](../images/module01d/044.png)
 
 <div align="right"><a href="#module-01d---automation-using-triggers">↥ back to top</a></div>
 
