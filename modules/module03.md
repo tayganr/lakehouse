@@ -17,16 +17,19 @@
 In this module, we will setup a Logical Data Warehouse (LDW), a relational layer, on top of the data files residing in the data lake. This will enable a broad range of business intelligence tools to query data from the Delta Lake tables using the serverless SQL endpoint.
 
 ```mermaid
-flowchart TB
+flowchart LR
 ds-.->v1
 ds-.->v2
 ds[(Data Lake\ncurated)]
-subgraph db["Serverless SQL Database (ldw)"]
+bi["SQL Tools\n(e.g. Power BI)"]
+subgraph db["Database (ldw)"]
 subgraph schema["Schema (wwi)"]
 v1[View\nwwi.customers]
 v2[View\nwwi.orders]
 end
 end
+v1-.->bi
+v2-.->bi
 ```
 
 ## :dart: Objectives
