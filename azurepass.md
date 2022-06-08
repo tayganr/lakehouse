@@ -1,6 +1,6 @@
 # How to Activate an Azure Pass
 
-**[Home](../README.md)** - [Next Module >](../modules/module00.md)
+**[Home](./README.md)** - [Next Module >](./modules/module00.md)
 
 ## :stopwatch: Estimated Duration
 
@@ -56,4 +56,4 @@ In order to follow along with the lab exercises, you will require an account wit
 
 You have successfully activated an Azure Pass promo code. You now have access to an Azure subscription.
 
-[Continue >](../modules/module00.md)
+[Continue >](./modules/module00.md)
