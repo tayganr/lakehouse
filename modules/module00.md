@@ -24,9 +24,8 @@ In order to follow along with the lab exercises, we need to provision a set of r
 ## Table of Contents
 
 1. [Deploy Template](#1-deploy-template)
-2. [Set Azure AD admin](#2-set-azure-ad-admin)
-3. [RBAC Role Assignment (Storage Account > Contributor)](#3-rbac-role-assignment-storage-account--contributor)
-4. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#4-rbac-role-assignment-storage-account--storage-blob-data-reader)
+2. [RBAC Role Assignment (Storage Account > Contributor)](#3-rbac-role-assignment-storage-account--contributor)
+3. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#4-rbac-role-assignment-storage-account--storage-blob-data-reader)
 
 ## 1. Deploy Template
 
@@ -66,33 +65,7 @@ The following steps will deploy Azure resources that will be used as part of the
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
-## 2. Set Azure AD admin
-
-The following steps will elevate your account as an Azure AD administrator of the logical SQL Server hosting the Azure SQL Database.
-
-1. Navigate to the **SQL server**
-
-    ![ALT](../images/module00/002.png)
-
-2. Select **Azure Active Directory**
-
-    ![ALT](../images/module00/003.png)
-
-3. Click **Set admin**
-
-    ![ALT](../images/module00/004.png)
-
-4. Search for your account, select your account, and click **Select**
-
-    ![ALT](../images/module00/005.png)
-
-5. Click **Save**
-
-    ![ALT](../images/module00/006.png)
-
-<div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
-
-## 3. RBAC Role Assignment (Storage Account > Contributor)
+## 2. RBAC Role Assignment (Storage Account > Contributor)
 
 The **Contributor** role assignment is required to ensure that your account has sufficient permissions to setup Synapse Pipelines that can be triggered from file events (e.g. Blob Created, Blob Updated).
 
@@ -130,7 +103,7 @@ The **Contributor** role assignment is required to ensure that your account has 
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
-## 4. RBAC Role Assignment (Storage Account > Storage Blob Data Reader)
+## 3. RBAC Role Assignment (Storage Account > Storage Blob Data Reader)
 
 The **Storage Blob Data Reader** role assignment is required to read files from the data lake using Azure Synapse Analytics built-in serverless SQL technology.
 

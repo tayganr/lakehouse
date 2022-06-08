@@ -62,9 +62,19 @@ Initialize the source environment by creating a table, enabling CDC on the table
 
     ![ALT](../images/module01a/002.png)
 
-3. Click **Continue us <your_alias>@<your_domain>.com**
+3. Copy and paste your **Login** and **Password** from the code snippets below
 
-    :warning: Since the deployed Azure SQL Database is the serverless SKU, you may encounter an intermittent error such as `Database 'prefix-sqldb' on server 'prefix-sqlsvr.database.windows.net' is not currently available. Please retry the connection later`. If this occurs, refresh the browser page and try again.
+    Login
+
+    ```text
+    sqladmin
+    ```
+
+    Password
+
+    ```text
+    sqlPassword!
+    ```
 
     ![ALT](../images/module01a/003.png)
 
@@ -651,7 +661,19 @@ Before we can test that our pipeline is able to successfully isolate and copy ch
 
     ![ALT](../images/module01a/119.png)
 
-3. Click **Continue us <your_alias>@<your_domain>.com**
+3. Copy and paste your **Login** and **Password** from the code snippets below
+
+    Login
+
+    ```text
+    sqladmin
+    ```
+
+    Password
+
+    ```text
+    sqlPassword!
+    ```
 
     ![ALT](../images/module01a/120.png)
 

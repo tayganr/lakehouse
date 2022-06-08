@@ -202,7 +202,19 @@ sql-.INSERT.->ds1
 
     ![ALT](../images/module02c/027.png)
 
-3. Click **Continue us <your_alias>@<your_domain>.com**
+3. Copy and paste your **Login** and **Password** from the code snippets below
+
+    Login
+
+    ```text
+    sqladmin
+    ```
+
+    Password
+
+    ```text
+    sqlPassword!
+    ```
 
     ![ALT](../images/module02c/028.png)
 
