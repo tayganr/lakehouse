@@ -141,6 +141,36 @@ The **Storage Blob Data Reader** role assignment is required to read files from 
 
 <div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
 
+## 4. Resource Providers (Microsoft.DataFactory, Microsoft.EventGrid)
+
+In order to create storage event triggers (a type of trigger that can execute a pipeline upon the creation or deletion of a file), the following two resource providers need to be registered with the Azure subscription: **Microsoft.DataFactory** and **Microsoft.EventGrid**.
+
+1. Navigate to **Subscriptions**
+
+    ![ALT](../images/module00/019.png)
+
+2. Select the target Azure subscription (e.g. `Azure Pass - Sponsorship`)
+
+    ![ALT](../images/module00/020.png)
+
+3. Open **Resource providers**
+
+    ![ALT](../images/module00/021.png)
+
+4. Within the filter text input, search for `DataFactory`, select the **Microsoft.DataFactory** provider and click **Register**
+
+    ![ALT](../images/module00/022.png)
+
+5. Within the filter text input, search for `EventGrid`, select the **Microsoft.EventGrid** provider and click **Register**
+
+    ![ALT](../images/module00/023.png)
+
+6. Periodically click the **Refresh** button until both resource providers appear to have a Status of **Registered**
+
+    ![ALT](../images/module00/024.png)
+
+<div align="right"><a href="#module-00---lab-environment-setup">↥ back to top</a></div>
+
 ## :tada: Summary
 
 By successfully deploying the lab template and executing the post deployment steps, you are ready to begin the workshop!
