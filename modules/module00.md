@@ -16,6 +16,7 @@
   * Microsoft.Sql
   * Microsoft.Storage
   * Microsoft.Synapse
+  * Microsoft.DataFactory
 
 ## :loudspeaker: Introduction
 
@@ -26,6 +27,7 @@ In order to follow along with the lab exercises, we need to provision a set of r
 1. [Deploy Template](#1-deploy-template)
 2. [RBAC Role Assignment (Storage Account > Contributor)](#2-rbac-role-assignment-storage-account--contributor)
 3. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#3-rbac-role-assignment-storage-account--storage-blob-data-reader)
+4. [Resource Providers (Microsoft.DataFactory, Microsoft.EventGrid)](#4-resource-providers-microsoftdatafactory-microsofteventgrid)
 
 ## 1. Deploy Template
 
