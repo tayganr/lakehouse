@@ -9,7 +9,6 @@
 ## :thinking: Prerequisites
 
 * An Azure Pass promo code
-* A Microsoft account
 
 ## :loudspeaker: Introduction
 
