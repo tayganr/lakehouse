@@ -155,10 +155,6 @@ Azure Resources
 - [x] 1 x Synapse Workspace
 - [x] 1 x Storage Account
 
-Azure SQL Server
-
-- [x] 1 x Azure AD admin
-
 Azure Data Lake Storage Gen2
 
 - [x] 2 x RBAC Role Assignments (Contributor, Storage Blob Data Reader)
