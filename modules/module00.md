@@ -167,7 +167,7 @@ In order to create storage event triggers (a type of trigger that can execute a 
 
     ![ALT](../images/module00/023.png)
 
-6. Periodically click the **Refresh** button until both resource providers appear to have a Status of **Registered**
+6. Periodically click the **Refresh** button until both resource providers appear to have a status of **Registered**
 
     ![ALT](../images/module00/024.png)
 
