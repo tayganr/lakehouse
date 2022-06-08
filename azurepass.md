@@ -17,7 +17,7 @@ In order to follow along with the lab exercises, you will require an account wit
 
 ## Azure Pass Activation
 
-1. Open the browser, navigate to [https://www.microsoftazurepass.com/](https://www.microsoftazurepass.com/), and click **Start**
+1. Open the browser, navigate to [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com), and click **Start**
 
     ![ALT](./images/azurepass/001.png)
 
