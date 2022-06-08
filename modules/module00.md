@@ -24,8 +24,8 @@ In order to follow along with the lab exercises, we need to provision a set of r
 ## Table of Contents
 
 1. [Deploy Template](#1-deploy-template)
-2. [RBAC Role Assignment (Storage Account > Contributor)](#3-rbac-role-assignment-storage-account--contributor)
-3. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#4-rbac-role-assignment-storage-account--storage-blob-data-reader)
+2. [RBAC Role Assignment (Storage Account > Contributor)](#2-rbac-role-assignment-storage-account--contributor)
+3. [RBAC Role Assignment (Storage Account > Storage Blob Data Reader)](#3-rbac-role-assignment-storage-account--storage-blob-data-reader)
 
 ## 1. Deploy Template
 
