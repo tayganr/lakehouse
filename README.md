@@ -10,7 +10,9 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ## :thinking: Prerequisites
 
-* An [Azure account](https://azure.microsoft.com/en-us/free/) with an active subscription. Note: If you don't have access to an Azure subscription, you may be able to start with a [free account](https://www.azure.com/free).
+* An [Azure account](https://azure.microsoft.com/free/) with an active subscription.
+  * If you are working through this content as part of a proctored workshop, your proctor may be able to provide you with an [Azure Pass](https://www.microsoftazurepass.com/). Instructions on how to activate an Azure Pass can be [found here](./azurepass.md).
+  * Alternatively, if you don't have access to an Azure subscription, you may be able to sign up for a [free account](https://www.azure.com/free).
 * You must have the necessary privileges within your Azure subscription to create resources, perform role assignments, register resource providers (if required), etc.
 
 ## :test_tube: Lab Environment Setup
