@@ -36,7 +36,27 @@ The following steps will deploy Azure resources that will be used as part of the
 
     [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftayganr%2Flakehouse%2Fmain%2Ftemplate%2Fazuredeploy.json)
 
-2. Beneath the **Resource group** field, click **Create new** and provide a unique name (e.g. `lakehouselab`), select a valid location (e.g. `North Europe`), and then click **Review + create**.
+2. Beneath the **Resource group** field, click **Create new** and provide a unique name (e.g. `lakehouselab`), select a valid location, and then click **Review + create**.
+
+    Suggested Locations:
+
+     * Australia East
+     * Canada Central
+     * Central India
+     * Central US
+     * East Asia
+     * East US
+     * East US 2
+     * Germany West Central
+     * Japan East
+     * Korea Central
+     * North Central US
+     * Norway East
+     * South Central US
+     * Switzerland North
+     * UAE North
+     * West US
+     * West US 3
 
 3. Once the validation has passed, click **Create**.
 
