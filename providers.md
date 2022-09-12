@@ -31,7 +31,7 @@ TBC
 $uri = "https://raw.githubusercontent.com/tayganr/lakehouse/main/template/lakehouselab.ps1"
 Invoke-WebRequest $uri -OutFile "preDeploymentScript.ps1"
 ./preDeploymentScript.ps1
-
+Write-Host "`n".
 ```
 
 2. Right-click within Cloud Shell, and click **Paste**.
