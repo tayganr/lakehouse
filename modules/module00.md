@@ -1,6 +1,6 @@
 # Module 00 - Lab Environment Setup
 
-**[Home](../README.md)** - [Next Module >](../modules/module01a.md)
+[< Previous Module](../providers.md) - **[Home](../README.md)** - [Next Module >](./module01a.md)
 
 ## :stopwatch: Estimated Duration
 
@@ -160,4 +160,4 @@ Azure Data Lake Storage Gen2
 
 - [x] 2 x RBAC Role Assignments (Contributor, Storage Blob Data Reader)
 
-[Continue >](../modules/module01a.md)
+[Continue >](./module01a.md)
