@@ -17,6 +17,8 @@ The data lakehouse is a data architecture pattern that combines functional aspec
 
 ## :test_tube: Lab Environment Setup
 
+* [Azure Pass Activation](./azurepass.md)
+* [Resource Provider Registration](./providers.md)
 * [Lab Environment](./modules/module00.md)
 
 ## :books: Learning Modules

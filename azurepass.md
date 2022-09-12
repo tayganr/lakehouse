@@ -1,6 +1,6 @@
 # How to Activate an Azure Pass
 
-**[Home](./README.md)** - [Next Module >](./modules/module00.md)
+**[Home](./README.md)** - [Next Module >](./modules/providers.md)
 
 ## :stopwatch: Estimated Duration
 
