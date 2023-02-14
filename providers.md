@@ -37,7 +37,7 @@ Write-Host "You can now close Cloud Shell"
 
     ![ALT](./images/providers/002.png)
 
-3. Follow the prompts to specify your Azure subscription (e.g. `Azure Pass - Sponsorship`).
+3. Follow the prompts to specify your Azure subscription (e.g. `Azure Pass - Sponsorship`). - this is a zero index script ,it should be (n-1)
 
     ![ALT](./images/providers/003.png)
 
